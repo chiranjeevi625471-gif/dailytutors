@@ -1,0 +1,72 @@
+[
+  {
+    "id": "d1",
+    "active": true,
+    "title": "Social Structure & Stratification",
+    "type": "Notes",
+    "size": "3.34 MB",
+    "pages": 62,
+    "date": "2026-05-01",
+    "url": "/pdfs/mphxbo13siox4-coding_for_juniors.pdf"
+  },
+  {
+    "id": "d2",
+    "active": true,
+    "title": "Caste System in India",
+    "type": "Notes",
+    "size": "2.8 MB",
+    "pages": 54,
+    "date": "2026-04-30",
+    "url": "/api/pdfs/sample"
+  },
+  {
+    "id": "d3",
+    "active": true,
+    "title": "Family & Kinship Systems",
+    "type": "Notes",
+    "size": "2.2 MB",
+    "pages": 38,
+    "date": "2026-04-28",
+    "url": "/api/pdfs/sample"
+  },
+  {
+    "id": "d4",
+    "active": true,
+    "title": "Monthly Current Affairs Magazine — April 2026",
+    "type": "Magazine",
+    "size": "8.4 MB",
+    "pages": 124,
+    "date": "2026-04-15",
+    "url": "/api/pdfs/sample"
+  },
+  {
+    "id": "d5",
+    "active": true,
+    "title": "PIB Compilation — April 2026",
+    "type": "Compilation",
+    "size": "3.1 MB",
+    "pages": 56,
+    "date": "2026-04-14",
+    "url": "/api/pdfs/sample"
+  },
+  {
+    "id": "d6",
+    "active": true,
+    "title": "Polity Revision Notes — Constitutional Bodies",
+    "type": "Notes",
+    "size": "2.2 MB",
+    "pages": 34,
+    "date": "2026-04-10",
+    "url": "/api/pdfs/sample"
+  },
+  {
+    "id": "d7",
+    "active": true,
+    "title": "UPSC Prelims PYQ 2014–2025 (Topic-wise)",
+    "type": "PYQ",
+    "size": "12.8 MB",
+    "pages": 380,
+    "date": "2026-04-05",
+    "url": "/api/pdfs/sample"
+  }
+]

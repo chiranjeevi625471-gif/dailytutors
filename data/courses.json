@@ -1,0 +1,168 @@
+[
+  {
+    "id": "co1",
+    "active": true,
+    "slug": "upsc-foundation-2027",
+    "title": "UPSC CSE Foundation 2027",
+    "description": "Two-year integrated programme covering Prelims + Mains + Optional with live classes, tests and mentorship.",
+    "duration": "24 months",
+    "level": "Foundation",
+    "price": 89999,
+    "originalPrice": 119999,
+    "features": [
+      "1200+ live hours",
+      "All NCERTs covered",
+      "Mains answer evaluation",
+      "Optional included",
+      "Personal mentor"
+    ],
+    "highlightFeatures": ["1200+ live hours", "All NCERTs covered", "Optional included", "Personal mentor"],
+    "whyChoose": "Most comprehensive two-year programme with everything you need for UPSC success. Complete guidance from prelims to optional subject selection.",
+    "badge": "Most Popular"
+  },
+  {
+    "id": "co2",
+    "active": true,
+    "slug": "prelims-test-series-2026",
+    "title": "Prelims Test Series 2026",
+    "description": "60 full-length tests with detailed video solutions and AI-generated weak-area reports.",
+    "duration": "8 months",
+    "level": "Test Series",
+    "price": 7999,
+    "originalPrice": 11999,
+    "features": [
+      "60 mock tests",
+      "30 sectional tests",
+      "All-India ranking",
+      "Video solutions"
+    ],
+    "highlightFeatures": ["60 mock tests", "All-India ranking"],
+    "whyChoose": "Comprehensive test series with detailed solutions and performance tracking to identify weak areas."
+  },
+  {
+    "id": "co3",
+    "active": true,
+    "slug": "mains-answer-writing-program",
+    "title": "Mains Answer Writing Programme",
+    "description": "Daily questions, structured frameworks, individual evaluation by toppers and former civil servants.",
+    "duration": "6 months",
+    "level": "Advanced",
+    "price": 14999,
+    "features": [
+      "Daily 3 questions",
+      "Topper-led evaluation",
+      "Synopsis & model answers",
+      "Doubt sessions"
+    ],
+    "highlightFeatures": ["Topper-led evaluation", "Daily 3 questions"],
+    "whyChoose": "Expert evaluation from UPSC toppers with personalized feedback on your mains answers.",
+    "originalPrice": 20000
+  },
+  {
+    "id": "co4",
+    "active": true,
+    "slug": "upsc-2027-prelims-only-basic",
+    "title": "UPSC 2027 Prelims Only - Basic Batch",
+    "description": "Prepare smartly for UPSC Prelims 2027 with expert guidance, mentorship, and test practice. GS & CSAT coverage with personalized support.",
+    "duration": "12 months",
+    "level": "Foundation",
+    "price": 2000,
+    "features": [
+      "GS & CSAT Coverage",
+      "Complete Test Series",
+      "1:1 Mentorship",
+      "Prelims-Oriented Preparation",
+      "Doubt Support"
+    ],
+    "highlightFeatures": ["GS & CSAT Coverage"],
+    "whyChoose": "Budget-friendly option with essential prelims preparation and mentorship support.",
+    "originalPrice": 5000
+  },
+  {
+    "id": "co5",
+    "active": true,
+    "slug": "upsc-2027-prelims-only-nurture",
+    "title": "UPSC 2027 Prelims Only - Nurture Batch",
+    "description": "Prepare smartly for UPSC Prelims 2027 with expert guidance, mentorship, and test practice. Live classes with personalized guidance.",
+    "duration": "12 months",
+    "level": "Foundation",
+    "price": 3000,
+    "badge": "Popular",
+    "features": [
+      "Live Classes (GS + CSAT)",
+      "Complete Test Series",
+      "1:1 Mentorship",
+      "Personalized Guidance",
+      "Strategy Sessions & Doubt Clearing"
+    ],
+    "highlightFeatures": ["Live Classes (GS + CSAT)", "Personalized Guidance", "Strategy Sessions & Doubt Clearing"],
+    "whyChoose": "Interactive learning with personalized mentorship and guided preparation strategy for better results."
+  },
+  {
+    "id": "co6",
+    "active": true,
+    "slug": "upsc-2027-prelims-mains-foundation",
+    "title": "UPSC 2027 Prelims + Mains Foundation Batch",
+    "description": "Build a strong foundation for UPSC 2027 with integrated Prelims & Mains preparation, mentorship, and comprehensive test practice.",
+    "duration": "18 months",
+    "level": "Foundation",
+    "price": 2500,
+    "features": [
+      "GS Mains Preparation",
+      "Live Classes (GS + CSAT)",
+      "Prelims + Mains Test Series",
+      "1:1 Mentorship",
+      "Strategy & Guidance Sessions",
+      "Current Affairs Support",
+      "Doubt Clearing Sessions"
+    ],
+    "highlightFeatures": ["GS Mains Preparation", "Integrated Prelims & Mains", "Current Affairs Support"],
+    "whyChoose": "Complete preparation for both Prelims and Mains with early mains foundation and current affairs integration."
+  },
+  {
+    "id": "co7",
+    "active": true,
+    "slug": "upsc-2027-core-batch",
+    "title": "UPSC 2027 Core Batch",
+    "description": "An advanced UPSC preparation program designed for serious aspirants focusing on both Prelims & Mains with evaluation, mentorship, and regular testing.",
+    "duration": "18 months",
+    "level": "Advanced",
+    "price": 6000,
+    "features": [
+      "GS + CSAT Live Classes",
+      "GS Mains Answer Evaluation",
+      "Weekly Tests",
+      "Complete Test Series",
+      "1:1 Mentorship",
+      "Live Group Mentorship Sessions",
+      "Performance Tracking & Guidance",
+      "Strategy & Doubt Clearing Sessions"
+    ],
+    "highlightFeatures": ["GS Mains Answer Evaluation", "Weekly Tests", "Performance Tracking"],
+    "whyChoose": "Advanced preparation with professional answer evaluation and performance analytics for serious aspirants."
+  },
+  {
+    "id": "co8",
+    "active": true,
+    "slug": "upsc-2027-elite-batch",
+    "title": "UPSC 2027 Elite Batch",
+    "description": "An exclusive UPSC preparation program with customized guidance from UPSC Toppers, personalized mentorship, and advanced evaluation.",
+    "duration": "18 months",
+    "level": "Advanced",
+    "price": 9000,
+    "badge": "Premium",
+    "features": [
+      "Customized Guidance by UPSC Toppers",
+      "Live Classes (GS + CSAT)",
+      "GS Mains Answer Evaluation",
+      "Weekly Tests & Performance Reviews",
+      "Complete Test Series",
+      "1:1 Personal Mentorship",
+      "Live Group Mentorship Sessions",
+      "Personalized Study Strategy",
+      "Doubt Clearing & Improvement Tracking"
+    ],
+    "highlightFeatures": ["Customized Guidance by UPSC Toppers", "1:1 Personal Mentorship", "Priority Doubt Clearing"],
+    "whyChoose": "Premium tier with direct mentorship from UPSC toppers, personalized strategy, and priority support for maximum results."
+  }
+]

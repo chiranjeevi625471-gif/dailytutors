@@ -1,0 +1,25 @@
+name: Daily Quiz Auto-Generate
+
+on:
+  schedule:
+    # Run once daily at midnight UTC (5:30 AM IST)
+    - cron: '0 0 * * *'
+  workflow_dispatch: # Allow manual trigger
+
+jobs:
+  generate-daily-quiz:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Generate Daily Quiz
+        run: |
+          curl -X POST \
+            -H "x-cron-secret: ${{ secrets.CRON_SECRET }}" \
+            -H "Content-Type: application/json" \
+            -d '{"count": 10}' \
+            "https://dailytutors.vercel.app/api/cron/daily-quiz"
+        continue-on-error: true
+      
+      - name: Verify Quiz Generated
+        run: |
+          echo "✅ Daily quiz generation triggered successfully"

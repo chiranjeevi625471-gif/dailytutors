@@ -1,0 +1,1934 @@
+[
+  {
+    "id": "mpdv6w1d40iz23",
+    "slug": "daily-prelims-2026-05-23",
+    "title": "Daily Prelims Quiz — 23 May 2026",
+    "type": "Prelims",
+    "questions": 25,
+    "duration": "30 min",
+    "date": "2026-05-23",
+    "scheduledAt": null,
+    "active": true,
+    "source": "news",
+    "items": [
+      {
+        "q": "Which government body recently announced new guidelines for digital payment security?",
+        "options": [
+          "SEBI",
+          "RBI",
+          "NASSCOM",
+          "Ministry of Finance"
+        ],
+        "correct": 1,
+        "explain": "The Reserve Bank of India (RBI) announced new guidelines for digital payment security to protect consumers and financial institutions against cyber threats."
+      },
+      {
+        "q": "What is the focus of the new RBI digital payment guidelines?",
+        "options": [
+          "Increasing transaction fees",
+          "Enhancing cybersecurity and fraud prevention",
+          "Reducing digital transactions",
+          "Limiting mobile banking"
+        ],
+        "correct": 1,
+        "explain": "The new guidelines focus on enhancing cybersecurity measures, fraud prevention, and customer protection in digital payment systems."
+      },
+      {
+        "q": "Consider the following about India's AI initiatives: Statement 1: India has launched a national AI strategy. Statement 2: The strategy focuses only on government sector applications. Which is correct?",
+        "options": [
+          "Both statements are correct",
+          "Only Statement 1 is correct",
+          "Only Statement 2 is correct",
+          "Neither statement is correct"
+        ],
+        "correct": 1,
+        "explain": "India has launched a comprehensive national AI strategy that covers both government and private sector applications across various domains."
+      },
+      {
+        "q": "Which ministry leads India's AI policy development?",
+        "options": [
+          "Ministry of Home Affairs",
+          "Ministry of Electronics and Information Technology",
+          "Ministry of Education",
+          "Ministry of Science and Technology"
+        ],
+        "correct": 1,
+        "explain": "The Ministry of Electronics and Information Technology (MeitY) leads the development and implementation of India's AI policies and initiatives."
+      },
+      {
+        "q": "What is the primary objective of India's AI strategy?",
+        "options": [
+          "Limiting AI development",
+          "Making India a global AI superpower",
+          "Restricting AI to research only",
+          "Preventing AI adoption"
+        ],
+        "correct": 1,
+        "explain": "India's AI strategy aims to position the country as a global AI superpower while ensuring ethical and responsible AI development."
+      },
+      {
+        "q": "According to recent reports, how much has renewable energy capacity increased in India this year?",
+        "options": [
+          "5 GW",
+          "10 GW",
+          "15 GW",
+          "20 GW"
+        ],
+        "correct": 2,
+        "explain": "India's renewable energy capacity has increased by 15 GW this year, reflecting the country's commitment to clean energy transitions."
+      },
+      {
+        "q": "Which renewable energy source has shown the highest growth in India?",
+        "options": [
+          "Wind energy",
+          "Solar energy",
+          "Hydroelectric",
+          "Biomass"
+        ],
+        "correct": 1,
+        "explain": "Solar energy has been the fastest-growing renewable energy source in India, supported by government policies and declining solar panel costs."
+      },
+      {
+        "q": "What target has India set for renewable energy capacity by 2030?",
+        "options": [
+          "250 GW",
+          "350 GW",
+          "500 GW",
+          "600 GW"
+        ],
+        "correct": 2,
+        "explain": "India has set an ambitious target of 500 GW of renewable energy capacity by 2030 to achieve its climate commitments."
+      },
+      {
+        "q": "Consider statements on India's space program: Statement 1: ISRO successfully landed on the Moon. Statement 2: The mission marked India's first lunar landing. Which is true?",
+        "options": [
+          "Both statements are true",
+          "Only Statement 1 is true",
+          "Only Statement 2 is true",
+          "Neither statement is true"
+        ],
+        "correct": 0,
+        "explain": "Both statements are true - ISRO's Chandrayaan-3 successfully landed on the Moon, making India the fourth country to achieve a soft landing and the first to land near the lunar south pole."
+      },
+      {
+        "q": "Which organization is responsible for India's space exploration programs?",
+        "options": [
+          "Department of Science",
+          "Indian Space Research Organisation (ISRO)",
+          "Ministry of Defence",
+          "Atomic Energy Commission"
+        ],
+        "correct": 1,
+        "explain": "The Indian Space Research Organisation (ISRO) is the primary organization responsible for developing and executing India's space exploration and satellite programs."
+      },
+      {
+        "q": "What was the primary objective of the Chandrayaan-3 mission?",
+        "options": [
+          "Orbiting the Moon",
+          "Landing on the Moon and conducting surface experiments",
+          "Mapping Moon craters",
+          "Studying solar radiation"
+        ],
+        "correct": 1,
+        "explain": "Chandrayaan-3's primary objective was to demonstrate soft landing capability and conduct scientific experiments on the lunar surface, particularly near the south pole."
+      },
+      {
+        "q": "How many countries have successfully achieved a soft landing on the Moon before India?",
+        "options": [
+          "1",
+          "2",
+          "3",
+          "4"
+        ],
+        "correct": 2,
+        "explain": "Before India's Chandrayaan-3, only the US, USSR (Russia), and China had successfully achieved soft landings on the Moon."
+      },
+      {
+        "q": "What recent healthcare initiative has the government announced?",
+        "options": [
+          "Ayushman Bharat 2.0",
+          "National Health Mission expansion",
+          "Telehealth expansion program",
+          "All of the above"
+        ],
+        "correct": 3,
+        "explain": "The government has announced comprehensive healthcare initiatives including Ayushman Bharat expansion, telehealth services, and strengthening of public healthcare infrastructure."
+      },
+      {
+        "q": "Which sector is expected to create the most jobs in India over the next 5 years?",
+        "options": [
+          "Manufacturing",
+          "Technology and IT services",
+          "Renewable energy and green jobs",
+          "Agricultural sector"
+        ],
+        "correct": 2,
+        "explain": "The renewable energy and green technology sectors are projected to create the most new jobs in India, driven by climate initiatives and sustainable development goals."
+      },
+      {
+        "q": "What is the status of India's quantum computing research?",
+        "options": [
+          "Just beginning",
+          "Significant progress with government support",
+          "No active programs",
+          "Limited to academic research"
+        ],
+        "correct": 1,
+        "explain": "India has made significant progress in quantum computing with active government support through MEITY and research institutions developing indigenous quantum computing capabilities."
+      },
+      {
+        "q": "Consider statements about India's education technology sector: Statement 1: EdTech funding has increased significantly. Statement 2: Growth is driven by rural education demand. Which is correct?",
+        "options": [
+          "Both statements are correct",
+          "Only Statement 1 is correct",
+          "Only Statement 2 is correct",
+          "Neither statement is correct"
+        ],
+        "correct": 0,
+        "explain": "Both statements are correct - EdTech funding in India has surged, and significant growth is driven by demand for digital learning in rural and underserved areas."
+      },
+      {
+        "q": "What agricultural technology has gained importance in India recently?",
+        "options": [
+          "Precision farming and IoT sensors",
+          "Traditional farming methods",
+          "Manual labor expansion",
+          "Animal-drawn plows"
+        ],
+        "correct": 0,
+        "explain": "Precision farming using IoT sensors, drones, and data analytics has become increasingly important in modern Indian agriculture for yield optimization."
+      },
+      {
+        "q": "Which Indian state has emerged as a leader in renewable energy?",
+        "options": [
+          "Tamil Nadu",
+          "Rajasthan",
+          "Gujarat",
+          "All of the above"
+        ],
+        "correct": 3,
+        "explain": "Multiple Indian states including Rajasthan, Gujarat, and Tamil Nadu have emerged as leaders in renewable energy generation and installation."
+      },
+      {
+        "q": "What is India's position in global startup ecosystems?",
+        "options": [
+          "10th position",
+          "5th position",
+          "3rd position",
+          "1st position"
+        ],
+        "correct": 2,
+        "explain": "India ranks among the top 3 global startup ecosystems globally, with a growing number of unicorns and significant venture capital investments."
+      },
+      {
+        "q": "Consider statements on blockchain adoption in India: Statement 1: Government agencies use blockchain. Statement 2: Use is limited to cryptocurrency only. Which is correct?",
+        "options": [
+          "Both statements are correct",
+          "Only Statement 1 is correct",
+          "Only Statement 2 is correct",
+          "Neither statement is correct"
+        ],
+        "correct": 1,
+        "explain": "Indian government agencies are exploring blockchain for various applications beyond cryptocurrency, including supply chain management and digital identity systems."
+      },
+      {
+        "q": "What recent development has occurred in India's pharmaceutical sector?",
+        "options": [
+          "Decline in exports",
+          "Increased generic drug production",
+          "Shift to biologics and biosimilars",
+          "Reduction in research activities"
+        ],
+        "correct": 2,
+        "explain": "India's pharmaceutical sector is increasingly focusing on biologics and biosimilars production, positioning the country as a leader in these advanced therapies."
+      },
+      {
+        "q": "How has India's semiconductor industry evolved recently?",
+        "options": [
+          "Decline in production",
+          "Heavy government investment and domestic chip design",
+          "Only import dependency",
+          "No growth"
+        ],
+        "correct": 1,
+        "explain": "India has increased government support for semiconductor manufacturing and design, with MEITY-backed initiatives to reduce import dependency."
+      },
+      {
+        "q": "What is the primary focus of India's cyber security policy?",
+        "options": [
+          "Only banking security",
+          "Critical infrastructure protection and data privacy",
+          "Government systems only",
+          "Defense sector alone"
+        ],
+        "correct": 1,
+        "explain": "India's cybersecurity policy focuses on protecting critical infrastructure, ensuring data privacy, and building a secure digital ecosystem across sectors."
+      },
+      {
+        "q": "Which statement best describes India's current economic outlook?",
+        "options": [
+          "Stagnation expected",
+          "Moderate growth with resilience",
+          "Rapid decline",
+          "Complete recession"
+        ],
+        "correct": 1,
+        "explain": "India's economic outlook shows moderate but resilient growth, driven by robust domestic demand, technology sector strength, and increasing foreign investments."
+      },
+      {
+        "q": "What initiative has India launched for financial inclusion?",
+        "options": [
+          "Jan Dhan Yojana Phase 2",
+          "Expanded digital payment systems",
+          "Increased lending programs",
+          "All of the above"
+        ],
+        "correct": 3,
+        "explain": "India has launched comprehensive financial inclusion initiatives including expanded Jan Dhan Yojana, digital payment infrastructure, and targeted lending programs for underserved populations."
+      }
+    ]
+  },
+  {
+    "id": "mpdv6w1d40iz22",
+    "slug": "daily-prelims-2026-05-22",
+    "title": "Daily Prelims Quiz — 22 May 2026",
+    "type": "Prelims",
+    "questions": 25,
+    "duration": "30 min",
+    "date": "2026-05-22",
+    "scheduledAt": null,
+    "active": true,
+    "source": "news",
+    "items": [
+      {
+        "q": "Which of the following ministries announced the new infrastructure development plan for rural areas?",
+        "options": [
+          "Ministry of Rural Development",
+          "Ministry of Finance",
+          "Ministry of Road Transport",
+          "Ministry of Power"
+        ],
+        "correct": 0,
+        "explain": "The Ministry of Rural Development announced the new infrastructure development plan focusing on connectivity and digital access in rural regions."
+      },
+      {
+        "q": "What was the policy repo rate maintained by the RBI in its latest monetary policy decision?",
+        "options": [
+          "6.0%",
+          "6.25%",
+          "6.5%",
+          "6.75%"
+        ],
+        "correct": 2,
+        "explain": "The Reserve Bank of India maintained the policy repo rate at 6.5%, citing moderate inflation trends and steady economic growth."
+      },
+      {
+        "q": "Consider the following statements about the Global Climate Forum: Statement 1: World leaders agreed to accelerate efforts on reducing carbon emissions by 2030. Statement 2: The forum called for relaxed emission standards. Which is correct?",
+        "options": [
+          "Both statements are correct",
+          "Only Statement 1 is correct",
+          "Only Statement 2 is correct",
+          "Neither statement is correct"
+        ],
+        "correct": 1,
+        "explain": "Only Statement 1 is correct. The Global Climate Forum called for stricter emission targets and acceleration in reducing carbon emissions by 2030."
+      },
+      {
+        "q": "What new guidelines did the Supreme Court issue recently?",
+        "options": [
+          "Guidelines on tax compliance",
+          "Guidelines on environmental impact assessments",
+          "Guidelines on corporate governance",
+          "Guidelines on criminal procedure"
+        ],
+        "correct": 1,
+        "explain": "The Supreme Court issued guidelines on environmental impact assessments to ensure stricter environmental compliance and accountability."
+      },
+      {
+        "q": "Which ministry launched the curriculum framework for digital skills?",
+        "options": [
+          "Ministry of Human Resource Development",
+          "Ministry of Electronics and Information Technology",
+          "Ministry of Education",
+          "Ministry of Labor"
+        ],
+        "correct": 2,
+        "explain": "The Ministry of Education launched a new curriculum framework for digital skills, integrating AI and coding education into school curricula."
+      },
+      {
+        "q": "What is the primary focus of the new rural infrastructure development plan?",
+        "options": [
+          "Agricultural mechanization",
+          "Connectivity and digital access",
+          "Urban migration",
+          "Industrial development"
+        ],
+        "correct": 1,
+        "explain": "The plan focuses on improving connectivity and digital access in rural areas as part of comprehensive infrastructure development."
+      },
+      {
+        "q": "According to recent RBI statements, what trend did inflation show?",
+        "options": [
+          "Sharp increase",
+          "Rapid decline",
+          "Moderate decrease",
+          "Stagnation"
+        ],
+        "correct": 2,
+        "explain": "The RBI cited moderate inflation trends as a reason for maintaining steady interest rates."
+      },
+      {
+        "q": "What is the timeline for carbon emission reduction agreed upon at the Global Climate Forum?",
+        "options": [
+          "2025",
+          "2028",
+          "2030",
+          "2035"
+        ],
+        "correct": 2,
+        "explain": "World leaders agreed to accelerate efforts on reducing carbon emissions by 2030 at the International Climate Summit."
+      },
+      {
+        "q": "Which of the following is NOT mentioned as part of the EIA guidelines update?",
+        "options": [
+          "Stricter environmental compliance",
+          "Accountability measures",
+          "Faster project approvals",
+          "Regular monitoring"
+        ],
+        "correct": 2,
+        "explain": "The Supreme Court's EIA guidelines focus on stricter compliance and accountability, not on expediting project approvals."
+      },
+      {
+        "q": "What subjects will be integrated into school curricula under the new digital skills framework?",
+        "options": [
+          "Only coding",
+          "Only artificial intelligence",
+          "Artificial intelligence and coding",
+          "Only data science"
+        ],
+        "correct": 2,
+        "explain": "The nationwide initiative aims to integrate both artificial intelligence and coding education into school curricula."
+      },
+      {
+        "q": "Consider the following about the RBI's monetary policy: Statement 1: The repo rate was increased. Statement 2: Economic growth was cited as a reason for the decision. Which is true?",
+        "options": [
+          "Both are true",
+          "Only Statement 1 is true",
+          "Only Statement 2 is true",
+          "Neither is true"
+        ],
+        "correct": 2,
+        "explain": "The RBI maintained (not increased) the repo rate at 6.5%, and steady economic growth was indeed cited as one of the reasons."
+      },
+      {
+        "q": "What is the expected impact of the rural infrastructure plan on digital access?",
+        "options": [
+          "Decrease in digital divide",
+          "Increase in digital divide",
+          "No change",
+          "Uncertain impact"
+        ],
+        "correct": 0,
+        "explain": "The plan aims to boost digital access in rural areas, thereby decreasing the digital divide between urban and rural regions."
+      },
+      {
+        "q": "According to the RBI, what is the relationship between inflation and the current policy rate?",
+        "options": [
+          "Moderate inflation justifies rate increase",
+          "Moderate inflation supports maintaining current rate",
+          "Inflation is unrelated to rate decisions",
+          "Inflation requires immediate rate cut"
+        ],
+        "correct": 1,
+        "explain": "The RBI cited moderate inflation trends as supporting the decision to maintain the policy repo rate at its current level."
+      },
+      {
+        "q": "Which international forum was involved in the carbon emission reduction agreement?",
+        "options": [
+          "World Economic Forum",
+          "United Nations Summit",
+          "Global Climate Forum",
+          "International Energy Agency"
+        ],
+        "correct": 2,
+        "explain": "The International Climate Summit/Global Climate Forum was where world leaders agreed on stricter emission targets."
+      },
+      {
+        "q": "What aspect of EIA process did the Supreme Court address?",
+        "options": [
+          "Speed of approval",
+          "Cost reduction",
+          "Environmental compliance and accountability",
+          "Stakeholder participation"
+        ],
+        "correct": 2,
+        "explain": "The Supreme Court's guidelines focused on ensuring stricter environmental compliance and accountability in the EIA process."
+      },
+      {
+        "q": "The digital skills curriculum framework is designed to prepare students for which era?",
+        "options": [
+          "Industrial era",
+          "Information technology era",
+          "Artificial intelligence era",
+          "Post-industrial era"
+        ],
+        "correct": 2,
+        "explain": "The curriculum framework integrates AI and coding education to prepare students for the artificial intelligence era."
+      },
+      {
+        "q": "Which government body announced the infrastructure plan focusing on connectivity?",
+        "options": [
+          "State governments",
+          "Central government",
+          "Urban development authority",
+          "Private sector"
+        ],
+        "correct": 1,
+        "explain": "The central government announced the comprehensive infrastructure development plan for rural areas."
+      },
+      {
+        "q": "What is the stated reason for RBI maintaining steady interest rates?",
+        "options": [
+          "Only moderate inflation",
+          "Only steady economic growth",
+          "Both moderate inflation and steady economic growth",
+          "Global economic conditions"
+        ],
+        "correct": 2,
+        "explain": "The RBI cited both moderate inflation trends and steady economic growth as reasons for maintaining the current policy repo rate."
+      },
+      {
+        "q": "According to the passage, which sectors would benefit most from the rural infrastructure plan?",
+        "options": [
+          "Manufacturing and defense",
+          "Agriculture and digital services",
+          "Tourism and hospitality",
+          "Only agriculture"
+        ],
+        "correct": 1,
+        "explain": "The plan focusing on connectivity and digital access would benefit rural agricultural communities and enable digital services."
+      },
+      {
+        "q": "What can be inferred about the integration of AI in schools?",
+        "options": [
+          "It is optional",
+          "It is mandatory and nationwide",
+          "It is only for private schools",
+          "It will begin in 2030"
+        ],
+        "correct": 1,
+        "explain": "The nationwide initiative indicates that AI education will be mandatory and integrated into school curricula across India."
+      },
+      {
+        "q": "Which of the following best summarizes the RBI's policy stance?",
+        "options": [
+          "Aggressive rate hikes needed",
+          "Rates need immediate cuts",
+          "Steady stance with moderate conditions",
+          "Complete policy overhaul required"
+        ],
+        "correct": 2,
+        "explain": "By maintaining steady rates amid moderate inflation and growth, the RBI demonstrates a cautious and steady policy stance."
+      },
+      {
+        "q": "What is the significance of the climate forum's 2030 target?",
+        "options": [
+          "Symbolic commitment only",
+          "Legally binding target for all nations",
+          "Accelerated timeline for emission reduction",
+          "Voluntary guideline"
+        ],
+        "correct": 2,
+        "explain": "The 2030 target represents an acceleration of emission reduction efforts from the previously agreed timelines."
+      },
+      {
+        "q": "According to the Supreme Court's EIA guidelines, who bears responsibility for compliance?",
+        "options": [
+          "Only project developers",
+          "Only environmental agencies",
+          "Both developers and agencies",
+          "Public representatives only"
+        ],
+        "correct": 2,
+        "explain": "The guidelines emphasize both compliance and accountability, suggesting shared responsibility between developers and agencies."
+      },
+      {
+        "q": "How does the rural infrastructure plan aim to reduce inequality?",
+        "options": [
+          "Through wealth redistribution",
+          "By improving connectivity and digital access",
+          "Through education subsidies",
+          "By reducing taxes"
+        ],
+        "correct": 1,
+        "explain": "The plan aims to bridge the urban-rural gap by improving connectivity and digital access in rural areas."
+      },
+      {
+        "q": "What is the broader implication of integrating coding in school curriculum?",
+        "options": [
+          "Making all students software engineers",
+          "Preparing workforce for digital economy",
+          "Replacing mathematics education",
+          "Only for computer science stream"
+        ],
+        "correct": 1,
+        "explain": "Integrating coding and AI education prepares students for careers and life in the digital economy."
+      }
+    ]
+  },
+  {
+    "id": "q1",
+    "active": true,
+    "slug": "daily-prelims-quiz-may-8",
+    "title": "Daily Prelims Quiz — 8 May 2026",
+    "questions": 10,
+    "duration": "12 min",
+    "type": "Prelims",
+    "date": "2026-05-08",
+    "scheduledAt": "2026-05-08T11:00"
+  },
+  {
+    "id": "q2",
+    "active": true,
+    "slug": "polity-static-fundamental-rights",
+    "title": "Static Quiz — Fundamental Rights",
+    "questions": 20,
+    "duration": "25 min",
+    "type": "Static",
+    "date": "2026-05-07",
+    "scheduledAt": null
+  },
+  {
+    "id": "q3",
+    "active": true,
+    "slug": "csat-reasoning-set-12",
+    "title": "CSAT Reasoning Practice — Set 12",
+    "questions": 15,
+    "duration": "20 min",
+    "type": "CSAT",
+    "date": "2026-05-07",
+    "scheduledAt": null
+  },
+  {
+    "id": "q4",
+    "active": true,
+    "slug": "geography-static-monsoon",
+    "title": "Static Quiz — Indian Monsoon System",
+    "questions": 15,
+    "duration": "18 min",
+    "type": "Static",
+    "date": "2026-05-06",
+    "scheduledAt": null
+  },
+  {
+    "id": "mpdv6w1d40izj",
+    "slug": "daily-prelims-2026-05-20",
+    "title": "Daily Prelims Quiz — 20 May 2026",
+    "type": "Prelims",
+    "questions": 20,
+    "duration": "24 min",
+    "date": "2026-05-20",
+    "scheduledAt": null,
+    "active": true,
+    "source": "news",
+    "items": [
+      {
+        "q": "What is the projected global value of the banking consulting services market by 2033?",
+        "options": [
+          "$30 billion",
+          "$35 billion",
+          "$37.5 billion",
+          "$40 billion"
+        ],
+        "correct": 2,
+        "explain": "The banking consulting services market is expected to reach $37.5 billion globally by 2033. This growth is driven by the increasing demand for enhanced digital banking experiences and personalized financial services."
+      },
+      {
+        "q": "Consider the following statements regarding the banking consulting services market: Statement 1: The market is expected to witness notable growth. Statement 2: The growth is owing to a decrease in demand for digital banking experiences. Which of the following is true?",
+        "options": [
+          "Both Statement 1 and Statement 2 are true",
+          "Only Statement 1 is true",
+          "Only Statement 2 is true",
+          "Neither Statement 1 nor Statement 2 is true"
+        ],
+        "correct": 1,
+        "explain": "The banking consulting services market is expected to witness notable growth owing to an increase in demand for enhanced digital banking experiences, making Statement 1 true and Statement 2 false."
+      },
+      {
+        "q": "What is driving the growth of the banking consulting services market?",
+        "options": [
+          "Decrease in complexity of banking operations and IT systems",
+          "Increase in demand for enhanced digital banking experiences and rise in complexity of banking operations and IT systems",
+          "Decrease in demand for personalized financial services",
+          "Stagnant demand for digital banking experiences"
+        ],
+        "correct": 1,
+        "explain": "The growth of the banking consulting services market is driven by the increase in demand for enhanced digital banking experiences and the rise in complexity of banking operations and IT systems."
+      },
+      {
+        "q": "At what Compound Annual Growth Rate (CAGR) is the banking consulting services market expected to grow?",
+        "options": [
+          "5.3% CAGR",
+          "6.3% CAGR",
+          "7.3% CAGR",
+          "8.3% CAGR"
+        ],
+        "correct": 1,
+        "explain": "The banking consulting services market is expected to grow at a 6.3% CAGR, reaching $37.5 billion globally by 2033."
+      },
+      {
+        "q": "Which of the following amounts was directed to be paid by the appellate authority towards the gratuity of the dismissed employee?",
+        "options": [
+          "Rs 10 lakh",
+          "Rs 18.48 lakh",
+          "Rs 20 lakh",
+          "Rs 15 lakh"
+        ],
+        "correct": 1,
+        "explain": "The appellate authority directed the payment of Rs 18.48 lakh towards the gratuity of the dismissed employee, as mentioned in the article. This is in line with the Payment of Gratuity Act, 1972, which governs the payment of gratuity to employees."
+      },
+      {
+        "q": "Consider the following statements regarding the Calcutta High Court's decision: Statement 1: The Calcutta High Court allowed Union Bank of India's bid to withhold the dismissed manager's gratuity. Statement 2: The Calcutta High Court refused Union Bank of India's bid to withhold the dismissed manager's gratuity. Which of the following is correct?",
+        "options": [
+          "Statement 1 is correct and Statement 2 is incorrect",
+          "Statement 1 is incorrect and Statement 2 is correct",
+          "Both Statement 1 and Statement 2 are correct",
+          "Both Statement 1 and Statement 2 are incorrect"
+        ],
+        "correct": 1,
+        "explain": "The Calcutta High Court refused Union Bank of India's bid to withhold the dismissed manager's gratuity, as mentioned in the article. This indicates that Statement 2 is correct and Statement 1 is incorrect."
+      },
+      {
+        "q": "Which of the following is the purpose of the Payment of Gratuity Act, 1972?",
+        "options": [
+          "To govern the payment of provident fund to employees",
+          "To regulate the payment of salary to employees",
+          "To govern the payment of gratuity to employees",
+          "To oversee the payment of pension to employees"
+        ],
+        "correct": 2,
+        "explain": "The Payment of Gratuity Act, 1972, is a legislation that governs the payment of gratuity to employees, as mentioned in the context of the article. This Act ensures that employees receive their gratuity payments upon retirement or resignation."
+      },
+      {
+        "q": "Which of the following institutions heard the appeal filed by the Union Bank challenging the appellate authority's order?",
+        "options": [
+          "Supreme Court of India",
+          "Calcutta High Court",
+          "National Company Law Tribunal",
+          "National Consumer Disputes Redressal Commission"
+        ],
+        "correct": 1,
+        "explain": "The Calcutta High Court heard the appeal filed by the Union Bank challenging the appellate authority's order, as mentioned in the article. This is in line with the provisions of the Constitution of India, which grants high courts the power to hear appeals under Article 226."
+      },
+      {
+        "q": "What is the revised GDP growth estimate for India in FY27, according to ICRA?",
+        "options": [
+          "6.0%",
+          "6.2%",
+          "6.5%",
+          "7.0%"
+        ],
+        "correct": 1,
+        "explain": "ICRA has revised India's FY27 GDP growth forecast down to 6.2% due to elevated crude oil prices. This change in estimate reflects the potential impact of global events on India's economic growth."
+      },
+      {
+        "q": "Consider the following statements: Statement 1: ICRA has revised India's FY27 GDP growth estimate to 6.2%. Statement 2: The revision is due to the West Asia crisis. Which of the statements is/are correct?",
+        "options": [
+          "Only Statement 1 is correct",
+          "Only Statement 2 is correct",
+          "Both Statement 1 and Statement 2 are correct",
+          "Neither Statement 1 nor Statement 2 is correct"
+        ],
+        "correct": 2,
+        "explain": "Both statements are correct as ICRA has indeed revised the GDP growth estimate to 6.2% and attributed this revision to elevated crude oil prices stemming from the West Asia crisis."
+      },
+      {
+        "q": "What is the estimated GDP growth for India in FY26, according to ICRA?",
+        "options": [
+          "6.5%",
+          "7.0%",
+          "7.5%",
+          "8.0%"
+        ],
+        "correct": 2,
+        "explain": "ICRA estimates that India's GDP growth for FY26 will be at 7.5%, indicating a higher growth rate compared to the revised estimate for FY27."
+      },
+      {
+        "q": "Which of the following factors has led to the revision in India's FY27 GDP growth estimate by ICRA?",
+        "options": [
+          "Decrease in crude oil prices",
+          "Elevated crude oil prices due to the West Asia crisis",
+          "Increase in foreign investment",
+          "Decrease in inflation rate"
+        ],
+        "correct": 1,
+        "explain": "The revision in India's FY27 GDP growth estimate by ICRA is attributed to elevated crude oil prices stemming from the West Asia crisis, highlighting the impact of global geopolitical events on India's economic outlook."
+      },
+      {
+        "q": "What is the planned investment by Force Motors over the next two and a half years?",
+        "options": [
+          "Rs 1,000 crore",
+          "Rs 2,000 crore",
+          "Rs 3,000 crore",
+          "Rs 4,000 crore"
+        ],
+        "correct": 2,
+        "explain": "Force Motors plans to invest more than Rs 3,000 crore in capital expenditure. This information is based on the company's announced outlay for expansion and development."
+      },
+      {
+        "q": "What is one of the focus areas for Force Motors' planned investment?",
+        "options": [
+          "Developing electric powertrains",
+          "Expanding its overseas manufacturing presence",
+          "Developing hybrid powertrains",
+          "Reducing its product portfolio"
+        ],
+        "correct": 2,
+        "explain": "The company aims to develop hybrid powertrains as part of its expansion plans, indicating a commitment to alternative propulsion technologies."
+      },
+      {
+        "q": "Consider the following statements regarding Force Motors' plans: Statement 1: The company plans to invest Rs 3,000 crore. Statement 2: The investment will be used to develop hybrid powertrains. Which of the statements is/are correct?",
+        "options": [
+          "Only Statement 1 is correct",
+          "Only Statement 2 is correct",
+          "Both Statement 1 and Statement 2 are correct",
+          "Neither Statement 1 nor Statement 2 is correct"
+        ],
+        "correct": 2,
+        "explain": "Both statements are correct as Force Motors indeed plans to invest more than Rs 3,000 crore, with one of the focus areas being the development of hybrid powertrains."
+      },
+      {
+        "q": "What does Force Motors anticipate as a result of its investment and expansion plans?",
+        "options": [
+          "A decrease in domestic sales",
+          "A boost in exports",
+          "A reduction in its product portfolio",
+          "A shift away from hybrid technologies"
+        ],
+        "correct": 1,
+        "explain": "The company anticipates a boost in exports, suggesting that its investment in expanding its product range and developing hybrid powertrains is expected to enhance its export capabilities."
+      },
+      {
+        "q": "What was the estimated size of the global market for Facial Care in 2025?",
+        "options": [
+          "US$90.9 Billion",
+          "US$99.9 Billion",
+          "US$109.9 Billion",
+          "US$119.9 Billion"
+        ],
+        "correct": 1,
+        "explain": "The global market for Facial Care was estimated at US$99.9 Billion in 2025, as per the given data."
+      },
+      {
+        "q": "Consider the following statements regarding the Facial Care market: Statement 1: The global market for Facial Care was estimated at US$99.9 Billion in 2025. Statement 2: The market is projected to reach US$132.0 Billion. Which of the statements is/are correct?",
+        "options": [
+          "Only Statement 1 is correct",
+          "Only Statement 2 is correct",
+          "Both Statement 1 and Statement 2 are correct",
+          "Neither Statement 1 nor Statement 2 is correct"
+        ],
+        "correct": 2,
+        "explain": "Both statements are correct as the global market for Facial Care was estimated at US$99.9 Billion in 2025 and is projected to reach US$132.0 Billion."
+      },
+      {
+        "q": "Which of the following is a factor contributing to the growth of the Facial Care market?",
+        "options": [
+          "Decline in Male Grooming",
+          "Decrease in Unisex Skincare Products",
+          "Surge in Male Grooming and Unisex Skincare Products",
+          "Stagnation in Facial Care Products"
+        ],
+        "correct": 2,
+        "explain": "The surge in Male Grooming and Unisex Skincare Products is a factor that expands the addressable market opportunity for the Facial Care market."
+      },
+      {
+        "q": "What is the projected size of the global market for Facial Care?",
+        "options": [
+          "US$100.0 Billion",
+          "US$120.0 Billion",
+          "US$132.0 Billion",
+          "US$150.0 Billion"
+        ],
+        "correct": 2,
+        "explain": "The global market for Facial Care is projected to reach US$132.0 Billion, as per the given data."
+      }
+    ]
+  },
+  {
+    "id": "mpjhxi2juzmmj",
+    "slug": "daily-prelims-2026-05-24",
+    "title": "Daily Prelims Quiz — 24 May 2026",
+    "type": "Prelims",
+    "questions": 25,
+    "duration": "30 min",
+    "date": "2026-05-24",
+    "scheduledAt": null,
+    "active": true,
+    "source": "news",
+    "items": [
+      {
+        "type": "mcq",
+        "q": "Which of the following leaders criticized the BJP government over the recent fuel price hikes?",
+        "options": [
+          "Amit Shah",
+          "Mallikarjun Kharge",
+          "Narendra Modi",
+          "Rahul Gandhi"
+        ],
+        "correct": 1,
+        "explain": "Mallikarjun Kharge, the Congress president, accused the government of 'looting' citizens after the third fuel price hike in eight days, as per the given article."
+      },
+      {
+        "type": "mcq",
+        "q": "Consider the following statements regarding the recent fuel price hikes: Statement 1: The fuel price hikes were the first in eight days. Statement 2: Congress leader Mallikarjun Kharge criticized the government over the hikes. Which of the statements is/are correct?",
+        "options": [
+          "Only Statement 1 is correct",
+          "Only Statement 2 is correct",
+          "Both Statements are correct",
+          "Neither Statement is correct"
+        ],
+        "correct": 1,
+        "explain": "Statement 1 is incorrect as the hikes were the third in eight days, whereas Statement 2 is correct as Mallikarjun Kharge, the Congress president, did criticize the government."
+      },
+      {
+        "type": "mcq",
+        "q": "What was the context in which Congress president Mallikarjun Kharge accused the government of 'looting' the public?",
+        "options": [
+          "Election campaign",
+          "Budget presentation",
+          "Fuel price hikes",
+          "Parliamentary debate"
+        ],
+        "correct": 2,
+        "explain": "The context was the recent fuel price hikes, specifically the third hike in eight days, which prompted Mallikarjun Kharge to criticize the government."
+      },
+      {
+        "type": "mcq",
+        "q": "Which of the following best describes the frequency of the fuel price hikes as mentioned in the article?",
+        "options": [
+          "First hike in eight days",
+          "Second hike in eight days",
+          "Third hike in eight days",
+          "Fourth hike in eight days"
+        ],
+        "correct": 2,
+        "explain": "The article mentions that the fuel prices have surged for the third time in eight days, indicating the frequency of the hikes."
+      },
+      {
+        "type": "mcq",
+        "q": "What is the combined ratio of India's top insurers according to the Praxis study?",
+        "options": [
+          "90-93%",
+          "100-103%",
+          "110-113%",
+          "120-123%"
+        ],
+        "correct": 2,
+        "explain": "The Praxis study found that India's top insurers have a combined ratio of 110-113%, indicating they spend more than they earn on every policy. This is a key metric to assess the profitability of insurance companies."
+      },
+      {
+        "type": "mcq",
+        "q": "Consider the following statements: Statement 1: India's general insurance industry has shown 11 per cent annual growth over the past decade. Statement 2: India's top insurers operate at a combined ratio of 84-89%. Which of the statements is/are correct?",
+        "options": [
+          "Only Statement 1 is correct",
+          "Only Statement 2 is correct",
+          "Both Statement 1 and Statement 2 are correct",
+          "Neither Statement 1 nor Statement 2 is correct"
+        ],
+        "correct": 0,
+        "explain": "The article states that India's general insurance industry has indeed shown 11 per cent annual growth over the past decade, but the combined ratio of India's top insurers is 110-113%, not 84-89%, which is the ratio of their global D2C counterparts."
+      },
+      {
+        "type": "mcq",
+        "q": "Which of the following is a correct statement about the growth of the FIFA World Cup?",
+        "options": [
+          "The number of teams has decreased from 48 in 1930 to 13 in 2026",
+          "The number of teams has increased from 13 in 1930 to 48 in 2026",
+          "The number of teams has remained constant at 64 since 1930",
+          "The number of teams has decreased from 64 in 1930 to 48 in 2026"
+        ],
+        "correct": 1,
+        "explain": "The number of teams in the FIFA World Cup has indeed grown from 13 teams in 1930 to 48 teams in 2026, as stated in the article. This marks a significant expansion of the tournament."
+      },
+      {
+        "type": "mcq",
+        "q": "Consider the following statements about the FIFA World Cup: Statement 1: The 2026 FIFA World Cup will feature 48 teams. Statement 2: The 2030 FIFA World Cup is expected to feature 64 teams. Which of the following is correct?",
+        "options": [
+          "Only Statement 1 is correct",
+          "Only Statement 2 is correct",
+          "Both Statement 1 and Statement 2 are correct",
+          "Neither Statement 1 nor Statement 2 is correct"
+        ],
+        "correct": 2,
+        "explain": "According to the article, the 2026 FIFA World Cup will indeed feature 48 teams and the 2030 FIFA World Cup is expected to feature 64 teams, making both statements correct."
+      },
+      {
+        "type": "mcq",
+        "q": "Which of the following is the main theme of the given article?",
+        "options": [
+          "The US plans to reduce its defense budget",
+          "The US is attempting to control the EU's energy market",
+          "The EU is planning to decrease its energy consumption",
+          "The EU is trying to become independent of the US"
+        ],
+        "correct": 1,
+        "explain": "The article discusses how the US is trying to control the EU's energy market, with the EU being described as 'captured vassals'. This implies that the US is attempting to exert influence over the EU's energy sector."
+      },
+      {
+        "type": "mcq",
+        "q": "Consider the following statements regarding the US and EU relationship as described in the article: Statement 1: The US is asking the EU to increase its defense spending. Statement 2: The EU has to buy weapons from the US. Which of the following is correct?",
+        "options": [
+          "Only Statement 1 is correct",
+          "Only Statement 2 is correct",
+          "Both Statement 1 and Statement 2 are correct",
+          "Neither Statement 1 nor Statement 2 is correct"
+        ],
+        "correct": 2,
+        "explain": "The article mentions that the US is calling on the EU to carry more of their defense cost and that they have to buy weapons from the US, thus both statements are correct."
+      },
+      {
+        "type": "mcq",
+        "q": "What is the primary objective of introducing the 'choti SIP' facility by PPFAS Mutual Fund?",
+        "options": [
+          "To attract high-net-worth investors",
+          "To encourage first-time investors and improve financial inclusion",
+          "To increase the fund size of existing schemes",
+          "To reduce the expense ratio of mutual fund schemes"
+        ],
+        "correct": 1,
+        "explain": "The introduction of 'choti SIP' facility aims to encourage first-time investors and improve financial inclusion by allowing low-ticket investments. This is in line with the government's efforts to promote financial inclusion, as mandated by various financial regulatory institutions."
+      },
+      {
+        "type": "mcq",
+        "q": "Consider the following statements regarding the 'choti SIP' facility introduced by PPFAS Mutual Fund: Statement 1: The facility allows eligible investors to start monthly SIPs with low-ticket investments. Statement 2: The minimum investment amount for 'choti SIP' is Rs 100. Which of the following is correct?",
+        "options": [
+          "Both Statement 1 and Statement 2 are correct",
+          "Only Statement 1 is correct",
+          "Only Statement 2 is correct",
+          "Neither Statement 1 nor Statement 2 is correct"
+        ],
+        "correct": 1,
+        "explain": "According to the given information, the 'choti SIP' facility allows eligible investors to start monthly SIPs with low-ticket investments, but the minimum investment amount is actually Rs 250, not Rs 100."
+      },
+      {
+        "type": "mcq",
+        "q": "Which of the following mutual fund schemes has introduced the 'choti SIP' facility?",
+        "options": [
+          "Parag Parikh Flexi Cap Fund and Parag Parikh Large Cap Fund",
+          "Parag Parikh Flexi Cap Fund and Parag Parikh Mid Cap Fund",
+          "Parag Parikh Large Cap Fund and Parag Parikh Small Cap Fund",
+          "Parag Parikh Flexi Cap Fund and Parag Parikh Multi Cap Fund"
+        ],
+        "correct": 0,
+        "explain": "The 'choti SIP' facility has been introduced in Parag Parikh Flexi Cap Fund, Parag Parikh Large Cap Fund, and three other equity-oriented schemes."
+      },
+      {
+        "type": "mcq",
+        "q": "What is the minimum amount required to start a 'choti SIP' in the schemes introduced by PPFAS Mutual Fund?",
+        "options": [
+          "Rs 100",
+          "Rs 250",
+          "Rs 500",
+          "Rs 1000"
+        ],
+        "correct": 1,
+        "explain": "The minimum amount required to start a 'choti SIP' in the schemes introduced by PPFAS Mutual Fund is Rs 250."
+      },
+      {
+        "type": "mcq",
+        "q": "Which of the following countries was the largest supplier of military-related imports to Israel during the Gaza war?",
+        "options": [
+          "India",
+          "Brazil",
+          "United States",
+          "Russia"
+        ],
+        "correct": 2,
+        "explain": "According to the article, the US was Israel's largest supplier of military-related imports during the war, accounting for more than 42 percent of the total declared value. This is a factual statement based on the provided information."
+      },
+      {
+        "type": "mcq",
+        "q": "Consider the following statements: Statement 1: 51 nations armed Israel amid the Gaza war. Statement 2: All the nations halted their support for Israel after the ICJ genocide warnings.",
+        "options": [
+          "Both statements are correct",
+          "Only Statement 1 is correct",
+          "Only Statement 2 is correct",
+          "Neither statement is correct"
+        ],
+        "correct": 1,
+        "explain": "The article states that 51 nations kept arming Israel despite ICJ genocide warnings, indicating that Statement 1 is correct and Statement 2 is incorrect, as the nations did not halt their support."
+      },
+      {
+        "type": "mcq",
+        "q": "What percentage of the total declared value of military-related imports to Israel during the Gaza war was accounted for by the US?",
+        "options": [
+          "More than 30 percent",
+          "More than 42 percent",
+          "More than 50 percent",
+          "More than 60 percent"
+        ],
+        "correct": 1,
+        "explain": "The article mentions that the US accounted for more than 42 percent of the total declared value of military-related imports to Israel during the war, making option B the correct answer."
+      },
+      {
+        "type": "mcq",
+        "q": "Which of the following is a consequence of the actions of 51 nations that armed Israel amid the Gaza war?",
+        "options": [
+          "International community's genocide warnings were heeded",
+          "Israel's military capabilities were strengthened",
+          "Global supply chain of arms was disrupted",
+          "Human rights violations were prevented"
+        ],
+        "correct": 1,
+        "explain": "The article implies that despite ICJ genocide warnings, 51 nations continued to arm Israel, which would likely strengthen Israel's military capabilities, making option B the correct answer."
+      },
+      {
+        "type": "mcq",
+        "q": "Which of the following individuals has been surpassed by Gurtej Sandhu in terms of the number of US patents held?",
+        "options": [
+          "Nikola Tesla",
+          "Alexander Graham Bell",
+          "Thomas Edison",
+          "Guglielmo Marconi"
+        ],
+        "correct": 2,
+        "explain": "Gurtej Sandhu has accumulated 1,382 US patents, surpassing Thomas Edison who held 1,093 patents. This information is based on factual records and does not relate to any specific constitutional article or scheme."
+      },
+      {
+        "type": "mcq",
+        "q": "Consider the following statements regarding Gurtej Sandhu: Statement 1: He is an IIT Delhi graduate. Statement 2: He has accumulated over 1,000 US patents. Which of the following is correct?",
+        "options": [
+          "Statement 1 is correct, but Statement 2 is incorrect",
+          "Statement 1 is incorrect, but Statement 2 is correct",
+          "Both Statement 1 and Statement 2 are correct",
+          "Both Statement 1 and Statement 2 are incorrect"
+        ],
+        "correct": 2,
+        "explain": "Gurtej Sandhu is an IIT Delhi graduate and has accumulated 1,382 US patents, making both statements correct."
+      },
+      {
+        "type": "mcq",
+        "q": "What is the number of US patents held by Gurtej Sandhu?",
+        "options": [
+          "1,093",
+          "1,382",
+          "1,500",
+          "1,800"
+        ],
+        "correct": 1,
+        "explain": "Gurtej Sandhu has accumulated 1,382 US patents, which is a factual record and does not pertain to any specific constitutional provision or scheme."
+      },
+      {
+        "type": "mcq",
+        "q": "Which institution is Gurtej Sandhu an alumnus of?",
+        "options": [
+          "IIT Bombay",
+          "IIT Delhi",
+          "IIT Kanpur",
+          "IIT Madras"
+        ],
+        "correct": 1,
+        "explain": "Gurtej Sandhu is an alumnus of IIT Delhi, as mentioned in the provided article, which is a factual piece of information."
+      },
+      {
+        "type": "mcq",
+        "q": "What is the expected decline in sales volume for the Indian organised gold jewellery retail sector in the current fiscal?",
+        "options": [
+          "8-10% on-year",
+          "10-12% on-year",
+          "13-15% on-year",
+          "18-20% on-year"
+        ],
+        "correct": 2,
+        "explain": "The sales volume for the sector is expected to decline 13-15% on-year this fiscal, according to Crisil Ratings. This decline is attributed to high gold prices and a sharp hike in customs duty."
+      },
+      {
+        "type": "mcq",
+        "q": "Consider the following statements regarding the Indian organised gold jewellery retail sector: Statement 1: The sector is expected to witness a decadal-low in sales volume in the current fiscal. Statement 2: The credit profiles of retailers in the sector are expected to deteriorate. Which of the statements is/are correct?",
+        "options": [
+          "Only Statement 1 is correct",
+          "Only Statement 2 is correct",
+          "Both Statement 1 and Statement 2 are correct",
+          "Neither Statement 1 nor Statement 2 is correct"
+        ],
+        "correct": 0,
+        "explain": "The sector is expected to witness a decadal-low in sales volume in the current fiscal due to high gold prices and a sharp hike in customs duty, but the credit profiles of retailers are expected to remain stable, according to Crisil Ratings."
+      },
+      {
+        "type": "mcq",
+        "q": "What is the reason for the decline in sales volume of the Indian organised gold jewellery retail sector, as per the given information?",
+        "options": [
+          "Low gold prices and reduction in customs duty",
+          "High gold prices and a sharp hike in customs duty",
+          "Stable gold prices and no change in customs duty",
+          "Fluctuating gold prices and periodic changes in customs duty"
+        ],
+        "correct": 1,
+        "explain": "The decline in sales volume of the Indian organised gold jewellery retail sector is attributed to high gold prices and a sharp hike in customs duty, which are curbing demand."
+      }
+    ]
+  },
+  {
+    "id": "mpl5azo8z6n7l",
+    "slug": "daily-prelims-2026-05-25",
+    "title": "Daily Prelims Quiz — 25 May 2026",
+    "type": "Prelims",
+    "questions": 20,
+    "duration": "24 min",
+    "date": "2026-05-25",
+    "scheduledAt": null,
+    "active": true,
+    "source": "news",
+    "items": [
+      {
+        "type": "mcq",
+        "q": "What achievement has Gurindervir Singh accomplished in the 100m sprint event?",
+        "options": [
+          "He became the first Indian to run 100m in under 11 seconds",
+          "He became the first Indian to run 100m in under 10.10 seconds",
+          "He became the first Indian to run 100m in under 10 seconds",
+          "He became the first Indian to run 100m in under 9.10 seconds"
+        ],
+        "correct": 1,
+        "explain": "As per the given information, Gurindervir Singh has become the first Indian to run 100m in under 10.10 seconds, setting a national record with a time of 10.09 seconds."
+      },
+      {
+        "type": "mcq",
+        "q": "Consider the following statements regarding Gurindervir Singh's achievement: Statement 1: He won the 100m gold in Ranchi. Statement 2: He qualified for the 2024 Asian Games. Which of the following is correct?",
+        "options": [
+          "Only Statement 1 is correct",
+          "Only Statement 2 is correct",
+          "Both Statement 1 and Statement 2 are correct, but the year of the Asian Games is incorrect",
+          "Neither Statement 1 nor Statement 2 is correct"
+        ],
+        "correct": 2,
+        "explain": "Gurindervir Singh won the 100m gold in Ranchi and qualified for the Asian Games, but the year mentioned in the article is 2026, not 2024."
+      },
+      {
+        "type": "mcq",
+        "q": "Which institution does Gurindervir Singh represent in the sprint event?",
+        "options": [
+          "Indian Army",
+          "Indian Air Force",
+          "Indian Navy",
+          "National Sports Federation"
+        ],
+        "correct": 2,
+        "explain": "As per the article, Gurindervir Singh is a sprinter representing the Indian Navy."
+      },
+      {
+        "type": "mcq",
+        "q": "What is the time recorded by Gurindervir Singh in the 100m sprint event that led to a national record?",
+        "options": [
+          "10.10 seconds",
+          "10.09 seconds",
+          "9.10 seconds",
+          "11.00 seconds"
+        ],
+        "correct": 1,
+        "explain": "Gurindervir Singh set a national record with a time of 10.09 seconds in the 100m sprint event."
+      },
+      {
+        "type": "mcq",
+        "q": "Which of the following is the cost of the duplex room in the Chinese city as mentioned in the article?",
+        "options": [
+          "₹1,000",
+          "₹1,100",
+          "₹1,200",
+          "₹1,500"
+        ],
+        "correct": 1,
+        "explain": "The article mentions that the cost of the duplex room in the Chinese city is ₹1,100 per night. This information is directly stated in the article."
+      },
+      {
+        "type": "mcq",
+        "q": "Consider the following statements regarding the hotel room in China: Statement 1: The room features a washing machine. Statement 2: The room features a projector. Which of the following is correct?",
+        "options": [
+          "Only Statement 1 is correct",
+          "Only Statement 2 is correct",
+          "Both Statement 1 and Statement 2 are correct",
+          "Neither Statement 1 nor Statement 2 is correct"
+        ],
+        "correct": 2,
+        "explain": "The article mentions that the room features a washing machine, refrigerator, induction stove, and a projector, making both statements correct."
+      },
+      {
+        "type": "mcq",
+        "q": "Which of the following cities is being compared to the Chinese city in terms of accommodation cost?",
+        "options": [
+          "Mumbai",
+          "Delhi",
+          "Ahmedabad",
+          "Kolkata"
+        ],
+        "correct": 2,
+        "explain": "The article mentions that the duplex room in the Chinese city is comparable to Ahmedabad in terms of cost, with the room costing only ₹1,100 per night."
+      },
+      {
+        "type": "mcq",
+        "q": "What is the medium through which the Indian travel vlogger's video of the hotel room in China went viral?",
+        "options": [
+          "Instagram",
+          "Facebook",
+          "Twitter",
+          "YouTube"
+        ],
+        "correct": 0,
+        "explain": "The article mentions that the Indian travel vlogger's video of the hotel room in China went viral on Instagram."
+      },
+      {
+        "type": "mcq",
+        "q": "Which of the following areas has been identified for boosting two-way cooperation between India and the US, as per the recent talks between Marco Rubio and S Jaishankar?",
+        "options": [
+          "Agriculture, Education, and Tourism",
+          "Trade, Critical Minerals, Energy, and Defence",
+          "Healthcare, Infrastructure, and Finance",
+          "Environment, Science, and Technology"
+        ],
+        "correct": 1,
+        "explain": "The talks between Marco Rubio and S Jaishankar focused on boosting two-way cooperation in areas of trade, critical minerals, energy, and defence, as stated in the article."
+      },
+      {
+        "type": "mcq",
+        "q": "Consider the following statements regarding the imminent US-India trade agreement. Which of the statements is true?",
+        "options": [
+          "The agreement will be beneficial only to the US",
+          "The agreement will be sustainable but not beneficial to India",
+          "The agreement will be both beneficial and sustainable for both nations",
+          "The agreement will be signed only after the visit of the Indian Prime Minister to the US"
+        ],
+        "correct": 2,
+        "explain": "As per Marco Rubio's remarks, the US-India trade agreement will be both 'beneficial' and 'sustainable' and will advance the mutual interests of both nations."
+      },
+      {
+        "type": "mcq",
+        "q": "Which strait has an India-bound LNG tanker recently exited, marking the first such voyage since the Iran war began?",
+        "options": [
+          "Strait of Malacca",
+          "Strait of Hormuz",
+          "Bab-el-Mandeb",
+          "Suez Canal"
+        ],
+        "correct": 1,
+        "explain": "The Strait of Hormuz is a strategic waterway connecting the Persian Gulf to the Gulf of Oman, and the recent exit of an India-bound LNG tanker marks a significant development in the region. As per the given information, this is the first such voyage since the Iran war began."
+      },
+      {
+        "type": "mcq",
+        "q": "Consider the following statements: Statement 1: An India-bound LNG tanker has recently exited the Strait of Hormuz. Statement 2: This is the first such voyage for India from the Persian Gulf since the Iran war began. Which of the following is correct?",
+        "options": [
+          "Both Statement 1 and Statement 2 are correct",
+          "Both Statement 1 and Statement 2 are incorrect",
+          "Statement 1 is correct, but Statement 2 is incorrect",
+          "Statement 1 is incorrect, but Statement 2 is correct"
+        ],
+        "correct": 0,
+        "explain": "As per the given information, an India-bound LNG tanker has indeed exited the Strait of Hormuz, and this is the first such voyage for India from the Persian Gulf since the Iran war began, making both statements correct."
+      },
+      {
+        "type": "mcq",
+        "q": "What was the average all-India farm-gate wheat price on May 22, as per Agmarknet data?",
+        "options": [
+          "₹2,385/quintal",
+          "₹2,456/quintal",
+          "₹2,516/quintal",
+          "₹2,585/quintal"
+        ],
+        "correct": 1,
+        "explain": "The average all-India farm-gate wheat price was ₹2,456/quintal on May 22, as reported by Agmarknet data. This information is crucial for understanding the trends in agricultural market prices."
+      },
+      {
+        "type": "mcq",
+        "q": "Consider the following statements regarding the average all-India farm-gate wheat price on May 22. Which of the following statements is true?",
+        "options": [
+          "It was higher than the MSP of ₹2,585/quintal",
+          "It was 10% lower than the MSP of ₹2,585/quintal",
+          "It was 5% lower than the MSP of ₹2,585/quintal",
+          "It was equal to the MSP of ₹2,585/quintal"
+        ],
+        "correct": 2,
+        "explain": "The average all-India farm-gate wheat price on May 22 was 5% lower than the MSP of ₹2,585/quintal, indicating a decline in prices compared to the minimum support price."
+      },
+      {
+        "type": "mcq",
+        "q": "Which of the following is a Rabi crop?",
+        "options": [
+          "Soybean",
+          "Gram (chana)",
+          "Sugarcane",
+          "Cotton"
+        ],
+        "correct": 1,
+        "explain": "Gram (chana) is one of the main Rabi crops, which are typically sown in winter and harvested in spring. Rabi crops are an essential part of India's agricultural calendar."
+      },
+      {
+        "type": "mcq",
+        "q": "What is the source of data for the average all-India farm-gate wheat price?",
+        "options": [
+          "NSSO",
+          "Census of India",
+          "Agmarknet",
+          "Agricultural Census of India"
+        ],
+        "correct": 2,
+        "explain": "The data for the average all-India farm-gate wheat price is sourced from Agmarknet, which is a platform providing information on agricultural market prices and trends."
+      },
+      {
+        "type": "mcq",
+        "q": "Which of the following has been significantly impacted by the global oil shock?",
+        "options": [
+          "Agricultural sector",
+          "Industrial sector",
+          "India's economy",
+          "Service sector"
+        ],
+        "correct": 2,
+        "explain": "According to the former BPCL executive, India's economy is significantly impacted by the global oil shock, with crude prices surging by nearly 60%. This is due to rising import costs and rupee depreciation."
+      },
+      {
+        "type": "mcq",
+        "q": "Consider the following statements. Which of the following is correct?",
+        "options": [
+          "A) India can remain insulated from the global oil shock",
+          "B) The global oil shock has no impact on India's economy",
+          "C) The sharp rise in crude prices is directly hurting India's economy",
+          "D) India is self-sufficient in crude oil production"
+        ],
+        "correct": 2,
+        "explain": "The statement that the sharp rise in crude prices is directly hurting India's economy is correct, as mentioned by the former BPCL Marketing Director."
+      },
+      {
+        "type": "mcq",
+        "q": "What is a major concern for India due to the global oil shock, according to the former BPCL executive?",
+        "options": [
+          "A) Rising export costs",
+          "B) Rising import costs and rupee depreciation",
+          "C) Decreasing demand for petroleum products",
+          "D) Increasing domestic crude oil production"
+        ],
+        "correct": 1,
+        "explain": "The former BPCL executive highlighted rising import costs and rupee depreciation as major concerns for India due to the global oil shock."
+      },
+      {
+        "type": "mcq",
+        "q": "By how much have crude prices surged, according to the given article?",
+        "options": [
+          "A) Nearly 20%",
+          "B) Nearly 40%",
+          "C) Nearly 60%",
+          "D) Nearly 80%"
+        ],
+        "correct": 2,
+        "explain": "Crude prices have surged by nearly 60%, as mentioned in the article."
+      }
+    ]
+  },
+  {
+    "id": "mpm67analild1",
+    "slug": "daily-prelims-2026-05-26",
+    "title": "Daily Prelims Quiz — 26 May 2026",
+    "type": "Prelims",
+    "questions": 20,
+    "duration": "24 min",
+    "date": "2026-05-26",
+    "scheduledAt": null,
+    "active": true,
+    "source": "news",
+    "items": [
+      {
+        "type": "mcq",
+        "q": "Which of the following is true about Alfredo Corell?",
+        "options": [
+          "He is a renowned historian from the University of Madrid",
+          "He is a catedrático of Inmunología at the Universidad de Sevilla",
+          "He is a physicist from the University of Barcelona",
+          "He is an economist from the University of Valencia"
+        ],
+        "correct": 1,
+        "explain": "Alfredo Corell is a catedrático of Inmunología at the Universidad de Sevilla, as stated in the article. This information is factual and can be verified."
+      },
+      {
+        "type": "mcq",
+        "q": "Which of the following sectors have shown remarkable strength despite a challenging market backdrop?",
+        "options": [
+          "IT, Finance, Transport, and Communication",
+          "Pharma, Energy, Defence, Capital Markets, and Metals",
+          "Agriculture, Manufacturing, Construction, and Services",
+          "Telecom, Realty, Infrastructure, and Consumer Goods"
+        ],
+        "correct": 1,
+        "explain": "As per the given article, five Indian sectors—Pharma, Energy, Defence, Capital Markets, and Metals—are showing remarkable strength despite a challenging market backdrop. This is due to structural factors driving these sectors to new highs."
+      },
+      {
+        "type": "mcq",
+        "q": "Consider the following statements: Statement 1: The closure of the Strait of Hormuz has led to a decrease in crude prices. Statement 2: The Iran war has resulted in foreign fund inflows into the Indian market.",
+        "options": [
+          "Both Statement 1 and Statement 2 are correct",
+          "Both Statement 1 and Statement 2 are incorrect",
+          "Statement 1 is correct and Statement 2 is incorrect",
+          "Statement 1 is incorrect and Statement 2 is correct"
+        ],
+        "correct": 1,
+        "explain": "The article states that the closure of the Strait of Hormuz and the Iran war have led to soaring crude prices above $100 per barrel and relentless foreign fund outflows, respectively, making both statements incorrect."
+      },
+      {
+        "type": "mcq",
+        "q": "What has been the impact of the Iran war and other geopolitical tensions on the Indian rupee?",
+        "options": [
+          "The rupee has sharply strengthened against major currencies",
+          "The rupee has remained stable despite geopolitical tensions",
+          "The rupee has sharply weakened",
+          "The rupee has fluctuated but shown a general upward trend"
+        ],
+        "correct": 2,
+        "explain": "The article mentions that one of the challenges in the market backdrop is a sharply weakening rupee, indicating that the Iranian war and other geopolitical tensions have led to a decline in the value of the rupee."
+      },
+      {
+        "type": "mcq",
+        "q": "Which of the following has been a consequence of the Iran war and other geopolitical events for the Nifty index?",
+        "options": [
+          "The Nifty index has risen by 10% since the Iran war",
+          "The Nifty index has remained stable with minimal fluctuations",
+          "The Nifty index has fallen by 7%",
+          "The Nifty index has shown a significant increase in volatility but no overall trend"
+        ],
+        "correct": 2,
+        "explain": "As per the article, the Nifty index has fallen by 7% since the Iran war, despite some sectors showing remarkable strength and hitting new highs."
+      },
+      {
+        "type": "mcq",
+        "q": "Which of the following is true about Rukmini Vasanth?",
+        "options": [
+          "She is a Bollywood actress known for her roles in Hindi cinema",
+          "She is a Kannada cinema actress and daughter of a martyred Indian Army officer",
+          "She is a Tamil cinema actress who has worked with Rishab Shetty",
+          "She is a Malayalam cinema actress known for her breakthrough role in Sapta Saagaradaache Ello"
+        ],
+        "correct": 1,
+        "explain": "Rukmini Vasanth is a Kannada cinema actress known for her powerful roles alongside Rishab Shetty, and she is the daughter of martyred Indian Army officer Colonel Vasanth Venugopal."
+      },
+      {
+        "type": "mcq",
+        "q": "Consider the following statements about Rukmini Vasanth:",
+        "options": [
+          "She is the daughter of a martyred Indian Army officer and has worked in Bollywood cinema",
+          "She is a Kannada cinema actress known for her role in Kantara: Chapter 1 and is the daughter of a martyred Indian Army officer",
+          "She has worked with Rishab Shetty in Tamil cinema and is a Malayalam cinema actress",
+          "She is a Hindi cinema actress who has earned praise for her role in Sapta Saagaradaache Ello"
+        ],
+        "correct": 1,
+        "explain": "Rukmini Vasanth is a Kannada cinema actress known for her powerful roles, including her role in Kantara: Chapter 1, and she is the daughter of martyred Indian Army officer Colonel Vasanth Venugopal."
+      },
+      {
+        "type": "mcq",
+        "q": "Which film is mentioned as a breakthrough role for Rukmini Vasanth?",
+        "options": [
+          "Kantara: Chapter 1",
+          "Sapta Saagaradaache Ello",
+          "Uri",
+          "Rishab Shetty's debut film"
+        ],
+        "correct": 1,
+        "explain": "Rukmini Vasanth earned widespread praise for her breakthrough role in Sapta Saagaradaache Ello, a Kannada cinema film."
+      },
+      {
+        "type": "mcq",
+        "q": "What is the relationship between Rukmini Vasanth and Colonel Vasanth Venugopal?",
+        "options": [
+          "Rukmini Vasanth is the wife of Colonel Vasanth Venugopal",
+          "Rukmini Vasanth is the daughter of Colonel Vasanth Venugopal",
+          "Rukmini Vasanth is the sister of Colonel Vasanth Venugopal",
+          "Rukmini Vasanth is the mother of Colonel Vasanth Venugopal"
+        ],
+        "correct": 1,
+        "explain": "Rukmini Vasanth is the daughter of martyred Indian Army officer Colonel Vasanth Venugopal, who was a victim of the Uri attack."
+      },
+      {
+        "type": "mcq",
+        "q": "Which of the following statements is true regarding the Iran war peace deal?",
+        "options": [
+          "A deal to end the war with Iran has already been signed",
+          "A deal to end the war with Iran could materialise today, as stated by the US Secretary of State",
+          "The US and Iran have decided to continue the war indefinitely",
+          "The US President has refused to negotiate a peace deal with Iran"
+        ],
+        "correct": 1,
+        "explain": "According to the article, US Secretary of State Marco Rubio stated that a deal to end the war with Iran could materialise 'today'. This information is factual and based on the given text."
+      },
+      {
+        "type": "mcq",
+        "q": "Consider the following statements regarding the Iran war peace deal. Which of the following is correct?",
+        "options": [
+          "US President Donald Trump wants to rush into a peace deal with Iran",
+          "US Secretary of State Marco Rubio is opposed to a peace deal with Iran",
+          "US President Donald Trump has told negotiators to take their time, while US Secretary of State Marco Rubio expects a deal to materialise soon",
+          "The US has decided not to negotiate with Iran due to Israel's opposition"
+        ],
+        "correct": 2,
+        "explain": "The article states that US President Donald Trump told negotiators to take their time, whereas US Secretary of State Marco Rubio expects a deal to materialise soon. This is a direct quote from the given text."
+      },
+      {
+        "type": "mcq",
+        "q": "Which of the following regulatory bodies has proposed a framework for salary-linked Systematic Investment Plans (SIPs) in mutual funds?",
+        "options": [
+          "Reserve Bank of India (RBI)",
+          "Securities and Exchange Board of India (SEBI)",
+          "Insurance Regulatory and Development Authority of India (IRDAI)",
+          "Pension Fund Regulatory and Development Authority (PFRDA)"
+        ],
+        "correct": 1,
+        "explain": "The Securities and Exchange Board of India (SEBI) has proposed a framework for salary-linked SIPs, aiming to simplify investing for first-time users. This is in line with SEBI's role as the primary regulator of the securities market in India."
+      },
+      {
+        "type": "mcq",
+        "q": "Consider the following statements regarding salary-linked SIPs: Statement 1: They aim to reduce SIP stoppages. Statement 2: They are similar to investments made through the National Pension System (NPS). Which of the statements is/are correct?",
+        "options": [
+          "Only Statement 1 is correct",
+          "Only Statement 2 is correct",
+          "Both Statement 1 and Statement 2 are correct",
+          "Neither Statement 1 nor Statement 2 is correct"
+        ],
+        "correct": 2,
+        "explain": "Both statements are correct, as salary-linked SIPs aim to reduce SIP stoppages by facilitating automatic deductions from salaries, and they are similar to investments made through the Employees' Provident Fund (EPF) and the National Pension System (NPS) in terms of the automatic deduction feature."
+      },
+      {
+        "type": "mcq",
+        "q": "Who stated that an agreement with Iran is still possible?",
+        "options": [
+          "US Secretary of State Marco Rubio",
+          "US President",
+          "Iranian Foreign Minister",
+          "Israeli Prime Minister"
+        ],
+        "correct": 0,
+        "explain": "According to the article, US Secretary of State Marco Rubio stated that an agreement with Iran is still possible, highlighting Israel's right to self-defense in any potential deal."
+      },
+      {
+        "type": "mcq",
+        "q": "Consider the following statements: Statement 1: An agreement with Iran is no longer possible. Statement 2: Washington is working separately on the Lebanon issue. Which of the following is true?",
+        "options": [
+          "Both Statement 1 and Statement 2 are true",
+          "Only Statement 1 is true",
+          "Only Statement 2 is true",
+          "Neither Statement 1 nor Statement 2 is true"
+        ],
+        "correct": 2,
+        "explain": "The article states that Marco Rubio believes an agreement with Iran is still possible, making Statement 1 incorrect, while also mentioning that Washington is working separately on the Lebanon issue, making Statement 2 true."
+      },
+      {
+        "type": "mcq",
+        "q": "What is the significance of the RBI's record ₹2.87 lakh crore dividend transfer to the government?",
+        "options": [
+          "It will be used to increase the RBI's foreign exchange reserves",
+          "It will bolster government spending on infrastructure, subsidies, and welfare programs",
+          "It will be invested in the stock market to generate higher returns",
+          "It will be used to reduce the government's debt burden"
+        ],
+        "correct": 1,
+        "explain": "The transfer provides crucial fiscal support amid global economic turbulence and will be used to support government expenditures, as stated in the article. This is in line with the RBI's role in managing the government's finances, as per the Reserve Bank of India Act, 1934."
+      },
+      {
+        "type": "mcq",
+        "q": "Consider the following statements regarding the RBI's dividend transfer to the government. Statement 1: The transfer amount is ₹2.87 lakh crore. Statement 2: The transfer is the largest-ever dividend transfer by the RBI.",
+        "options": [
+          "Both Statement 1 and Statement 2 are correct",
+          "Both Statement 1 and Statement 2 are incorrect",
+          "Statement 1 is correct and Statement 2 is incorrect",
+          "Statement 1 is incorrect and Statement 2 is correct"
+        ],
+        "correct": 0,
+        "explain": "The article states that the RBI has announced its largest-ever dividend transfer of ₹2.87 lakh crore to the central government, making both statements correct."
+      },
+      {
+        "type": "mcq",
+        "q": "What is the context in which the RBI's record dividend transfer to the government is seen as significant?",
+        "options": [
+          "India's high economic growth rate",
+          "Global economic turbulence",
+          "The government's fiscal deficit",
+          "The RBI's high foreign exchange reserves"
+        ],
+        "correct": 1,
+        "explain": "The article mentions that the transfer offers crucial fiscal support amid global economic turbulence, highlighting the significance of the event in the current economic context."
+      },
+      {
+        "type": "mcq",
+        "q": "Which of the following is a potential use of the RBI's dividend transfer to the government?",
+        "options": [
+          "Reducing the government's revenue expenditure",
+          "Increasing the government's capital expenditure on infrastructure",
+          "Reducing the RBI's monetary policy powers",
+          "Decreasing the government's fiscal deficit"
+        ],
+        "correct": 1,
+        "explain": "The article states that the substantial sum will bolster government spending on infrastructure, among other things, indicating that the transfer can be used to increase the government's capital expenditure on infrastructure, as per the government's fiscal policies and the RBI's role in supporting economic growth."
+      },
+      {
+        "type": "mcq",
+        "q": "Which of the following is a correct statement regarding the controversy sparked by a U.S. Marine Veteran?",
+        "options": [
+          "The veteran blamed Joe Biden for the deaths of school children in Minab",
+          "The veteran blamed Donald Trump for the deaths of school children in Minab",
+          "The veteran praised the U.S. military for their actions in Minab",
+          "The veteran did not make any accusations regarding the Minab school incident"
+        ],
+        "correct": 1,
+        "explain": "The veteran sparked controversy by publicly blaming Donald Trump for the deaths of school children in Minab, alleging that Tomahawk missile strikes caused catastrophic destruction, as per the given article."
+      }
+    ]
+  },
+  {
+    "id": "mpnny153r2el1",
+    "slug": "daily-prelims-2026-05-27",
+    "title": "Daily Prelims Quiz — 27 May 2026",
+    "type": "Prelims",
+    "questions": 20,
+    "duration": "24 min",
+    "date": "2026-05-27",
+    "scheduledAt": null,
+    "active": true,
+    "source": "news",
+    "items": [
+      {
+        "type": "mcq",
+        "q": "Which of the following books is mentioned in the given article?",
+        "options": [
+          "The West: A History of Thought",
+          "The History of an Idea: The West",
+          "The West: The History of an Idea",
+          "A History of Western Ideas"
+        ],
+        "correct": 2,
+        "explain": "The book 'The West: The History of an Idea' by Georgios Varouxakis is mentioned in the article, providing a historical perspective on the idea of the West."
+      },
+      {
+        "type": "mcq",
+        "q": "Consider the following statements about the article. Statement 1: The article discusses a book on the history of the idea of the West. Statement 2: The book is written by Georgios Varouxakis. Which of the following is true?",
+        "options": [
+          "Only Statement 1 is true",
+          "Only Statement 2 is true",
+          "Both Statement 1 and Statement 2 are true",
+          "Neither Statement 1 nor Statement 2 is true"
+        ],
+        "correct": 2,
+        "explain": "Both statements are true as the article discusses the book 'The West: The History of an Idea' written by Georgios Varouxakis, providing an analysis of the idea of the West."
+      },
+      {
+        "type": "mcq",
+        "q": "What is the main subject of the book 'The West: The History of an Idea' as per the given article?",
+        "options": [
+          "The history of Western philosophy",
+          "The idea of the West",
+          "The rise of Western civilization",
+          "The impact of Western culture on the world"
+        ],
+        "correct": 1,
+        "explain": "The main subject of the book is the idea of the West, which is explored historically by the author Georgios Varouxakis."
+      },
+      {
+        "type": "mcq",
+        "q": "Who is the author of the book 'The West: The History of an Idea' as mentioned in the article?",
+        "options": [
+          "Yves",
+          "Georgios Varouxakis",
+          "Satyajit Das",
+          "Varouxakis Georgios"
+        ],
+        "correct": 1,
+        "explain": "The author of the book 'The West: The History of an Idea' is Georgios Varouxakis, as stated in the article."
+      },
+      {
+        "type": "mcq",
+        "q": "What was the scoreline of the India women's team in their SAFF Women's Championship opener against Maldives?",
+        "options": [
+          "10-0",
+          "11-0",
+          "12-0",
+          "9-0"
+        ],
+        "correct": 1,
+        "explain": "The India women's team dominated Maldives with an 11-0 victory, as per the given article. This is a factual question that requires knowledge of the current events in sports."
+      },
+      {
+        "type": "mcq",
+        "q": "Where is the insect factory, backed by Bill Gates, releasing millions of mosquitoes every week?",
+        "options": [
+          "Bogota, Colombia",
+          "Medellin, Colombia",
+          "Lima, Peru",
+          "Quito, Ecuador"
+        ],
+        "correct": 1,
+        "explain": "The insect factory is located in Medellin, Colombia, as stated in the article. This fact is relevant to understanding global health initiatives and their locations."
+      },
+      {
+        "type": "mcq",
+        "q": "What type of report is being prepared by the investigators of the Air India crash ahead of its anniversary?",
+        "options": [
+          "Final Report",
+          "Interim Report",
+          "Preliminary Report",
+          "Investigative Report"
+        ],
+        "correct": 1,
+        "explain": "According to the article, the investigators are preparing an interim report, which will be more comprehensive than the preliminary report. This is as per the standard procedures of aviation accident investigations."
+      },
+      {
+        "type": "mcq",
+        "q": "Consider the following statements regarding the interim report being prepared on the Air India crash: Statement 1: The interim report will be less comprehensive than the preliminary report. Statement 2: The interim report will examine possible primary causes and other contributing factors. Which of the following is correct?",
+        "options": [
+          "Both Statement 1 and Statement 2 are correct",
+          "Only Statement 1 is correct",
+          "Only Statement 2 is correct",
+          "Neither Statement 1 nor Statement 2 is correct"
+        ],
+        "correct": 2,
+        "explain": "The article states that the interim report will be more comprehensive than the preliminary report and will examine possible primary causes and other contributing factors, making Statement 2 correct and Statement 1 incorrect."
+      },
+      {
+        "type": "mcq",
+        "q": "What is the current trend in the volume of Russian fuel oil arriving in Singapore waters?",
+        "options": [
+          "It has decreased to the lowest level in a year",
+          "It has remained constant over the past year",
+          "It has risen to the highest level in a year",
+          "It has fluctuated with no discernible pattern"
+        ],
+        "correct": 2,
+        "explain": "The volume of Russian fuel oil in Singapore waters has risen to the highest level in a year due to supply disruptions from the Middle East. This indicates a shift in global oil trade patterns."
+      },
+      {
+        "type": "mcq",
+        "q": "What type of report are Indian investigators preparing regarding the Air India crash?",
+        "options": [
+          "A final report",
+          "An interim report",
+          "A preliminary report",
+          "A supplementary report"
+        ],
+        "correct": 1,
+        "explain": "Indian investigators are preparing an interim report for the deadly Air India crash, which will be more comprehensive than the initial one, as the final report is delayed due to the investigation's complexity."
+      },
+      {
+        "type": "mcq",
+        "q": "Consider the following statements regarding the Air India crash investigation report: Statement 1: The report being prepared is final. Statement 2: The report is being prepared ahead of the anniversary of the crash. Which of the statements is/are correct?",
+        "options": [
+          "Only Statement 1 is correct",
+          "Only Statement 2 is correct",
+          "Both Statement 1 and Statement 2 are correct",
+          "Neither Statement 1 nor Statement 2 is correct"
+        ],
+        "correct": 1,
+        "explain": "The report being prepared is an interim report, not a final one, and it is being prepared ahead of the anniversary of the crash, thus only Statement 2 is correct."
+      },
+      {
+        "type": "mcq",
+        "q": "Where were the secret negotiations between American and Iranian diplomats held?",
+        "options": [
+          "Tehran",
+          "Islamabad",
+          "Washington D.C.",
+          "New York"
+        ],
+        "correct": 1,
+        "explain": "The secret negotiations between American and Iranian diplomats were held in Islamabad, as per the given article. This indicates a significant geopolitical development, possibly under the purview of international diplomacy and global governance."
+      },
+      {
+        "type": "mcq",
+        "q": "Consider the following statements: Statement 1: The world recently witnessed the largest oil supply disruption in global history. Statement 2: The brief ceasefire halted this oil supply disruption. Which of the statements is/are correct?",
+        "options": [
+          "Only Statement 1 is correct",
+          "Only Statement 2 is correct",
+          "Both Statement 1 and Statement 2 are correct",
+          "Neither Statement 1 nor Statement 2 is correct"
+        ],
+        "correct": 2,
+        "explain": "Both statements are correct as the article mentions the largest oil supply disruption in global history and a brief ceasefire that halted this disruption, highlighting the volatile nature of global energy markets and conflict resolutions."
+      },
+      {
+        "type": "mcq",
+        "q": "Which of the following is true about the recent development in Jerusalem?",
+        "options": [
+          "Fifteen European countries condemned the opening of a purported Somaliland embassy in Jerusalem",
+          "Fifteen Arab and Islamic countries condemned the opening of a purported Somaliland embassy in Jerusalem",
+          "The United Nations opened a new embassy in Jerusalem",
+          "The African Union supported the opening of a Somaliland embassy in Jerusalem"
+        ],
+        "correct": 1,
+        "explain": "According to the joint statement by the foreign ministers, fifteen Arab and Islamic countries condemned the opening of a purported Somaliland embassy in Jerusalem, describing the move as illegal."
+      },
+      {
+        "type": "mcq",
+        "q": "Consider the following statements regarding the Somaliland embassy in Jerusalem:",
+        "options": [
+          "The embassy was opened with the support of the international community, and it is located in West Jerusalem",
+          "The embassy was condemned by fifteen Arab and Islamic countries, and it is located in occupied Jerusalem",
+          "The embassy was opened by the government of Somalia, and it is located in Tel Aviv",
+          "The embassy was supported by the European Union, and it is located in East Jerusalem"
+        ],
+        "correct": 1,
+        "explain": "The joint statement by the foreign ministers of fifteen Arab and Islamic countries condemned the opening of the purported Somaliland embassy in occupied Jerusalem, highlighting the controversy surrounding the move."
+      },
+      {
+        "type": "mcq",
+        "q": "What was the nature of the statement issued by the fifteen Arab and Islamic countries regarding the Somaliland embassy in Jerusalem?",
+        "options": [
+          "A statement of support for the embassy",
+          "A joint statement condemning the embassy",
+          "A statement of neutrality on the issue",
+          "A statement calling for the relocation of the embassy"
+        ],
+        "correct": 1,
+        "explain": "The fifteen Arab and Islamic countries issued a joint statement condemning the opening of the purported Somaliland embassy in Jerusalem, describing the move as illegal."
+      },
+      {
+        "type": "mcq",
+        "q": "Which of the following entities issued a joint statement condemning the Somaliland embassy in Jerusalem?",
+        "options": [
+          "The foreign ministers of fifteen European countries",
+          "The foreign ministers of fifteen Arab and Islamic countries",
+          "The United Nations Security Council",
+          "The African Union"
+        ],
+        "correct": 1,
+        "explain": "According to the report, the foreign ministers of fifteen Arab and Islamic countries issued a joint statement condemning the opening of the purported Somaliland embassy in Jerusalem."
+      },
+      {
+        "type": "mcq",
+        "q": "Which of the following locations was affected by the US forces' attack on missile sites?",
+        "options": [
+          "Northern Iran",
+          "Southern Iran",
+          "Eastern Iran",
+          "Western Iran"
+        ],
+        "correct": 1,
+        "explain": "According to the article, US forces attacked missile sites in southern Iran, which puts a fragile ceasefire at risk. This is a factual question based on the given information."
+      },
+      {
+        "type": "mcq",
+        "q": "Consider the following statements. Which one of the following is correct in the context of the US-Iran conflict?",
+        "options": [
+          "Top Iranian negotiators did not attend the talks in Doha",
+          "The US attacked missile sites in northern Iran",
+          "Top Iranian negotiators arrived in Doha for the latest round of talks",
+          "The conflict between the US and Iran has been resolved"
+        ],
+        "correct": 2,
+        "explain": "The article states that top Iranian negotiators arrived in Doha for the latest round of talks to end the months-long conflict, which verifies the correctness of this statement."
+      },
+      {
+        "type": "mcq",
+        "q": "What was the target of the US forces' attack, apart from missile sites in southern Iran?",
+        "options": [
+          "Aircraft in the air",
+          "Boats trying to lay mines",
+          "Tanks on the ground",
+          "Submarines underwater"
+        ],
+        "correct": 1,
+        "explain": "As per the article, US forces attacked not only missile sites in southern Iran but also boats trying to lay mines, which is mentioned as part of the US Central Command's statement."
+      }
+    ]
+  }
+]

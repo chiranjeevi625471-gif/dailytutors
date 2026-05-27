@@ -1,0 +1,26 @@
+[
+  {
+    "id": "pb1",
+    "order": 1,
+    "active": true,
+    "title": "Tuition for 8th to 12th",
+    "image": "",
+    "link": "https://chiranjeevi625471-gif.github.io/Teams/"
+  },
+  {
+    "id": "pb2",
+    "order": 2,
+    "active": true,
+    "title": "NEET CET Coaching",
+    "image": "",
+    "link": "/courses/neet-cet-coaching"
+  },
+  {
+    "id": "pb3",
+    "order": 3,
+    "active": true,
+    "title": "CA Coaching",
+    "image": "",
+    "link": "/courses/ca-coaching"
+  }
+]

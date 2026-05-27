@@ -1,0 +1,82 @@
+[
+  {
+    "id": "c1",
+    "order": 1,
+    "active": true,
+    "title": "Daily Current Affairs",
+    "tag": "FREE · 8 AM IST",
+    "href": "/current-affairs",
+    "icon": "Newspaper",
+    "bg": "from-red-600 to-rose-500"
+  },
+  {
+    "id": "c2",
+    "order": 2,
+    "active": true,
+    "title": "Mains Answer Writing",
+    "tag": "EVALUATED · DAILY",
+    "href": "/mains/answer-writing",
+    "icon": "PenLine",
+    "bg": "from-rose-700 to-pink-500"
+  },
+  {
+    "id": "c3",
+    "order": 3,
+    "active": true,
+    "title": "Daily Prelims Quiz",
+    "tag": "10 Qs · 12 MIN",
+    "href": "/prelims/daily-quiz",
+    "icon": "Brain",
+    "bg": "from-red-700 to-orange-500"
+  },
+  {
+    "id": "c4",
+    "order": 4,
+    "active": true,
+    "title": "Free PDF Library",
+    "tag": "MAGAZINES · NOTES",
+    "href": "/downloads",
+    "icon": "Download",
+    "bg": "from-orange-600 to-red-500"
+  },
+  {
+    "id": "c5",
+    "order": 5,
+    "active": true,
+    "title": "UPSC Foundation 2027",
+    "tag": "LIVE BATCH · ENROLL",
+    "href": "/courses/upsc-foundation-2027",
+    "icon": "GraduationCap",
+    "bg": "from-rose-600 to-red-700"
+  },
+  {
+    "id": "c6",
+    "order": 6,
+    "active": true,
+    "title": "Mind Maps & Notes",
+    "tag": "VISUAL REVISION",
+    "href": "/mains/mind-maps",
+    "icon": "Map",
+    "bg": "from-pink-600 to-rose-700"
+  },
+  {
+    "id": "c7",
+    "order": 7,
+    "active": true,
+    "title": "Prelims Test Series",
+    "tag": "60 MOCKS · AIR RANK",
+    "href": "/courses/prelims-test-series-2026",
+    "icon": "Trophy",
+    "bg": "from-red-500 to-rose-600"
+  },
+  {
+    "id": "c8",
+    "order": 8,
+    "active": true,
+    "title": "Optional Subjects",
+    "tag": "8 SUBJECTS · NOTES",
+    "href": "/optional",
+    "icon": "BookOpenCheck",
+    "bg": "from-red-800 to-rose-500"
+  }
+]

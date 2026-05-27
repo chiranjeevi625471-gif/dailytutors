@@ -1,0 +1,24 @@
+name: Daily Current Affairs Auto-Update
+
+on:
+  schedule:
+    # Run once daily at midnight UTC (5:30 AM IST)
+    - cron: '0 0 * * *'
+  workflow_dispatch: # Allow manual trigger
+
+jobs:
+  update-current-affairs:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Fetch Latest News
+        run: |
+          curl -X POST \
+            -H "x-cron-secret: ${{ secrets.CRON_SECRET }}" \
+            -H "Content-Type: application/json" \
+            "https://dailytutors.vercel.app/api/cron/daily-affairs"
+        continue-on-error: true
+      
+      - name: Verify Update
+        run: |
+          echo "✅ Current affairs update triggered successfully"

@@ -1,0 +1,45 @@
+name: Update Daily Current Affairs
+
+on:
+  schedule:
+    # Run every 2 hours
+    - cron: '0 */2 * * *'
+  
+  # Allow manual trigger
+  workflow_dispatch:
+
+jobs:
+  update-affairs:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Update Daily Current Affairs
+        run: |
+          CRON_SECRET="${{ secrets.CRON_SECRET }}"
+          if [ -z "$CRON_SECRET" ]; then
+            echo "❌ Error: CRON_SECRET not set"
+            exit 1
+          fi
+          
+          PROD_URL="https://dailytutors.vercel.app"
+          
+          echo "🌍 Updating current affairs..."
+          echo "⏰ Time: $(date)"
+          
+          RESPONSE=$(curl -X POST "$PROD_URL/api/cron/daily-affairs" \
+            -H "Content-Type: application/json" \
+            -H "x-cron-secret: $CRON_SECRET" \
+            -w "\n%{http_code}" \
+            -s)
+          
+          HTTP_CODE=$(echo "$RESPONSE" | tail -n1)
+          BODY=$(echo "$RESPONSE" | head -n-1)
+          
+          echo "📊 Response: $BODY"
+          echo "📈 HTTP Status: $HTTP_CODE"
+          
+          if [ "$HTTP_CODE" = "200" ]; then
+            echo "✅ Current affairs updated!"
+          else
+            echo "⚠️ Update completed with status $HTTP_CODE"
+          fi

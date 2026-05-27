@@ -1,0 +1,44 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bg: #ffffff;
+  --fg: #0a0a0a;
+  --muted: #6b7280;
+  --brand: #dc2626;
+}
+
+html, body { background: var(--bg); color: var(--fg); }
+
+/* Ensure proper content flow and no overlapping on mobile */
+main {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+section {
+  width: 100%;
+}
+
+@layer components {
+  .container-page { @apply mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8; }
+  .btn { @apply inline-flex items-center justify-center gap-2 rounded-md px-4 py-2 text-sm font-semibold transition; }
+  .btn-primary { @apply btn bg-brand text-white hover:bg-brand-700; }
+  .btn-outline { @apply btn border border-brand text-brand hover:bg-brand-50; }
+  .badge { @apply inline-flex items-center rounded-full bg-brand-50 px-2.5 py-0.5 text-xs font-medium text-brand-700; }
+  .card { @apply rounded-xl border border-gray-100 bg-white shadow-soft transition hover:shadow-card; }
+  .section-title { @apply text-2xl sm:text-3xl font-bold tracking-tight; }
+  .section-title::after {
+    content: ""; display: block; width: 48px; height: 3px; background: var(--brand); border-radius: 9999px; margin-top: 8px;
+  }
+  .link-arrow { @apply inline-flex items-center gap-1 text-sm font-semibold text-brand hover:text-brand-700; }
+}
+
+/* Mobile-specific adjustments */
+@media (max-width: 639px) {
+  main {
+    overflow-x: hidden;
+  }
+}

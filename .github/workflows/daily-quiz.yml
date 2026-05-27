@@ -1,0 +1,76 @@
+name: Generate Daily Quiz
+
+on:
+  schedule:
+    # 8:30 AM IST = 3:00 AM UTC
+    - cron: '0 3 * * *'
+    # 2:30 PM IST = 9:00 AM UTC (optional - comment out if you want only one quiz per day)
+    - cron: '0 9 * * *'
+  
+  # Allow manual trigger from GitHub Actions dashboard
+  workflow_dispatch:
+    inputs:
+      count:
+        description: 'Number of questions'
+        required: false
+        default: '25'
+
+jobs:
+  generate-quiz:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Trigger Daily Quiz Generation
+        run: |
+          CRON_SECRET="${{ secrets.CRON_SECRET }}"
+          if [ -z "$CRON_SECRET" ]; then
+            echo "❌ Error: CRON_SECRET not set in GitHub secrets"
+            exit 1
+          fi
+          
+          # Production URL (update with your actual domain)
+          PROD_URL="https://dailytutors.vercel.app"
+          
+          echo "🎯 Triggering daily quiz generation..."
+          echo "⏰ Time: $(date)"
+          
+          RESPONSE=$(curl -X POST "$PROD_URL/api/cron/daily-quiz" \
+            -H "Content-Type: application/json" \
+            -H "x-cron-secret: $CRON_SECRET" \
+            -d '{"count":25}' \
+            -w "\n%{http_code}" \
+            -s)
+          
+          # Extract HTTP code and response body
+          HTTP_CODE=$(echo "$RESPONSE" | tail -n1)
+          BODY=$(echo "$RESPONSE" | head -n-1)
+          
+          echo "📊 Response: $BODY"
+          echo "📈 HTTP Status: $HTTP_CODE"
+          
+          if [ "$HTTP_CODE" = "200" ]; then
+            # Check if ok: true in response
+            if echo "$BODY" | grep -q '"ok":true'; then
+              echo "✅ Quiz generated successfully!"
+              exit 0
+            else
+              echo "⚠️ API returned 200 but no success confirmation"
+              exit 1
+            fi
+          else
+            echo "❌ Failed with HTTP $HTTP_CODE"
+            exit 1
+          fi
+
+      - name: Notify on Success
+        if: success()
+        run: |
+          echo "✅ Daily quiz created successfully at $(date)"
+          echo "📝 Time: 8:30 AM IST (3:00 AM UTC) or 2:30 PM IST (9:00 AM UTC)"
+
+      - name: Notify on Failure
+        if: failure()
+        run: |
+          echo "❌ Failed to generate daily quiz"
+          echo "⏰ Time: $(date)"
+          exit 1
