@@ -1,7 +1,7 @@
 "use client";
 import Link from "next/link";
 import { useState } from "react";
-import { Menu, X, ChevronDown, BookOpen } from "lucide-react";
+import { Menu, X, ChevronDown } from "lucide-react";
 
 const NAV = [
   {
@@ -63,8 +63,8 @@ export default function Header() {
 
       <div className="container-page flex h-16 items-center justify-between">
         <Link href="/" className="flex items-center gap-2">
-          <div className="flex h-9 w-9 items-center justify-center rounded-md bg-brand text-white">
-            <BookOpen className="h-5 w-5" />
+          <div className="flex h-10 w-10 items-center justify-center rounded-sm bg-brand text-white font-bold text-xl">
+            D
           </div>
           <div className="leading-tight">
             <div className="text-lg font-extrabold tracking-tight">

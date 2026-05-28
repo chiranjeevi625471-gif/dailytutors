@@ -1678,12 +1678,12 @@
     ]
   },
   {
-    "id": "mpnny153r2el1",
+    "id": "mpo2fe1wtdpfp",
     "slug": "daily-prelims-2026-05-27",
     "title": "Daily Prelims Quiz — 27 May 2026",
     "type": "Prelims",
-    "questions": 20,
-    "duration": "24 min",
+    "questions": 4,
+    "duration": "10 min",
     "date": "2026-05-27",
     "scheduledAt": null,
     "active": true,
@@ -1691,19 +1691,273 @@
     "items": [
       {
         "type": "mcq",
-        "q": "Which of the following books is mentioned in the given article?",
+        "q": "Who paid homage at Mother Teresa's tomb during their visit to India?",
         "options": [
-          "The West: A History of Thought",
-          "The History of an Idea: The West",
-          "The West: The History of an Idea",
-          "A History of Western Ideas"
+          "U.S. Secretary of Defense",
+          "U.S. Secretary of State Marco Rubio",
+          "U.S. Ambassador to India",
+          "U.S. President"
         ],
-        "correct": 2,
-        "explain": "The book 'The West: The History of an Idea' by Georgios Varouxakis is mentioned in the article, providing a historical perspective on the idea of the West."
+        "correct": 1,
+        "explain": "According to the article, U.S. Secretary of State Marco Rubio paid homage at Mother Teresa's tomb during his visit to India, bringing joy to her nuns. This is a factual report and does not involve any constitutional article or scheme."
       },
       {
         "type": "mcq",
-        "q": "Consider the following statements about the article. Statement 1: The article discusses a book on the history of the idea of the West. Statement 2: The book is written by Georgios Varouxakis. Which of the following is true?",
+        "q": "Where did Marco Rubio commence his India visit?",
+        "options": [
+          "At the Indian Parliament",
+          "At St. Teresa of Kolkata's tomb",
+          "At the U.S. Embassy in India",
+          "At the Indian President's residence"
+        ],
+        "correct": 1,
+        "explain": "The article states that Marco Rubio began his first India visit at St. Teresa of Kolkata's tomb, which is the mother house of the Missionaries of Charity."
+      },
+      {
+        "type": "mcq",
+        "q": "Consider the following statements: Statement 1: Marco Rubio is the U.S. Secretary of State. Statement 2: He visited the mother house of the Missionaries of Charity during his trip to India. Which of the following is true?",
+        "options": [
+          "Only Statement 1 is correct",
+          "Only Statement 2 is correct",
+          "Both Statement 1 and Statement 2 are correct",
+          "Neither Statement 1 nor Statement 2 is correct"
+        ],
+        "correct": 2,
+        "explain": "Both statements are correct as per the article, which reports that Marco Rubio, the U.S. Secretary of State, visited the mother house of the Missionaries of Charity during his trip to India."
+      },
+      {
+        "type": "mcq",
+        "q": "What was the outcome of Marco Rubio's visit to Mother Teresa's tomb?",
+        "options": [
+          "It sparked controversy among the nuns",
+          "It brought sadness to her Missionaries of Charity",
+          "It had no impact on the Missionaries of Charity",
+          "It brought joy to her nuns"
+        ],
+        "correct": 3,
+        "explain": "The article reports that Marco Rubio's visit to Mother Teresa's tomb brought joy to her nuns, which is a direct outcome of his visit as stated in the article."
+      }
+    ]
+  },
+  {
+    "id": "mppb6mhcpi8yt",
+    "slug": "daily-prelims-2026-05-28",
+    "title": "Daily Prelims Quiz — 28 May 2026",
+    "type": "Prelims",
+    "questions": 20,
+    "duration": "24 min",
+    "date": "2026-05-28",
+    "scheduledAt": null,
+    "active": true,
+    "source": "news",
+    "items": [
+      {
+        "type": "mcq",
+        "q": "Which of the following cities was the destination of the Air India flight that returned midway due to a technical snag?",
+        "options": [
+          "New York",
+          "London",
+          "San Francisco",
+          "Chicago"
+        ],
+        "correct": 2,
+        "explain": "The Air India flight was bound for San Francisco when it developed a technical snag and returned to Delhi. This is clearly stated in the provided article."
+      },
+      {
+        "type": "mcq",
+        "q": "Consider the following statements regarding the Air India flight to San Francisco. Which of the statements is correct?",
+        "options": [
+          "The flight completed its journey without any issues.",
+          "The flight returned to Delhi after developing a technical snag.",
+          "The flight was cancelled before its departure.",
+          "The flight was diverted to another destination."
+        ],
+        "correct": 1,
+        "explain": "According to the article, the Air India flight to San Francisco returned to Delhi midway due to a technical snag, thus statement 2 is correct."
+      },
+      {
+        "type": "mcq",
+        "q": "What was the approximate number of passengers affected by the Air India flight's return to Delhi midway?",
+        "options": [
+          "100 passengers",
+          "150 passengers",
+          "200 passengers",
+          "230 passengers"
+        ],
+        "correct": 3,
+        "explain": "The article mentions that around 230 passengers were affected by the Air India flight's return to Delhi midway due to a technical snag."
+      },
+      {
+        "type": "mcq",
+        "q": "Which of the following cities was the point of return for the Air India flight that developed a technical snag midway?",
+        "options": [
+          "Mumbai",
+          "Kolkata",
+          "Chennai",
+          "New Delhi"
+        ],
+        "correct": 3,
+        "explain": "The article clearly states that the Air India flight returned to New Delhi after developing a technical snag mid-flight."
+      },
+      {
+        "type": "mcq",
+        "q": "Which of the following organisations has been interacting with survivors of the 2024 attack in western Myanmar?",
+        "options": [
+          "UN High Commissioner for Refugees (UNHCR)",
+          "UN High Commissioner for Human Rights (UNHRC)",
+          "International Committee of the Red Cross (ICRC)",
+          "International Court of Justice (ICJ)"
+        ],
+        "correct": 1,
+        "explain": "The UN High Commissioner for Human Rights (UNHRC) has been told by a survivor about the killing of 20 relatives in the 2024 attack, as per the given article."
+      },
+      {
+        "type": "mcq",
+        "q": "Which of the following companies have joined the trillion-dollar club due to the AI rally?",
+        "options": [
+          "SK Hynix and Samsung",
+          "Micron Technology and Samsung",
+          "SK Hynix and Micron Technology",
+          "Samsung and Intel"
+        ],
+        "correct": 2,
+        "explain": "According to the article, SK Hynix and Micron Technology have joined the trillion-dollar club due to the AI rally. This is a result of the surge in chipmakers fueled by the AI boom."
+      },
+      {
+        "type": "mcq",
+        "q": "Consider the following statements: 1. The AI boom is driving investor enthusiasm for technology companies. 2. India has surpassed Taiwan in market value due to the AI rally. Which of the statements is/are correct?",
+        "options": [
+          "1 only",
+          "2 only",
+          "Both 1 and 2",
+          "Neither 1 nor 2"
+        ],
+        "correct": 0,
+        "explain": "Statement 1 is correct as the AI boom is fueling a surge in chipmakers and driving investor enthusiasm for technology companies. However, statement 2 is incorrect as Taiwan has overtaken India in market value."
+      },
+      {
+        "type": "mcq",
+        "q": "What is the outcome of the AI rally on the market value of Taiwan and India?",
+        "options": [
+          "India has overtaken Taiwan in market value",
+          "Taiwan has overtaken India in market value",
+          "Both India and Taiwan have the same market value",
+          "There is no change in the market value of India and Taiwan"
+        ],
+        "correct": 1,
+        "explain": "The AI rally has propelled Taiwan past India in market value, highlighting the dominance of AI-driven semiconductor growth in Taiwan."
+      },
+      {
+        "type": "mcq",
+        "q": "Which sector is driving the growth of companies like SK Hynix, Samsung, and Micron?",
+        "options": [
+          "Artificial Intelligence",
+          "Renewable Energy",
+          "E-commerce",
+          "Financial Services"
+        ],
+        "correct": 0,
+        "explain": "The AI boom is fueling a surge in chipmakers like SK Hynix, Samsung, and Micron, pushing them into the $1 trillion market-cap club, indicating that the Artificial Intelligence sector is driving their growth."
+      },
+      {
+        "type": "mcq",
+        "q": "Which of the following statements is true regarding MedTherapy?",
+        "options": [
+          "MedTherapy was founded in India in 2018 and incorporated in the US in 2020",
+          "MedTherapy was founded in the US in 2018 and incorporated in India in 2020",
+          "MedTherapy was founded in the US in 2020 and incorporated in India in 2018",
+          "MedTherapy was founded in India in 2020 and incorporated in the US in 2018"
+        ],
+        "correct": 1,
+        "explain": "According to the article, MedTherapy was founded in the US in 2018 and incorporated in India in 2020. This suggests that the company has a global presence with operations in both countries."
+      },
+      {
+        "type": "mcq",
+        "q": "Consider the following statements regarding MedTherapy and its funding:",
+        "options": [
+          "MedTherapy is funded by the Indian government and was founded in 2018",
+          "MedTherapy is funded by Tata Sons and was founded in 2018",
+          "MedTherapy is funded by a foreign entity and was founded in 2020",
+          "MedTherapy is self-funded and was founded in 2020"
+        ],
+        "correct": 1,
+        "explain": "The article states that MedTherapy is funded by Tata Sons, an Indian business conglomerate, and was founded in 2018, which suggests private sector involvement in the biotech industry."
+      },
+      {
+        "type": "mcq",
+        "q": "What is the primary goal of MedTherapy's contract model for cell and gene therapy in India?",
+        "options": [
+          "To increase the cost of cell and gene therapies",
+          "To bring down the cost of cell and gene therapies",
+          "To promote foreign investment in the biotech sector",
+          "To develop new medical treatments for rare diseases"
+        ],
+        "correct": 1,
+        "explain": "According to the article, MedTherapy aims to bring down the cost of cell and gene therapies through its contract model, making these treatments more affordable and accessible to patients in India."
+      },
+      {
+        "type": "mcq",
+        "q": "Which of the following individuals played a role in supporting MedTherapy's efforts to bring breakthrough therapies to India?",
+        "options": [
+          "Raghuram Rajan",
+          "Nandan Nilekani",
+          "The late Ratan Tata",
+          "Kiran Mazumdar-Shaw"
+        ],
+        "correct": 2,
+        "explain": "The article mentions that the late Ratan Tata supported MedTherapy's efforts to bring breakthrough therapies, especially for cancer, to India, highlighting his role in promoting innovation and healthcare access."
+      },
+      {
+        "type": "mcq",
+        "q": "Which of the following personalities mourned the death of Randhir Singh?",
+        "options": [
+          "Abhinav Bindra and Sachin Tendulkar",
+          "PT Usha and Leander Paes",
+          "Abhinav Bindra and PT Usha",
+          "Viswanathan Anand and Mary Kom"
+        ],
+        "correct": 2,
+        "explain": "The article mentions that tributes poured in from prominent figures like Abhinav Bindra and PT Usha, mourning the death of Randhir Singh."
+      },
+      {
+        "type": "mcq",
+        "q": "Which of the following locations was chosen by a Bengaluru couple for their destination wedding, as per the given report?",
+        "options": [
+          "Ranthambore National Park",
+          "Jim Corbett National Park",
+          "Kaziranga National Park",
+          "Sundarbans National Park"
+        ],
+        "correct": 1,
+        "explain": "The couple chose Jim Corbett National Park for their destination wedding, as stated in the article. This information is factual and does not require any constitutional or institutional reference."
+      },
+      {
+        "type": "mcq",
+        "q": "Which of the following is true about Randhir Singh?",
+        "options": [
+          "He was India's first shooting gold-medallist in the Olympic Games",
+          "He was India's first shooting gold-medallist in the Asian Games",
+          "He was a renowned cricket administrator",
+          "He was a veteran football coach"
+        ],
+        "correct": 1,
+        "explain": "Randhir Singh is noted as India's first shooting gold-medallist in the Asian Games, as per the given article."
+      },
+      {
+        "type": "mcq",
+        "q": "Which of the following teams are participating in the one-off test mentioned in the article?",
+        "options": [
+          "Black Caps and Australia",
+          "Ireland and England",
+          "Black Caps and Ireland",
+          "India and South Africa"
+        ],
+        "correct": 2,
+        "explain": "The article mentions a one-off test between the Black Caps and Ireland at Stormont Cricket Ground, as per the given information."
+      },
+      {
+        "type": "mcq",
+        "q": "Consider the following statements: Statement 1: The one-off test is being held at Stormont Cricket Ground. Statement 2: The teams participating are the Black Caps and Ireland. Which of the following is true?",
         "options": [
           "Only Statement 1 is true",
           "Only Statement 2 is true",
@@ -1711,223 +1965,31 @@
           "Neither Statement 1 nor Statement 2 is true"
         ],
         "correct": 2,
-        "explain": "Both statements are true as the article discusses the book 'The West: The History of an Idea' written by Georgios Varouxakis, providing an analysis of the idea of the West."
+        "explain": "The article confirms that the one-off test is indeed being held at Stormont Cricket Ground and the participating teams are the Black Caps and Ireland, thus validating both statements."
       },
       {
         "type": "mcq",
-        "q": "What is the main subject of the book 'The West: The History of an Idea' as per the given article?",
+        "q": "Which of the following factors are contributing to the growth of real estate investment in India's hill destinations?",
         "options": [
-          "The history of Western philosophy",
-          "The idea of the West",
-          "The rise of Western civilization",
-          "The impact of Western culture on the world"
-        ],
-        "correct": 1,
-        "explain": "The main subject of the book is the idea of the West, which is explored historically by the author Georgios Varouxakis."
-      },
-      {
-        "type": "mcq",
-        "q": "Who is the author of the book 'The West: The History of an Idea' as mentioned in the article?",
-        "options": [
-          "Yves",
-          "Georgios Varouxakis",
-          "Satyajit Das",
-          "Varouxakis Georgios"
-        ],
-        "correct": 1,
-        "explain": "The author of the book 'The West: The History of an Idea' is Georgios Varouxakis, as stated in the article."
-      },
-      {
-        "type": "mcq",
-        "q": "What was the scoreline of the India women's team in their SAFF Women's Championship opener against Maldives?",
-        "options": [
-          "10-0",
-          "11-0",
-          "12-0",
-          "9-0"
-        ],
-        "correct": 1,
-        "explain": "The India women's team dominated Maldives with an 11-0 victory, as per the given article. This is a factual question that requires knowledge of the current events in sports."
-      },
-      {
-        "type": "mcq",
-        "q": "Where is the insect factory, backed by Bill Gates, releasing millions of mosquitoes every week?",
-        "options": [
-          "Bogota, Colombia",
-          "Medellin, Colombia",
-          "Lima, Peru",
-          "Quito, Ecuador"
-        ],
-        "correct": 1,
-        "explain": "The insect factory is located in Medellin, Colombia, as stated in the article. This fact is relevant to understanding global health initiatives and their locations."
-      },
-      {
-        "type": "mcq",
-        "q": "What type of report is being prepared by the investigators of the Air India crash ahead of its anniversary?",
-        "options": [
-          "Final Report",
-          "Interim Report",
-          "Preliminary Report",
-          "Investigative Report"
-        ],
-        "correct": 1,
-        "explain": "According to the article, the investigators are preparing an interim report, which will be more comprehensive than the preliminary report. This is as per the standard procedures of aviation accident investigations."
-      },
-      {
-        "type": "mcq",
-        "q": "Consider the following statements regarding the interim report being prepared on the Air India crash: Statement 1: The interim report will be less comprehensive than the preliminary report. Statement 2: The interim report will examine possible primary causes and other contributing factors. Which of the following is correct?",
-        "options": [
-          "Both Statement 1 and Statement 2 are correct",
-          "Only Statement 1 is correct",
-          "Only Statement 2 is correct",
-          "Neither Statement 1 nor Statement 2 is correct"
+          "Only second-home living and eco-tourism",
+          "Only working from remote areas and wellness-oriented lifestyle",
+          "Second-home living, eco-tourism, working from remote areas, and wellness-oriented lifestyle",
+          "None of the above"
         ],
         "correct": 2,
-        "explain": "The article states that the interim report will be more comprehensive than the preliminary report and will examine possible primary causes and other contributing factors, making Statement 2 correct and Statement 1 incorrect."
+        "explain": "The growth of real estate investment in India's hill destinations can be attributed to growing trends like second-home living, eco-tourism, working from remote areas, and wellness-oriented lifestyle, as mentioned in the article."
       },
       {
         "type": "mcq",
-        "q": "What is the current trend in the volume of Russian fuel oil arriving in Singapore waters?",
+        "q": "Which of the following platforms is associated with the new Korean fantasy romcom series 'Dive Into You'?",
         "options": [
-          "It has decreased to the lowest level in a year",
-          "It has remained constant over the past year",
-          "It has risen to the highest level in a year",
-          "It has fluctuated with no discernible pattern"
-        ],
-        "correct": 2,
-        "explain": "The volume of Russian fuel oil in Singapore waters has risen to the highest level in a year due to supply disruptions from the Middle East. This indicates a shift in global oil trade patterns."
-      },
-      {
-        "type": "mcq",
-        "q": "What type of report are Indian investigators preparing regarding the Air India crash?",
-        "options": [
-          "A final report",
-          "An interim report",
-          "A preliminary report",
-          "A supplementary report"
+          "Netflix",
+          "Rakuten Viki",
+          "Amazon Prime Video",
+          "Disney+ Hotstar"
         ],
         "correct": 1,
-        "explain": "Indian investigators are preparing an interim report for the deadly Air India crash, which will be more comprehensive than the initial one, as the final report is delayed due to the investigation's complexity."
-      },
-      {
-        "type": "mcq",
-        "q": "Consider the following statements regarding the Air India crash investigation report: Statement 1: The report being prepared is final. Statement 2: The report is being prepared ahead of the anniversary of the crash. Which of the statements is/are correct?",
-        "options": [
-          "Only Statement 1 is correct",
-          "Only Statement 2 is correct",
-          "Both Statement 1 and Statement 2 are correct",
-          "Neither Statement 1 nor Statement 2 is correct"
-        ],
-        "correct": 1,
-        "explain": "The report being prepared is an interim report, not a final one, and it is being prepared ahead of the anniversary of the crash, thus only Statement 2 is correct."
-      },
-      {
-        "type": "mcq",
-        "q": "Where were the secret negotiations between American and Iranian diplomats held?",
-        "options": [
-          "Tehran",
-          "Islamabad",
-          "Washington D.C.",
-          "New York"
-        ],
-        "correct": 1,
-        "explain": "The secret negotiations between American and Iranian diplomats were held in Islamabad, as per the given article. This indicates a significant geopolitical development, possibly under the purview of international diplomacy and global governance."
-      },
-      {
-        "type": "mcq",
-        "q": "Consider the following statements: Statement 1: The world recently witnessed the largest oil supply disruption in global history. Statement 2: The brief ceasefire halted this oil supply disruption. Which of the statements is/are correct?",
-        "options": [
-          "Only Statement 1 is correct",
-          "Only Statement 2 is correct",
-          "Both Statement 1 and Statement 2 are correct",
-          "Neither Statement 1 nor Statement 2 is correct"
-        ],
-        "correct": 2,
-        "explain": "Both statements are correct as the article mentions the largest oil supply disruption in global history and a brief ceasefire that halted this disruption, highlighting the volatile nature of global energy markets and conflict resolutions."
-      },
-      {
-        "type": "mcq",
-        "q": "Which of the following is true about the recent development in Jerusalem?",
-        "options": [
-          "Fifteen European countries condemned the opening of a purported Somaliland embassy in Jerusalem",
-          "Fifteen Arab and Islamic countries condemned the opening of a purported Somaliland embassy in Jerusalem",
-          "The United Nations opened a new embassy in Jerusalem",
-          "The African Union supported the opening of a Somaliland embassy in Jerusalem"
-        ],
-        "correct": 1,
-        "explain": "According to the joint statement by the foreign ministers, fifteen Arab and Islamic countries condemned the opening of a purported Somaliland embassy in Jerusalem, describing the move as illegal."
-      },
-      {
-        "type": "mcq",
-        "q": "Consider the following statements regarding the Somaliland embassy in Jerusalem:",
-        "options": [
-          "The embassy was opened with the support of the international community, and it is located in West Jerusalem",
-          "The embassy was condemned by fifteen Arab and Islamic countries, and it is located in occupied Jerusalem",
-          "The embassy was opened by the government of Somalia, and it is located in Tel Aviv",
-          "The embassy was supported by the European Union, and it is located in East Jerusalem"
-        ],
-        "correct": 1,
-        "explain": "The joint statement by the foreign ministers of fifteen Arab and Islamic countries condemned the opening of the purported Somaliland embassy in occupied Jerusalem, highlighting the controversy surrounding the move."
-      },
-      {
-        "type": "mcq",
-        "q": "What was the nature of the statement issued by the fifteen Arab and Islamic countries regarding the Somaliland embassy in Jerusalem?",
-        "options": [
-          "A statement of support for the embassy",
-          "A joint statement condemning the embassy",
-          "A statement of neutrality on the issue",
-          "A statement calling for the relocation of the embassy"
-        ],
-        "correct": 1,
-        "explain": "The fifteen Arab and Islamic countries issued a joint statement condemning the opening of the purported Somaliland embassy in Jerusalem, describing the move as illegal."
-      },
-      {
-        "type": "mcq",
-        "q": "Which of the following entities issued a joint statement condemning the Somaliland embassy in Jerusalem?",
-        "options": [
-          "The foreign ministers of fifteen European countries",
-          "The foreign ministers of fifteen Arab and Islamic countries",
-          "The United Nations Security Council",
-          "The African Union"
-        ],
-        "correct": 1,
-        "explain": "According to the report, the foreign ministers of fifteen Arab and Islamic countries issued a joint statement condemning the opening of the purported Somaliland embassy in Jerusalem."
-      },
-      {
-        "type": "mcq",
-        "q": "Which of the following locations was affected by the US forces' attack on missile sites?",
-        "options": [
-          "Northern Iran",
-          "Southern Iran",
-          "Eastern Iran",
-          "Western Iran"
-        ],
-        "correct": 1,
-        "explain": "According to the article, US forces attacked missile sites in southern Iran, which puts a fragile ceasefire at risk. This is a factual question based on the given information."
-      },
-      {
-        "type": "mcq",
-        "q": "Consider the following statements. Which one of the following is correct in the context of the US-Iran conflict?",
-        "options": [
-          "Top Iranian negotiators did not attend the talks in Doha",
-          "The US attacked missile sites in northern Iran",
-          "Top Iranian negotiators arrived in Doha for the latest round of talks",
-          "The conflict between the US and Iran has been resolved"
-        ],
-        "correct": 2,
-        "explain": "The article states that top Iranian negotiators arrived in Doha for the latest round of talks to end the months-long conflict, which verifies the correctness of this statement."
-      },
-      {
-        "type": "mcq",
-        "q": "What was the target of the US forces' attack, apart from missile sites in southern Iran?",
-        "options": [
-          "Aircraft in the air",
-          "Boats trying to lay mines",
-          "Tanks on the ground",
-          "Submarines underwater"
-        ],
-        "correct": 1,
-        "explain": "As per the article, US forces attacked not only missile sites in southern Iran but also boats trying to lay mines, which is mentioned as part of the US Central Command's statement."
+        "explain": "Rakuten Viki is the Asian content-focused streamer preparing the new Korean scripted series 'Dive Into You', as stated in the article. This is a factual piece of information with no direct relation to the UPSC syllabus, but it tests the candidate's ability to identify relevant details from a given text."
       }
     ]
   }

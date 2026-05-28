@@ -25,7 +25,7 @@ export default async function CurrentAffairsPage() {
       <div>
         <h1 className="section-title">Current Affairs</h1>
         <p className="mt-3 max-w-2xl text-sm text-gray-600">
-          Daily news analysis from multiple sources — The Hindu, PIB, Economy Times, The Guardian — National, International & Cities sections, updated daily for UPSC.
+          Daily news analysis from The Hindu — National, International & Cities sections, updated daily for UPSC and competitive exam preparation.
         </p>
       </div>
 

@@ -1,4 +1,5 @@
 export type Article = {
+  id?: string;
   title: string;
   description?: string | null;
   content?: string | null;
@@ -159,8 +160,7 @@ export async function fetchTopIndianNews(query: string = "India", pageSize = 20)
     });
 
     const res = await fetch(`https://newsapi.org/v2/everything?${searchParams}`, { 
-      cache: "no-store",
-      next: { revalidate: 0 }
+      cache: "no-store"
     });
 
     if (!res.ok) {
@@ -216,8 +216,7 @@ export async function fetchPIBNews(pageSize = 10): Promise<Article[]> {
     });
 
     const res = await fetch(`https://newsapi.org/v2/everything?${searchParams}`, {
-      cache: "no-store",
-      next: { revalidate: 0 }
+      cache: "no-store"
     });
 
     if (res.ok) {
@@ -267,8 +266,7 @@ export async function fetchEconomyNews(pageSize = 10): Promise<Article[]> {
     });
 
     const res = await fetch(`https://newsapi.org/v2/everything?${searchParams}`, {
-      cache: "no-store",
-      next: { revalidate: 0 }
+      cache: "no-store"
     });
 
     if (res.ok) {
@@ -317,8 +315,7 @@ export async function fetchGuardianNews(pageSize = 10): Promise<Article[]> {
     });
 
     const res = await fetch(`https://content.guardianapis.com/search?${searchParams}`, {
-      cache: "no-store",
-      next: { revalidate: 0 }
+      cache: "no-store"
     });
 
     if (res.ok) {
@@ -366,8 +363,7 @@ export async function fetchUPSCRelatedNews(pageSize = 10): Promise<Article[]> {
     });
 
     const res = await fetch(`https://newsapi.org/v2/everything?${searchParams}`, {
-      cache: "no-store",
-      next: { revalidate: 0 }
+      cache: "no-store"
     });
 
     if (res.ok) {
@@ -413,13 +409,12 @@ export async function fetchNewsDataNews(pageSize = 10): Promise<Article[]> {
     const searchParams = new URLSearchParams({
       q: "India OR UPSC OR 'current affairs' OR policy",
       country: "in",
-      pageSize: Math.min(pageSize, 50).toString(),
+      size: Math.min(pageSize, 50).toString(),
       apikey: apiKey,
     });
 
     const res = await fetch(`https://newsdata.io/api/1/news?${searchParams}`, {
-      cache: "no-store",
-      next: { revalidate: 0 }
+      cache: "no-store"
     });
 
     if (res.ok) {
@@ -454,17 +449,169 @@ export async function fetchNewsDataNews(pageSize = 10): Promise<Article[]> {
 }
 
 /**
- * Fetch news from multiple channels with The Hindu as primary source
+ * Fetch news from Times of India using NewsAPI
+ */
+export async function fetchTimesOfIndiaNews(pageSize = 10): Promise<Article[]> {
+  const articles: Article[] = [];
+
+  try {
+    const apiKey = process.env.NEWSAPI_KEY;
+    if (!apiKey) {
+      console.warn("NEWSAPI_KEY not set, skipping Times of India news fetch");
+      return articles;
+    }
+
+    const searchParams = new URLSearchParams({
+      q: "India politics business",
+      sources: "the-times-of-india",
+      sortBy: "publishedAt",
+      pageSize: Math.min(pageSize, 100).toString(),
+      apiKey: apiKey,
+    });
+
+    const res = await fetch(`https://newsapi.org/v2/everything?${searchParams}`, {
+      cache: "no-store"
+    });
+
+    if (res.ok) {
+      const data = await res.json() as any;
+      if (data.articles && Array.isArray(data.articles)) {
+        for (const item of data.articles.slice(0, pageSize)) {
+          articles.push({
+            title: item.title || "",
+            description: item.description || null,
+            content: item.content || item.description || null,
+            url: item.url || null,
+            source: "Times of India",
+            publishedAt: item.publishedAt || null,
+            author: item.author || null,
+            image: item.urlToImage || null,
+            channel: "Times of India",
+          });
+        }
+      }
+    }
+  } catch (error) {
+    console.error("Error fetching Times of India news:", error);
+  }
+
+  return articles;
+}
+
+/**
+ * Fetch news from Inshorts API for quick current affairs summaries
+ */
+export async function fetchInshortsNews(category = "national", pageSize = 10): Promise<Article[]> {
+  const articles: Article[] = [];
+
+  try {
+    // Inshorts API endpoint (free, no key required)
+    const res = await fetch(`https://inshortsapi.vercel.app/news?category=${category}`, {
+      cache: "no-store"
+    });
+
+    if (res.ok) {
+      const data = await res.json() as any;
+      if (data.data && Array.isArray(data.data)) {
+        for (const item of data.data.slice(0, pageSize)) {
+          articles.push({
+            title: item.title || "",
+            description: item.content || null,
+            content: item.content || null,
+            url: item.readMoreUrl || null,
+            source: "Inshorts",
+            publishedAt: item.date || null,
+            author: item.author || null,
+            image: item.imageUrl || null,
+            channel: "Inshorts",
+          });
+        }
+      }
+    }
+  } catch (error) {
+    console.error("Error fetching Inshorts news:", error);
+    // Inshorts API is optional, don't throw error
+  }
+
+  return articles;
+}
+
+/**
+ * Fetch current affairs specific news with policy focus
+ */
+export async function fetchCurrentAffairsNews(pageSize = 15): Promise<Article[]> {
+  const articles: Article[] = [];
+
+  try {
+    const apiKey = process.env.NEWSAPI_KEY;
+    if (!apiKey) {
+      console.warn("NEWSAPI_KEY not set, skipping current affairs news fetch");
+      return articles;
+    }
+
+    const searchParams = new URLSearchParams({
+      q: "'current affairs' OR policy OR ministry OR parliament OR 'cabinet' OR reform OR bill",
+      sortBy: "publishedAt",
+      language: "en",
+      pageSize: Math.min(pageSize, 100).toString(),
+      apiKey: apiKey,
+    });
+
+    const res = await fetch(`https://newsapi.org/v2/everything?${searchParams}`, {
+      cache: "no-store"
+    });
+
+    if (res.ok) {
+      const data = await res.json() as any;
+      if (data.articles && Array.isArray(data.articles)) {
+        for (const item of data.articles.slice(0, pageSize)) {
+          articles.push({
+            title: item.title || "",
+            description: item.description || null,
+            content: item.content || item.description || null,
+            url: item.url || null,
+            source: item.source?.name || "Current Affairs",
+            publishedAt: item.publishedAt || null,
+            author: item.author || null,
+            image: item.urlToImage || null,
+            channel: "Current Affairs",
+          });
+        }
+      }
+    }
+  } catch (error) {
+    console.error("Error fetching current affairs news:", error);
+  }
+
+  return articles;
+}
+
+/**
+ * Fetch news from multiple channels with comprehensive coverage
+ * Combines The Hindu, PIB, Economy, Guardian, UPSC, NewsData, TOI, Inshorts, and Current Affairs
  */
 export async function fetchMultiChannelNews(pageSize = 50): Promise<{ articles: Article[], byChannel: Record<string, Article[]> }> {
-  // Fetch primarily from The Hindu with supplementary sources
-  const [hinduNews, pibNews, economyNews, guardianNews, upscNews, newsdataNews] = await Promise.all([
-    fetchTheHinduDailyAffairs(15), // Increased from 10 to prioritize The Hindu
+  // Fetch from all available sources in parallel
+  const [
+    hinduNews,
+    pibNews,
+    economyNews,
+    guardianNews,
+    upscNews,
+    newsdataNews,
+    toiNews,
+    inshortsNews,
+    currentAffairsNews
+  ] = await Promise.all([
+    fetchTheHinduDailyAffairs(12),
     fetchPIBNews(8),
     fetchEconomyNews(8),
-    fetchGuardianNews(8),
-    fetchUPSCRelatedNews(6),
-    fetchNewsDataNews(8), // NewsData.io supplementary source
+    fetchGuardianNews(7),
+    fetchUPSCRelatedNews(7),
+    fetchNewsDataNews(8),
+    fetchTimesOfIndiaNews(7),
+    fetchInshortsNews("national", 8),
+    fetchCurrentAffairsNews(10),
   ]);
 
   const allArticles = [
@@ -474,7 +621,21 @@ export async function fetchMultiChannelNews(pageSize = 50): Promise<{ articles: 
     ...guardianNews,
     ...upscNews,
     ...newsdataNews,
+    ...toiNews,
+    ...inshortsNews,
+    ...currentAffairsNews,
   ]
+    // Remove duplicates based on title similarity
+    .reduce((unique: Article[], article) => {
+      const isDuplicate = unique.some(a => 
+        a.title?.toLowerCase().substring(0, 50) === article.title?.toLowerCase().substring(0, 50)
+      );
+      if (!isDuplicate) {
+        unique.push(article);
+      }
+      return unique;
+    }, [])
+    // Sort by published date (newest first)
     .sort((a, b) => {
       const dateA = new Date(a.publishedAt || 0).getTime();
       const dateB = new Date(b.publishedAt || 0).getTime();

@@ -7,9 +7,21 @@ export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
 
 /**
- * Endpoint to manually refresh Daily Current Affairs from multiple channels
- * Fetches latest news from The Hindu, PIB, Economy Times, The Guardian, UPSC/Admin, and NewsData
- * Can be called from the frontend to fetch latest news on demand
+ * Endpoint to refresh Daily Current Affairs from 9 comprehensive news sources
+ * Fetches latest news from:
+ *   1. The Hindu (NewsAPI)
+ *   2. Indian Express (NewsAPI)
+ *   3. Times of India (NewsAPI)
+ *   4. PIB - Press Information Bureau (NewsAPI)
+ *   5. Economy Times (NewsAPI)
+ *   6. UPSC/Admin News (NewsAPI)
+ *   7. Current Affairs (NewsAPI)
+ *   8. The Guardian (Guardian API)
+ *   9. Inshorts (Free API - no key required)
+ * 
+ * Plus NewsData.io as backup source
+ * Runs automatically on server startup and periodically (every 2 hours)
+ * Can also be called manually from the frontend
  */
 export async function GET(req: Request) {
   try {
@@ -76,11 +88,11 @@ export async function GET(req: Request) {
 
     return NextResponse.json({
       ok: true,
-      message: "Daily Current Affairs refreshed successfully from all channels",
+      message: "Daily Current Affairs refreshed successfully from all 9 news sources",
       date: today,
       timestamp: new Date().toISOString(),
       articlesCount: articlesWithIds.length,
-      sources: "The Hindu, PIB, Economy Times, The Guardian, UPSC/Admin, NewsData",
+      sources: "The Hindu, Indian Express, Times of India, PIB, Economy Times, UPSC/Admin, Current Affairs, The Guardian, Inshorts, NewsData.io",
       articles: articlesWithIds
     }, { status: 200 });
   } catch (error) {

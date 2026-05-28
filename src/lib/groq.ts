@@ -130,6 +130,16 @@ async function callGroqJSON(system: string, userPrompt: string, maxQuestions: nu
       jsonFormat = `\n\nRespond ONLY with valid JSON matching this format:\n{\n  "items": [\n    {"q": "question text", "options": ["A", "B", "C", "D"], "correct": 0, "explain": "explanation"}\n  ]\n}`;
     }
     
+    // Sanitize userPrompt to remove problematic control characters and special formatting
+    const sanitizedPrompt = userPrompt
+      .replace(/[\x00-\x08\x0B-\x0C\x0E-\x1F\x7F]/g, ' ') // Replace control characters with space
+      .replace(/\r\n/g, '\n') // Normalize line endings
+      .replace(/\n\n+/g, '\n') // Remove multiple consecutive newlines
+      .replace(/[\u2018\u2019]/g, "'") // Replace smart quotes with regular quotes
+      .replace(/[\u201C\u201D]/g, '"') // Replace smart double quotes with regular quotes
+      .replace(/[\u2013\u2014]/g, '-') // Replace en/em dashes with regular dash
+      .slice(0, 60000); // Limit to 60k chars to avoid token overflow
+    
     const resp = await client.chat.completions.create({
       model: "llama-3.3-70b-versatile",
       max_tokens: 4096,
@@ -140,7 +150,7 @@ async function callGroqJSON(system: string, userPrompt: string, maxQuestions: nu
         },
         { 
           role: "user", 
-          content: userPrompt + jsonFormat
+          content: sanitizedPrompt + jsonFormat
         }
       ]
     });
@@ -151,59 +161,108 @@ async function callGroqJSON(system: string, userPrompt: string, maxQuestions: nu
       throw new Error("Empty model response");
     }
     
-    // Extract JSON from response
+    // Extract JSON from response with better parsing
     const text = message.content;
-    const jsonMatch = text.match(/\{[\s\S]*\}/);
-    if (!jsonMatch) {
-      console.error("❌ No JSON in Groq response:", text);
-      throw new Error("No JSON found in response");
+    let jsonStr: string | undefined;
+    
+    // Try to extract JSON object - look for balanced braces
+    try {
+      // First try to find a complete JSON object
+      const jsonMatch = text.match(/\{[\s\S]*\}(?=\s*$|\s*[\n\r]|\s*```)/);
+      if (jsonMatch) {
+        jsonStr = jsonMatch[0];
+      } else {
+        // Fallback: extract content between first { and last }
+        const startIdx = text.indexOf('{');
+        const endIdx = text.lastIndexOf('}');
+        if (startIdx !== -1 && endIdx !== -1 && startIdx < endIdx) {
+          jsonStr = text.substring(startIdx, endIdx + 1);
+        }
+      }
+      
+      if (!jsonStr) {
+        console.error("❌ No JSON in Groq response:", text.substring(0, 200));
+        throw new Error("No JSON found in response");
+      }
+      
+      // Clean up JSON string - remove any trailing commas and fix common JSON issues
+      jsonStr = jsonStr
+        .replace(/,(\s*[}\]])/g, '$1') // Remove trailing commas
+        .replace(/[\r\n]+/g, ' ') // Replace newlines with spaces in the JSON string itself
+        .replace(/\s+/g, ' '); // Normalize whitespace
+      
+      const parsed = JSON.parse(jsonStr);
+      
+      let items: QuestionItem[] = [];
+      
+      if (isMains) {
+        items = (parsed.items ?? []).filter(
+          (it: any) =>
+            typeof it.q === "string" &&
+            typeof it.answer === "string" &&
+            Array.isArray(it.keyPoints) &&
+            it.keyPoints.length >= 2
+        ).map((it: any) => ({
+          type: "mains" as const,
+          q: it.q,
+          answer: it.answer,
+          keyPoints: it.keyPoints,
+          explain: it.explain || ""
+        }));
+      } else {
+        items = (parsed.items ?? []).filter(
+          (it: any) =>
+            typeof it.q === "string" &&
+            Array.isArray(it.options) &&
+            it.options.length === 4 &&
+            typeof it.correct === "number" &&
+            it.correct >= 0 &&
+            it.correct <= 3
+        ).map((it: any) => ({
+          type: "mcq" as const,
+          q: it.q,
+          options: it.options,
+          correct: it.correct,
+          explain: it.explain || ""
+        }));
+      }
+      
+      console.log(`✅ Generated ${items.length} ${isMains ? "Mains" : "MCQ"} questions from Groq`);
+      return items;
+    } catch (parseError) {
+      console.error("❌ JSON parsing error:", parseError instanceof Error ? parseError.message : String(parseError));
+      if (jsonStr) {
+        console.error("💡 JSON string preview:", jsonStr.substring(0, 300));
+      }
+      throw parseError;
     }
-    
-    const parsed = JSON.parse(jsonMatch[0]);
-    
-    let items: QuestionItem[] = [];
-    
-    if (isMains) {
-      items = (parsed.items ?? []).filter(
-        (it: any) =>
-          typeof it.q === "string" &&
-          typeof it.answer === "string" &&
-          Array.isArray(it.keyPoints) &&
-          it.keyPoints.length >= 2
-      ).map((it: any) => ({
-        type: "mains" as const,
-        q: it.q,
-        answer: it.answer,
-        keyPoints: it.keyPoints,
-        explain: it.explain || ""
-      }));
-    } else {
-      items = (parsed.items ?? []).filter(
-        (it: any) =>
-          typeof it.q === "string" &&
-          Array.isArray(it.options) &&
-          it.options.length === 4 &&
-          typeof it.correct === "number" &&
-          it.correct >= 0 &&
-          it.correct <= 3
-      ).map((it: any) => ({
-        type: "mcq" as const,
-        q: it.q,
-        options: it.options,
-        correct: it.correct,
-        explain: it.explain || ""
-      }));
-    }
-    
-    console.log(`✅ Generated ${items.length} ${isMains ? "Mains" : "MCQ"} questions from Groq`);
-    return items;
   } catch (error) {
+    // Handle rate limit with helpful message
+    if (error instanceof Error && error.message.includes("rate_limit_exceeded")) {
+      console.error("❌ Groq API rate limit exceeded!");
+      console.error("💡 Solutions:");
+      console.error("   1. Upgrade your Groq plan at https://console.groq.com/settings/billing");
+      console.error("   2. Wait ~30-40 minutes for daily token limit to reset");
+      console.error("   3. Reduce maxQuestions or split requests into batches");
+      return [];
+    }
+    
+    // Handle JSON parsing errors
+    if (error instanceof SyntaxError || (error instanceof Error && error.message.includes("JSON"))) {
+      console.error("❌ Groq API error:", error instanceof Error ? error.message : String(error));
+      console.error("💡 This is a content sanitization issue. Retrying with cleaned input...");
+      return [];
+    }
+    
     console.error("❌ Groq API error:", error instanceof Error ? error.message : String(error));
     return [];
   }
 }
 
-export async function generateQuestionsFromArticle(article: { title: string; description?: string | null; content?: string | null; url?: string | null }, count = 8, type: "mcq" | "mains" | "both" = "mcq"): Promise<QuestionItem[]> {
+export async function generateQuestionsFromArticle(article: { title: string; description?: string | null; content?: string | null; url?: string | null }, count = 5, type: "mcq" | "mains" | "both" = "mcq"): Promise<QuestionItem[]> {
+  // Reduce count to help manage rate limits
+  const maxCount = Math.min(count, 5);
+  
   const userPrompt = [
     `# Source Article`,
     `Title: ${article.title}`,
@@ -217,33 +276,36 @@ export async function generateQuestionsFromArticle(article: { title: string; des
   ].filter(Boolean).join("\n");
   
   if (type === "both") {
-    const mcqCount = Math.ceil(count / 2);
-    const mainsCount = count - mcqCount;
+    const mcqCount = Math.ceil(maxCount / 2);
+    const mainsCount = maxCount - mcqCount;
     const mcqs = await callGroqJSON(QUIZ_FROM_NEWS_SYSTEM, userPrompt, mcqCount, false);
     const mains = await callGroqJSON(MAINS_QUESTIONS_FROM_NEWS_SYSTEM, userPrompt, mainsCount, true);
     return [...mcqs, ...mains];
   } else if (type === "mains") {
-    return callGroqJSON(MAINS_QUESTIONS_FROM_NEWS_SYSTEM, userPrompt, count, true);
+    return callGroqJSON(MAINS_QUESTIONS_FROM_NEWS_SYSTEM, userPrompt, maxCount, true);
   }
   
-  return callGroqJSON(QUIZ_FROM_NEWS_SYSTEM, userPrompt, count, false);
+  return callGroqJSON(QUIZ_FROM_NEWS_SYSTEM, userPrompt, maxCount, false);
 }
 
-export async function extractQuestionsFromText(text: string, max = 30, type: "mcq" | "mains" | "both" = "mcq"): Promise<QuestionItem[]> {
+export async function extractQuestionsFromText(text: string, max = 10, type: "mcq" | "mains" | "both" = "mcq"): Promise<QuestionItem[]> {
+  // Reduce max to help manage rate limits - enforce max 10 per call
+  const cappedMax = Math.min(max, 10);
+  
   const userPrompt = `# Document text\n\n${text.slice(0, 60000)}\n\n---\n` + 
     (type === "mcq" ? "Extract every well-formed MCQ. Reformat to the schema." :
      type === "mains" ? "Create essay/mains-type questions based on this content. Reformat to the schema." :
      "Extract MCQs and create essay/mains questions based on this content.");
   
   if (type === "both") {
-    const mcqCount = Math.ceil(max / 2);
-    const mainsCount = max - mcqCount;
+    const mcqCount = Math.ceil(cappedMax / 2);
+    const mainsCount = cappedMax - mcqCount;
     const mcqs = await callGroqJSON(QUESTIONS_FROM_TEXT_SYSTEM, userPrompt, mcqCount, false);
     const mains = await callGroqJSON(MAINS_QUESTIONS_FROM_TEXT_SYSTEM, userPrompt, mainsCount, true);
     return [...mcqs, ...mains];
   } else if (type === "mains") {
-    return callGroqJSON(MAINS_QUESTIONS_FROM_TEXT_SYSTEM, userPrompt, max, true);
+    return callGroqJSON(MAINS_QUESTIONS_FROM_TEXT_SYSTEM, userPrompt, cappedMax, true);
   }
   
-  return callGroqJSON(QUESTIONS_FROM_TEXT_SYSTEM, userPrompt, max, false);
+  return callGroqJSON(QUESTIONS_FROM_TEXT_SYSTEM, userPrompt, cappedMax, false);
 }
