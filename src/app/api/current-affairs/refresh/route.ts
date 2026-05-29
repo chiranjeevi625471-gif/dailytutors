@@ -50,7 +50,7 @@ export async function GET(req: Request) {
     // Assign unique IDs to articles if they don't have one
     const articlesWithIds = articles.map((article, index) => ({
       ...article,
-      id: article.id || `article-${today}-${index}-${newId()}`
+      id: article.id ?? `article-${today}-${index}-${newId()}`
     }));
 
     const currentPost: Post = {
