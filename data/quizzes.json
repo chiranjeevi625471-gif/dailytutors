@@ -1992,5 +1992,259 @@
         "explain": "Rakuten Viki is the Asian content-focused streamer preparing the new Korean scripted series 'Dive Into You', as stated in the article. This is a factual piece of information with no direct relation to the UPSC syllabus, but it tests the candidate's ability to identify relevant details from a given text."
       }
     ]
+  },
+  {
+    "id": "mpqez8fs6abm4",
+    "slug": "daily-prelims-2026-05-29",
+    "title": "Daily Prelims Quiz — 29 May 2026",
+    "type": "Prelims",
+    "questions": 20,
+    "duration": "24 min",
+    "date": "2026-05-29",
+    "scheduledAt": null,
+    "active": true,
+    "source": "news",
+    "items": [
+      {
+        "type": "mcq",
+        "q": "What is the purpose of the Union finance ministry's nationwide programme of field visits to manufacturing units and industrial clusters?",
+        "options": [
+          "To conduct audits of manufacturing units",
+          "To provide financial assistance to industrial clusters",
+          "To gather ground-level industry feedback for Budget planning",
+          "To promote foreign investment in Indian industries"
+        ],
+        "correct": 2,
+        "explain": "The finance ministry's initiative aims to institutionalise a feedback loop between field realities and policy design, ensuring that policy interventions are responsive and targeted, as stated by the Department of Economic Affairs (DEA)."
+      },
+      {
+        "type": "mcq",
+        "q": "Consider the following statements regarding the Union finance ministry's nationwide programme of field visits: Statement 1: The programme is being conducted to gather ground-level industry feedback. Statement 2: The programme is a one-time initiative. Which of the statements is/are correct?",
+        "options": [
+          "Only Statement 1 is correct",
+          "Only Statement 2 is correct",
+          "Both Statement 1 and Statement 2 are correct",
+          "Neither Statement 1 nor Statement 2 is correct"
+        ],
+        "correct": 0,
+        "explain": "The article states that the programme is being conducted to gather ground-level industry feedback, but it does not mention that the programme is a one-time initiative, instead implying that it will institutionalise a feedback loop."
+      },
+      {
+        "type": "mcq",
+        "q": "Which of the following statements is true regarding China's green energy exports?",
+        "options": [
+          "China exports 68 GW of Solar PV only to its neighboring countries",
+          "China exports 68 GW of Solar PV amid the Hormuz Energy Crisis",
+          "China exports 68 GW of Solar PV only to European countries",
+          "China does not export Solar PV to any country"
+        ],
+        "correct": 1,
+        "explain": "According to the given data, China exports 68 GW of Solar PV amid the Hormuz Energy Crisis, as reported by the Ember energy think tank."
+      },
+      {
+        "type": "mcq",
+        "q": "Consider the following statements regarding China's solar panel exports: Statement 1: 50 countries saw an all-time record in the solar panel imports from China in March. Statement 2: China exports solar panels only to 10 countries. Which of the following is true?",
+        "options": [
+          "Statement 1 is correct and Statement 2 is incorrect",
+          "Statement 1 is incorrect and Statement 2 is correct",
+          "Both Statement 1 and Statement 2 are correct",
+          "Both Statement 1 and Statement 2 are incorrect"
+        ],
+        "correct": 0,
+        "explain": "Statement 1 is correct as 50 countries saw an all-time record in the solar panel imports from China in March, whereas Statement 2 is incorrect as there is no such information provided in the given data."
+      },
+      {
+        "type": "mcq",
+        "q": "What is the current state of the job market in India for H1-B returnees, according to experts?",
+        "options": [
+          "Highly absorptive with many opportunities in traditional IT roles",
+          "Cautious with limited opportunities in traditional IT roles",
+          "Unaffected by the return of H1-B professionals from the US",
+          "Completely non-absorptive with no opportunities in any sector"
+        ],
+        "correct": 1,
+        "explain": "The current hiring environment in India may not be suitable for large-scale absorption of H1B talent, particularly in traditional IT roles, due to an AI-led job market."
+      },
+      {
+        "type": "mcq",
+        "q": "Consider the following statements regarding H1-B returnees and the job market in India: Statement 1: The US tightening its visa procedures leads to an increase in Indian tech professionals returning to India. Statement 2: The current job market in India is highly absorptive of H1-B talent. Which of the statements is/are correct?",
+        "options": [
+          "Only statement 1 is correct",
+          "Only statement 2 is correct",
+          "Both statements 1 and 2 are correct",
+          "Neither statement 1 nor statement 2 is correct"
+        ],
+        "correct": 0,
+        "explain": "The US tightening its visa procedures does lead to an increase in Indian tech professionals returning to India, but the current job market in India is not highly absorptive of H1-B talent, particularly in traditional IT roles."
+      },
+      {
+        "type": "mcq",
+        "q": "Which of the following is a significant milestone achieved by the Indian semiconductor startup C2i Semiconductors?",
+        "options": [
+          "Development of a smart memory chip for consumer electronics",
+          "Taping out a smart power stage chip designed for AI infrastructure",
+          "Creation of a semiconductor manufacturing facility in India",
+          "Design of a graphics processing unit for gaming applications"
+        ],
+        "correct": 1,
+        "explain": "C2i Semiconductors has taped out a smart power stage chip designed for AI infrastructure, marking a milestone for India's ambition in advanced chip design, as per the article."
+      },
+      {
+        "type": "mcq",
+        "q": "Consider the following statements regarding C2i Semiconductors' achievement: Statement 1: The smart power stage chip was designed for AI infrastructure. Statement 2: The chip was developed entirely outside India. Which of the following is correct?",
+        "options": [
+          "Both Statement 1 and Statement 2 are correct",
+          "Only Statement 1 is correct",
+          "Only Statement 2 is correct",
+          "Neither Statement 1 nor Statement 2 is correct"
+        ],
+        "correct": 1,
+        "explain": "Statement 1 is correct as the chip was designed for AI infrastructure, while Statement 2 is incorrect as the chip was developed entirely in India, according to the article."
+      },
+      {
+        "type": "mcq",
+        "q": "What does the development of the smart power stage chip by C2i Semiconductors signify?",
+        "options": [
+          "India's decline in the semiconductor industry",
+          "India's growing capability in advanced chip design",
+          "India's lack of investment in artificial intelligence",
+          "India's dependence on foreign technology for chip manufacturing"
+        ],
+        "correct": 1,
+        "explain": "The development highlights India's growing capability in advanced chip design, marking a significant milestone for the country's ambition in this field, as mentioned in the article."
+      },
+      {
+        "type": "mcq",
+        "q": "Which of the following institutions is most likely to be involved in promoting the development of semiconductor startups like C2i Semiconductors in India?",
+        "options": [
+          "Department of Telecommunications",
+          "Ministry of Electronics and Information Technology",
+          "Indian Space Research Organisation",
+          "Ministry of Heavy Industries"
+        ],
+        "correct": 1,
+        "explain": "The Ministry of Electronics and Information Technology is likely to be involved in promoting the development of semiconductor startups like C2i Semiconductors, given its responsibility for promoting electronics and IT in India."
+      },
+      {
+        "type": "mcq",
+        "q": "Which of the following is a consequence of China's trade surplus, as per the given article?",
+        "options": [
+          "It is leading to a decline in global trade",
+          "It is causing global unease and affecting international relations",
+          "It is resulting in a trade deficit for India",
+          "It is having no impact on the global economy"
+        ],
+        "correct": 1,
+        "explain": "China's trade surplus is triggering global unease, as stated in the article, which suggests that it is having a significant impact on international relations and the global economy."
+      },
+      {
+        "type": "mcq",
+        "q": "Consider the following statements regarding China's trade surplus: Statement 1: China has a $1.2 Trillion Trade Surplus. Statement 2: India could emerge as a winner due to China's trade surplus. Which of the following is correct?",
+        "options": [
+          "Both Statement 1 and Statement 2 are correct",
+          "Both Statement 1 and Statement 2 are incorrect",
+          "Statement 1 is correct, but Statement 2 is incorrect",
+          "Statement 1 is incorrect, but Statement 2 is correct"
+        ],
+        "correct": 0,
+        "explain": "As per the article, China indeed has a $1.2 Trillion Trade Surplus, and it is also mentioned that India could emerge a winner, making both statements correct."
+      },
+      {
+        "type": "mcq",
+        "q": "Which of the following is the purpose of handing over 142.79 acres of land to the Border Security Force by the West Bengal government?",
+        "options": [
+          "For setting up new hospitals along the India-Bangladesh border",
+          "For setting up outposts and barbed-wire fencing infrastructure along the India-Bangladesh border",
+          "For promoting tourism in the border areas",
+          "For constructing educational institutions"
+        ],
+        "correct": 1,
+        "explain": "The West Bengal government handed over 142.79 acres of land to the BSF for setting up outposts and barbed-wire fencing infrastructure along the India-Bangladesh border, as part of a larger plan to secure the state's extensive border, in line with the responsibilities of the BSF under the Border Security Force Act, 1968."
+      },
+      {
+        "type": "mcq",
+        "q": "Consider the following statements regarding the land handed over to the BSF by the West Bengal government: Statement 1: The land will be used for setting up new outposts. Statement 2: The land will be used for barbed-wire fencing along the India-Bangladesh border. Which of the statements is/are correct?",
+        "options": [
+          "Only Statement 1 is correct",
+          "Only Statement 2 is correct",
+          "Both Statement 1 and Statement 2 are correct",
+          "Neither Statement 1 nor Statement 2 is correct"
+        ],
+        "correct": 2,
+        "explain": "The land handed over to the BSF will be used for both setting up new outposts and barbed-wire fencing along the India-Bangladesh border, as per the report, highlighting the BSF's role in border management and security."
+      },
+      {
+        "type": "mcq",
+        "q": "Which of the following agencies will be utilizing the 142.79 acres of land handed over by the West Bengal government?",
+        "options": [
+          "Indian Army",
+          "Central Reserve Police Force",
+          "Border Security Force",
+          "Indo-Tibetan Border Police"
+        ],
+        "correct": 2,
+        "explain": "The 142.79 acres of land was handed over to the Border Security Force, which is responsible for guarding India's international borders, including the India-Bangladesh border, as per its mandate under the Border Security Force Act, 1968."
+      },
+      {
+        "type": "mcq",
+        "q": "What is the international border that the 142.79 acres of land handed over to the BSF is intended to secure?",
+        "options": [
+          "India-Pakistan border",
+          "India-Nepal border",
+          "India-Bhutan border",
+          "India-Bangladesh border"
+        ],
+        "correct": 3,
+        "explain": "The 142.79 acres of land handed over to the BSF is intended to secure the India-Bangladesh border, as the BSF is responsible for guarding this border and the land will be used for setting up outposts and barbed-wire fencing infrastructure."
+      },
+      {
+        "type": "mcq",
+        "q": "Which of the following entities has not yet taken control of the Cambay basin block CB-OS-02?",
+        "options": [
+          "Vedanta",
+          "Oil and Natural Gas Corporation (ONGC)",
+          "Government of Gujarat",
+          "Ministry of Petroleum and Natural Gas"
+        ],
+        "correct": 1,
+        "explain": "As per the article, ONGC has not yet taken control of the Cambay basin block CB-OS-02 due to Vedanta's challenge. Article 131 of the Indian Constitution empowers the Delhi High Court to order the status quo in such cases."
+      },
+      {
+        "type": "mcq",
+        "q": "Consider the following statements regarding the Cambay basin block CB-OS-02: Statement 1: Vedanta has been allowed to retain control of the block. Statement 2: The Delhi High Court has ordered the parties to maintain the status quo. Which of the following is correct?",
+        "options": [
+          "Both Statement 1 and Statement 2 are correct",
+          "Only Statement 1 is correct",
+          "Only Statement 2 is correct",
+          "Neither Statement 1 nor Statement 2 is correct"
+        ],
+        "correct": 2,
+        "explain": "The Delhi High Court has ordered the parties to maintain the status quo, but there is no information in the article that Vedanta has been allowed to retain control of the block permanently."
+      },
+      {
+        "type": "mcq",
+        "q": "Which of the following courts has ordered the parties to maintain the status quo regarding the Cambay basin block CB-OS-02?",
+        "options": [
+          "Supreme Court of India",
+          "Bombay High Court",
+          "Delhi High Court",
+          "Gujarat High Court"
+        ],
+        "correct": 2,
+        "explain": "The Delhi High Court has the jurisdiction to hear cases related to the government's decisions and has ordered the parties to maintain the status quo in this case, as per Article 226 of the Indian Constitution."
+      },
+      {
+        "type": "mcq",
+        "q": "What is the current status of the contract extension for the Cambay basin block CB-OS-02, as per the government's decision?",
+        "options": [
+          "The contract has been extended for another 5 years",
+          "The contract has been terminated",
+          "The contract extension has been rejected",
+          "The contract is still under consideration"
+        ],
+        "correct": 2,
+        "explain": "The government's decision to reject the contract extension is being challenged by Vedanta, resulting in the current status quo."
+      }
+    ]
   }
 ]
