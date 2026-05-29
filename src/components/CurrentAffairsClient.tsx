@@ -34,8 +34,7 @@ export default function CurrentAffairsClient({ refreshInterval }: CurrentAffairs
         try {
           // Fetch latest news from refresh endpoint
           const response = await fetch('/api/current-affairs/refresh', { 
-            cache: 'no-store',
-            revalidate: 0 
+            cache: 'no-store'
           });
           if (response.ok) {
             // Reload the page to display updated content
