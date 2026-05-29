@@ -23,7 +23,7 @@ export default function QuizPreviewModal({ open, onClose, initialItems, defaultT
   if (!open) return null;
 
   function setItem(i: number, patch: Partial<QuestionItem>) {
-    setItems((arr) => arr.map((it, idx) => (idx === i ? { ...it, ...patch } : it)));
+    setItems((arr) => arr.map((it, idx) => (idx === i ? { ...it, ...patch } as QuestionItem : it)));
   }
   
   function setOption(i: number, j: number, value: string) {
