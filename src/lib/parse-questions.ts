@@ -39,6 +39,7 @@ export function regexParseQuestions(text: string): QuestionItem[] {
     const explainMatch = blk.match(/Explanation\s*[:\-]\s*([\s\S]+)$/i);
     if (!ansMatch) continue;
     out.push({
+      type: "mcq",
       q: qLine,
       options: optMatches.map((m) => m[1].trim()),
       correct: ansMatch[1].toLowerCase().charCodeAt(0) - "a".charCodeAt(0),

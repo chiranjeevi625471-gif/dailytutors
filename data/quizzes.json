@@ -1994,7 +1994,7 @@
     ]
   },
   {
-    "id": "mpqez8fs6abm4",
+    "id": "mpqgpspq3ubus",
     "slug": "daily-prelims-2026-05-29",
     "title": "Daily Prelims Quiz — 29 May 2026",
     "type": "Prelims",
@@ -2007,19 +2007,19 @@
     "items": [
       {
         "type": "mcq",
-        "q": "What is the purpose of the Union finance ministry's nationwide programme of field visits to manufacturing units and industrial clusters?",
+        "q": "Who are the newly appointed co-heads of Private Capital Asia at EQT?",
         "options": [
-          "To conduct audits of manufacturing units",
-          "To provide financial assistance to industrial clusters",
-          "To gather ground-level industry feedback for Budget planning",
-          "To promote foreign investment in Indian industries"
+          "Jean Eric Salata and Nicholas Macksey",
+          "Hari Gopalakrishnan and Jean Eric Salata",
+          "Nicholas Macksey and Hari Gopalakrishnan",
+          "Hari Gopalakrishnan and Eric Thompson"
         ],
         "correct": 2,
-        "explain": "The finance ministry's initiative aims to institutionalise a feedback loop between field realities and policy design, ensuring that policy interventions are responsive and targeted, as stated by the Department of Economic Affairs (DEA)."
+        "explain": "Nicholas Macksey and Hari Gopalakrishnan have been appointed as co-heads of Private Capital Asia at EQT, succeeding Jean Eric Salata. Both have been with the firm for nearly two decades."
       },
       {
         "type": "mcq",
-        "q": "Consider the following statements regarding the Union finance ministry's nationwide programme of field visits: Statement 1: The programme is being conducted to gather ground-level industry feedback. Statement 2: The programme is a one-time initiative. Which of the statements is/are correct?",
+        "q": "Consider the following statements regarding the appointment of Nicholas Macksey and Hari Gopalakrishnan at EQT: Statement 1: They have been appointed as co-heads of Private Capital Asia. Statement 2: They have been with the firm for over five years. Which of the statements is/are correct?",
         "options": [
           "Only Statement 1 is correct",
           "Only Statement 2 is correct",
@@ -2027,71 +2027,23 @@
           "Neither Statement 1 nor Statement 2 is correct"
         ],
         "correct": 0,
-        "explain": "The article states that the programme is being conducted to gather ground-level industry feedback, but it does not mention that the programme is a one-time initiative, instead implying that it will institutionalise a feedback loop."
+        "explain": "The statement that Nicholas Macksey and Hari Gopalakrishnan have been appointed as co-heads of Private Capital Asia is correct, but the statement that they have been with the firm for over five years is not entirely accurate as they have been with the firm for nearly two decades."
       },
       {
         "type": "mcq",
-        "q": "Which of the following statements is true regarding China's green energy exports?",
+        "q": "Which of the following types of tankers were reported to have exited the Strait of Hormuz with their transponders off?",
         "options": [
-          "China exports 68 GW of Solar PV only to its neighboring countries",
-          "China exports 68 GW of Solar PV amid the Hormuz Energy Crisis",
-          "China exports 68 GW of Solar PV only to European countries",
-          "China does not export Solar PV to any country"
+          "Only oil tankers",
+          "Only liquefied natural gas (LNG) tankers",
+          "Both oil and liquefied natural gas (LNG) tankers",
+          "Neither oil nor liquefied natural gas (LNG) tankers"
         ],
-        "correct": 1,
-        "explain": "According to the given data, China exports 68 GW of Solar PV amid the Hormuz Energy Crisis, as reported by the Ember energy think tank."
+        "correct": 2,
+        "explain": "According to the report, two supertankers (oil tankers) and one liquefied natural gas (LNG) tanker exited the Strait of Hormuz with their transponders switched off. This is a matter of international maritime safety and security, with the United Nations Convention on the Law of the Sea (UNCLOS) encouraging vessels to use transponders for safe navigation."
       },
       {
         "type": "mcq",
-        "q": "Consider the following statements regarding China's solar panel exports: Statement 1: 50 countries saw an all-time record in the solar panel imports from China in March. Statement 2: China exports solar panels only to 10 countries. Which of the following is true?",
-        "options": [
-          "Statement 1 is correct and Statement 2 is incorrect",
-          "Statement 1 is incorrect and Statement 2 is correct",
-          "Both Statement 1 and Statement 2 are correct",
-          "Both Statement 1 and Statement 2 are incorrect"
-        ],
-        "correct": 0,
-        "explain": "Statement 1 is correct as 50 countries saw an all-time record in the solar panel imports from China in March, whereas Statement 2 is incorrect as there is no such information provided in the given data."
-      },
-      {
-        "type": "mcq",
-        "q": "What is the current state of the job market in India for H1-B returnees, according to experts?",
-        "options": [
-          "Highly absorptive with many opportunities in traditional IT roles",
-          "Cautious with limited opportunities in traditional IT roles",
-          "Unaffected by the return of H1-B professionals from the US",
-          "Completely non-absorptive with no opportunities in any sector"
-        ],
-        "correct": 1,
-        "explain": "The current hiring environment in India may not be suitable for large-scale absorption of H1B talent, particularly in traditional IT roles, due to an AI-led job market."
-      },
-      {
-        "type": "mcq",
-        "q": "Consider the following statements regarding H1-B returnees and the job market in India: Statement 1: The US tightening its visa procedures leads to an increase in Indian tech professionals returning to India. Statement 2: The current job market in India is highly absorptive of H1-B talent. Which of the statements is/are correct?",
-        "options": [
-          "Only statement 1 is correct",
-          "Only statement 2 is correct",
-          "Both statements 1 and 2 are correct",
-          "Neither statement 1 nor statement 2 is correct"
-        ],
-        "correct": 0,
-        "explain": "The US tightening its visa procedures does lead to an increase in Indian tech professionals returning to India, but the current job market in India is not highly absorptive of H1-B talent, particularly in traditional IT roles."
-      },
-      {
-        "type": "mcq",
-        "q": "Which of the following is a significant milestone achieved by the Indian semiconductor startup C2i Semiconductors?",
-        "options": [
-          "Development of a smart memory chip for consumer electronics",
-          "Taping out a smart power stage chip designed for AI infrastructure",
-          "Creation of a semiconductor manufacturing facility in India",
-          "Design of a graphics processing unit for gaming applications"
-        ],
-        "correct": 1,
-        "explain": "C2i Semiconductors has taped out a smart power stage chip designed for AI infrastructure, marking a milestone for India's ambition in advanced chip design, as per the article."
-      },
-      {
-        "type": "mcq",
-        "q": "Consider the following statements regarding C2i Semiconductors' achievement: Statement 1: The smart power stage chip was designed for AI infrastructure. Statement 2: The chip was developed entirely outside India. Which of the following is correct?",
+        "q": "Consider the following statements regarding the tankers that exited the Strait of Hormuz: Statement 1: They included two supertankers. Statement 2: They were heading for the United States and Europe. Which of the following is correct?",
         "options": [
           "Both Statement 1 and Statement 2 are correct",
           "Only Statement 1 is correct",
@@ -2099,151 +2051,199 @@
           "Neither Statement 1 nor Statement 2 is correct"
         ],
         "correct": 1,
-        "explain": "Statement 1 is correct as the chip was designed for AI infrastructure, while Statement 2 is incorrect as the chip was developed entirely in India, according to the article."
+        "explain": "The report confirms that two supertankers exited the Strait of Hormuz, but it mentions they were heading towards India and China, not the United States and Europe, thus only Statement 1 is correct."
       },
       {
         "type": "mcq",
-        "q": "What does the development of the smart power stage chip by C2i Semiconductors signify?",
+        "q": "What was notable about the manner in which the oil and LNG tankers exited the Strait of Hormuz?",
         "options": [
-          "India's decline in the semiconductor industry",
-          "India's growing capability in advanced chip design",
-          "India's lack of investment in artificial intelligence",
-          "India's dependence on foreign technology for chip manufacturing"
-        ],
-        "correct": 1,
-        "explain": "The development highlights India's growing capability in advanced chip design, marking a significant milestone for the country's ambition in this field, as mentioned in the article."
-      },
-      {
-        "type": "mcq",
-        "q": "Which of the following institutions is most likely to be involved in promoting the development of semiconductor startups like C2i Semiconductors in India?",
-        "options": [
-          "Department of Telecommunications",
-          "Ministry of Electronics and Information Technology",
-          "Indian Space Research Organisation",
-          "Ministry of Heavy Industries"
-        ],
-        "correct": 1,
-        "explain": "The Ministry of Electronics and Information Technology is likely to be involved in promoting the development of semiconductor startups like C2i Semiconductors, given its responsibility for promoting electronics and IT in India."
-      },
-      {
-        "type": "mcq",
-        "q": "Which of the following is a consequence of China's trade surplus, as per the given article?",
-        "options": [
-          "It is leading to a decline in global trade",
-          "It is causing global unease and affecting international relations",
-          "It is resulting in a trade deficit for India",
-          "It is having no impact on the global economy"
-        ],
-        "correct": 1,
-        "explain": "China's trade surplus is triggering global unease, as stated in the article, which suggests that it is having a significant impact on international relations and the global economy."
-      },
-      {
-        "type": "mcq",
-        "q": "Consider the following statements regarding China's trade surplus: Statement 1: China has a $1.2 Trillion Trade Surplus. Statement 2: India could emerge as a winner due to China's trade surplus. Which of the following is correct?",
-        "options": [
-          "Both Statement 1 and Statement 2 are correct",
-          "Both Statement 1 and Statement 2 are incorrect",
-          "Statement 1 is correct, but Statement 2 is incorrect",
-          "Statement 1 is incorrect, but Statement 2 is correct"
-        ],
-        "correct": 0,
-        "explain": "As per the article, China indeed has a $1.2 Trillion Trade Surplus, and it is also mentioned that India could emerge a winner, making both statements correct."
-      },
-      {
-        "type": "mcq",
-        "q": "Which of the following is the purpose of handing over 142.79 acres of land to the Border Security Force by the West Bengal government?",
-        "options": [
-          "For setting up new hospitals along the India-Bangladesh border",
-          "For setting up outposts and barbed-wire fencing infrastructure along the India-Bangladesh border",
-          "For promoting tourism in the border areas",
-          "For constructing educational institutions"
-        ],
-        "correct": 1,
-        "explain": "The West Bengal government handed over 142.79 acres of land to the BSF for setting up outposts and barbed-wire fencing infrastructure along the India-Bangladesh border, as part of a larger plan to secure the state's extensive border, in line with the responsibilities of the BSF under the Border Security Force Act, 1968."
-      },
-      {
-        "type": "mcq",
-        "q": "Consider the following statements regarding the land handed over to the BSF by the West Bengal government: Statement 1: The land will be used for setting up new outposts. Statement 2: The land will be used for barbed-wire fencing along the India-Bangladesh border. Which of the statements is/are correct?",
-        "options": [
-          "Only Statement 1 is correct",
-          "Only Statement 2 is correct",
-          "Both Statement 1 and Statement 2 are correct",
-          "Neither Statement 1 nor Statement 2 is correct"
-        ],
-        "correct": 2,
-        "explain": "The land handed over to the BSF will be used for both setting up new outposts and barbed-wire fencing along the India-Bangladesh border, as per the report, highlighting the BSF's role in border management and security."
-      },
-      {
-        "type": "mcq",
-        "q": "Which of the following agencies will be utilizing the 142.79 acres of land handed over by the West Bengal government?",
-        "options": [
-          "Indian Army",
-          "Central Reserve Police Force",
-          "Border Security Force",
-          "Indo-Tibetan Border Police"
-        ],
-        "correct": 2,
-        "explain": "The 142.79 acres of land was handed over to the Border Security Force, which is responsible for guarding India's international borders, including the India-Bangladesh border, as per its mandate under the Border Security Force Act, 1968."
-      },
-      {
-        "type": "mcq",
-        "q": "What is the international border that the 142.79 acres of land handed over to the BSF is intended to secure?",
-        "options": [
-          "India-Pakistan border",
-          "India-Nepal border",
-          "India-Bhutan border",
-          "India-Bangladesh border"
+          "They had enhanced security escorts",
+          "They were traveling at higher than usual speeds",
+          "They had their transponders switched on for safety",
+          "They had their transponders switched off"
         ],
         "correct": 3,
-        "explain": "The 142.79 acres of land handed over to the BSF is intended to secure the India-Bangladesh border, as the BSF is responsible for guarding this border and the land will be used for setting up outposts and barbed-wire fencing infrastructure."
+        "explain": "The tankers exited the Strait of Hormuz with their transponders switched off, which is notable as it deviates from standard safety practices that advise the use of transponders for safe navigation and traffic monitoring."
       },
       {
         "type": "mcq",
-        "q": "Which of the following entities has not yet taken control of the Cambay basin block CB-OS-02?",
+        "q": "Which of the following countries were reported as the destinations of the tankers that exited the Strait of Hormuz?",
         "options": [
-          "Vedanta",
-          "Oil and Natural Gas Corporation (ONGC)",
-          "Government of Gujarat",
-          "Ministry of Petroleum and Natural Gas"
+          "India and the United States",
+          "China and Europe",
+          "India and China",
+          "Japan and Australia"
+        ],
+        "correct": 2,
+        "explain": "According to the report, the tankers that exited the Strait of Hormuz were heading towards India and China, indicating these countries as the intended destinations for the cargo."
+      },
+      {
+        "type": "mcq",
+        "q": "What is the envisioned role of Digi Yatra beyond the aviation space?",
+        "options": [
+          "A national digital payment platform",
+          "A reusable identity layer for secure verification and seamless access across multiple sectors",
+          "A platform for digital skilling and education",
+          "A digital healthcare management system"
         ],
         "correct": 1,
-        "explain": "As per the article, ONGC has not yet taken control of the Cambay basin block CB-OS-02 due to Vedanta's challenge. Article 131 of the Indian Constitution empowers the Delhi High Court to order the status quo in such cases."
+        "explain": "Digi Yatra is eyeing a bigger role beyond the aviation space as a reusable identity layer for secure verification and seamless access across multiple sectors over time, underlining its potential as a decentralised digital identity platform."
       },
       {
         "type": "mcq",
-        "q": "Consider the following statements regarding the Cambay basin block CB-OS-02: Statement 1: Vedanta has been allowed to retain control of the block. Statement 2: The Delhi High Court has ordered the parties to maintain the status quo. Which of the following is correct?",
+        "q": "Consider the following statements about Digi Yatra: Statement 1: Digi Yatra is a centralised digital identity platform. Statement 2: Digi Yatra is currently used in the aviation space. Which of the statements is/are correct?",
         "options": [
-          "Both Statement 1 and Statement 2 are correct",
           "Only Statement 1 is correct",
           "Only Statement 2 is correct",
+          "Both Statement 1 and Statement 2 are correct",
           "Neither Statement 1 nor Statement 2 is correct"
         ],
-        "correct": 2,
-        "explain": "The Delhi High Court has ordered the parties to maintain the status quo, but there is no information in the article that Vedanta has been allowed to retain control of the block permanently."
+        "correct": 1,
+        "explain": "Digi Yatra is described as a decentralised digital identity platform, which contradicts Statement 1, but it is indeed being utilised in the aviation space, making Statement 2 correct."
       },
       {
         "type": "mcq",
-        "q": "Which of the following courts has ordered the parties to maintain the status quo regarding the Cambay basin block CB-OS-02?",
+        "q": "What is the primary concern of Muddy Waters Capital regarding its India fund plans?",
         "options": [
-          "Supreme Court of India",
-          "Bombay High Court",
-          "Delhi High Court",
-          "Gujarat High Court"
+          "A surge in consumer spending due to AI adoption",
+          "A decline in economic sectors reliant on high-income earners",
+          "A potential increase in labor market disruption due to AI",
+          "A rise in demand for short-selling services"
         ],
         "correct": 2,
-        "explain": "The Delhi High Court has the jurisdiction to hear cases related to the government's decisions and has ordered the parties to maintain the status quo in this case, as per Article 226 of the Indian Constitution."
+        "explain": "Muddy Waters Capital is reevaluating its India fund plans due to concerns about AI-driven job displacement, which could disrupt labor markets and impact economic sectors. This is in line with the potential consequences of AI on labor markets as mentioned in the article."
       },
       {
         "type": "mcq",
-        "q": "What is the current status of the contract extension for the Cambay basin block CB-OS-02, as per the government's decision?",
+        "q": "Consider the following statements regarding Muddy Waters Capital's India plans:",
         "options": [
-          "The contract has been extended for another 5 years",
-          "The contract has been terminated",
-          "The contract extension has been rejected",
-          "The contract is still under consideration"
+          "Muddy Waters Capital is expanding its India operations due to AI adoption",
+          "Muddy Waters Capital is reevaluating its India plans due to concerns about AI-driven job displacement",
+          "Muddy Waters Capital is not impacted by AI-driven job displacement",
+          "Muddy Waters Capital has already exited the Indian market"
+        ],
+        "correct": 1,
+        "explain": "The article states that Carson Block's firm is rethinking its India expansion due to concerns about AI-driven job displacement, making statement 2 the correct choice."
+      },
+      {
+        "type": "mcq",
+        "q": "What is the unique edge that gives India an advantage in the global AI race, according to the Google Cloud India MD?",
+        "options": [
+          "India's large population and geographical location",
+          "India's linguistic diversity, scale, and rapidly evolving digital ecosystem",
+          "India's high GDP and technological advancements",
+          "India's historical significance in the field of Artificial Intelligence"
+        ],
+        "correct": 1,
+        "explain": "India's linguistic diversity, scale, and rapidly evolving digital ecosystem provide a unique edge in the global AI race, particularly in multilingual and multimodal AI solutions."
+      },
+      {
+        "type": "mcq",
+        "q": "Consider the following statements: Statement 1: India is well-positioned to become a global leader in AI innovation. Statement 2: India's strength lies in monolingual AI solutions. Which of the statements is/are correct?",
+        "options": [
+          "Only Statement 1 is correct",
+          "Only Statement 2 is correct",
+          "Both Statement 1 and Statement 2 are correct",
+          "Neither Statement 1 nor Statement 2 is correct"
+        ],
+        "correct": 0,
+        "explain": "According to the Google Cloud India MD, India is well-positioned to become a global leader in AI innovation, particularly in multilingual and multimodal AI solutions, making Statement 1 correct and Statement 2 incorrect."
+      },
+      {
+        "type": "mcq",
+        "q": "Which of the following areas is India expected to excel in, as per the statement of the Google Cloud India MD?",
+        "options": [
+          "Unimodal AI solutions",
+          "Monolingual AI solutions",
+          "Multilingual and multimodal AI solutions",
+          "Unidimensional AI innovations"
         ],
         "correct": 2,
-        "explain": "The government's decision to reject the contract extension is being challenged by Vedanta, resulting in the current status quo."
+        "explain": "India is expected to become a global leader in Artificial Intelligence innovation, particularly in multilingual and multimodal AI solutions with worldwide relevance."
+      },
+      {
+        "type": "mcq",
+        "q": "Who expressed the view that India is well-positioned to become a global leader in Artificial Intelligence innovation?",
+        "options": [
+          "The Minister of Electronics and Information Technology",
+          "The Google Cloud India MD",
+          "The Chairman of the Indian Artificial Intelligence Council",
+          "The CEO of a leading Indian IT company"
+        ],
+        "correct": 1,
+        "explain": "According to the given text, it was the Google Cloud India MD who expressed the view that India is well-positioned to become a global leader in Artificial Intelligence innovation."
+      },
+      {
+        "type": "mcq",
+        "q": "What was the percentage decline in Gift Nifty 50 futures after the US-Iran exchange strikes?",
+        "options": [
+          "0.5%",
+          "1.2%",
+          "1.7%",
+          "2.5%"
+        ],
+        "correct": 2,
+        "explain": "The Gift Nifty 50 futures fell sharply by 1.7% after the US-Iran exchange strikes, indicating a likely gap-down start in Indian markets."
+      },
+      {
+        "type": "mcq",
+        "q": "Consider the following statements regarding the impact of US-Iran exchange strikes on Indian markets. Which of the following is true?",
+        "options": [
+          "Indian markets are likely to open higher on Friday",
+          "Gift Nifty 50 futures rose sharply after the US-Iran exchange strikes",
+          "Indian markets are likely to open significantly lower on Friday",
+          "The US-Iran exchange strikes had no impact on Indian markets"
+        ],
+        "correct": 2,
+        "explain": "The decline in Gift Nifty 50 futures suggests that Indian markets are likely to open significantly lower on Friday due to heightened geopolitical tensions."
+      },
+      {
+        "type": "mcq",
+        "q": "What was the likely cause of the decline in Gift Nifty 50 index futures?",
+        "options": [
+          "Fresh diplomatic talks between the US and Iran",
+          "A decline in crude oil prices",
+          "Fresh US strikes on an Iranian military site",
+          "A rise in global trade volumes"
+        ],
+        "correct": 2,
+        "explain": "The decline in Gift Nifty 50 index futures was caused by fresh US strikes on an Iranian military site, which heightened geopolitical tensions."
+      },
+      {
+        "type": "mcq",
+        "q": "Which of the following is a consequence of the US-Iran exchange strikes as per the given text?",
+        "options": [
+          "Increased foreign investment in Indian markets",
+          "Heightened geopolitical tensions despite ongoing diplomatic talks",
+          "A significant rise in the value of the Indian rupee",
+          "A reduction in global trade volumes"
+        ],
+        "correct": 1,
+        "explain": "The US-Iran exchange strikes led to heightened geopolitical tensions despite ongoing diplomatic talks, causing a decline in Gift Nifty 50 futures."
+      },
+      {
+        "type": "mcq",
+        "q": "Which of the following is the reason for the dismantling of the 70-foot statue of Lionel Messi in Kolkata?",
+        "options": [
+          "Environmental concerns",
+          "Safety concerns due to instability in high winds",
+          "Lack of public interest",
+          "Insufficient funding"
+        ],
+        "correct": 1,
+        "explain": "The 70-foot statue of Lionel Messi in Kolkata is being dismantled due to safety concerns after being found unstable in high winds, as reported in the article."
+      },
+      {
+        "type": "mcq",
+        "q": "Which of the following is a key difference between Gold ETFs and Gold Mutual Funds?",
+        "options": [
+          "Gold ETFs and Gold Mutual Funds have the same investment structure",
+          "Gold ETFs invest directly in physical gold, while Gold Mutual Funds buy units of other mutual funds",
+          "Gold ETFs invest directly in physical gold and related instruments, while Gold Mutual Funds buy units of Gold ETFs",
+          "Gold ETFs and Gold Mutual Funds are regulated by different authorities"
+        ],
+        "correct": 2,
+        "explain": "Gold ETFs invest directly in physical gold and related instruments, while Gold Mutual Funds buy units of Gold ETFs, as per the given article. This highlights a key difference in their investment structure."
       }
     ]
   }
