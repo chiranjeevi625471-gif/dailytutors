@@ -123,69 +123,36 @@ function extractImportantTopics(text?: string | null): string[] {
   return topics;
 }
 
-// Component to render content with highlighted terms and interactive tooltips
+// Renders text with UPSC terms highlighted; hover shows a definition tooltip
 function HighlightedContent({ text }: { text: string }) {
-  const [openTooltip, setOpenTooltip] = useState<string | null>(null);
-  
-  // Sort terms by length (longest first) to match longer terms first
   const sortedTerms = Object.keys(DEFINED_TERMS).sort((a, b) => b.length - a.length);
-  
-  // Create regex pattern for all terms
-  const pattern = sortedTerms
-    .map(term => `\\b${term}s?\\b`)
-    .join('|');
-  
+  const pattern = sortedTerms.map(term => `\\b${term}s?\\b`).join('|');
   const regex = new RegExp(`(${pattern})`, 'gi');
-  
-  // Split text and create elements
   const parts = text.split(regex);
-  
+
   return (
-    <div>
+    <span>
       {parts.map((part, idx) => {
         if (!part) return null;
-        
-        const lowerPart = part.toLowerCase();
-        const matchedTerm = sortedTerms.find(term => 
-          lowerPart === term || lowerPart === term + 's'
-        );
-        
-        if (matchedTerm && DEFINED_TERMS[matchedTerm]) {
-          const tooltipId = `tooltip-${idx}`;
-          const isOpen = openTooltip === tooltipId;
-          
+        const lower = part.toLowerCase();
+        const matched = sortedTerms.find(t => lower === t || lower === t + 's');
+        if (matched && DEFINED_TERMS[matched]) {
           return (
-            <span
-              key={idx}
-              className="relative inline-block"
-              onMouseEnter={() => setOpenTooltip(tooltipId)}
-              onMouseLeave={() => setOpenTooltip(null)}
-            >
-              <button
-                className="relative inline bg-yellow-300 text-gray-900 font-semibold px-2 py-1 rounded hover:bg-yellow-400 transition cursor-help border-b-2 border-yellow-500"
-                onClick={() => setOpenTooltip(isOpen ? null : tooltipId)}
-                title="Click or hover for explanation"
-              >
+            <span key={idx} className="group relative inline-block">
+              <span className="bg-amber-100 text-amber-900 font-semibold px-1 py-0.5 rounded border-b-2 border-amber-400 cursor-help hover:bg-amber-200 transition-colors">
                 {part}
-              </button>
-              
-              {/* Tooltip */}
-              {isOpen && (
-                <div className="absolute bottom-full left-0 mb-2 z-50 w-72 bg-gray-900 text-white text-sm p-4 rounded-lg shadow-2xl border border-yellow-400">
-                  <div className="font-bold text-yellow-300 mb-2 text-base">{part}</div>
-                  <div className="text-gray-100 leading-relaxed text-xs">
-                    {DEFINED_TERMS[matchedTerm]}
-                  </div>
-                  <div className="absolute top-full left-4 w-0 h-0 border-l-4 border-r-4 border-t-4 border-l-transparent border-r-transparent border-t-gray-900"></div>
-                </div>
-              )}
+              </span>
+              <span className="pointer-events-none absolute bottom-full left-0 mb-2 hidden group-hover:block w-64 rounded-lg bg-gray-900 p-3 text-xs text-white shadow-xl z-[60] leading-relaxed">
+                <span className="mb-1 block font-bold text-amber-300">{part}</span>
+                {DEFINED_TERMS[matched]}
+                <span className="absolute top-full left-3 border-4 border-transparent border-t-gray-900" />
+              </span>
             </span>
           );
         }
-        
         return <span key={idx}>{part}</span>;
       })}
-    </div>
+    </span>
   );
 }
 
@@ -462,163 +429,187 @@ export default function CurrentAffairsViewer({
         </div>
       </div>
 
-      {/* Article Highlights Modal */}
+      {/* Article Detail — Right-side Drawer */}
       {selectedArticle && (
-        <div className="fixed inset-0 bg-black bg-opacity-60 z-50 flex items-center justify-center p-4 backdrop-blur-sm">
-          <div className="bg-white rounded-2xl shadow-2xl max-w-3xl w-full max-h-[90vh] overflow-hidden flex flex-col">
-            {/* Modal Header - Gradient */}
-            <div className="bg-gradient-to-r from-indigo-600 via-blue-600 to-cyan-600 p-6 text-white">
-              <div className="flex justify-between items-start">
-                <div className="flex-1">
-                  <div className="flex items-center gap-2 mb-3">
-                    <span className="text-2xl">{config?.icon}</span>
-                    <span className="text-xs px-3 py-1 rounded-full bg-white bg-opacity-20 border border-white border-opacity-40 font-semibold backdrop-blur-sm">
+        <div className="fixed inset-0 z-50 flex justify-end">
+          {/* Dimmed backdrop — click to close */}
+          <div
+            className="absolute inset-0 bg-black/50 backdrop-blur-sm"
+            onClick={handleCloseDetail}
+          />
+
+          {/* Drawer panel */}
+          <div className="relative flex h-full w-full max-w-2xl flex-col bg-white shadow-2xl">
+
+            {/* ── Header ── */}
+            <div className="flex-shrink-0 bg-slate-900 px-6 py-5">
+              <div className="flex items-start justify-between gap-4">
+                <div className="min-w-0 flex-1">
+                  {/* Source + date row */}
+                  <div className="mb-2 flex flex-wrap items-center gap-2">
+                    <span className="text-base">{config?.icon}</span>
+                    <span className="rounded-full bg-white/10 px-2.5 py-0.5 text-xs font-bold uppercase tracking-wider text-slate-300">
                       {selectedArticle.channel || selectedChannel}
                     </span>
+                    {selectedArticle.publishedAt && (
+                      <span className="text-xs text-slate-400">
+                        {new Date(selectedArticle.publishedAt).toLocaleString('en-IN', {
+                          day: 'numeric', month: 'short',
+                          hour: '2-digit', minute: '2-digit', hour12: true,
+                        })}
+                      </span>
+                    )}
                   </div>
-                  <h2 className="text-2xl font-bold leading-tight">{selectedArticle.title}</h2>
+                  {/* Title */}
+                  <h2 className="text-lg font-bold leading-snug text-white">
+                    {selectedArticle.title}
+                  </h2>
+                  {selectedArticle.author && (
+                    <p className="mt-1.5 text-xs text-slate-400">By {selectedArticle.author}</p>
+                  )}
                 </div>
                 <button
                   onClick={handleCloseDetail}
-                  className="flex-shrink-0 w-10 h-10 flex items-center justify-center rounded-full hover:bg-white hover:bg-opacity-20 transition ml-4 font-bold text-lg"
+                  className="mt-0.5 flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-full bg-white/10 text-sm font-bold text-white transition hover:bg-white/20"
+                  aria-label="Close"
                 >
                   ✕
                 </button>
               </div>
             </div>
 
-            {/* Modal Body - Scrollable */}
-            <div className="flex-1 overflow-y-auto p-6 space-y-5 bg-gradient-to-b from-white to-gray-50">
-              {/* Source Information */}
-              <div className="bg-white border-l-4 border-indigo-500 rounded-lg p-4 shadow-sm">
-                <h3 className="font-bold text-gray-900 mb-3 flex items-center gap-2">
-                  <span>📰</span> Source Details
-                </h3>
-                <div className="grid grid-cols-2 gap-3 text-sm">
-                  <div>
-                    <span className="font-semibold text-gray-700 block">Publication</span>
-                    <span className="text-gray-600">{selectedArticle.source || selectedArticle.channel || "Unknown"}</span>
-                  </div>
-                  {selectedArticle.author && (
-                    <div>
-                      <span className="font-semibold text-gray-700 block">Author</span>
-                      <span className="text-gray-600">{selectedArticle.author}</span>
-                    </div>
-                  )}
-                  {selectedArticle.publishedAt && (
-                    <div className="col-span-2">
-                      <span className="font-semibold text-gray-700 block">Published</span>
-                      <span className="text-gray-600">{new Date(selectedArticle.publishedAt).toLocaleString('en-IN')}</span>
-                    </div>
-                  )}
-                </div>
-              </div>
+            {/* ── Scrollable body ── */}
+            <div className="min-h-0 flex-1 overflow-y-auto">
 
-              {/* Summary */}
-              {selectedArticle.description && (
-                <div className="bg-gradient-to-br from-blue-50 to-indigo-50 border-2 border-blue-300 rounded-xl p-5 shadow-sm">
-                  <h3 className="font-bold text-blue-900 mb-3 flex items-center gap-2 text-lg">
-                    <span>📌</span> Key Summary
-                  </h3>
-                  <p className="text-blue-900 leading-relaxed font-medium text-sm">
-                    {selectedArticle.description}
-                  </p>
-                </div>
-              )}
-
-              {/* Key Highlights */}
-              {extractKeyPoints(selectedArticle.content || selectedArticle.description).length > 0 && (
-                <div className="bg-gradient-to-br from-emerald-50 to-teal-50 border-2 border-emerald-400 rounded-xl p-5 shadow-sm">
-                  <h3 className="font-bold text-emerald-900 mb-4 flex items-center gap-2 text-lg">
-                    <span>✨</span> Key Highlights
-                  </h3>
-                  <ul className="space-y-3">
-                    {extractKeyPoints(selectedArticle.content || selectedArticle.description).map((point, idx) => (
-                      <li key={idx} className="flex gap-3 text-emerald-900 items-start">
-                        <span className="flex-shrink-0 text-emerald-600 font-bold text-lg leading-none mt-1">●</span>
-                        <span className="text-sm leading-relaxed">{point}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              )}
-
-              {/* Important Concepts */}
-              {extractImportantTopics(selectedArticle.content || selectedArticle.description).length > 0 && (
-                <div className="bg-gradient-to-br from-amber-50 to-yellow-50 border-2 border-amber-400 rounded-xl p-5 shadow-sm">
-                  <h3 className="font-bold text-amber-900 mb-4 flex items-center gap-2 text-lg">
-                    <span>🎯</span> Important Concepts to Know
-                  </h3>
-                  <div className="flex flex-wrap gap-3">
-                    {extractImportantTopics(selectedArticle.content || selectedArticle.description).map((topic, idx) => (
-                      <span
-                        key={idx}
-                        className="inline-block bg-gradient-to-r from-amber-200 to-yellow-200 text-amber-900 px-4 py-2 rounded-full text-sm font-semibold hover:shadow-md transition cursor-help border-2 border-amber-400 hover:from-amber-300 hover:to-yellow-300"
-                        title={DEFINED_TERMS[topic.toLowerCase()] || "Important concept in this article"}
-                      >
-                        {topic}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-              )}
-
-              {/* Full Content */}
-              {selectedArticle.content && (
-                <div className="bg-gradient-to-br from-purple-50 to-pink-50 border-2 border-purple-300 rounded-xl p-5 shadow-sm">
-                  <h3 className="font-bold text-purple-900 mb-4 flex items-center gap-2 text-lg">
-                    <span>📋</span> Detailed Information
-                  </h3>
-                  <ul className="space-y-3">
-                    {formatAsBulletPoints(selectedArticle.content).map((point, idx) => (
-                      <li key={idx} className="flex gap-3 text-purple-900 items-start">
-                        <span className="flex-shrink-0 text-purple-600 font-bold text-lg leading-none mt-1">→</span>
-                        <span className="text-sm leading-relaxed">
-                          <HighlightedContent text={point} />
-                        </span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              )}
-
-              {/* Article Image */}
+              {/* Hero image */}
               {selectedArticle.image && (
-                <div className="rounded-xl overflow-hidden shadow-lg border-2 border-gray-200">
-                  <h3 className="font-bold text-gray-900 p-4 bg-gray-100 flex items-center gap-2">
-                    <span>🖼️</span> Featured Image
-                  </h3>
+                <div className="h-48 overflow-hidden bg-gray-100">
                   <img
                     src={selectedArticle.image}
                     alt={selectedArticle.title}
-                    className="w-full max-h-64 object-cover"
-                    onError={(e) => {
-                      e.currentTarget.style.display = 'none';
+                    className="h-full w-full object-cover"
+                    onError={e => {
+                      (e.currentTarget.parentElement as HTMLElement).style.display = 'none';
                     }}
                   />
                 </div>
               )}
+
+              <div className="space-y-6 p-6">
+
+                {/* ── UPSC Key Topics ── */}
+                {extractImportantTopics(selectedArticle.content || selectedArticle.description).length > 0 && (
+                  <div>
+                    <p className="mb-2.5 flex items-center gap-2 text-[10px] font-bold uppercase tracking-widest text-gray-400">
+                      <span className="inline-block h-2.5 w-2.5 rounded-full bg-amber-500" />
+                      UPSC Key Topics — hover for definition
+                    </p>
+                    <div className="flex flex-wrap gap-2">
+                      {extractImportantTopics(selectedArticle.content || selectedArticle.description).map((topic, idx) => (
+                        <span
+                          key={idx}
+                          className="group relative inline-flex cursor-help items-center gap-1.5 rounded-full border border-amber-300 bg-amber-50 px-3 py-1.5 text-xs font-semibold text-amber-800 transition hover:border-amber-400 hover:bg-amber-100"
+                        >
+                          <span className="h-1.5 w-1.5 flex-shrink-0 rounded-full bg-amber-500" />
+                          {topic}
+                          {/* CSS-only tooltip */}
+                          <span className="pointer-events-none absolute bottom-full left-0 z-[60] mb-2 hidden w-64 rounded-lg bg-gray-900 p-3 text-xs leading-relaxed text-white shadow-xl group-hover:block">
+                            <span className="mb-1 block font-bold text-amber-300">{topic}</span>
+                            {DEFINED_TERMS[topic.toLowerCase()] || 'Important UPSC concept'}
+                            <span className="absolute top-full left-3 border-4 border-transparent border-t-gray-900" />
+                          </span>
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                )}
+
+                {/* ── Summary ── */}
+                {selectedArticle.description && (
+                  <div className="rounded-xl border-l-4 border-blue-500 bg-blue-50 p-4">
+                    <p className="mb-1.5 flex items-center gap-2 text-[10px] font-bold uppercase tracking-widest text-blue-500">
+                      <span className="inline-block h-2.5 w-2.5 rounded-full bg-blue-500" />
+                      Summary
+                    </p>
+                    <p className="text-sm leading-relaxed text-gray-800">{selectedArticle.description}</p>
+                  </div>
+                )}
+
+                {/* ── Key Points ── */}
+                {extractKeyPoints(selectedArticle.content || selectedArticle.description).length > 0 && (
+                  <div>
+                    <p className="mb-3 flex items-center gap-2 text-[10px] font-bold uppercase tracking-widest text-gray-400">
+                      <span className="inline-block h-2.5 w-2.5 rounded-full bg-emerald-500" />
+                      Key Points
+                    </p>
+                    <ul className="space-y-2">
+                      {extractKeyPoints(selectedArticle.content || selectedArticle.description).map((point, idx) => (
+                        <li key={idx} className="flex items-start gap-3 rounded-lg border border-emerald-100 bg-emerald-50 p-3">
+                          <span className="mt-0.5 flex h-5 w-5 flex-shrink-0 items-center justify-center rounded-full bg-emerald-500 text-[10px] font-bold text-white">
+                            {idx + 1}
+                          </span>
+                          <span className="text-sm leading-relaxed text-gray-700">{point}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
+
+                {/* ── Detailed Coverage ── */}
+                {selectedArticle.content && formatAsBulletPoints(selectedArticle.content).length > 0 && (
+                  <div>
+                    <p className="mb-3 flex items-center gap-2 text-[10px] font-bold uppercase tracking-widest text-gray-400">
+                      <span className="inline-block h-2.5 w-2.5 rounded-full bg-purple-500" />
+                      Detailed Coverage
+                      <span className="normal-case tracking-normal text-gray-400 font-normal">— highlighted words are UPSC terms</span>
+                    </p>
+                    <div className="divide-y divide-gray-100 rounded-xl border border-gray-200 bg-white overflow-hidden">
+                      {formatAsBulletPoints(selectedArticle.content).map((point, idx) => (
+                        <div key={idx} className="flex items-start gap-3 px-4 py-3 transition hover:bg-gray-50">
+                          <span className="mt-1 flex-shrink-0 text-purple-400 font-bold text-sm">›</span>
+                          <span className="text-sm leading-relaxed text-gray-700">
+                            <HighlightedContent text={point} />
+                          </span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                )}
+
+                {/* ── Source meta ── */}
+                <div className="flex flex-wrap gap-x-5 gap-y-1 border-t border-gray-100 pt-4 text-xs text-gray-400">
+                  <span>📰 {selectedArticle.source || selectedArticle.channel || 'Unknown'}</span>
+                  {selectedArticle.author && <span>✍️ {selectedArticle.author}</span>}
+                  {selectedArticle.publishedAt && (
+                    <span>🕐 {new Date(selectedArticle.publishedAt).toLocaleString('en-IN')}</span>
+                  )}
+                </div>
+
+              </div>
             </div>
 
-            {/* Modal Footer */}
-            <div className="bg-gray-100 border-t border-gray-300 p-4 flex gap-3 flex-shrink-0">
-              {selectedArticle.url && (
+            {/* ── Footer actions ── */}
+            <div className="flex flex-shrink-0 gap-3 border-t border-gray-200 bg-white px-6 py-4">
+              {selectedArticle.url ? (
                 <a
                   href={selectedArticle.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex-1 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white font-semibold py-3 px-4 rounded-lg transition text-center shadow-md hover:shadow-lg"
+                  className="flex flex-1 items-center justify-center gap-2 rounded-lg bg-slate-900 px-4 py-2.5 text-sm font-semibold text-white transition hover:bg-slate-800"
                 >
-                  Read Full Article on Source →
+                  Read Full Article <span>→</span>
                 </a>
+              ) : (
+                <div className="flex-1" />
               )}
               <button
                 onClick={handleCloseDetail}
-                className="flex-1 bg-gray-300 hover:bg-gray-400 text-gray-900 font-semibold py-3 px-4 rounded-lg transition"
+                className="rounded-lg border border-gray-300 px-5 py-2.5 text-sm font-semibold text-gray-700 transition hover:bg-gray-50"
               >
                 Close
               </button>
             </div>
+
           </div>
         </div>
       )}
