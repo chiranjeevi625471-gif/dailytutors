@@ -393,34 +393,35 @@ export default function CurrentAffairsViewer({
                   </div>
 
                   {/* Articles Scrollable List */}
-                  <div className="flex-1 overflow-y-auto p-4 space-y-2 min-h-0">
-                    {selectedChannelArticles.map((article, idx) => {
-                      return (
-                        <button
-                          key={idx}
-                          onClick={() => handleArticleClick(article)}
-                          className="w-full p-3 bg-gradient-to-r from-gray-50 to-white border-2 border-gray-200 rounded-lg transition hover:from-blue-50 hover:to-indigo-50 hover:border-blue-400 hover:shadow-md text-left group"
-                        >
-                          <h3 className="font-semibold text-gray-800 line-clamp-2 group-hover:text-blue-600 text-sm leading-snug">
-                            {article.title}
-                          </h3>
-                          <div className="flex items-center gap-2 mt-2">
-                            <span className={`text-xs px-2 py-1 rounded-full font-medium ${colors.badge}`}>
-                              {config?.displayName}
+                  <div className="flex-1 overflow-y-auto min-h-0 px-4 pt-4 pb-6 space-y-2">
+                    {selectedChannelArticles.map((article, idx) => (
+                      <button
+                        key={idx}
+                        type="button"
+                        onClick={() => handleArticleClick(article)}
+                        className="w-full p-3 bg-gradient-to-r from-gray-50 to-white border-2 border-gray-200 rounded-lg transition hover:from-blue-50 hover:to-indigo-50 hover:border-blue-400 hover:shadow-md text-left group"
+                      >
+                        <h3 className="font-semibold text-gray-800 line-clamp-2 group-hover:text-blue-600 text-sm leading-snug">
+                          {article.title}
+                        </h3>
+                        <div className="flex items-center gap-2 mt-2 flex-wrap">
+                          <span className={`text-xs px-2 py-1 rounded-full font-medium flex-shrink-0 ${colors.badge}`}>
+                            {config?.displayName}
+                          </span>
+                          {article.publishedAt && (
+                            <span className="text-xs text-gray-500">
+                              {new Date(article.publishedAt).toLocaleTimeString('en-IN', {
+                                hour: '2-digit',
+                                minute: '2-digit',
+                                hour12: true,
+                              })}
                             </span>
-                            {article.publishedAt && (
-                              <span className="text-xs text-gray-500">
-                                {new Date(article.publishedAt).toLocaleTimeString('en-IN', {
-                                  hour: '2-digit',
-                                  minute: '2-digit',
-                                  hour12: true,
-                                })}
-                              </span>
-                            )}
-                          </div>
-                        </button>
-                      );
-                    })}
+                          )}
+                        </div>
+                      </button>
+                    ))}
+                    {/* Bottom sentinel so the last card never clips against the container edge */}
+                    <div className="h-2" aria-hidden="true" />
                   </div>
                 </div>
               )}
