@@ -355,9 +355,9 @@ export default function CurrentAffairsViewer({
           </button>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-5 gap-4 h-[600px]">
+        <div className="grid grid-cols-1 lg:grid-cols-5 gap-4 h-[600px] overflow-hidden">
           {/* Resources Sidebar */}
-          <div className={`transition-all duration-300 overflow-hidden ${showResources ? 'col-span-1 lg:col-span-2' : 'hidden lg:hidden'}`}>
+          <div className={`transition-all duration-300 overflow-hidden h-full ${showResources ? 'col-span-1 lg:col-span-2' : 'hidden lg:hidden'}`}>
             <div className="bg-white border-2 border-indigo-200 rounded-lg h-full overflow-y-auto">
               <div className="sticky top-0 bg-gradient-to-r from-indigo-600 to-blue-600 text-white p-4 z-10">
                 <h3 className="font-bold text-lg flex items-center gap-2">
@@ -410,8 +410,8 @@ export default function CurrentAffairsViewer({
           </div>
 
           {/* Articles List */}
-          <div className={`transition-all duration-300 ${showResources ? 'col-span-1 lg:col-span-3' : 'col-span-1 lg:col-span-5'}`}>
-            <div className="bg-white border-2 border-gray-200 rounded-lg h-full flex flex-col">
+          <div className={`transition-all duration-300 h-full ${showResources ? 'col-span-1 lg:col-span-3' : 'col-span-1 lg:col-span-5'}`}>
+            <div className="bg-white border-2 border-gray-200 rounded-lg h-full flex flex-col overflow-hidden">
               {/* Channel Header */}
               {selectedChannel && (
                 <div className="flex flex-col h-full min-h-0">
