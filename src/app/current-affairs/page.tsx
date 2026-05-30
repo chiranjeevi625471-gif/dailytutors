@@ -12,7 +12,7 @@ export default async function CurrentAffairsPage() {
 
   const articlesByChannel: Record<string, any[]> = {};
   for (const article of articles) {
-    const channel = article.channel || "Other";
+    const channel = article.channel || article.source || "Other";
     if (!articlesByChannel[channel]) articlesByChannel[channel] = [];
     articlesByChannel[channel].push(article);
   }

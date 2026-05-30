@@ -155,7 +155,7 @@ const CHANNEL_CONFIG: Record<string, { icon: string; displayName: string; accent
   "Inshorts":         { icon: "⚡", displayName: "Inshorts",         accent: "border-yellow-500", badge: "bg-yellow-50 text-yellow-700 border-yellow-200" },
   "NewsData":         { icon: "📡", displayName: "NewsData",         accent: "border-teal-500",   badge: "bg-teal-50 text-teal-700 border-teal-200"    },
 };
-const DEFAULT_CFG = { icon: "📄", displayName: "Other", accent: "border-gray-400", badge: "bg-gray-100 text-gray-600 border-gray-200" };
+const DEFAULT_CFG = (name: string) => ({ icon: "📄", displayName: name, accent: "border-gray-400", badge: "bg-gray-100 text-gray-600 border-gray-200" });
 
 const CHANNEL_ORDER = ["The Hindu","Indian Express","Times of India","PIB","Economy Times","UPSC/Admin","Current Affairs","The Guardian","Inshorts","NewsData"];
 
@@ -170,7 +170,7 @@ export default function CurrentAffairsViewer({ todayPost, articles, articlesByCh
   const [activeChannel, setActiveChannel] = useState<string>(sortedChannels[0] || "");
   const [selectedArticle, setSelectedArticle] = useState<Article | null>(null);
 
-  const cfg = CHANNEL_CONFIG[activeChannel] ?? DEFAULT_CFG;
+  const cfg = CHANNEL_CONFIG[activeChannel] ?? DEFAULT_CFG(activeChannel);
   const channelArticles = articlesByChannel[activeChannel] || [];
 
   return (
@@ -178,7 +178,7 @@ export default function CurrentAffairsViewer({ todayPost, articles, articlesByCh
       {/* ── Source tabs ── */}
       <div className="flex gap-2 overflow-x-auto scrollbar-hide pb-1 -mx-1 px-1">
         {sortedChannels.map(ch => {
-          const c = CHANNEL_CONFIG[ch] ?? DEFAULT_CFG;
+          const c = CHANNEL_CONFIG[ch] ?? DEFAULT_CFG(ch);
           const isActive = activeChannel === ch;
           const count = articlesByChannel[ch].length;
           return (
