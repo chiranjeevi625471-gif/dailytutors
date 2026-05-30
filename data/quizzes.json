@@ -2246,5 +2246,259 @@
         "explain": "Gold ETFs invest directly in physical gold and related instruments, while Gold Mutual Funds buy units of Gold ETFs, as per the given article. This highlights a key difference in their investment structure."
       }
     ]
+  },
+  {
+    "id": "mpscb93rma70p",
+    "slug": "daily-prelims-2026-05-30",
+    "title": "Daily Prelims Quiz — 30 May 2026",
+    "type": "Prelims",
+    "questions": 20,
+    "duration": "24 min",
+    "date": "2026-05-30",
+    "scheduledAt": null,
+    "active": true,
+    "source": "news",
+    "items": [
+      {
+        "type": "mcq",
+        "q": "Which of the following is the newest Mercedes EV in India?",
+        "options": [
+          "Mercedes-Benz CLA 200",
+          "Mercedes-Benz CLA 250+",
+          "Mercedes-Benz EQS",
+          "Mercedes-Benz S-Class"
+        ],
+        "correct": 1,
+        "explain": "The Mercedes-Benz CLA 250+ is the newest Mercedes EV in India, as mentioned in the article. It is intended to serve as a stepping stone into the world of electrified cars."
+      },
+      {
+        "type": "mcq",
+        "q": "Which of the following agencies was involved in the interception of the cargo vessel MV Europe?",
+        "options": [
+          "Gujarat Police and Indian Navy",
+          "Gujarat ATS and Indian Coast Guard",
+          "Indian Army and Indian Air Force",
+          "CRPF and BSF"
+        ],
+        "correct": 1,
+        "explain": "The Gujarat Anti-Terrorist Squad (ATS) and the Indian Coast Guard intercepted the cargo vessel MV Europe, as per the given information."
+      },
+      {
+        "type": "mcq",
+        "q": "Consider the following statements regarding the cargo vessel MV Europe: Statement 1: The vessel undertook a 196-day journey. Statement 2: The vessel was intercepted near Chennai port. Which of the following is correct?",
+        "options": [
+          "Only Statement 1 is correct",
+          "Only Statement 2 is correct",
+          "Both Statement 1 and Statement 2 are correct",
+          "Neither Statement 1 nor Statement 2 is correct"
+        ],
+        "correct": 0,
+        "explain": "The vessel undertook a 196-day journey, but it was intercepted near Mundra port, not Chennai port, as per the given information."
+      },
+      {
+        "type": "mcq",
+        "q": "What was the approximate value of the seized cocaine from the cargo vessel MV Europe?",
+        "options": [
+          "Rs 1,000 crore",
+          "Rs 1,150 crore",
+          "Rs 1,200 crore",
+          "Rs 1,500 crore"
+        ],
+        "correct": 1,
+        "explain": "The seized cocaine was valued at nearly Rs 1,150 crore, as per the given information."
+      },
+      {
+        "type": "mcq",
+        "q": "Which of the following ports was near the location where the cargo vessel MV Europe was intercepted?",
+        "options": [
+          "Mumbai port",
+          "Chennai port",
+          "Kolkata port",
+          "Mundra port"
+        ],
+        "correct": 3,
+        "explain": "The cargo vessel MV Europe was intercepted near Mundra port, as per the given information."
+      },
+      {
+        "type": "mcq",
+        "q": "Which of the following players lost to Juan Manuel Cerundolo in the second round of the 2026 French Open?",
+        "options": [
+          "Jannik Sinner",
+          "Boris Becker",
+          "Juan Manuel Cerundolo",
+          "None of the above"
+        ],
+        "correct": 0,
+        "explain": "According to the article, Jannik Sinner suffered a shocking defeat to Juan Manuel Cerundolo in the second round of the 2026 French Open. This information is directly stated in the given text."
+      },
+      {
+        "type": "mcq",
+        "q": "Which of the following is true regarding Rishabh Pant's recent decision?",
+        "options": [
+          "He has stepped down as captain of the Indian national cricket team",
+          "He has given up the captaincy at Lucknow Super Giants",
+          "He has been removed as wicketkeeper-batter from the Lucknow Super Giants",
+          "He has decided to retire from the Indian Premier League"
+        ],
+        "correct": 1,
+        "explain": "Rishabh Pant has given up the captaincy at Lucknow Super Giants after they finished bottom of the Indian Premier League for the first time, as announced by the franchise."
+      },
+      {
+        "type": "mcq",
+        "q": "Which of the following is true about the researchers' study on the impact of AI on religious leaders?",
+        "options": [
+          "They interviewed almost 30 religious leaders across three major religious faiths in the UK",
+          "They interviewed almost 30 religious leaders across all six major religious faiths in the UK",
+          "They interviewed over 50 religious leaders across all six major religious faiths in the world",
+          "They interviewed religious leaders from only one faith in the UK"
+        ],
+        "correct": 1,
+        "explain": "The researchers interviewed almost 30 religious leaders across all six major religious faiths in the UK to find out how AI was affecting them, as per the given article."
+      },
+      {
+        "type": "mcq",
+        "q": "Consider the following statements about the 'Apostle Stephen' chatbot: Statement I: It was created by a church founded in the UK. Statement II: It was created by the Redeemed Christian Church of God. Which of the statements is/are correct?",
+        "options": [
+          "Only Statement I is correct",
+          "Only Statement II is correct",
+          "Both Statement I and Statement II are correct",
+          "Neither Statement I nor Statement II is correct"
+        ],
+        "correct": 1,
+        "explain": "The 'Apostle Stephen' chatbot was created by the Redeemed Christian Church of God, which was founded in Nigeria in the 1950s, making only Statement II correct."
+      },
+      {
+        "type": "mcq",
+        "q": "Match the country where the Redeemed Christian Church of God was founded with the correct option",
+        "options": [
+          "UK",
+          "Nigeria",
+          "USA",
+          "India"
+        ],
+        "correct": 1,
+        "explain": "The Redeemed Christian Church of God was founded in Nigeria in the 1950s, as stated in the article."
+      },
+      {
+        "type": "mcq",
+        "q": "What can be inferred about the increasing use of AI in religion from the given article?",
+        "options": [
+          "It has no consequences for religious leaders",
+          "It is being welcomed by all religious leaders",
+          "It may have alarming consequences when machines speak in the name of God",
+          "It is only being used by one religious faith"
+        ],
+        "correct": 2,
+        "explain": "The article mentions that religious leaders warn of 'alarming consequences' when machines speak in the name of God, indicating potential concerns with the increasing use of AI in religion."
+      },
+      {
+        "type": "mcq",
+        "q": "What is the emerging role of India in the U.S. strategy according to the given context?",
+        "options": [
+          "A tactical partner",
+          "B Strategic cog in the U.S. wheel",
+          "C Anchor of the Atlantic alliance",
+          "D Tool to serve the Indo-Pacific"
+        ],
+        "correct": 1,
+        "explain": "According to the article, India is emerging as the strategic cog in the U.S. wheel, indicating its growing importance in the U.S. strategy in the region."
+      },
+      {
+        "type": "mcq",
+        "q": "Consider the following statements regarding the Quad: Statement 1: The Quad is a tool to serve the Indo-Pacific. Statement 2: The Quad is an anchor of the Atlantic alliance. Which of the following is true?",
+        "options": [
+          "A Only Statement 1 is correct",
+          "B Only Statement 2 is correct",
+          "C Both Statement 1 and Statement 2 are correct",
+          "D Neither Statement 1 nor Statement 2 is correct"
+        ],
+        "correct": 0,
+        "explain": "According to the article, the Quad is a tool to serve the Indo-Pacific, but it does not mention the Quad as an anchor of the Atlantic alliance, which is attributed to NATO."
+      },
+      {
+        "type": "mcq",
+        "q": "Which of the following organizations is mentioned as the anchor of the Atlantic alliance in the given context?",
+        "options": [
+          "A Quad",
+          "B NATO",
+          "C ASEAN",
+          "D EU"
+        ],
+        "correct": 1,
+        "explain": "The article mentions NATO as the anchor of the Atlantic alliance, highlighting its crucial role in the region."
+      },
+      {
+        "type": "mcq",
+        "q": "What event occurred on May 16, 2026, according to the given context?",
+        "options": [
+          "A The formal establishment of the Quad",
+          "B The announcement of a new China-U.S. trade agreement",
+          "C Presidents Donald Trump and Xi Jinping formally acknowledging a paradigm shift in China-U.S. relations",
+          "D The inauguration of a new U.S. president"
+        ],
+        "correct": 2,
+        "explain": "The article states that on May 16, 2026, Presidents Donald Trump and Xi Jinping formally acknowledged a paradigm shift in China-U.S. relations, marking a significant development in their bilateral ties."
+      },
+      {
+        "type": "mcq",
+        "q": "Which of the following statements is true regarding the Uniform Civil Code?",
+        "options": [
+          "The Union Law Minister has expressed doubt over its implementation in non-BJP states",
+          "Three non-BJP governed states have already passed UCC legislation",
+          "The Union Law Minister is confident that public pressure will lead to its implementation in all states",
+          "The Uniform Civil Code is already in force across the country"
+        ],
+        "correct": 2,
+        "explain": "According to the statement of Union Law Minister Arjun Meghwal, he is confident that public pressure will convince opposition-ruled states to implement the Uniform Civil Code, as mentioned in the article."
+      },
+      {
+        "type": "mcq",
+        "q": "Consider the following statements regarding the Uniform Civil Code:",
+        "options": [
+          "The Union Law Minister has stated that the UCC is mentioned in the Constitution / The UCC has been implemented in three BJP-governed states",
+          "The Union Law Minister has stated that the UCC is not mentioned in the Constitution / The UCC has been implemented in three non-BJP governed states",
+          "The Union Law Minister has stated that the UCC is mentioned in the Constitution / The UCC has been implemented in three non-BJP governed states",
+          "The Union Law Minister has stated that the UCC is not mentioned in the Constitution / The UCC has been implemented in three BJP-governed states"
+        ],
+        "correct": 0,
+        "explain": "Article 44 of the Indian Constitution mentions the implementation of a Uniform Civil Code, and according to the Union Law Minister, three BJP-governed states have already passed UCC legislation."
+      },
+      {
+        "type": "mcq",
+        "q": "What is the primary focus of the ET Alpha Wealth Summit as mentioned in the article?",
+        "options": [
+          "To discuss the impact of global conditions on India's economic growth",
+          "To analyze the durability of India's growth momentum",
+          "To promote foreign investment in India",
+          "To review the performance of the Indian stock market"
+        ],
+        "correct": 1,
+        "explain": "The article states that the ET Alpha Wealth Summit will feature top economists and finance experts to analyze the durability of India's growth momentum, indicating that this is the primary focus of the summit."
+      },
+      {
+        "type": "mcq",
+        "q": "Consider the following statements regarding India's economic growth: Statement 1: India has climbed up to among the world's top economies. Statement 2: India's economic growth is declining due to global conditions. Which of the following is true?",
+        "options": [
+          "Both Statement 1 and Statement 2 are correct",
+          "Only Statement 1 is correct",
+          "Only Statement 2 is correct",
+          "Neither Statement 1 nor Statement 2 is correct"
+        ],
+        "correct": 1,
+        "explain": "The article states that India has climbed up to among the world's top economies, but it does not mention that India's economic growth is declining due to global conditions, instead it mentions that India is growing strongly despite global conditions being shaky."
+      },
+      {
+        "type": "mcq",
+        "q": "What is the date and location of the ET Alpha Wealth Summit as mentioned in the article?",
+        "options": [
+          "June 3 in Delhi",
+          "June 4 in Mumbai",
+          "June 5 in Bangalore",
+          "June 6 in Chennai"
+        ],
+        "correct": 1,
+        "explain": "The article states that the ET Alpha Wealth Summit will be held on June 4 in Mumbai."
+      }
+    ]
   }
 ]
