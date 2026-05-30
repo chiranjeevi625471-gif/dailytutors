@@ -414,8 +414,8 @@ export default function CurrentAffairsViewer({
             <div className="bg-white border-2 border-gray-200 rounded-lg h-full flex flex-col">
               {/* Channel Header */}
               {selectedChannel && (
-                <div>
-                  <div className={`${colors.header} p-5 rounded-t-lg`}>
+                <div className="flex flex-col h-full min-h-0">
+                  <div className={`${colors.header} p-5 rounded-t-lg flex-shrink-0`}>
                     <div className="flex items-center gap-3 mb-2">
                       <span className="text-3xl">{config?.icon}</span>
                       <div>
@@ -426,7 +426,7 @@ export default function CurrentAffairsViewer({
                   </div>
 
                   {/* Articles Scrollable List */}
-                  <div className="flex-1 overflow-y-auto p-4 space-y-2">
+                  <div className="flex-1 overflow-y-auto p-4 space-y-2 min-h-0">
                     {selectedChannelArticles.map((article, idx) => {
                       return (
                         <button
