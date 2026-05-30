@@ -5,7 +5,7 @@ import type { QuestionItem } from "@/lib/types";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
-export const maxDuration = 600; // 10 minutes timeout
+export const maxDuration = 300;
 
 export async function POST(req: Request) {
   try {
