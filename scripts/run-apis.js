@@ -5,10 +5,10 @@
  * generation for today. Retries until the server is ready.
  */
 
-const http  = require('http');
-const https = require('https');
-const fs    = require('fs');
-const path  = require('path');
+const http = require('http');
+const net  = require('net');
+const fs   = require('fs');
+const path = require('path');
 
 // ── Read CRON_SECRET from .env.local if not in environment ──────────────────
 function readEnvLocal() {
@@ -23,9 +23,10 @@ function readEnvLocal() {
   return null;
 }
 
+// Must match DEV_SECRET in the cron route files
 const CRON_SECRET = process.env.CRON_SECRET
   || readEnvLocal()
-  || 'e28224740808590b7506a930488bec551ca5b56b2b66224af0a89669474bd8da';
+  || 'dailytutors-dev-cron';
 
 // ── Helpers ──────────────────────────────────────────────────────────────────
 const C = {
@@ -40,15 +41,15 @@ const C = {
 const log = (color, ...a) => console.log(`${color}[APIs]${C.reset}`, ...a);
 const sleep = ms => new Promise(r => setTimeout(r, ms));
 
-// ── Check if a port is listening ─────────────────────────────────────────────
+// ── TCP check — more reliable than HTTP for readiness polling ────────────────
 function isPortUp(port) {
   return new Promise(resolve => {
-    const req = http.get(`http://localhost:${port}/api/auth/login`, { timeout: 2000 }, res => {
-      req.destroy();
-      resolve(true);
-    });
-    req.on('error', () => resolve(false));
-    req.on('timeout', () => { req.destroy(); resolve(false); });
+    const socket = new net.Socket();
+    socket.setTimeout(1500);
+    socket.on('connect', () => { socket.destroy(); resolve(true); });
+    socket.on('error',   () => resolve(false));
+    socket.on('timeout', () => { socket.destroy(); resolve(false); });
+    socket.connect(port, '127.0.0.1');
   });
 }
 
