@@ -50,16 +50,37 @@ const DEFINED_TERMS: Record<string, string> = {
   "union": "Joining together of groups, states, or organizations.",
 };
 
+// Strip common RSS/WordPress metadata patterns that add no value
+function cleanContent(text?: string | null): string {
+  if (!text) return '';
+  return text
+    .replace(/\(PRELIMS\s+Focus\)/gi, '')
+    .replace(/\(MAINS\s+Focus\)/gi, '')
+    .replace(/The post .{0,200} appeared first on [\w\s]+\./gi, '')
+    .replace(/Archives?\s*\([^)]*\)/gi, '')
+    .replace(/\[[…\.]{1,3}\]/g, '')
+    .replace(/Click here to read more\.?/gi, '')
+    .replace(/Read more at .+/gi, '')
+    .replace(/Source:\s*\n/gi, '')
+    .trim();
+}
+
+function isUseful(text?: string | null): boolean {
+  const c = cleanContent(text);
+  return c.length > 60;
+}
+
 function formatAsBulletPoints(text?: string | null): string[] {
-  if (!text) return [];
-  const lines = text.split('\n').filter(l => l.trim().length > 0);
+  const cleaned = cleanContent(text);
+  if (!cleaned) return [];
+  const lines = cleaned.split('\n').filter(l => l.trim().length > 0);
   const bullets: string[] = [];
   for (const line of lines) {
-    const clean = line.replace(/^[-•*]\s/, '').replace(/^\d+\.\s/, '').trim();
-    if (clean.length > 15 && clean.length < 300) bullets.push(clean);
+    const c = line.replace(/^[-•*]\s/, '').replace(/^\d+\.\s/, '').trim();
+    if (c.length > 15 && c.length < 400) bullets.push(c);
   }
   if (bullets.length === 0) {
-    return (text.match(/[^.!?]+[.!?]+/g) || []).map(s => s.trim()).filter(s => s.length > 20).slice(0, 15);
+    return (cleaned.match(/[^.!?]+[.!?]+/g) || []).map(s => s.trim()).filter(s => s.length > 25).slice(0, 15);
   }
   return bullets.slice(0, 15);
 }
@@ -276,165 +297,200 @@ export default function CurrentAffairsViewer({ todayPost, articles, articlesByCh
       </div>
 
       {/* ── Article detail drawer ── */}
-      {selectedArticle && (
-        <div className="fixed inset-0 z-50 flex justify-end">
-          <div className="absolute inset-0 bg-black/50 backdrop-blur-sm" onClick={() => setSelectedArticle(null)} />
+      {selectedArticle && (() => {
+        const artCfg = CHANNEL_CONFIG[selectedArticle.channel || activeChannel] ?? DEFAULT_CFG(selectedArticle.channel || activeChannel);
+        const rawText = selectedArticle.content || selectedArticle.description;
+        const cleanDesc = cleanContent(selectedArticle.description);
+        const cleanBody = cleanContent(selectedArticle.content);
+        const bullets   = formatAsBulletPoints(selectedArticle.content);
+        const keyPts    = extractKeyPoints(rawText);
+        const topics    = extractImportantTopics(rawText);
+        const hasContent = isUseful(selectedArticle.content) || isUseful(selectedArticle.description);
 
-          <div className="relative flex h-full w-full max-w-2xl flex-col bg-white shadow-2xl">
+        return (
+          <div className="fixed inset-0 z-50 flex justify-end">
+            {/* Backdrop */}
+            <div className="absolute inset-0 bg-black/60 backdrop-blur-sm" onClick={() => setSelectedArticle(null)} />
 
-            {/* Header */}
-            <div className="flex-shrink-0 bg-slate-900 px-6 py-5">
-              <div className="flex items-start justify-between gap-4">
-                <div className="min-w-0 flex-1">
-                  <div className="mb-2 flex flex-wrap items-center gap-2">
-                    <span className="text-base leading-none">{cfg.icon}</span>
-                    <span className="rounded-full bg-white/10 px-2.5 py-0.5 text-xs font-bold uppercase tracking-wider text-slate-300">
-                      {selectedArticle.channel || activeChannel}
+            {/* Drawer */}
+            <div className="relative flex h-full w-full max-w-2xl flex-col bg-white shadow-2xl">
+
+              {/* ── Header ── */}
+              <div className="flex-shrink-0 bg-gradient-to-br from-slate-900 to-slate-800 px-6 pt-6 pb-5">
+                {/* Top row: source + date + close */}
+                <div className="flex items-center justify-between gap-3 mb-3">
+                  <div className="flex items-center gap-2 flex-wrap">
+                    <span className="text-lg leading-none">{artCfg.icon}</span>
+                    <span className="rounded-full bg-white/15 border border-white/20 px-3 py-0.5 text-xs font-bold uppercase tracking-wider text-slate-200">
+                      {selectedArticle.channel || selectedArticle.source || activeChannel}
                     </span>
                     {selectedArticle.publishedAt && (
                       <span className="text-xs text-slate-400">
                         {new Date(selectedArticle.publishedAt).toLocaleString('en-IN', {
-                          day: 'numeric', month: 'short', hour: '2-digit', minute: '2-digit', hour12: true,
+                          day: 'numeric', month: 'short', year: 'numeric',
+                          hour: '2-digit', minute: '2-digit', hour12: true,
                         })}
                       </span>
                     )}
                   </div>
-                  <h2 className="text-lg font-bold leading-snug text-white">{selectedArticle.title}</h2>
-                  {selectedArticle.author && (
-                    <p className="mt-1.5 text-xs text-slate-400">By {selectedArticle.author}</p>
-                  )}
+                  <button
+                    type="button"
+                    onClick={() => setSelectedArticle(null)}
+                    className="flex-shrink-0 flex h-8 w-8 items-center justify-center rounded-full bg-white/10 text-white transition hover:bg-white/25 text-base font-bold"
+                    aria-label="Close"
+                  >✕</button>
                 </div>
+
+                {/* Title */}
+                <h2 className="text-xl font-extrabold leading-snug text-white tracking-tight">
+                  {selectedArticle.title}
+                </h2>
+                {selectedArticle.author && (
+                  <p className="mt-2 text-xs text-slate-400 flex items-center gap-1.5">
+                    <span>✍️</span> {selectedArticle.author}
+                  </p>
+                )}
+              </div>
+
+              {/* ── Scrollable body ── */}
+              <div className="min-h-0 flex-1 overflow-y-auto bg-gray-50">
+                <div className="space-y-4 p-5">
+
+                  {/* UPSC Key Topics */}
+                  {topics.length > 0 && (
+                    <div className="rounded-2xl border border-amber-200 bg-amber-50 p-4">
+                      <p className="mb-3 flex items-center gap-2 text-[10px] font-black uppercase tracking-widest text-amber-600">
+                        🎯 UPSC Key Topics
+                        <span className="font-normal text-amber-400 normal-case tracking-normal">— hover any tag</span>
+                      </p>
+                      <div className="flex flex-wrap gap-2">
+                        {topics.map((topic, i) => (
+                          <span
+                            key={i}
+                            className="group relative inline-flex cursor-help items-center gap-1.5 rounded-full border border-amber-300 bg-white px-3 py-1.5 text-xs font-semibold text-amber-800 shadow-sm transition hover:bg-amber-100 hover:border-amber-400"
+                          >
+                            <span className="h-1.5 w-1.5 flex-shrink-0 rounded-full bg-amber-500" />
+                            {topic}
+                            <span className="pointer-events-none absolute bottom-full left-0 z-[60] mb-2 hidden w-64 rounded-xl bg-gray-900 p-3 text-xs leading-relaxed text-white shadow-2xl group-hover:block">
+                              <span className="mb-1 block font-bold text-amber-300">{topic}</span>
+                              {DEFINED_TERMS[topic.toLowerCase()] || 'Important UPSC concept'}
+                              <span className="absolute top-full left-3 border-4 border-transparent border-t-gray-900" />
+                            </span>
+                          </span>
+                        ))}
+                      </div>
+                    </div>
+                  )}
+
+                  {/* What Happened — cleaned summary */}
+                  {isUseful(selectedArticle.description) && (
+                    <div className="rounded-2xl border border-blue-200 bg-white p-5">
+                      <p className="mb-2 flex items-center gap-2 text-[10px] font-black uppercase tracking-widest text-blue-600">
+                        📌 What Happened
+                      </p>
+                      <p className="text-sm leading-7 text-gray-800">{cleanDesc}</p>
+                    </div>
+                  )}
+
+                  {/* Key Takeaways */}
+                  {keyPts.length > 0 && (
+                    <div className="rounded-2xl border border-emerald-200 bg-white p-5">
+                      <p className="mb-3 flex items-center gap-2 text-[10px] font-black uppercase tracking-widest text-emerald-600">
+                        ✅ Key Takeaways
+                      </p>
+                      <ul className="space-y-2.5">
+                        {keyPts.map((pt, i) => (
+                          <li key={i} className="flex items-start gap-3">
+                            <span className="mt-0.5 flex h-5 w-5 flex-shrink-0 items-center justify-center rounded-full bg-emerald-500 text-[10px] font-bold text-white">
+                              {i + 1}
+                            </span>
+                            <span className="text-sm leading-relaxed text-gray-700">{pt}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  )}
+
+                  {/* Full Coverage */}
+                  {bullets.length > 0 && (
+                    <div className="rounded-2xl border border-slate-200 bg-white p-5">
+                      <p className="mb-3 flex items-center gap-2 text-[10px] font-black uppercase tracking-widest text-slate-500">
+                        📰 Full Coverage
+                        <span className="font-normal normal-case tracking-normal text-slate-400">
+                          — <span className="bg-amber-100 text-amber-800 px-1 rounded font-semibold text-[10px]">highlighted</span> = UPSC term
+                        </span>
+                      </p>
+                      <div className="space-y-0 divide-y divide-gray-100">
+                        {bullets.map((pt, i) => (
+                          <div key={i} className="flex items-start gap-3 py-3 first:pt-0 last:pb-0 hover:bg-gray-50 -mx-1 px-1 rounded-lg transition">
+                            <span className="mt-1 flex-shrink-0 h-1.5 w-1.5 rounded-full bg-slate-400" />
+                            <span className="text-sm leading-7 text-gray-700">
+                              <HighlightedContent text={pt} />
+                            </span>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  )}
+
+                  {/* No preview available — prompt to read full article */}
+                  {!hasContent && (
+                    <div className="rounded-2xl border-2 border-dashed border-slate-200 bg-white p-8 text-center">
+                      <p className="text-3xl mb-3">📰</p>
+                      <h4 className="font-bold text-gray-900 mb-1">Full Article on Source</h4>
+                      <p className="text-sm text-gray-500 mb-4 max-w-xs mx-auto">
+                        This article's content is available on the original source. Click below to read the complete coverage.
+                      </p>
+                      {selectedArticle.url && (
+                        <a
+                          href={selectedArticle.url}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="inline-flex items-center gap-2 rounded-xl bg-slate-900 px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-slate-800"
+                        >
+                          Open Full Article →
+                        </a>
+                      )}
+                    </div>
+                  )}
+
+                  {/* Source attribution */}
+                  <div className="flex flex-wrap gap-x-5 gap-y-1 rounded-xl bg-white border border-gray-100 px-4 py-3 text-xs text-gray-400">
+                    <span>📰 {selectedArticle.source || selectedArticle.channel || 'Unknown Source'}</span>
+                    {selectedArticle.author && <span>✍️ {selectedArticle.author}</span>}
+                    {selectedArticle.publishedAt && (
+                      <span>🕐 {new Date(selectedArticle.publishedAt).toLocaleString('en-IN')}</span>
+                    )}
+                  </div>
+
+                </div>
+              </div>
+
+              {/* ── Footer ── */}
+              <div className="flex-shrink-0 border-t border-gray-200 bg-white px-5 py-4 flex gap-3">
+                {selectedArticle.url ? (
+                  <a
+                    href={selectedArticle.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex flex-1 items-center justify-center gap-2 rounded-xl bg-slate-900 px-4 py-3 text-sm font-bold text-white transition hover:bg-slate-800 shadow-md hover:shadow-lg"
+                  >
+                    Read Full Article on Source →
+                  </a>
+                ) : <div className="flex-1" />}
                 <button
                   type="button"
                   onClick={() => setSelectedArticle(null)}
-                  className="mt-0.5 flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-full bg-white/10 text-sm font-bold text-white transition hover:bg-white/20"
-                  aria-label="Close"
-                >✕</button>
-              </div>
-            </div>
-
-            {/* Scrollable body */}
-            <div className="min-h-0 flex-1 overflow-y-auto">
-              {selectedArticle.image && (
-                <div className="h-48 overflow-hidden bg-gray-100">
-                  <img
-                    src={selectedArticle.image}
-                    alt={selectedArticle.title}
-                    className="h-full w-full object-cover"
-                    onError={e => { (e.currentTarget.parentElement as HTMLElement).style.display = 'none'; }}
-                  />
-                </div>
-              )}
-
-              <div className="space-y-6 p-6">
-
-                {/* UPSC Topics */}
-                {extractImportantTopics(selectedArticle.content || selectedArticle.description).length > 0 && (
-                  <div>
-                    <p className="mb-2.5 flex items-center gap-2 text-[10px] font-bold uppercase tracking-widest text-gray-400">
-                      <span className="inline-block h-2 w-2 rounded-full bg-amber-500" />
-                      UPSC Key Topics — hover for definition
-                    </p>
-                    <div className="flex flex-wrap gap-2">
-                      {extractImportantTopics(selectedArticle.content || selectedArticle.description).map((topic, i) => (
-                        <span
-                          key={i}
-                          className="group relative inline-flex cursor-help items-center gap-1.5 rounded-full border border-amber-300 bg-amber-50 px-3 py-1.5 text-xs font-semibold text-amber-800 transition hover:bg-amber-100"
-                        >
-                          <span className="h-1.5 w-1.5 flex-shrink-0 rounded-full bg-amber-500" />
-                          {topic}
-                          <span className="pointer-events-none absolute bottom-full left-0 z-[60] mb-2 hidden w-64 rounded-lg bg-gray-900 p-3 text-xs leading-relaxed text-white shadow-xl group-hover:block">
-                            <span className="mb-1 block font-bold text-amber-300">{topic}</span>
-                            {DEFINED_TERMS[topic.toLowerCase()] || 'Important UPSC concept'}
-                            <span className="absolute top-full left-3 border-4 border-transparent border-t-gray-900" />
-                          </span>
-                        </span>
-                      ))}
-                    </div>
-                  </div>
-                )}
-
-                {/* Summary */}
-                {selectedArticle.description && (
-                  <div className="rounded-xl border-l-4 border-blue-500 bg-blue-50 p-4">
-                    <p className="mb-1.5 text-[10px] font-bold uppercase tracking-widest text-blue-500">Summary</p>
-                    <p className="text-sm leading-relaxed text-gray-800">{selectedArticle.description}</p>
-                  </div>
-                )}
-
-                {/* Key Points */}
-                {extractKeyPoints(selectedArticle.content || selectedArticle.description).length > 0 && (
-                  <div>
-                    <p className="mb-3 flex items-center gap-2 text-[10px] font-bold uppercase tracking-widest text-gray-400">
-                      <span className="inline-block h-2 w-2 rounded-full bg-emerald-500" />
-                      Key Points
-                    </p>
-                    <ul className="space-y-2">
-                      {extractKeyPoints(selectedArticle.content || selectedArticle.description).map((pt, i) => (
-                        <li key={i} className="flex items-start gap-3 rounded-lg border border-emerald-100 bg-emerald-50 p-3">
-                          <span className="mt-0.5 flex h-5 w-5 flex-shrink-0 items-center justify-center rounded-full bg-emerald-500 text-[10px] font-bold text-white">{i + 1}</span>
-                          <span className="text-sm leading-relaxed text-gray-700">{pt}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                )}
-
-                {/* Detailed coverage */}
-                {selectedArticle.content && formatAsBulletPoints(selectedArticle.content).length > 0 && (
-                  <div>
-                    <p className="mb-3 flex items-center gap-2 text-[10px] font-bold uppercase tracking-widest text-gray-400">
-                      <span className="inline-block h-2 w-2 rounded-full bg-purple-500" />
-                      Detailed Coverage
-                      <span className="normal-case tracking-normal font-normal text-gray-400">— highlighted = UPSC term</span>
-                    </p>
-                    <div className="divide-y divide-gray-100 overflow-hidden rounded-xl border border-gray-200 bg-white">
-                      {formatAsBulletPoints(selectedArticle.content).map((pt, i) => (
-                        <div key={i} className="flex items-start gap-3 px-4 py-3 hover:bg-gray-50 transition">
-                          <span className="mt-0.5 flex-shrink-0 text-purple-400 font-bold text-sm">›</span>
-                          <span className="text-sm leading-relaxed text-gray-700">
-                            <HighlightedContent text={pt} />
-                          </span>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-                )}
-
-                {/* Source meta */}
-                <div className="flex flex-wrap gap-x-5 gap-y-1 border-t border-gray-100 pt-4 text-xs text-gray-400">
-                  <span>📰 {selectedArticle.source || selectedArticle.channel || 'Unknown'}</span>
-                  {selectedArticle.author && <span>✍️ {selectedArticle.author}</span>}
-                  {selectedArticle.publishedAt && (
-                    <span>🕐 {new Date(selectedArticle.publishedAt).toLocaleString('en-IN')}</span>
-                  )}
-                </div>
-              </div>
-            </div>
-
-            {/* Footer */}
-            <div className="flex flex-shrink-0 gap-3 border-t border-gray-200 bg-white px-6 py-4">
-              {selectedArticle.url ? (
-                <a
-                  href={selectedArticle.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex flex-1 items-center justify-center gap-2 rounded-lg bg-slate-900 px-4 py-2.5 text-sm font-semibold text-white transition hover:bg-slate-800"
+                  className="rounded-xl border border-gray-200 bg-gray-50 px-5 py-3 text-sm font-semibold text-gray-600 transition hover:bg-gray-100"
                 >
-                  Read Full Article <span>→</span>
-                </a>
-              ) : <div className="flex-1" />}
-              <button
-                type="button"
-                onClick={() => setSelectedArticle(null)}
-                className="rounded-lg border border-gray-300 px-5 py-2.5 text-sm font-semibold text-gray-700 transition hover:bg-gray-50"
-              >
-                Close
-              </button>
+                  ✕ Close
+                </button>
+              </div>
+
             </div>
           </div>
-        </div>
-      )}
+        );
+      })()}
     </>
   );
 }
