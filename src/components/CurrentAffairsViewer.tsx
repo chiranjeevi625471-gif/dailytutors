@@ -1,9 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import Link from 'next/link';
 
-// Defined Terms Dictionary for highlighting and explanation
 const DEFINED_TERMS: Record<string, string> = {
   "budget": "Annual financial plan detailing government revenue and expenditure for fiscal year.",
   "policy": "Official government decision or course of action for addressing specific issues.",
@@ -52,90 +50,60 @@ const DEFINED_TERMS: Record<string, string> = {
   "union": "Joining together of groups, states, or organizations.",
 };
 
-// Function to convert article text into bullet points
 function formatAsBulletPoints(text?: string | null): string[] {
   if (!text) return [];
-  
-  const lines = text.split('\n').filter(line => line.trim().length > 0);
-  const bulletPoints: string[] = [];
-  
+  const lines = text.split('\n').filter(l => l.trim().length > 0);
+  const bullets: string[] = [];
   for (const line of lines) {
-    const cleanLine = line.replace(/^[-•*]\s/, '').replace(/^\d+\.\s/, '').trim();
-    
-    // Skip very short lines or headings
-    if (cleanLine.length > 15 && cleanLine.length < 300) {
-      bulletPoints.push(cleanLine);
-    }
+    const clean = line.replace(/^[-•*]\s/, '').replace(/^\d+\.\s/, '').trim();
+    if (clean.length > 15 && clean.length < 300) bullets.push(clean);
   }
-  
-  // If no bullet points found, split by sentences
-  if (bulletPoints.length === 0) {
-    const sentences = text.match(/[^.!?]+[.!?]+/g) || [];
-    return sentences
-      .map(s => s.trim())
-      .filter(s => s.length > 20)
-      .slice(0, 15);
+  if (bullets.length === 0) {
+    return (text.match(/[^.!?]+[.!?]+/g) || []).map(s => s.trim()).filter(s => s.length > 20).slice(0, 15);
   }
-  
-  return bulletPoints.slice(0, 15);
+  return bullets.slice(0, 15);
 }
 
-// Function to extract key points from article text
 function extractKeyPoints(text?: string | null): string[] {
   if (!text) return [];
-  
-  const lines = text.split('\n').filter(line => line.trim().length > 0);
-  const keyPoints: string[] = [];
-  
+  const lines = text.split('\n').filter(l => l.trim().length > 0);
+  const points: string[] = [];
   for (const line of lines) {
-    // Look for bullet points or numbered lists
     if (/^[-•*]\s/.test(line.trim()) || /^\d+\.\s/.test(line.trim())) {
-      let point = line.replace(/^[-•*]\s/, '').replace(/^\d+\.\s/, '').trim();
-      if (point.length > 20 && point.length < 200) {
-        keyPoints.push(point);
-      }
-    } else if (keyPoints.length < 5 && line.length > 30 && line.length < 150) {
-      // Extract important sentences
-      if (line.match(/\b(major|key|important|significant|crucial|notably|first|introduce|launch|approve|announce|passed|passed|accord|agreement)\b/i)) {
-        keyPoints.push(line.trim());
+      const p = line.replace(/^[-•*]\s/, '').replace(/^\d+\.\s/, '').trim();
+      if (p.length > 20 && p.length < 200) points.push(p);
+    } else if (points.length < 5 && line.length > 30 && line.length < 150) {
+      if (/\b(major|key|important|significant|crucial|notably|first|introduce|launch|approve|announce|passed|accord|agreement)\b/i.test(line)) {
+        points.push(line.trim());
       }
     }
   }
-  
-  return keyPoints.slice(0, 8);
+  return points.slice(0, 8);
 }
 
-// Function to extract important topics from article text
 function extractImportantTopics(text?: string | null): string[] {
   if (!text) return [];
-  
   const topics: string[] = [];
-  const sortedTerms = Object.keys(DEFINED_TERMS).sort((a, b) => b.length - a.length);
-  
-  for (const term of sortedTerms) {
-    const regex = new RegExp(`\\b${term}s?\\b`, 'gi');
-    if (regex.test(text)) {
+  const sorted = Object.keys(DEFINED_TERMS).sort((a, b) => b.length - a.length);
+  for (const term of sorted) {
+    if (new RegExp(`\\b${term}s?\\b`, 'gi').test(text)) {
       topics.push(term.charAt(0).toUpperCase() + term.slice(1));
       if (topics.length >= 8) break;
     }
   }
-  
   return topics;
 }
 
-// Renders text with UPSC terms highlighted; hover shows a definition tooltip
 function HighlightedContent({ text }: { text: string }) {
-  const sortedTerms = Object.keys(DEFINED_TERMS).sort((a, b) => b.length - a.length);
-  const pattern = sortedTerms.map(term => `\\b${term}s?\\b`).join('|');
-  const regex = new RegExp(`(${pattern})`, 'gi');
-  const parts = text.split(regex);
-
+  const sorted = Object.keys(DEFINED_TERMS).sort((a, b) => b.length - a.length);
+  const pattern = sorted.map(t => `\\b${t}s?\\b`).join('|');
+  const parts = text.split(new RegExp(`(${pattern})`, 'gi'));
   return (
     <span>
       {parts.map((part, idx) => {
         if (!part) return null;
         const lower = part.toLowerCase();
-        const matched = sortedTerms.find(t => lower === t || lower === t + 's');
+        const matched = sorted.find(t => lower === t || lower === t + 's');
         if (matched && DEFINED_TERMS[matched]) {
           return (
             <span key={idx} className="group relative inline-block">
@@ -169,351 +137,212 @@ interface Article {
   image?: string | null;
 }
 
-interface CurrentAffairsViewerProps {
+interface Props {
   todayPost: any;
   articles: Article[];
   articlesByChannel: Record<string, Article[]>;
 }
 
-// Channel configuration with all 9 sources
-const CHANNEL_CONFIG_FULL = {
-  "The Hindu": { color: "blue", icon: "📰", displayName: "The Hindu" },
-  "Indian Express": { color: "blue", icon: "📰", displayName: "Indian Express" },
-  "Times of India": { color: "blue", icon: "📰", displayName: "Times of India" },
-  "PIB": { color: "purple", icon: "🏛️", displayName: "PIB - Government" },
-  "Economy Times": { color: "green", icon: "📊", displayName: "Economy Times" },
-  "UPSC/Admin": { color: "rose", icon: "🎓", displayName: "UPSC/Admin" },
-  "Current Affairs": { color: "orange", icon: "📋", displayName: "Current Affairs" },
-  "The Guardian": { color: "amber", icon: "🌍", displayName: "The Guardian" },
-  "Inshorts": { color: "yellow", icon: "⚡", displayName: "Inshorts" },
-  "NewsData": { color: "teal", icon: "📡", displayName: "NewsData" },
+const CHANNEL_CONFIG: Record<string, { icon: string; displayName: string; accent: string; badge: string }> = {
+  "The Hindu":        { icon: "📰", displayName: "The Hindu",        accent: "border-blue-500",   badge: "bg-blue-50 text-blue-700 border-blue-200"   },
+  "Indian Express":   { icon: "📰", displayName: "Indian Express",   accent: "border-indigo-500", badge: "bg-indigo-50 text-indigo-700 border-indigo-200" },
+  "Times of India":   { icon: "📰", displayName: "Times of India",   accent: "border-sky-500",    badge: "bg-sky-50 text-sky-700 border-sky-200"       },
+  "PIB":              { icon: "🏛️", displayName: "PIB",              accent: "border-purple-500", badge: "bg-purple-50 text-purple-700 border-purple-200" },
+  "Economy Times":    { icon: "📊", displayName: "Economy Times",    accent: "border-green-500",  badge: "bg-green-50 text-green-700 border-green-200"  },
+  "UPSC/Admin":       { icon: "🎓", displayName: "UPSC/Admin",       accent: "border-rose-500",   badge: "bg-rose-50 text-rose-700 border-rose-200"    },
+  "Current Affairs":  { icon: "📋", displayName: "Current Affairs",  accent: "border-orange-500", badge: "bg-orange-50 text-orange-700 border-orange-200" },
+  "The Guardian":     { icon: "🌍", displayName: "The Guardian",     accent: "border-amber-500",  badge: "bg-amber-50 text-amber-700 border-amber-200"  },
+  "Inshorts":         { icon: "⚡", displayName: "Inshorts",         accent: "border-yellow-500", badge: "bg-yellow-50 text-yellow-700 border-yellow-200" },
+  "NewsData":         { icon: "📡", displayName: "NewsData",         accent: "border-teal-500",   badge: "bg-teal-50 text-teal-700 border-teal-200"    },
 };
+const DEFAULT_CFG = { icon: "📄", displayName: "Other", accent: "border-gray-400", badge: "bg-gray-100 text-gray-600 border-gray-200" };
 
-const colorMapFull = {
-  blue: {
-    bg: "bg-blue-50",
-    border: "border-blue-200",
-    header: "bg-blue-100 text-blue-900",
-    button: "bg-blue-600 hover:bg-blue-700 text-white",
-    buttonActive: "bg-blue-600 text-white",
-    badge: "bg-blue-100 text-blue-800"
-  },
-  purple: {
-    bg: "bg-purple-50",
-    border: "border-purple-200",
-    header: "bg-purple-100 text-purple-900",
-    button: "bg-purple-600 hover:bg-purple-700 text-white",
-    buttonActive: "bg-purple-600 text-white",
-    badge: "bg-purple-100 text-purple-800"
-  },
-  green: {
-    bg: "bg-green-50",
-    border: "border-green-200",
-    header: "bg-green-100 text-green-900",
-    button: "bg-green-600 hover:bg-green-700 text-white",
-    buttonActive: "bg-green-600 text-white",
-    badge: "bg-green-100 text-green-800"
-  },
-  amber: {
-    bg: "bg-amber-50",
-    border: "border-amber-200",
-    header: "bg-amber-100 text-amber-900",
-    button: "bg-amber-600 hover:bg-amber-700 text-white",
-    buttonActive: "bg-amber-600 text-white",
-    badge: "bg-amber-100 text-amber-800"
-  },
-  rose: {
-    bg: "bg-rose-50",
-    border: "border-rose-200",
-    header: "bg-rose-100 text-rose-900",
-    button: "bg-rose-600 hover:bg-rose-700 text-white",
-    buttonActive: "bg-rose-600 text-white",
-    badge: "bg-rose-100 text-rose-800"
-  },
-  teal: {
-    bg: "bg-teal-50",
-    border: "border-teal-200",
-    header: "bg-teal-100 text-teal-900",
-    button: "bg-teal-600 hover:bg-teal-700 text-white",
-    buttonActive: "bg-teal-600 text-white",
-    badge: "bg-teal-100 text-teal-800"
-  },
-  orange: {
-    bg: "bg-orange-50",
-    border: "border-orange-200",
-    header: "bg-orange-100 text-orange-900",
-    button: "bg-orange-600 hover:bg-orange-700 text-white",
-    buttonActive: "bg-orange-600 text-white",
-    badge: "bg-orange-100 text-orange-800"
-  },
-  yellow: {
-    bg: "bg-yellow-50",
-    border: "border-yellow-200",
-    header: "bg-yellow-100 text-yellow-900",
-    button: "bg-yellow-600 hover:bg-yellow-700 text-white",
-    buttonActive: "bg-yellow-600 text-white",
-    badge: "bg-yellow-100 text-yellow-800"
-  },
-  gray: {
-    bg: "bg-gray-50",
-    border: "border-gray-200",
-    header: "bg-gray-100 text-gray-900",
-    button: "bg-gray-600 hover:bg-gray-700 text-white",
-    buttonActive: "bg-gray-600 text-white",
-    badge: "bg-gray-100 text-gray-800"
-  }
-};
+const CHANNEL_ORDER = ["The Hindu","Indian Express","Times of India","PIB","Economy Times","UPSC/Admin","Current Affairs","The Guardian","Inshorts","NewsData"];
 
-export default function CurrentAffairsViewer({
-  todayPost,
-  articles,
-  articlesByChannel,
-}: CurrentAffairsViewerProps) {
-  const channelOrder = ["The Hindu", "Indian Express", "Times of India", "PIB", "Economy Times", "UPSC/Admin", "Current Affairs", "The Guardian", "Inshorts", "NewsData"];
+export default function CurrentAffairsViewer({ todayPost, articles, articlesByChannel }: Props) {
   const sortedChannels = Object.keys(articlesByChannel).sort((a, b) => {
-    const indexA = channelOrder.indexOf(a);
-    const indexB = channelOrder.indexOf(b);
-    if (indexA === -1 && indexB === -1) return a.localeCompare(b);
-    if (indexA === -1) return 1;
-    if (indexB === -1) return -1;
-    return indexA - indexB;
+    const ia = CHANNEL_ORDER.indexOf(a), ib = CHANNEL_ORDER.indexOf(b);
+    if (ia === -1 && ib === -1) return a.localeCompare(b);
+    if (ia === -1) return 1; if (ib === -1) return -1;
+    return ia - ib;
   });
 
-  const [selectedChannel, setSelectedChannel] = useState<string>(sortedChannels[0] || "");
+  const [activeChannel, setActiveChannel] = useState<string>(sortedChannels[0] || "");
   const [selectedArticle, setSelectedArticle] = useState<Article | null>(null);
-  const [showResources, setShowResources] = useState<boolean>(false);
 
-  const selectedChannelArticles = articlesByChannel[selectedChannel] || [];
-
-  const config = CHANNEL_CONFIG_FULL[selectedChannel as keyof typeof CHANNEL_CONFIG_FULL];
-  const colorKey = (config?.color || "gray") as keyof typeof colorMapFull;
-  const colors = colorMapFull[colorKey];
-
-  const handleArticleClick = (article: Article) => {
-    setSelectedArticle(article);
-  };
-
-  const handleCloseDetail = () => {
-    setSelectedArticle(null);
-  };
+  const cfg = CHANNEL_CONFIG[activeChannel] ?? DEFAULT_CFG;
+  const channelArticles = articlesByChannel[activeChannel] || [];
 
   return (
     <>
-      {/* Header with Resources Button */}
-      <div className="mt-8">
-        <div className="flex items-center justify-between gap-4 mb-6">
-          <div className="flex-1">
-            <div className="bg-gradient-to-r from-blue-50 to-indigo-50 border border-blue-200 rounded-lg p-4">
-              <h2 className="text-lg font-semibold text-blue-900">{todayPost.title}</h2>
-              <p className="text-sm text-blue-700 mt-1">
-                📰 {articles.length} news items from {sortedChannels.length} resources • Last updated: {new Date(todayPost.lastFetched || todayPost.date).toLocaleTimeString('en-IN', { hour: '2-digit', minute: '2-digit', hour12: true })}
-              </p>
-            </div>
-          </div>
-          
-          {/* Resources Button */}
-          <button
-            onClick={() => setShowResources(!showResources)}
-            className="flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-indigo-600 to-blue-600 hover:from-indigo-700 hover:to-blue-700 text-white font-semibold rounded-lg transition shadow-lg hover:shadow-xl whitespace-nowrap"
-          >
-            <span className="text-xl">📚</span>
-            <span>Resources</span>
-            <span className="text-xs bg-white bg-opacity-30 px-2 py-1 rounded-full font-bold">{sortedChannels.length}</span>
-          </button>
-        </div>
-
-        <div className="grid grid-cols-1 lg:grid-cols-5 gap-4 h-[600px] overflow-hidden">
-          {/* Resources Sidebar */}
-          <div className={`transition-all duration-300 overflow-hidden h-full ${showResources ? 'col-span-1 lg:col-span-2' : 'hidden lg:hidden'}`}>
-            <div className="bg-white border-2 border-indigo-200 rounded-lg h-full overflow-y-auto">
-              <div className="sticky top-0 bg-gradient-to-r from-indigo-600 to-blue-600 text-white p-4 z-10">
-                <h3 className="font-bold text-lg flex items-center gap-2">
-                  <span>📚</span>
-                  All Resources
-                </h3>
-              </div>
-              
-              <div className="p-3 space-y-2">
-                {sortedChannels.map((channel) => {
-                  const chConfig = CHANNEL_CONFIG_FULL[channel as keyof typeof CHANNEL_CONFIG_FULL];
-                  const chColorKey = (chConfig?.color || "gray") as keyof typeof colorMapFull;
-                  const chColors = colorMapFull[chColorKey];
-                  const isSelected = selectedChannel === channel;
-                  const articleCount = articlesByChannel[channel].length;
-
-                  return (
-                    <button
-                      key={channel}
-                      onClick={() => {
-                        setSelectedChannel(channel);
-                        setSelectedArticle(null);
-                        if (window.innerWidth < 1024) setShowResources(false);
-                      }}
-                      className={`w-full p-3 rounded-lg transition text-left border-2 ${
-                        isSelected
-                          ? `${chColors.buttonActive} border-opacity-100`
-                          : 'bg-gray-50 border-gray-200 hover:bg-gray-100'
-                      }`}
-                    >
-                      <div className="flex items-center justify-between">
-                        <div className="flex items-center gap-2">
-                          <span className="text-xl">{chConfig?.icon}</span>
-                          <div>
-                            <div className="font-semibold text-sm text-gray-900">{channel}</div>
-                            <div className={`text-xs ${isSelected ? 'text-opacity-70' : 'text-gray-500'}`}>
-                              {articleCount} article{articleCount !== 1 ? 's' : ''}
-                            </div>
-                          </div>
-                        </div>
-                        <span className={`text-xs font-bold px-2.5 py-1 rounded-full ${chColors.badge} flex-shrink-0`}>
-                          {articleCount}
-                        </span>
-                      </div>
-                    </button>
-                  );
-                })}
-              </div>
-            </div>
-          </div>
-
-          {/* Articles List */}
-          <div className={`transition-all duration-300 h-full ${showResources ? 'col-span-1 lg:col-span-3' : 'col-span-1 lg:col-span-5'}`}>
-            <div className="bg-white border-2 border-gray-200 rounded-lg h-full flex flex-col overflow-hidden">
-              {/* Channel Header */}
-              {selectedChannel && (
-                <div className="flex flex-col h-full min-h-0">
-                  <div className={`${colors.header} p-5 rounded-t-lg flex-shrink-0`}>
-                    <div className="flex items-center gap-3 mb-2">
-                      <span className="text-3xl">{config?.icon}</span>
-                      <div>
-                        <h2 className="text-xl font-bold">{config?.displayName}</h2>
-                        <p className="text-sm opacity-85">{selectedChannelArticles.length} headlines available</p>
-                      </div>
-                    </div>
-                  </div>
-
-                  {/* Articles Scrollable List */}
-                  <div className="flex-1 overflow-y-auto min-h-0 px-4 pt-4 pb-6 space-y-2">
-                    {selectedChannelArticles.map((article, idx) => (
-                      <button
-                        key={idx}
-                        type="button"
-                        onClick={() => handleArticleClick(article)}
-                        className="w-full p-3 bg-gradient-to-r from-gray-50 to-white border-2 border-gray-200 rounded-lg transition hover:from-blue-50 hover:to-indigo-50 hover:border-blue-400 hover:shadow-md text-left group"
-                      >
-                        <h3 className="font-semibold text-gray-800 line-clamp-2 group-hover:text-blue-600 text-sm leading-snug">
-                          {article.title}
-                        </h3>
-                        <div className="flex items-center gap-2 mt-2 flex-wrap">
-                          <span className={`text-xs px-2 py-1 rounded-full font-medium flex-shrink-0 ${colors.badge}`}>
-                            {config?.displayName}
-                          </span>
-                          {article.publishedAt && (
-                            <span className="text-xs text-gray-500">
-                              {new Date(article.publishedAt).toLocaleTimeString('en-IN', {
-                                hour: '2-digit',
-                                minute: '2-digit',
-                                hour12: true,
-                              })}
-                            </span>
-                          )}
-                        </div>
-                      </button>
-                    ))}
-                    {/* Bottom sentinel so the last card never clips against the container edge */}
-                    <div className="h-2" aria-hidden="true" />
-                  </div>
-                </div>
-              )}
-            </div>
-          </div>
-        </div>
+      {/* ── Source tabs ── */}
+      <div className="flex gap-2 overflow-x-auto scrollbar-hide pb-1 -mx-1 px-1">
+        {sortedChannels.map(ch => {
+          const c = CHANNEL_CONFIG[ch] ?? DEFAULT_CFG;
+          const isActive = activeChannel === ch;
+          const count = articlesByChannel[ch].length;
+          return (
+            <button
+              key={ch}
+              type="button"
+              onClick={() => { setActiveChannel(ch); setSelectedArticle(null); }}
+              className={`flex-shrink-0 inline-flex items-center gap-2 px-4 py-2.5 rounded-xl text-sm font-medium border transition-all duration-150 ${
+                isActive
+                  ? 'bg-slate-900 text-white border-slate-900 shadow-md'
+                  : 'bg-white text-gray-600 border-gray-200 hover:border-gray-300 hover:bg-gray-50'
+              }`}
+            >
+              <span className="text-base leading-none">{c.icon}</span>
+              <span className="whitespace-nowrap">{c.displayName}</span>
+              <span className={`text-[11px] font-bold rounded-full px-1.5 py-0.5 ${
+                isActive ? 'bg-white/20 text-white' : 'bg-gray-100 text-gray-500'
+              }`}>{count}</span>
+            </button>
+          );
+        })}
       </div>
 
-      {/* Article Detail — Right-side Drawer */}
-      {selectedArticle && (
-        <div className="fixed inset-0 z-50 flex justify-end">
-          {/* Dimmed backdrop — click to close */}
-          <div
-            className="absolute inset-0 bg-black/50 backdrop-blur-sm"
-            onClick={handleCloseDetail}
-          />
+      {/* ── Channel meta bar ── */}
+      {activeChannel && (
+        <div className={`mt-5 flex items-center gap-3 border-l-4 pl-4 py-1 ${cfg.accent}`}>
+          <span className="text-2xl leading-none">{cfg.icon}</span>
+          <div>
+            <h2 className="font-bold text-gray-900 text-base leading-tight">{cfg.displayName}</h2>
+            <p className="text-xs text-gray-500">{channelArticles.length} headlines available</p>
+          </div>
+        </div>
+      )}
 
-          {/* Drawer panel */}
-          <div className="relative flex h-full w-full max-w-2xl flex-col bg-white shadow-2xl">
+      {/* ── Article cards ── */}
+      <div className="mt-4 space-y-2">
+        {channelArticles.map((article, idx) => (
+          <button
+            key={idx}
+            type="button"
+            onClick={() => setSelectedArticle(article)}
+            className="w-full text-left group focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 rounded-xl"
+          >
+            <div className={`flex items-start gap-0 rounded-xl border border-gray-200 bg-white overflow-hidden transition-all duration-150 hover:border-blue-300 hover:shadow-md group-focus-visible:border-blue-400`}>
+              {/* Left accent stripe */}
+              <div className={`w-1 self-stretch flex-shrink-0 bg-gray-200 group-hover:bg-blue-500 transition-colors duration-150 ${cfg.accent.replace('border-', 'group-hover:bg-')}`} />
 
-            {/* ── Header ── */}
-            <div className="flex-shrink-0 bg-slate-900 px-6 py-5">
-              <div className="flex items-start justify-between gap-4">
-                <div className="min-w-0 flex-1">
-                  {/* Source + date row */}
-                  <div className="mb-2 flex flex-wrap items-center gap-2">
-                    <span className="text-base">{config?.icon}</span>
-                    <span className="rounded-full bg-white/10 px-2.5 py-0.5 text-xs font-bold uppercase tracking-wider text-slate-300">
-                      {selectedArticle.channel || selectedChannel}
+              <div className="flex flex-1 items-start gap-3 px-4 py-4 min-w-0">
+                {/* Index */}
+                <span className="flex-shrink-0 mt-0.5 w-5 text-right text-xs font-bold text-gray-300 select-none">
+                  {idx + 1}
+                </span>
+
+                {/* Text block */}
+                <div className="flex-1 min-w-0">
+                  <h3 className="font-semibold text-gray-900 text-sm leading-snug group-hover:text-blue-700 transition-colors">
+                    {article.title}
+                  </h3>
+                  {article.description && (
+                    <p className="mt-1.5 text-xs text-gray-500 line-clamp-2 leading-relaxed">
+                      {article.description}
+                    </p>
+                  )}
+                  <div className="mt-2.5 flex flex-wrap items-center gap-2">
+                    <span className={`inline-flex items-center text-[11px] px-2 py-0.5 rounded-full font-semibold border ${cfg.badge}`}>
+                      {cfg.displayName}
                     </span>
-                    {selectedArticle.publishedAt && (
-                      <span className="text-xs text-slate-400">
-                        {new Date(selectedArticle.publishedAt).toLocaleString('en-IN', {
-                          day: 'numeric', month: 'short',
+                    {article.publishedAt && (
+                      <span className="text-[11px] text-gray-400">
+                        {new Date(article.publishedAt).toLocaleTimeString('en-IN', {
                           hour: '2-digit', minute: '2-digit', hour12: true,
                         })}
                       </span>
                     )}
                   </div>
-                  {/* Title */}
-                  <h2 className="text-lg font-bold leading-snug text-white">
-                    {selectedArticle.title}
-                  </h2>
+                </div>
+              </div>
+
+              {/* Arrow */}
+              <div className="flex-shrink-0 flex items-center pr-4 self-center">
+                <span className="w-7 h-7 rounded-full bg-gray-100 flex items-center justify-center text-gray-400 group-hover:bg-blue-500 group-hover:text-white transition-all duration-150 text-sm font-bold">
+                  ›
+                </span>
+              </div>
+            </div>
+          </button>
+        ))}
+
+        {channelArticles.length === 0 && (
+          <div className="rounded-xl border border-dashed border-gray-200 py-12 text-center text-gray-400">
+            <p className="text-3xl mb-2">📭</p>
+            <p className="text-sm">No articles for this source yet</p>
+          </div>
+        )}
+      </div>
+
+      {/* ── Article detail drawer ── */}
+      {selectedArticle && (
+        <div className="fixed inset-0 z-50 flex justify-end">
+          <div className="absolute inset-0 bg-black/50 backdrop-blur-sm" onClick={() => setSelectedArticle(null)} />
+
+          <div className="relative flex h-full w-full max-w-2xl flex-col bg-white shadow-2xl">
+
+            {/* Header */}
+            <div className="flex-shrink-0 bg-slate-900 px-6 py-5">
+              <div className="flex items-start justify-between gap-4">
+                <div className="min-w-0 flex-1">
+                  <div className="mb-2 flex flex-wrap items-center gap-2">
+                    <span className="text-base leading-none">{cfg.icon}</span>
+                    <span className="rounded-full bg-white/10 px-2.5 py-0.5 text-xs font-bold uppercase tracking-wider text-slate-300">
+                      {selectedArticle.channel || activeChannel}
+                    </span>
+                    {selectedArticle.publishedAt && (
+                      <span className="text-xs text-slate-400">
+                        {new Date(selectedArticle.publishedAt).toLocaleString('en-IN', {
+                          day: 'numeric', month: 'short', hour: '2-digit', minute: '2-digit', hour12: true,
+                        })}
+                      </span>
+                    )}
+                  </div>
+                  <h2 className="text-lg font-bold leading-snug text-white">{selectedArticle.title}</h2>
                   {selectedArticle.author && (
                     <p className="mt-1.5 text-xs text-slate-400">By {selectedArticle.author}</p>
                   )}
                 </div>
                 <button
-                  onClick={handleCloseDetail}
+                  type="button"
+                  onClick={() => setSelectedArticle(null)}
                   className="mt-0.5 flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-full bg-white/10 text-sm font-bold text-white transition hover:bg-white/20"
                   aria-label="Close"
-                >
-                  ✕
-                </button>
+                >✕</button>
               </div>
             </div>
 
-            {/* ── Scrollable body ── */}
+            {/* Scrollable body */}
             <div className="min-h-0 flex-1 overflow-y-auto">
-
-              {/* Hero image */}
               {selectedArticle.image && (
                 <div className="h-48 overflow-hidden bg-gray-100">
                   <img
                     src={selectedArticle.image}
                     alt={selectedArticle.title}
                     className="h-full w-full object-cover"
-                    onError={e => {
-                      (e.currentTarget.parentElement as HTMLElement).style.display = 'none';
-                    }}
+                    onError={e => { (e.currentTarget.parentElement as HTMLElement).style.display = 'none'; }}
                   />
                 </div>
               )}
 
               <div className="space-y-6 p-6">
 
-                {/* ── UPSC Key Topics ── */}
+                {/* UPSC Topics */}
                 {extractImportantTopics(selectedArticle.content || selectedArticle.description).length > 0 && (
                   <div>
                     <p className="mb-2.5 flex items-center gap-2 text-[10px] font-bold uppercase tracking-widest text-gray-400">
-                      <span className="inline-block h-2.5 w-2.5 rounded-full bg-amber-500" />
+                      <span className="inline-block h-2 w-2 rounded-full bg-amber-500" />
                       UPSC Key Topics — hover for definition
                     </p>
                     <div className="flex flex-wrap gap-2">
-                      {extractImportantTopics(selectedArticle.content || selectedArticle.description).map((topic, idx) => (
+                      {extractImportantTopics(selectedArticle.content || selectedArticle.description).map((topic, i) => (
                         <span
-                          key={idx}
-                          className="group relative inline-flex cursor-help items-center gap-1.5 rounded-full border border-amber-300 bg-amber-50 px-3 py-1.5 text-xs font-semibold text-amber-800 transition hover:border-amber-400 hover:bg-amber-100"
+                          key={i}
+                          className="group relative inline-flex cursor-help items-center gap-1.5 rounded-full border border-amber-300 bg-amber-50 px-3 py-1.5 text-xs font-semibold text-amber-800 transition hover:bg-amber-100"
                         >
                           <span className="h-1.5 w-1.5 flex-shrink-0 rounded-full bg-amber-500" />
                           {topic}
-                          {/* CSS-only tooltip */}
                           <span className="pointer-events-none absolute bottom-full left-0 z-[60] mb-2 hidden w-64 rounded-lg bg-gray-900 p-3 text-xs leading-relaxed text-white shadow-xl group-hover:block">
                             <span className="mb-1 block font-bold text-amber-300">{topic}</span>
                             {DEFINED_TERMS[topic.toLowerCase()] || 'Important UPSC concept'}
@@ -525,51 +354,46 @@ export default function CurrentAffairsViewer({
                   </div>
                 )}
 
-                {/* ── Summary ── */}
+                {/* Summary */}
                 {selectedArticle.description && (
                   <div className="rounded-xl border-l-4 border-blue-500 bg-blue-50 p-4">
-                    <p className="mb-1.5 flex items-center gap-2 text-[10px] font-bold uppercase tracking-widest text-blue-500">
-                      <span className="inline-block h-2.5 w-2.5 rounded-full bg-blue-500" />
-                      Summary
-                    </p>
+                    <p className="mb-1.5 text-[10px] font-bold uppercase tracking-widest text-blue-500">Summary</p>
                     <p className="text-sm leading-relaxed text-gray-800">{selectedArticle.description}</p>
                   </div>
                 )}
 
-                {/* ── Key Points ── */}
+                {/* Key Points */}
                 {extractKeyPoints(selectedArticle.content || selectedArticle.description).length > 0 && (
                   <div>
                     <p className="mb-3 flex items-center gap-2 text-[10px] font-bold uppercase tracking-widest text-gray-400">
-                      <span className="inline-block h-2.5 w-2.5 rounded-full bg-emerald-500" />
+                      <span className="inline-block h-2 w-2 rounded-full bg-emerald-500" />
                       Key Points
                     </p>
                     <ul className="space-y-2">
-                      {extractKeyPoints(selectedArticle.content || selectedArticle.description).map((point, idx) => (
-                        <li key={idx} className="flex items-start gap-3 rounded-lg border border-emerald-100 bg-emerald-50 p-3">
-                          <span className="mt-0.5 flex h-5 w-5 flex-shrink-0 items-center justify-center rounded-full bg-emerald-500 text-[10px] font-bold text-white">
-                            {idx + 1}
-                          </span>
-                          <span className="text-sm leading-relaxed text-gray-700">{point}</span>
+                      {extractKeyPoints(selectedArticle.content || selectedArticle.description).map((pt, i) => (
+                        <li key={i} className="flex items-start gap-3 rounded-lg border border-emerald-100 bg-emerald-50 p-3">
+                          <span className="mt-0.5 flex h-5 w-5 flex-shrink-0 items-center justify-center rounded-full bg-emerald-500 text-[10px] font-bold text-white">{i + 1}</span>
+                          <span className="text-sm leading-relaxed text-gray-700">{pt}</span>
                         </li>
                       ))}
                     </ul>
                   </div>
                 )}
 
-                {/* ── Detailed Coverage ── */}
+                {/* Detailed coverage */}
                 {selectedArticle.content && formatAsBulletPoints(selectedArticle.content).length > 0 && (
                   <div>
                     <p className="mb-3 flex items-center gap-2 text-[10px] font-bold uppercase tracking-widest text-gray-400">
-                      <span className="inline-block h-2.5 w-2.5 rounded-full bg-purple-500" />
+                      <span className="inline-block h-2 w-2 rounded-full bg-purple-500" />
                       Detailed Coverage
-                      <span className="normal-case tracking-normal text-gray-400 font-normal">— highlighted words are UPSC terms</span>
+                      <span className="normal-case tracking-normal font-normal text-gray-400">— highlighted = UPSC term</span>
                     </p>
-                    <div className="divide-y divide-gray-100 rounded-xl border border-gray-200 bg-white overflow-hidden">
-                      {formatAsBulletPoints(selectedArticle.content).map((point, idx) => (
-                        <div key={idx} className="flex items-start gap-3 px-4 py-3 transition hover:bg-gray-50">
-                          <span className="mt-1 flex-shrink-0 text-purple-400 font-bold text-sm">›</span>
+                    <div className="divide-y divide-gray-100 overflow-hidden rounded-xl border border-gray-200 bg-white">
+                      {formatAsBulletPoints(selectedArticle.content).map((pt, i) => (
+                        <div key={i} className="flex items-start gap-3 px-4 py-3 hover:bg-gray-50 transition">
+                          <span className="mt-0.5 flex-shrink-0 text-purple-400 font-bold text-sm">›</span>
                           <span className="text-sm leading-relaxed text-gray-700">
-                            <HighlightedContent text={point} />
+                            <HighlightedContent text={pt} />
                           </span>
                         </div>
                       ))}
@@ -577,7 +401,7 @@ export default function CurrentAffairsViewer({
                   </div>
                 )}
 
-                {/* ── Source meta ── */}
+                {/* Source meta */}
                 <div className="flex flex-wrap gap-x-5 gap-y-1 border-t border-gray-100 pt-4 text-xs text-gray-400">
                   <span>📰 {selectedArticle.source || selectedArticle.channel || 'Unknown'}</span>
                   {selectedArticle.author && <span>✍️ {selectedArticle.author}</span>}
@@ -585,11 +409,10 @@ export default function CurrentAffairsViewer({
                     <span>🕐 {new Date(selectedArticle.publishedAt).toLocaleString('en-IN')}</span>
                   )}
                 </div>
-
               </div>
             </div>
 
-            {/* ── Footer actions ── */}
+            {/* Footer */}
             <div className="flex flex-shrink-0 gap-3 border-t border-gray-200 bg-white px-6 py-4">
               {selectedArticle.url ? (
                 <a
@@ -600,17 +423,15 @@ export default function CurrentAffairsViewer({
                 >
                   Read Full Article <span>→</span>
                 </a>
-              ) : (
-                <div className="flex-1" />
-              )}
+              ) : <div className="flex-1" />}
               <button
-                onClick={handleCloseDetail}
+                type="button"
+                onClick={() => setSelectedArticle(null)}
                 className="rounded-lg border border-gray-300 px-5 py-2.5 text-sm font-semibold text-gray-700 transition hover:bg-gray-50"
               >
                 Close
               </button>
             </div>
-
           </div>
         </div>
       )}

@@ -36,6 +36,16 @@ section {
   .link-arrow { @apply inline-flex items-center gap-1 text-sm font-semibold text-brand hover:text-brand-700; }
 }
 
+/* Dot-grid decorative background for hero sections */
+.dot-grid {
+  background-image: radial-gradient(circle, white 1px, transparent 1px);
+  background-size: 28px 28px;
+}
+
+/* Hide scrollbar but keep scroll behaviour (all browsers) */
+.scrollbar-hide::-webkit-scrollbar { display: none; }
+.scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
+
 /* Mobile-specific adjustments */
 @media (max-width: 639px) {
   main {
