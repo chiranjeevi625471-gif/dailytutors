@@ -8,10 +8,11 @@ const NAV = [
     label: "Current Affairs",
     href: "/current-affairs",
     children: [
-      { label: "Daily News Analysis", href: "/current-affairs/daily" },
-      { label: "Editorial Analysis", href: "/current-affairs/editorial" },
-      { label: "PIB Summary", href: "/current-affairs/pib" },
-      { label: "Yojana / Kurukshetra", href: "/current-affairs/magazines" }
+      { label: "Daily Current Affairs", href: "/current-affairs" },
+      { label: "Daily News Analysis", href: "/daily-news-analysis" },
+      { label: "Editorial Analysis", href: "/editorial-analysis" },
+      { label: "PIB Summary", href: "/pib-summary" },
+      { label: "Yojana / Kurukshetra", href: "/yojana-kurukshetra" }
     ]
   },
   {

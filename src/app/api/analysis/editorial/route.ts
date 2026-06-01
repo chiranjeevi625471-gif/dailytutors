@@ -1,0 +1,57 @@
+import { NextResponse } from "next/server";
+import { getClient } from "@/lib/groq";
+import { fetchTopIndianNews } from "@/lib/news";
+
+export const runtime = "nodejs";
+export const dynamic = "force-dynamic";
+export const maxDuration = 60;
+
+export async function GET() {
+  try {
+    // Fetch editorial content and opinion pieces
+    const articles = await fetchTopIndianNews("editorial opinion India current affairs", 5);
+    
+    if (articles.length === 0) {
+      return NextResponse.json({ error: "No editorials found" }, { status: 400 });
+    }
+
+    const newsSummary = articles
+      .map((a, i) => `${i + 1}. ${a.title}\n${a.description || ""}`)
+      .join("\n\n");
+
+    const client = getClient();
+    const response = await client.messages.create({
+      model: "mixtral-8x7b-32768",
+      max_tokens: 2000,
+      messages: [
+        {
+          role: "user",
+          content: `You are a current affairs expert for UPSC Civil Services. Analyze these recent editorial pieces and provide editorial analysis in 500-800 words covering:
+
+1. Main arguments and counterarguments
+2. Different perspectives on the issue
+3. Policy implications
+4. Relevance to GS2 (Governance) and GS3 (Economics)
+5. UPSC exam perspective
+
+Editorial topics:
+${newsSummary}
+
+Present as detailed editorial analysis with clear sections.`
+        }
+      ]
+    });
+
+    const analysis = response.content[0].type === "text" ? response.content[0].text : "";
+
+    return NextResponse.json({
+      title: "Editorial Analysis",
+      date: new Date().toLocaleDateString("en-IN"),
+      analysis,
+      sources: articles.map(a => ({ title: a.title, url: a.url }))
+    });
+  } catch (error) {
+    console.error("Editorial analysis error:", error);
+    return NextResponse.json({ error: "Failed to generate analysis" }, { status: 500 });
+  }
+}

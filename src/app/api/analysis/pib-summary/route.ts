@@ -1,0 +1,57 @@
+import { NextResponse } from "next/server";
+import { getClient } from "@/lib/groq";
+import { fetchTopIndianNews } from "@/lib/news";
+
+export const runtime = "nodejs";
+export const dynamic = "force-dynamic";
+export const maxDuration = 60;
+
+export async function GET() {
+  try {
+    // Fetch government announcements and PIB releases
+    const articles = await fetchTopIndianNews("PIB government India press release ministry", 6);
+    
+    if (articles.length === 0) {
+      return NextResponse.json({ error: "No PIB releases found" }, { status: 400 });
+    }
+
+    const newsSummary = articles
+      .map((a, i) => `${i + 1}. ${a.title}\n${a.description || ""}`)
+      .join("\n\n");
+
+    const client = getClient();
+    const response = await client.messages.create({
+      model: "mixtral-8x7b-32768",
+      max_tokens: 2000,
+      messages: [
+        {
+          role: "user",
+          content: `You are a current affairs expert for UPSC Civil Services. Create a PIB (Press Information Bureau) summary from these recent government announcements in 600-900 words covering:
+
+1. New government schemes and initiatives
+2. Policy announcements and changes
+3. Press releases from various ministries
+4. Implementation details and timelines
+5. UPSC relevance and key takeaways
+
+Government announcements:
+${newsSummary}
+
+Format as a structured PIB summary with clear categorization by ministry/department.`
+        }
+      ]
+    });
+
+    const analysis = response.content[0].type === "text" ? response.content[0].text : "";
+
+    return NextResponse.json({
+      title: "PIB Summary",
+      date: new Date().toLocaleDateString("en-IN"),
+      analysis,
+      sources: articles.map(a => ({ title: a.title, url: a.url }))
+    });
+  } catch (error) {
+    console.error("PIB summary error:", error);
+    return NextResponse.json({ error: "Failed to generate PIB summary" }, { status: 500 });
+  }
+}
