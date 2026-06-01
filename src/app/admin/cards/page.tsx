@@ -31,7 +31,7 @@ export default function AdminCards() {
       fields={[
         { name: "title", label: "Title", required: true, placeholder: "Daily Current Affairs" },
         { name: "tag", label: "Tag (small text)", required: true, placeholder: "FREE · 8 AM IST" },
-        { name: "href", label: "Link", required: true, placeholder: "/current-affairs", full: true },
+        { name: "href", label: "Link", required: false, placeholder: "/current-affairs", full: true },
         { name: "icon", label: "Icon", type: "select", options: ICONS, required: true },
         { name: "order", label: "Order", type: "number", required: true },
         { name: "bg", label: "Background gradient", type: "select", options: GRADIENTS, required: true, full: true },

@@ -36,7 +36,7 @@ export default function AdminPromoBanners() {
         { name: "title", label: "Banner Title", required: true, full: true, placeholder: "e.g., Tuition for 8th to 12th" },
         { name: "order", label: "Order", type: "number", required: true, placeholder: "1, 2, 3..." },
         { name: "image", label: "Banner Image", type: "file", accept: "image/*", full: true, hint: "Upload a banner image (recommended: 800x400px)" },
-        { name: "link", label: "Banner Link", required: true, full: true, placeholder: "e.g., /courses/school-tuition" },
+        { name: "link", label: "Banner Link", required: false, full: true, placeholder: "e.g., /courses/school-tuition" },
         { name: "active", label: "Active", type: "checkbox", placeholder: "Show on site" }
       ]}
     />

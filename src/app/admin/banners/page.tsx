@@ -42,7 +42,7 @@ export default function AdminBanners() {
         { name: "title", label: "Title (large)", required: true, full: true, placeholder: "FOUNDATION 2027 BATCH" },
         { name: "subtitle", label: "Subtitle", required: true, full: true, placeholder: "FOR PRELIMS, MAINS & OPTIONAL — LIVE + RECORDED" },
         { name: "cta", label: "CTA text", required: true, placeholder: "TAP TO EXPLORE!" },
-        { name: "href", label: "CTA link", required: true, placeholder: "/courses/..." },
+        { name: "href", label: "CTA link", required: false, placeholder: "/courses/..." },
         { name: "bg", label: "Background gradient (fallback)", type: "select", options: GRADIENTS, required: true, full: true, hint: "Used when no image is uploaded" },
         { name: "active", label: "Active", type: "checkbox", placeholder: "Show on site" }
       ]}
