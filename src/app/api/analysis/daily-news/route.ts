@@ -25,7 +25,7 @@ export async function GET() {
 
     // Generate analysis using Groq
     const client = getClient();
-    const response = await client.messages.create({
+    const response = await client.chat.completions.create({
       model: "mixtral-8x7b-32768",
       max_tokens: 2000,
       messages: [
@@ -46,7 +46,7 @@ Provide the analysis in clear sections with bullet points for key takeaways.`
       ]
     });
 
-    const analysis = response.content[0].type === "text" ? response.content[0].text : "";
+    const analysis = response.choices[0].message.content || "";
 
     return NextResponse.json({
       title: "Daily News Analysis",

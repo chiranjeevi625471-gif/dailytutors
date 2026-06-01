@@ -23,7 +23,7 @@ export async function GET() {
       .join("\n\n");
 
     const client = getClient();
-    const response = await client.messages.create({
+    const response = await client.chat.completions.create({
       model: "mixtral-8x7b-32768",
       max_tokens: 2000,
       messages: [
@@ -45,7 +45,7 @@ Format as a structured PIB summary with clear categorization by ministry/departm
       ]
     });
 
-    const analysis = response.content[0].type === "text" ? response.content[0].text : "";
+    const analysis = response.choices[0].message.content || "";
 
     return NextResponse.json({
       title: "PIB Summary",
