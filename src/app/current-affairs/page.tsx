@@ -54,18 +54,6 @@ export default async function CurrentAffairsPage() {
                 <div className="text-2xl font-bold">{sourceCount}</div>
                 <div className="text-[11px] text-slate-400 mt-0.5">News Sources</div>
               </div>
-              {todayPost?.lastFetched && (
-                <div className="rounded-xl bg-white/10 backdrop-blur-sm px-5 py-3 text-center">
-                  <div className="text-lg font-bold">
-                    {new Date(todayPost.lastFetched).toLocaleTimeString("en-IN", {
-                      hour: "2-digit",
-                      minute: "2-digit",
-                      hour12: true,
-                    })}
-                  </div>
-                  <div className="text-[11px] text-slate-400 mt-0.5">Last Updated</div>
-                </div>
-              )}
             </div>
           )}
         </div>
