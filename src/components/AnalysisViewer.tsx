@@ -85,14 +85,14 @@ export default function AnalysisViewer({ endpoint, title, description }: Analysi
 
       {error && (
         <div className="rounded-2xl border border-red-200 bg-red-50 p-6 mb-8">
-          <p className=\"text-red-700 font-semibold mb-2\">⚠️ Setup Required</p>
-          <p className=\"text-red-600 text-sm mb-3\">{error}</p>
-          {error.includes(\"NEWSAPI_KEY\") && (
-            <div className=\"mt-3 pt-3 border-t border-red-200 text-sm text-red-700\">
-              <p className=\"font-semibold mb-2\">Fix this in 2 steps:</p>
-              <ol className=\"list-decimal list-inside space-y-1\">
-                <li>Get free API key from <a href=\"https://newsapi.org\" target=\"_blank\" rel=\"noopener noreferrer\" className=\"underline font-medium\">newsapi.org</a></li>
-                <li>Add to Vercel: Settings → Environment Variables → Add <code className=\"bg-red-100 px-2 py-1 rounded\">NEWSAPI_KEY</code></li>
+          <p className="text-red-700 font-semibold mb-2">⚠️ Setup Required</p>
+          <p className="text-red-600 text-sm mb-3">{error}</p>
+          {error.includes("NEWSAPI_KEY") && (
+            <div className="mt-3 pt-3 border-t border-red-200 text-sm text-red-700">
+              <p className="font-semibold mb-2">Fix this in 2 steps:</p>
+              <ol className="list-decimal list-inside space-y-1">
+                <li>Get free API key from <a href="https://newsapi.org" target="_blank" rel="noopener noreferrer" className="underline font-medium">newsapi.org</a></li>
+                <li>Add to Vercel: Settings → Environment Variables → Add <code className="bg-red-100 px-2 py-1 rounded">NEWSAPI_KEY</code></li>
               </ol>
             </div>
           )}
