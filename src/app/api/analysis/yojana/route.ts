@@ -12,7 +12,10 @@ export async function GET() {
     const articles = await fetchTopIndianNews("government schemes Yojana development social India", 6);
     
     if (articles.length === 0) {
-      return NextResponse.json({ error: "No scheme updates found" }, { status: 400 });
+      console.warn("No articles fetched - check NEWSAPI_KEY");
+      return NextResponse.json({ 
+        error: "No scheme updates available. Please ensure NEWSAPI_KEY is set in Vercel environment variables." 
+      }, { status: 503 });
     }
 
     const newsSummary = articles
@@ -53,7 +56,8 @@ Present as an in-depth article with sections for different schemes and their det
       sources: articles.map(a => ({ title: a.title, url: a.url }))
     });
   } catch (error) {
-    console.error("Yojana/Kurukshetra generation error:", error);
-    return NextResponse.json({ error: "Failed to generate content" }, { status: 500 });
+    const msg = error instanceof Error ? error.message : String(error);
+    console.error("Yojana/Kurukshetra generation error:", msg);
+    return NextResponse.json({ error: `Generation failed: ${msg}` }, { status: 500 });
   }
 }

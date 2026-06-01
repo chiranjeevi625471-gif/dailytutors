@@ -12,7 +12,10 @@ export async function GET() {
     const articles = await fetchTopIndianNews("India news politics economy", 5);
     
     if (articles.length === 0) {
-      return NextResponse.json({ error: "No news found" }, { status: 400 });
+      console.warn("No articles fetched - check NEWSAPI_KEY");
+      return NextResponse.json({ 
+        error: "No news available. Please ensure NEWSAPI_KEY is set in Vercel environment variables." 
+      }, { status: 503 });
     }
 
     // Prepare news summary for Groq
@@ -52,7 +55,8 @@ Provide the analysis in clear sections with bullet points for key takeaways.`
       sources: articles.map(a => ({ title: a.title, url: a.url }))
     });
   } catch (error) {
-    console.error("Analysis generation error:", error);
-    return NextResponse.json({ error: "Failed to generate analysis" }, { status: 500 });
+    const msg = error instanceof Error ? error.message : String(error);
+    console.error("Analysis generation error:", msg);
+    return NextResponse.json({ error: `Generation failed: ${msg}` }, { status: 500 });
   }
 }

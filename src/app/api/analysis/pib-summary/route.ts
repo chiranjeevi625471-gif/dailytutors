@@ -12,7 +12,10 @@ export async function GET() {
     const articles = await fetchTopIndianNews("PIB government India press release ministry", 6);
     
     if (articles.length === 0) {
-      return NextResponse.json({ error: "No PIB releases found" }, { status: 400 });
+      console.warn("No articles fetched - check NEWSAPI_KEY");
+      return NextResponse.json({ 
+        error: "No PIB releases available. Please ensure NEWSAPI_KEY is set in Vercel environment variables." 
+      }, { status: 503 });
     }
 
     const newsSummary = articles
@@ -51,7 +54,8 @@ Format as a structured PIB summary with clear categorization by ministry/departm
       sources: articles.map(a => ({ title: a.title, url: a.url }))
     });
   } catch (error) {
-    console.error("PIB summary error:", error);
-    return NextResponse.json({ error: "Failed to generate PIB summary" }, { status: 500 });
+    const msg = error instanceof Error ? error.message : String(error);
+    console.error("PIB summary error:", msg);
+    return NextResponse.json({ error: `Generation failed: ${msg}` }, { status: 500 });
   }
 }
