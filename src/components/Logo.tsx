@@ -18,9 +18,9 @@ export default function Logo({
   const img = (
     <NextImage
       src="/logo.png"
-      alt="Daily Tutors — Decode the UPSC exam, Daily"
-      width={1651}
-      height={394}
+      alt="Daily Tutors — Decode the exams, Daily."
+      width={1691}
+      height={403}
       priority={priority}
       className={className}
     />
