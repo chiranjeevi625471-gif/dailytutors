@@ -54,6 +54,7 @@ export async function GET(request: NextRequest) {
         // Process with AI
         let aiData: any = {
           summary: newsArticle.description || '',
+          subject: 'Polity',
           keywords: [],
           prelimsFacts: [],
           mainsAnalysis: '',
@@ -65,37 +66,56 @@ export async function GET(request: NextRequest) {
         };
 
         try {
-          if (newsArticle.content) {
-            aiData = await processArticleWithAI(newsArticle.content);
+          const sourceText = newsArticle.content || newsArticle.description;
+          if (sourceText) {
+            aiData = await processArticleWithAI(sourceText);
           }
         } catch (aiError) {
           console.error(`⚠️  AI processing failed for: ${newsArticle.title}`, aiError);
           // Continue with partial data
         }
 
-        // Create article
+        // Required fields must be non-empty for the Article schema.
+        const summary = aiData.summary || newsArticle.description || newsArticle.title || '';
+        const content =
+          newsArticle.content || newsArticle.description || summary || newsArticle.title || '';
+
+        // Map AI MCQ shape -> Article MCQ subdocument shape.
+        const DIFFICULTY: Record<string, string> = { easy: 'Easy', medium: 'Medium', hard: 'Hard' };
+        const mcqs = (aiData.mcqs || [])
+          .filter((m: any) => m && m.question && Array.isArray(m.options))
+          .map((m: any) => ({
+            question: m.question,
+            options: m.options,
+            correctOption: typeof m.correctAnswer === 'number' ? m.correctAnswer : 0,
+            explanation: m.explanation || '',
+            difficulty: DIFFICULTY[String(m.difficulty || '').toLowerCase()] || 'Medium',
+          }));
+
+        // Create article using the unified Article schema (src/lib/models.ts).
         const article = await Article.create({
           title: newsArticle.title,
           slug,
-          source: newsArticle.source || 'other',
-          originalUrl: newsArticle.url,
-          content: newsArticle.content || newsArticle.description,
-          summary: aiData.summary,
-          image: newsArticle.image,
-          category: aiData.gsPaperMapping[0] || 'Prelims',
-          subcategories: [],
-          keyPoints: aiData.prelimsFacts,
-          prelimsFacts: aiData.prelimsFacts,
-          mainsAnalysis: aiData.mainsAnalysis,
-          constitutionalLinks: aiData.constitutionalLinks,
-          keywords: aiData.keywords,
-          wayForward: aiData.wayForward,
-          relatedTopics: aiData.relatedTopics,
-          mcqs: aiData.mcqs,
+          source: newsArticle.channel || newsArticle.source || 'Other',
+          sourceUrl: newsArticle.url,
+          category: aiData.subject || 'Polity',
+          gsPapers: aiData.gsPaperMapping || [],
+          content,
+          summary,
+          featuredImage: newsArticle.image,
+          keywords: aiData.keywords || [],
+          prelimsPointers: aiData.prelimsFacts || [],
+          mainsAnalysis: aiData.mainsAnalysis || '',
+          constitutionalLinks: aiData.constitutionalLinks || [],
+          wayForward: aiData.wayForward || '',
+          relatedArticles: aiData.relatedTopics || [],
+          mcqs,
+          tags: newsArticle.channel ? [newsArticle.channel] : [],
           aiGenerated: true,
           aiModel: 'groq',
-          status: 'pending-review', // Requires admin approval
-          publishedAt: newsArticle.publishedAt,
+          generatedAt: new Date(),
+          status: 'pending_review', // Requires admin approval before going public
+          publishedAt: null,
         });
 
         console.log(`✅ Processed: ${newsArticle.title}`);
