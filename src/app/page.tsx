@@ -6,7 +6,7 @@ import {
 import SectionHeader from "@/components/SectionHeader";
 import HeroCarousel from "@/components/HeroCarousel";
 import HeroBannerCards from "@/components/HeroBannerCards";
-import PromoBannerSection from "@/components/PromoBannerSection";
+import ExamCategoriesSection from "@/components/ExamCategoriesSection";
 import { db } from "@/lib/db";
 import { optionals } from "@/lib/sample-data";
 
@@ -26,14 +26,13 @@ function bySlug<T extends { active?: boolean; order?: number }>(rows: T[]) {
 }
 
 export default async function HomePage() {
-  const [banners, quizzesAll, coursesAll, promobanners] = await Promise.all([
-    db.banners.list(), db.quizzes.list(), db.courses.list(), db.promobanners.list()
+  const [banners, quizzesAll, coursesAll] = await Promise.all([
+    db.banners.list(), db.quizzes.list(), db.courses.list()
   ]);
 
   const slides = bySlug(banners);
   const quizzes = quizzesAll.filter((q) => q.active);
   const courses = coursesAll.filter((c) => c.active);
-  const promoBanners = bySlug(promobanners);
 
   return (
     <>
@@ -41,7 +40,7 @@ export default async function HomePage() {
 
       <HeroBannerCards />
 
-      <PromoBannerSection banners={promoBanners} />
+      <ExamCategoriesSection />
 
       {/* Feature grid */}
       <section className="container-page py-12 sm:py-16 md:py-20">
