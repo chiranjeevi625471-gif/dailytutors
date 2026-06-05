@@ -1,65 +1,81 @@
-import fs from "node:fs/promises";
-import path from "node:path";
+import mongoose, { Schema, Model } from "mongoose";
 import type { HeroBanner, BannerCard, Post, Quiz, Course, Download, EntityName, PromoBanner } from "./types";
 import { seedBanners, seedCards, seedPosts, seedQuizzes, seedCourses, seedDownloads, seedPromo } from "./seed";
+import { connectDB } from "./mongodb";
 
-// On Vercel, /var/task is read-only. Use /tmp/data for writes so cron jobs
-// can update posts/quizzes at runtime. Data resets on cold start but crons
-// repopulate it within seconds of each new invocation.
-const IS_VERCEL = process.env.VERCEL === "1";
-const SOURCE_DIR = path.join(process.cwd(), "data");          // read-only on Vercel
-const WRITE_DIR  = IS_VERCEL ? "/tmp/data" : SOURCE_DIR;      // writable always
+// Content entities (banners, cards, posts, quizzes, courses, downloads, promobanners)
+// are stored in MongoDB so edits made through the admin panel persist across
+// Vercel serverless instances and cold starts. Each entity lives in its own
+// `content_<name>` collection, kept separate from the app's transactional models.
 
-async function ensureDir() {
-  try { await fs.mkdir(WRITE_DIR, { recursive: true }); } catch { /* ignore */ }
+const SEEDS: Record<EntityName, any[]> = {
+  banners: seedBanners,
+  cards: seedCards,
+  posts: seedPosts,
+  quizzes: seedQuizzes,
+  courses: seedCourses,
+  downloads: seedDownloads,
+  promobanners: seedPromo,
+};
+
+// Loose schema — these entities have varying shapes, so we store the whole
+// object and only index on the string `id` we generate.
+function getModel(name: EntityName): Model<any> {
+  const modelName = `Content_${name}`;
+  if (mongoose.models[modelName]) {
+    return mongoose.models[modelName];
+  }
+  const schema = new Schema(
+    { id: { type: String, unique: true, index: true } },
+    { strict: false, collection: `content_${name}`, versionKey: false }
+  );
+  return mongoose.model(modelName, schema);
 }
 
-// Seed /tmp from the committed data file on first cold start
-async function seedTmpIfNeeded(name: EntityName): Promise<void> {
-  if (!IS_VERCEL) return;
-  const tmpFile = path.join(WRITE_DIR, `${name}.json`);
-  try {
-    await fs.access(tmpFile);           // already exists in /tmp
-  } catch {
-    // Copy from the read-only deployment bundle to /tmp
-    const srcFile = path.join(SOURCE_DIR, `${name}.json`);
+async function list<T>(name: EntityName, seed: T[]): Promise<T[]> {
+  await connectDB();
+  const Model = getModel(name);
+  const count = await Model.estimatedDocumentCount();
+
+  // First run: seed the collection from the committed seed data.
+  if (count === 0 && seed.length > 0) {
     try {
-      const data = await fs.readFile(srcFile, "utf-8");
-      await fs.mkdir(WRITE_DIR, { recursive: true });
-      await fs.writeFile(tmpFile, data, "utf-8");
+      await Model.insertMany(seed, { ordered: false });
     } catch {
-      /* source file missing — will fall back to seed data */
+      /* ignore duplicate-key races from concurrent cold starts */
     }
   }
+
+  const rows = await Model.find().lean().exec();
+  const items = rows.map((r: any) => {
+    delete r._id;
+    delete r.__v;
+    return r;
+  }) as T[];
+
+  // Preserve `order` sorting when present (matches previous homepage behavior).
+  return items.sort((a: any, b: any) => (a?.order ?? 0) - (b?.order ?? 0));
 }
 
-async function readJSON<T>(name: EntityName, fallback: T[]): Promise<T[]> {
-  await ensureDir();
-  await seedTmpIfNeeded(name);
-  const file = path.join(WRITE_DIR, `${name}.json`);
-  try {
-    const buf = await fs.readFile(file, "utf-8");
-    return JSON.parse(buf) as T[];
-  } catch {
-    await fs.writeFile(file, JSON.stringify(fallback, null, 2), "utf-8");
-    return fallback;
+// Callers always read the full list, modify it, then save the whole array back.
+// Replace the entire collection to preserve that semantic exactly.
+async function save<T>(name: EntityName, data: T[]): Promise<void> {
+  await connectDB();
+  const Model = getModel(name);
+  await Model.deleteMany({});
+  if (data.length > 0) {
+    await Model.insertMany(data, { ordered: false });
   }
-}
-
-async function writeJSON<T>(name: EntityName, data: T[]): Promise<void> {
-  await ensureDir();
-  const file = path.join(WRITE_DIR, `${name}.json`);
-  await fs.writeFile(file, JSON.stringify(data, null, 2), "utf-8");
 }
 
 export const db = {
-  banners:     { list: () => readJSON<HeroBanner>("banners",     seedBanners),  save: (r: HeroBanner[])  => writeJSON("banners",     r) },
-  cards:       { list: () => readJSON<BannerCard>("cards",       seedCards),    save: (r: BannerCard[])  => writeJSON("cards",       r) },
-  posts:       { list: () => readJSON<Post>("posts",             seedPosts),    save: (r: Post[])        => writeJSON("posts",       r) },
-  quizzes:     { list: () => readJSON<Quiz>("quizzes",           seedQuizzes),  save: (r: Quiz[])        => writeJSON("quizzes",     r) },
-  courses:     { list: () => readJSON<Course>("courses",         seedCourses),  save: (r: Course[])      => writeJSON("courses",     r) },
-  downloads:   { list: () => readJSON<Download>("downloads",     seedDownloads),save: (r: Download[])    => writeJSON("downloads",   r) },
-  promobanners:{ list: () => readJSON<PromoBanner>("promobanners",seedPromo),   save: (r: PromoBanner[]) => writeJSON("promobanners",r) },
+  banners:      { list: () => list<HeroBanner>("banners", seedBanners),       save: (r: HeroBanner[])  => save("banners", r) },
+  cards:        { list: () => list<BannerCard>("cards", seedCards),           save: (r: BannerCard[])  => save("cards", r) },
+  posts:        { list: () => list<Post>("posts", seedPosts),                 save: (r: Post[])        => save("posts", r) },
+  quizzes:      { list: () => list<Quiz>("quizzes", seedQuizzes),             save: (r: Quiz[])        => save("quizzes", r) },
+  courses:      { list: () => list<Course>("courses", seedCourses),           save: (r: Course[])      => save("courses", r) },
+  downloads:    { list: () => list<Download>("downloads", seedDownloads),     save: (r: Download[])    => save("downloads", r) },
+  promobanners: { list: () => list<PromoBanner>("promobanners", seedPromo),   save: (r: PromoBanner[]) => save("promobanners", r) },
 };
 
 export function newId() {
