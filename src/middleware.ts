@@ -1,27 +1,47 @@
-import { NextResponse } from "next/server";
-import type { NextRequest } from "next/server";
+import { NextResponse } from 'next/server';
+import type { NextRequest } from 'next/server';
 
-const COOKIE = "dt_admin";
-const TOKEN = process.env.ADMIN_TOKEN || "dt_admin_token_v1";
+const ADMIN_COOKIE = 'dt_admin';
+const ADMIN_TOKEN = process.env.ADMIN_TOKEN || 'dt_admin_token_v1';
 
 export function middleware(req: NextRequest) {
   const { pathname } = req.nextUrl;
-  const authed = req.cookies.get(COOKIE)?.value === TOKEN;
+  const adminAuthed = req.cookies.get(ADMIN_COOKIE)?.value === ADMIN_TOKEN;
+  const authToken = req.cookies.get('auth_token')?.value;
 
   // Protect /admin/* (except /admin/login)
-  if (pathname.startsWith("/admin") && pathname !== "/admin/login") {
-    if (!authed) {
+  if (pathname.startsWith('/admin') && pathname !== '/admin/login') {
+    if (!adminAuthed) {
       const url = req.nextUrl.clone();
-      url.pathname = "/admin/login";
-      url.searchParams.set("next", pathname);
+      url.pathname = '/admin/login';
+      url.searchParams.set('next', pathname);
       return NextResponse.redirect(url);
     }
   }
 
-  // Protect mutating API calls under /api/admin/*
-  if (pathname.startsWith("/api/admin")) {
-    if (!authed) {
-      return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+  // Protect /dashboard and user routes
+  const protectedRoutes = ['/dashboard', '/profile', '/my-courses', '/my-quizzes'];
+  const isProtectedRoute = protectedRoutes.some((route) => pathname.startsWith(route));
+
+  if (isProtectedRoute) {
+    if (!authToken) {
+      const url = req.nextUrl.clone();
+      url.pathname = '/login';
+      url.searchParams.set('next', pathname);
+      return NextResponse.redirect(url);
+    }
+  }
+
+  // Protect mutating API calls under /api/admin/* (except login and register)
+  if (pathname.startsWith('/api/admin')) {
+    // Allow login and register endpoints without authentication
+    if (pathname === '/api/admin/login' || pathname === '/api/admin/register') {
+      return NextResponse.next();
+    }
+    
+    // Protect other admin API endpoints
+    if (!adminAuthed) {
+      return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
     }
   }
 
@@ -29,5 +49,5 @@ export function middleware(req: NextRequest) {
 }
 
 export const config = {
-  matcher: ["/admin/:path*", "/api/admin/:path*"]
+  matcher: ['/admin/:path*', '/api/admin/:path*'],
 };

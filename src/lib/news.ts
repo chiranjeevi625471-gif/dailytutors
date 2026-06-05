@@ -1,3 +1,6 @@
+import axios from 'axios';
+import * as cheerio from 'cheerio';
+
 export type Article = {
   id?: string;
   title: string;
@@ -12,133 +15,207 @@ export type Article = {
 };
 
 /**
- * Fetch Daily Current Affairs specifically from The Hindu
- * Falls back to other major Indian news sources if The Hindu not available
+ * Clean HTML content
+ */
+export function cleanHTML(html: string): string {
+  return html
+    .replace(/<[^>]*>/g, '') // Remove HTML tags
+    .replace(/&nbsp;/g, ' ')
+    .replace(/&quot;/g, '"')
+    .replace(/&#39;/g, "'")
+    .replace(/&amp;/g, '&')
+    .trim();
+}
+
+/**
+ * Fetch Daily Current Affairs from The Hindu via NewsAPI
  */
 export async function fetchTheHinduDailyAffairs(pageSize = 25): Promise<Article[]> {
   const apiKey = process.env.NEWSAPI_KEY;
   if (!apiKey) {
-    throw new Error("NEWSAPI_KEY is not set. Add it to your .env.local.");
+    console.warn('NEWSAPI_KEY is not set. Skipping NewsAPI sources.');
+    return [];
   }
 
   const articles: Article[] = [];
 
   try {
-    // Fetch with smaller page size for faster response
     const searchParams = new URLSearchParams({
-      q: "India",
-      sortBy: "publishedAt",
-      language: "en",
-      pageSize: "10",
+      q: 'India',
+      sortBy: 'publishedAt',
+      language: 'en',
+      pageSize: '10',
       apiKey: apiKey,
     });
 
-    // Add timeout to prevent hanging
     const controller = new AbortController();
     const timeoutId = setTimeout(() => controller.abort(), 8000);
 
-    const res = await fetch(`https://newsapi.org/v2/everything?${searchParams}`, { 
+    const res = await fetch(`https://newsapi.org/v2/everything?${searchParams}`, {
       signal: controller.signal,
-      cache: "no-store",
+      cache: 'no-store',
     });
 
     clearTimeout(timeoutId);
 
     if (!res.ok) {
       const error = await res.json().catch(() => ({}));
-      console.error("NewsAPI error:", error);
+      console.error('NewsAPI error:', error);
       return [];
     }
 
-    const data = await res.json() as any;
-    
+    const data = (await res.json()) as any;
+
     if (data.articles && Array.isArray(data.articles)) {
       for (const item of data.articles.slice(0, pageSize)) {
         articles.push({
-          title: item.title || "",
+          title: item.title || '',
           description: item.description || null,
           content: item.content || item.description || null,
           url: item.url || null,
-          source: item.source?.name || "The Hindu",
+          source: item.source?.name || 'The Hindu',
           publishedAt: item.publishedAt || null,
           author: item.author || null,
           image: item.urlToImage || null,
-          channel: "The Hindu",
+          channel: 'The Hindu',
         });
       }
     }
-    
-    console.log(`Fetched ${articles.length} articles`);
+
+    console.log(`Fetched ${articles.length} articles from The Hindu`);
   } catch (error) {
-    console.error("Error fetching articles:", error);
+    console.error('Error fetching The Hindu articles:', error);
   }
 
   return articles;
 }
 
 /**
- * Fetch Daily Current Affairs specifically from Indian Express
- * Falls back to other major Indian news sources if Indian Express not available
+ * Fetch Daily Current Affairs from Indian Express
  */
 export async function fetchIndianExpressNews(pageSize = 25): Promise<Article[]> {
   const apiKey = process.env.NEWSAPI_KEY;
   if (!apiKey) {
-    throw new Error("NEWSAPI_KEY is not set. Add it to your .env.local.");
+    return [];
   }
 
   const articles: Article[] = [];
 
   try {
-    // Fetch with smaller page size for faster response
     const searchParams = new URLSearchParams({
-      q: "India",
-      sortBy: "publishedAt",
-      language: "en",
-      pageSize: "10",
+      q: 'India',
+      sortBy: 'publishedAt',
+      language: 'en',
+      pageSize: '10',
       apiKey: apiKey,
     });
 
-    // Add timeout to prevent hanging
     const controller = new AbortController();
     const timeoutId = setTimeout(() => controller.abort(), 8000);
 
-    const res = await fetch(`https://newsapi.org/v2/everything?${searchParams}`, { 
+    const res = await fetch(`https://newsapi.org/v2/everything?${searchParams}`, {
       signal: controller.signal,
-      cache: "no-store",
+      cache: 'no-store',
     });
 
     clearTimeout(timeoutId);
 
     if (!res.ok) {
-      const error = await res.json().catch(() => ({}));
-      console.error("NewsAPI error:", error);
       return [];
     }
 
-    const data = await res.json() as any;
-    
+    const data = (await res.json()) as any;
+
     if (data.articles && Array.isArray(data.articles)) {
       for (const item of data.articles.slice(0, pageSize)) {
         articles.push({
-          title: item.title || "",
+          title: item.title || '',
           description: item.description || null,
           content: item.content || item.description || null,
           url: item.url || null,
-          source: item.source?.name || "Indian Express",
+          source: item.source?.name || 'Indian Express',
           publishedAt: item.publishedAt || null,
           author: item.author || null,
           image: item.urlToImage || null,
-          channel: "Indian Express",
+          channel: 'Indian Express',
         });
       }
     }
-    
-    console.log(`Fetched ${articles.length} articles`);
+
+    console.log(`Fetched ${articles.length} articles from Indian Express`);
   } catch (error) {
-    console.error("Error fetching articles:", error);
+    console.error('Error fetching Indian Express articles:', error);
   }
 
   return articles;
+}
+
+/**
+ * Fetch from PIB (Press Information Bureau)
+ */
+export async function fetchPIBNews(pageSize = 10): Promise<Article[]> {
+  try {
+    const response = await axios.get('https://pib.gov.in/PressReleasePage.aspx?PRID=1', {
+      timeout: 10000,
+    });
+
+    const $ = cheerio.load(response.data);
+    const articles: Article[] = [];
+
+    $('div.pib-content').each((index, element) => {
+      if (index >= 5) return;
+
+      const title = $(element).find('h2').text();
+      const link = $(element).find('a').attr('href');
+      const content = $(element).find('p').text();
+
+      if (title && link) {
+        articles.push({
+          title: title.trim(),
+          description: content.trim(),
+          content: content.trim(),
+          source: 'pib',
+          url: `https://pib.gov.in${link}`,
+          publishedAt: new Date().toISOString(),
+          channel: 'PIB',
+        });
+      }
+    });
+
+    return articles;
+  } catch (error) {
+    console.error('Error fetching PIB articles:', error);
+    return [];
+  }
+}
+
+/**
+ * Remove duplicate articles by title
+ */
+export function removeDuplicates(articles: Article[]): Article[] {
+  const seenTitles = new Set<string>();
+  return articles.filter((article) => {
+    const titleLower = article.title.toLowerCase();
+    if (seenTitles.has(titleLower)) {
+      return false;
+    }
+    seenTitles.add(titleLower);
+    return true;
+  });
+}
+
+/**
+ * Fetch all news from multiple sources
+ */
+export async function fetchAllNews(): Promise<Article[]> {
+  const [hindu, indianExpress, pib] = await Promise.all([
+    fetchTheHinduDailyAffairs(),
+    fetchIndianExpressNews(),
+    fetchPIBNews(),
+  ]);
+
+  const allArticles = [...hindu, ...indianExpress, ...pib];
+  return removeDuplicates(allArticles);
 }
 
 export async function fetchTopIndianNews(query: string = "India", pageSize = 20): Promise<Article[]> {
@@ -191,57 +268,6 @@ export async function fetchTopIndianNews(query: string = "India", pageSize = 20)
   }
 
   return articles.slice(0, pageSize);
-}
-
-/**
- * Fetch news from PIB (Press Information Bureau)
- * Using free sources for Indian government updates
- */
-export async function fetchPIBNews(pageSize = 10): Promise<Article[]> {
-  const articles: Article[] = [];
-
-  try {
-    // Using NewsAPI to search for PIB/Government of India news
-    const apiKey = process.env.NEWSAPI_KEY;
-    if (!apiKey) {
-      console.warn("NEWSAPI_KEY not set, skipping PIB news fetch");
-      return articles;
-    }
-
-    const searchParams = new URLSearchParams({
-      q: "PIB OR 'Press Information Bureau' OR government India policy",
-      sortBy: "publishedAt",
-      pageSize: Math.min(pageSize, 100).toString(),
-      apiKey: apiKey,
-    });
-
-    const res = await fetch(`https://newsapi.org/v2/everything?${searchParams}`, {
-      cache: "no-store"
-    });
-
-    if (res.ok) {
-      const data = await res.json() as any;
-      if (data.articles && Array.isArray(data.articles)) {
-        for (const item of data.articles.slice(0, pageSize)) {
-          articles.push({
-            title: item.title || "",
-            description: item.description || null,
-            content: item.content || item.description || null,
-            url: item.url || null,
-            source: "PIB",
-            publishedAt: item.publishedAt || null,
-            author: item.author || null,
-            image: item.urlToImage || null,
-            channel: "PIB",
-          });
-        }
-      }
-    }
-  } catch (error) {
-    console.error("Error fetching PIB news:", error);
-  }
-
-  return articles;
 }
 
 /**

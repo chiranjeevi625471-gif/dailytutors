@@ -3,18 +3,26 @@ import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import {
   LayoutDashboard, Image, Layers, Newspaper, Brain, GraduationCap, Download,
-  LogOut, ShieldCheck, ExternalLink
+  LogOut, ShieldCheck, ExternalLink, CreditCard, BarChart3, Settings, FileText
 } from "lucide-react";
 
 const NAV = [
   { href: "/admin", label: "Dashboard", icon: LayoutDashboard, exact: true },
-  { href: "/admin/banners", label: "Hero Banners", icon: Image },
-  { href: "/admin/cards", label: "Banner Cards (8)", icon: Layers },
-  { href: "/admin/promobanners", label: "Promo Banners (3)", icon: Image },
-  { href: "/admin/posts", label: "Current Affairs", icon: Newspaper },
-  { href: "/admin/quizzes", label: "Quizzes & Schedule", icon: Brain },
+  { href: "/admin/articles", label: "Articles", icon: FileText },
   { href: "/admin/courses", label: "Courses", icon: GraduationCap },
-  { href: "/admin/downloads", label: "Downloads", icon: Download }
+  { href: "/admin/quizzes", label: "Quizzes", icon: Brain },
+  { href: "/admin/downloads", label: "Downloads", icon: Download },
+  { href: "/admin/payments", label: "Payments", icon: CreditCard },
+  { href: "/admin/analytics", label: "Analytics", icon: BarChart3 },
+  { href: "/admin/settings", label: "Settings", icon: Settings }
+];
+
+// Homepage content managers (separate group in the sidebar)
+const CONTENT_NAV = [
+  { href: "/admin/banners", label: "Hero Banners", icon: Image },
+  { href: "/admin/cards", label: "Banner Cards", icon: Layers },
+  { href: "/admin/promobanners", label: "Promo Banners", icon: Image },
+  { href: "/admin/posts", label: "Current Affairs", icon: Newspaper }
 ];
 
 export default function AdminShell({ children }: { children: React.ReactNode }) {
@@ -43,9 +51,28 @@ export default function AdminShell({ children }: { children: React.ReactNode }) 
           </div>
         </div>
 
-        <nav className="flex-1 px-3 py-5 space-y-1">
+        <nav className="flex-1 overflow-y-auto px-3 py-5 space-y-1">
           {NAV.map(({ href, label, icon: Icon, exact }) => {
             const active = exact ? pathname === href : pathname.startsWith(href);
+            return (
+              <Link
+                key={href}
+                href={href}
+                className={`flex items-center gap-3 rounded-md px-3 py-2 text-sm font-medium transition ${
+                  active ? "bg-brand text-white" : "text-gray-700 hover:bg-brand-50 hover:text-brand-700"
+                }`}
+              >
+                <Icon className="h-4 w-4" />
+                {label}
+              </Link>
+            );
+          })}
+
+          <div className="px-3 pb-1 pt-4 text-[10px] font-semibold uppercase tracking-widest text-gray-400">
+            Homepage
+          </div>
+          {CONTENT_NAV.map(({ href, label, icon: Icon }) => {
+            const active = pathname.startsWith(href);
             return (
               <Link
                 key={href}
@@ -65,7 +92,7 @@ export default function AdminShell({ children }: { children: React.ReactNode }) 
           <Link href="/" target="_blank" className="flex items-center gap-3 rounded-md px-3 py-2 text-sm text-gray-700 hover:bg-gray-50">
             <ExternalLink className="h-4 w-4" /> View Site
           </Link>
-          <button onClick={logout} className="flex w-full items-center gap-3 rounded-md px-3 py-2 text-sm text-gray-700 hover:bg-red-50 hover:text-red-700">
+          <button type="button" onClick={logout} className="flex w-full items-center gap-3 rounded-md px-3 py-2 text-sm text-gray-700 hover:bg-red-50 hover:text-red-700">
             <LogOut className="h-4 w-4" /> Logout
           </button>
         </div>
@@ -78,12 +105,13 @@ export default function AdminShell({ children }: { children: React.ReactNode }) 
           </div>
           <span className="font-extrabold">Admin</span>
         </div>
-        <button onClick={logout} className="text-sm text-gray-600">Logout</button>
+        <button type="button" onClick={logout} className="text-sm text-gray-600">Logout</button>
       </header>
 
       <div className="lg:hidden border-b border-gray-100 bg-white overflow-x-auto">
         <nav className="flex gap-1 px-2 py-2 whitespace-nowrap">
-          {NAV.map(({ href, label, icon: Icon, exact }) => {
+          {[...NAV, ...CONTENT_NAV].map(({ href, label, icon: Icon }) => {
+            const exact = href === "/admin";
             const active = exact ? pathname === href : pathname.startsWith(href);
             return (
               <Link

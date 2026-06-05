@@ -2,8 +2,8 @@ name: Daily Quiz Auto-Generate
 
 on:
   schedule:
-    # Run once daily at midnight UTC (5:30 AM IST)
-    - cron: '0 0 * * *'
+    # Run daily at 8 AM UTC (1:30 PM IST / 5:30 AM IST)
+    - cron: '0 8 * * *'
   workflow_dispatch: # Allow manual trigger
 
 jobs:
@@ -11,15 +11,52 @@ jobs:
     runs-on: ubuntu-latest
     
     steps:
-      - name: Generate Daily Quiz
+      - name: Check secrets
         run: |
-          curl -X POST \
+          if [ -z "${{ secrets.CRON_SECRET }}" ]; then
+            echo "❌ ERROR: CRON_SECRET not set in GitHub secrets!"
+            exit 1
+          fi
+          echo "✅ CRON_SECRET is configured"
+      
+      - name: Generate Daily Quiz (Attempt 1)
+        id: quiz1
+        run: |
+          RESPONSE=$(curl -s -w "\n%{http_code}" -X POST \
             -H "x-cron-secret: ${{ secrets.CRON_SECRET }}" \
             -H "Content-Type: application/json" \
-            -d '{"count": 10}' \
-            "https://dailytutors.vercel.app/api/cron/daily-quiz"
+            -d '{"count": 20}' \
+            "$VERCEL_URL/api/cron/daily-quiz")
+          HTTP_CODE=$(echo "$RESPONSE" | tail -n1)
+          BODY=$(echo "$RESPONSE" | sed '$d')
+          echo "HTTP_CODE=$HTTP_CODE" >> $GITHUB_OUTPUT
+          echo "RESPONSE=$BODY" >> $GITHUB_OUTPUT
+          echo "Response: $BODY"
+          [ "$HTTP_CODE" = "200" ] || exit 1
+        env:
+          VERCEL_URL: https://dailytutors.vercel.app
         continue-on-error: true
       
-      - name: Verify Quiz Generated
+      - name: Generate Daily Quiz (Retry after 30s)
+        if: steps.quiz1.outcome == 'failure'
         run: |
-          echo "✅ Daily quiz generation triggered successfully"
+          sleep 30
+          RESPONSE=$(curl -s -w "\n%{http_code}" -X POST \
+            -H "x-cron-secret: ${{ secrets.CRON_SECRET }}" \
+            -H "Content-Type: application/json" \
+            -d '{"count": 20}' \
+            "https://dailytutors.vercel.app/api/cron/daily-quiz")
+          HTTP_CODE=$(echo "$RESPONSE" | tail -n1)
+          BODY=$(echo "$RESPONSE" | sed '$d')
+          echo "Retry Response (HTTP $HTTP_CODE): $BODY"
+          [ "$HTTP_CODE" = "200" ] || exit 1
+      
+      - name: Log Status
+        if: always()
+        run: |
+          if [ "${{ steps.quiz1.outcome }}" = "success" ]; then
+            echo "✅ Daily quiz generation succeeded"
+            echo "Response: ${{ steps.quiz1.outputs.RESPONSE }}"
+          else
+            echo "⚠️ Daily quiz generation encountered issues but will retry"
+          fi

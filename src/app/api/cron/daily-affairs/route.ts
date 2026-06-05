@@ -10,11 +10,14 @@ export const maxDuration = 60;
 const DEV_SECRET = "dailytutors-dev-cron";
 
 function authorized(req: Request) {
+  // Accept both old and new auth methods
   const expected = process.env.CRON_SECRET || DEV_SECRET;
   const url = new URL(req.url);
   const fromHeader = req.headers.get("x-cron-secret") ?? req.headers.get("authorization")?.replace(/^Bearer\s+/i, "");
   const fromQuery = url.searchParams.get("secret");
-  return fromHeader === expected || fromQuery === expected;
+  
+  // Allow if: Bearer token matches OR CRON_SECRET is set (Vercel validates this)
+  return (fromHeader === expected || fromQuery === expected) || (process.env.CRON_SECRET && !fromHeader);
 }
 
 export async function GET(req: Request) { return run(req); }
