@@ -5,6 +5,9 @@ import { fetchAllNews } from '@/lib/news';
 import { processArticleWithAI } from '@/lib/ai';
 import slugify from 'slugify';
 
+export const dynamic = 'force-dynamic';
+export const maxDuration = 300;
+
 export async function GET(request: NextRequest) {
   try {
     // Verify cron secret - Accept both Bearer token and direct secret check

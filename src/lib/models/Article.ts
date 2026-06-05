@@ -137,6 +137,5 @@ const articleSchema = new mongoose.Schema(
 
 articleSchema.index({ title: 'text', summary: 'text', keywords: 'text' });
 articleSchema.index({ category: 1, status: 1, publishedAt: -1 });
-articleSchema.index({ slug: 1 });
 
 export default mongoose.models.Article || mongoose.model('Article', articleSchema);
