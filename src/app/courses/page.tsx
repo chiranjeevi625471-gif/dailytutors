@@ -1,15 +1,20 @@
 import Link from "next/link";
 import { db } from "@/lib/db";
 import { CheckCircle2, Clock, GraduationCap, Zap } from "lucide-react";
+import FeatureGridSection from "@/components/sections/FeatureGridSection";
+import PracticeHighlightsSection from "@/components/sections/PracticeHighlightsSection";
+import OptionalSubjectsSection from "@/components/sections/OptionalSubjectsSection";
 
-export const metadata = { title: "Courses · Daily Tutors" };
+export const metadata = { title: "Competitive Exams (UPSC) · Daily Tutors" };
 export const dynamic = "force-dynamic";
 
 export default async function CoursesPage() {
-  const all = await db.courses.list();
-  const courses = all.filter((c) => c.active);
+  const [allCourses, allQuizzes] = await Promise.all([db.courses.list(), db.quizzes.list()]);
+  const courses = allCourses.filter((c) => c.active);
+  const quizzes = allQuizzes.filter((q) => q.active);
 
   return (
+    <>
     <div className="container-page py-12">
       <div className="text-center max-w-3xl mx-auto">
         <span className="badge">Live · Recorded · Hybrid</span>
@@ -99,5 +104,10 @@ export default async function CoursesPage() {
         })}
       </div>
     </div>
+
+    <FeatureGridSection />
+    <PracticeHighlightsSection quizzes={quizzes} />
+    <OptionalSubjectsSection />
+    </>
   );
 }
