@@ -26,13 +26,14 @@ export function examHref(e: ExamCategory): string {
 
 export const EXAM_CATEGORIES: ExamCategory[] = [
   {
-    slug: "school-boards",
-    label: "10th / CBSE / ICSE / State",
-    title: "School Boards — 10th, CBSE, ICSE & State",
-    description: "Concept-first coaching and revision for Class 10 board exams across CBSE, ICSE and State boards.",
-    tags: ["CBSE", "ICSE", "State Board", "8th–12th"],
-    emoji: "🎒",
-    accent: "bg-indigo-50",
+    slug: "competitive",
+    label: "Competitive Exams",
+    title: "Competitive Exams",
+    description: "Structured courses for UPSC CSE — foundation programmes, prelims test series and mains answer-writing.",
+    href: "/courses",
+    tags: ["UPSC", "Prelims", "Mains"],
+    emoji: "🏛️",
+    accent: "bg-sky-50",
   },
   {
     slug: "neet",
@@ -53,6 +54,15 @@ export const EXAM_CATEGORIES: ExamCategory[] = [
     accent: "bg-amber-50",
   },
   {
+    slug: "school-boards",
+    label: "10th / CBSE / ICSE / State",
+    title: "School Boards — 10th, CBSE, ICSE & State",
+    description: "Concept-first coaching and revision for Class 10 board exams across CBSE, ICSE and State boards.",
+    tags: ["CBSE", "ICSE", "State Board", "8th–12th"],
+    emoji: "🎒",
+    accent: "bg-indigo-50",
+  },
+  {
     slug: "ca",
     label: "CA",
     title: "CA",
@@ -60,16 +70,6 @@ export const EXAM_CATEGORIES: ExamCategory[] = [
     tags: ["Foundation", "Intermediate", "Final"],
     emoji: "📊",
     accent: "bg-emerald-50",
-  },
-  {
-    slug: "competitive",
-    label: "Competitive Exams",
-    title: "Competitive Exams",
-    description: "Structured courses for UPSC CSE — foundation programmes, prelims test series and mains answer-writing.",
-    href: "/courses",
-    tags: ["UPSC", "Prelims", "Mains"],
-    emoji: "🏛️",
-    accent: "bg-sky-50",
   },
 ];
 
