@@ -114,8 +114,8 @@ export async function GET(request: NextRequest) {
           aiGenerated: true,
           aiModel: 'groq',
           generatedAt: new Date(),
-          status: 'pending_review', // Requires admin approval before going public
-          publishedAt: null,
+          status: 'published', // Auto-publish: AI news goes live immediately
+          publishedAt: newsArticle.publishedAt ? new Date(newsArticle.publishedAt) : new Date(),
         });
 
         console.log(`✅ Processed: ${newsArticle.title}`);

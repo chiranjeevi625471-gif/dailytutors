@@ -64,7 +64,7 @@ export default async function CurrentAffairsPage() {
           </h1>
           <p className="text-slate-300 text-sm max-w-2xl leading-relaxed">
             AI-analysed daily news from The Hindu, Indian Express, PIB &amp; more — mapped to the
-            GS syllabus, split into Prelims pointers and Mains analysis, and reviewed before publishing.
+            GS syllabus and split into Prelims pointers and Mains analysis, updated automatically every morning.
           </p>
 
           {articles.length > 0 && (
@@ -90,9 +90,9 @@ export default async function CurrentAffairsPage() {
       ) : (
         <div className="rounded-2xl border border-yellow-200 bg-yellow-50 p-12 text-center">
           <p className="text-4xl mb-3">📭</p>
-          <h3 className="font-bold text-yellow-900 text-lg mb-1">No published articles yet</h3>
+          <h3 className="font-bold text-yellow-900 text-lg mb-1">No articles yet for today</h3>
           <p className="text-yellow-700 text-sm">
-            New analysis is fetched every morning and goes live once an editor approves it.
+            Fresh AI-analysed news is fetched and published automatically every morning.
           </p>
         </div>
       )}
