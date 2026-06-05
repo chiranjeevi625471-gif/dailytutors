@@ -2,6 +2,7 @@
 import Link from "next/link";
 import { useState } from "react";
 import { Menu, X, ChevronDown } from "lucide-react";
+import Logo from "@/components/Logo";
 
 const NAV = [
   {
@@ -63,17 +64,7 @@ export default function Header() {
       </div>
 
       <div className="container-page flex h-16 items-center justify-between">
-        <Link href="/" className="flex items-center gap-2">
-          <div className="flex h-10 w-10 items-center justify-center rounded-sm bg-brand text-white font-bold text-xl">
-            D
-          </div>
-          <div className="leading-tight">
-            <div className="text-lg font-extrabold tracking-tight">
-              Daily<span className="text-brand">Tutors</span>
-            </div>
-            <div className="text-[10px] uppercase tracking-widest text-gray-500">UPSC · IAS · State PCS</div>
-          </div>
-        </Link>
+        <Logo className="h-9 sm:h-10 w-auto" priority />
 
         <nav className="hidden lg:flex items-center gap-1">
           {NAV.map((item) => (

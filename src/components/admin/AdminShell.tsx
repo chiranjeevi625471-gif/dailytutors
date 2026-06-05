@@ -5,6 +5,7 @@ import {
   LayoutDashboard, Image, Layers, Newspaper, Brain, GraduationCap, Download,
   LogOut, ShieldCheck, ExternalLink, CreditCard, BarChart3, Settings, FileText
 } from "lucide-react";
+import Logo from "@/components/Logo";
 
 const NAV = [
   { href: "/admin", label: "Dashboard", icon: LayoutDashboard, exact: true },
@@ -41,14 +42,11 @@ export default function AdminShell({ children }: { children: React.ReactNode }) 
   return (
     <div className="min-h-screen bg-gray-50">
       <aside className="fixed inset-y-0 left-0 hidden w-64 flex-col border-r border-gray-100 bg-white lg:flex">
-        <div className="flex items-center gap-2 px-6 py-5 border-b border-gray-100">
-          <div className="flex h-9 w-9 items-center justify-center rounded-md bg-brand text-white">
-            <ShieldCheck className="h-5 w-5" />
-          </div>
-          <div className="leading-tight">
-            <div className="text-base font-extrabold">Daily<span className="text-brand">Tutors</span></div>
-            <div className="text-[10px] uppercase tracking-widest text-gray-500">Admin</div>
-          </div>
+        <div className="flex items-center justify-between gap-2 px-6 py-5 border-b border-gray-100">
+          <Logo className="h-8 w-auto" />
+          <span className="rounded-full bg-gray-100 px-2 py-0.5 text-[10px] font-bold uppercase tracking-widest text-gray-500">
+            Admin
+          </span>
         </div>
 
         <nav className="flex-1 overflow-y-auto px-3 py-5 space-y-1">
