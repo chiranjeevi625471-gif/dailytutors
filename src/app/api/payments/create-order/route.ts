@@ -14,13 +14,21 @@ import {
 } from "@/lib/api-responses";
 import { connectDB } from "@/lib/mongodb";
 
-const razorpay = new Razorpay({
-  key_id: process.env.RAZORPAY_KEY_ID || "",
-  key_secret: process.env.RAZORPAY_KEY_SECRET || "",
-});
+export const dynamic = "force-dynamic";
 
 export async function POST(request: NextRequest) {
   try {
+    if (!process.env.RAZORPAY_KEY_ID || !process.env.RAZORPAY_KEY_SECRET) {
+      return internalErrorResponse(
+        "Payment gateway is not configured. Please set RAZORPAY_KEY_ID and RAZORPAY_KEY_SECRET."
+      );
+    }
+
+    const razorpay = new Razorpay({
+      key_id: process.env.RAZORPAY_KEY_ID,
+      key_secret: process.env.RAZORPAY_KEY_SECRET,
+    });
+
     await connectDB();
 
     const body = await request.json();
