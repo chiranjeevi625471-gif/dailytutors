@@ -1,10 +1,11 @@
 import Link from "next/link";
-import { notFound } from "next/navigation";
+import { notFound, redirect } from "next/navigation";
 import { ArrowLeft, BellRing } from "lucide-react";
 import { EXAM_CATEGORIES, getExamCategory } from "@/lib/exams";
 
 export function generateStaticParams() {
-  return EXAM_CATEGORIES.map((e) => ({ slug: e.slug }));
+  // Only categories with a stub page; ones with a custom href are linked directly.
+  return EXAM_CATEGORIES.filter((e) => !e.href).map((e) => ({ slug: e.slug }));
 }
 
 export function generateMetadata({ params }: { params: { slug: string } }) {
@@ -15,6 +16,7 @@ export function generateMetadata({ params }: { params: { slug: string } }) {
 export default function ExamPage({ params }: { params: { slug: string } }) {
   const exam = getExamCategory(params.slug);
   if (!exam) notFound();
+  if (exam.href) redirect(exam.href);
 
   return (
     <div className="container-page py-12">

@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { ArrowRight, GraduationCap } from "lucide-react";
-import { EXAM_CATEGORIES } from "@/lib/exams";
+import { EXAM_CATEGORIES, examHref } from "@/lib/exams";
 
 export const metadata = { title: "Exams · Daily Tutors" };
 
@@ -21,7 +21,7 @@ export default function ExamsPage() {
         {EXAM_CATEGORIES.map((e) => (
           <Link
             key={e.slug}
-            href={`/exams/${e.slug}`}
+            href={examHref(e)}
             className="group rounded-2xl border border-gray-100 bg-white p-6 shadow-card transition hover:border-brand-200 hover:shadow-lg"
           >
             <span className="inline-flex h-10 w-10 items-center justify-center rounded-lg bg-brand-50 text-brand">

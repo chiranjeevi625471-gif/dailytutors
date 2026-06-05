@@ -9,7 +9,14 @@ export type ExamCategory = {
   title: string;
   /** One-line description for cards / hero */
   description: string;
+  /** Optional custom link target. When set, links go here instead of /exams/[slug]. */
+  href?: string;
 };
+
+/** Resolve the link for an exam category (custom href or the default /exams/[slug]). */
+export function examHref(e: ExamCategory): string {
+  return e.href ?? `/exams/${e.slug}`;
+}
 
 export const EXAM_CATEGORIES: ExamCategory[] = [
   {
@@ -35,6 +42,13 @@ export const EXAM_CATEGORIES: ExamCategory[] = [
     label: "CA",
     title: "CA",
     description: "Chartered Accountancy coaching for Foundation, Intermediate and Final levels.",
+  },
+  {
+    slug: "competitive",
+    label: "Competitive Exams",
+    title: "Competitive Exams",
+    description: "Structured courses for UPSC CSE — foundation programmes, prelims test series and mains answer-writing.",
+    href: "/courses",
   },
 ];
 
