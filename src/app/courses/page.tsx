@@ -15,7 +15,11 @@ export default async function CoursesPage() {
 
   return (
     <>
-    <div className="container-page py-12">
+    <FeatureGridSection />
+    <PracticeHighlightsSection quizzes={quizzes} />
+    <OptionalSubjectsSection />
+
+    <div className="container-page py-12 pb-16">
       <div className="text-center max-w-3xl mx-auto">
         <span className="badge">Live · Recorded · Hybrid</span>
         <h1 className="mt-4 text-4xl sm:text-5xl font-extrabold tracking-tight">
@@ -104,10 +108,6 @@ export default async function CoursesPage() {
         })}
       </div>
     </div>
-
-    <FeatureGridSection />
-    <PracticeHighlightsSection quizzes={quizzes} />
-    <OptionalSubjectsSection />
     </>
   );
 }
