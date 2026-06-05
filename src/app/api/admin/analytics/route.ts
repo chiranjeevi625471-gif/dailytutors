@@ -67,9 +67,22 @@ export async function GET() {
       },
       revenueByMonth,
       recentPayments,
+    }, {
+      headers: {
+        'Cache-Control': 'no-store, no-cache, must-revalidate, proxy-revalidate',
+        'Pragma': 'no-cache',
+        'Expires': '0',
+      }
     });
   } catch (error: any) {
     console.error("Admin analytics GET error:", error);
-    return NextResponse.json({ error: error.message || "Failed to load analytics" }, { status: 500 });
+    return NextResponse.json({ error: error.message || "Failed to load analytics" }, {
+      status: 500,
+      headers: {
+        'Cache-Control': 'no-store, no-cache, must-revalidate, proxy-revalidate',
+        'Pragma': 'no-cache',
+        'Expires': '0',
+      }
+    });
   }
 }

@@ -20,30 +20,58 @@ export default function AdminDashboard() {
   const [loading, setLoading] = useState(true);
   const [sidebarOpen, setSidebarOpen] = useState(true);
   const [error, setError] = useState('');
+  const [lastRefresh, setLastRefresh] = useState<Date | null>(null);
 
   useEffect(() => {
     fetchDashboardStats();
+    
+    // Auto-refresh every 10 seconds
+    const interval = setInterval(() => {
+      fetchDashboardStats();
+    }, 10000);
+    
+    return () => clearInterval(interval);
   }, []);
 
   const fetchDashboardStats = async () => {
     try {
       setLoading(true);
-      // Placeholder for now - in real implementation, fetch from API
-      // const response = await fetch('/api/admin/dashboard-stats');
-      // const data = await response.json();
-      
-      // Mock data for demonstration
-      setStats({
-        totalArticles: 156,
-        totalCourses: 12,
-        totalQuizzes: 45,
-        totalRevenue: 125000,
-        aiGeneratedContent: 89,
-        totalUsers: 3240,
+      const response = await fetch('/api/admin/analytics', {
+        cache: 'no-store',
+        headers: {
+          'Cache-Control': 'no-cache, no-store, must-revalidate',
+          'Pragma': 'no-cache',
+        }
       });
+      
+      if (!response.ok) {
+        throw new Error('Failed to fetch analytics');
+      }
+      
+      const data = await response.json();
+      
+      setStats({
+        totalArticles: data.totalArticles || 0,
+        totalCourses: data.totalCourses || 0,
+        totalQuizzes: data.totalQuizzes || 0,
+        totalRevenue: data.totalRevenue || 0,
+        aiGeneratedContent: data.aiGeneratedContent || 0,
+        totalUsers: data.totalUsers || 0,
+      });
+      
+      setLastRefresh(new Date());
     } catch (err) {
       setError('Failed to load dashboard data');
       console.error(err);
+      // Fallback to empty stats
+      setStats({
+        totalArticles: 0,
+        totalCourses: 0,
+        totalQuizzes: 0,
+        totalRevenue: 0,
+        aiGeneratedContent: 0,
+        totalUsers: 0,
+      });
     } finally {
       setLoading(false);
     }
@@ -149,15 +177,33 @@ export default function AdminDashboard() {
       <div className="flex-1 flex flex-col overflow-hidden">
         {/* Header */}
         <div className="h-16 bg-white shadow-sm border-b border-gray-200 flex items-center justify-between px-6">
-          <button
-            onClick={() => setSidebarOpen(!sidebarOpen)}
-            className="p-2 hover:bg-gray-100 rounded-lg transition"
-          >
-            {sidebarOpen ? <X size={20} /> : <Menu size={20} />}
-          </button>
-          <h2 className="text-xl font-semibold text-gray-800">Admin Dashboard</h2>
-          <div className="w-10 h-10 bg-blue-600 rounded-full flex items-center justify-center text-white font-bold">
-            A
+          <div className="flex items-center gap-4">
+            <button
+              onClick={() => setSidebarOpen(!sidebarOpen)}
+              className="p-2 hover:bg-gray-100 rounded-lg transition"
+            >
+              {sidebarOpen ? <X size={20} /> : <Menu size={20} />}
+            </button>
+            <h2 className="text-xl font-semibold text-gray-800">Admin Dashboard</h2>
+          </div>
+          <div className="flex items-center gap-4">
+            <button
+              onClick={() => {
+                fetchDashboardStats();
+                setLastRefresh(new Date());
+              }}
+              className="px-3 py-1 bg-blue-600 text-white text-sm rounded hover:bg-blue-700 transition flex items-center gap-2"
+            >
+              🔄 Refresh
+            </button>
+            {lastRefresh && (
+              <span className="text-xs text-gray-500">
+                Last updated: {lastRefresh.toLocaleTimeString()}
+              </span>
+            )}
+            <div className="w-10 h-10 bg-blue-600 rounded-full flex items-center justify-center text-white font-bold">
+              A
+            </div>
           </div>
         </div>
 
