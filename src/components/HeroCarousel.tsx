@@ -61,9 +61,11 @@ export default function HeroCarousel({ slides }: { slides: HeroBanner[] }) {
                   {s.subtitle}
                 </div>
                 <div className="mt-2 xs:mt-2.5 sm:mt-3">
+                  {s.href && (
                   <Link href={s.href} className="inline-flex items-center rounded-md bg-white px-2 xs:px-3 sm:px-4 py-1 xs:py-1.5 sm:py-2 text-[8px] xs:text-xs sm:text-sm font-extrabold uppercase tracking-wider text-red-700 shadow-lg hover:bg-red-50 transition whitespace-nowrap">
                     {s.cta}
                   </Link>
+                  )}
                 </div>
               </div>
             </div>

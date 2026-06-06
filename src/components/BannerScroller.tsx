@@ -77,7 +77,9 @@ export default function BannerScroller({ cards }: { cards: BannerCard[] }) {
           ref={trackRef}
           className="flex gap-4 overflow-x-auto scroll-smooth px-4 sm:px-6 lg:px-12 pb-4 [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden snap-x snap-mandatory"
         >
-          {BANNERS.map(({ title, tag, href, Icon, bg }) => (
+          {BANNERS.map(({ title, tag, href, Icon, bg }) => {
+            if (!href) return null;
+            return (
             <Link
               key={title}
               href={href}
@@ -102,7 +104,8 @@ export default function BannerScroller({ cards }: { cards: BannerCard[] }) {
                 </div>
               </div>
             </Link>
-          ))}
+          );
+          })
         </div>
       </div>
     </section>

@@ -121,7 +121,7 @@ export default function Header() {
             {NAV.map((item) => (
               <details key={item.label} className="group border-b border-gray-100 py-2">
                 <summary className="flex cursor-pointer items-center justify-between text-sm font-semibold text-gray-800">
-                  <Link href={item.href}>{item.label}</Link>
+                  <Link href={item.href || "/"}>{item.label}</Link>
                   {item.children && <ChevronDown className="h-4 w-4 group-open:rotate-180 transition" />}
                 </summary>
                 {item.children && (

@@ -6,7 +6,9 @@ export default function PromoBannerSection({ banners }: { banners: PromoBanner[]
     <section className="bg-white py-8 sm:py-10 md:py-12">
       <div className="container-page">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {banners.map((banner) => (
+          {banners.map((banner) => {
+            if (!banner.link) return null;
+            return (
             <Link
               key={banner.id}
               href={banner.link}
@@ -33,7 +35,8 @@ export default function PromoBannerSection({ banners }: { banners: PromoBanner[]
                 </div>
               </div>
             </Link>
-          ))}
+          );
+          })
         </div>
       </div>
     </section>
