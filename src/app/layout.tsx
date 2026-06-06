@@ -56,6 +56,14 @@ export const metadata: Metadata = {
     },
   },
   manifest: "/manifest.webmanifest",
+  icons: {
+    icon: [
+      { url: "/favicon.ico", sizes: "any" },
+      { url: "/icon.png", sizes: "512x512", type: "image/png" },
+    ],
+    apple: "/apple-icon.png",
+    shortcut: "/favicon.ico",
+  },
   verification: {
     // Set NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION in Vercel to verify in Search Console.
     google: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION,
