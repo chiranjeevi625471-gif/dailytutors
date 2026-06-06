@@ -24,7 +24,38 @@
     ],
     "description": "Comprehensive NEET preparation course from basics to advanced level with live interactive sessions.",
     "cta": "ENROLL NOW",
-    "link": "/courses/neet-arjuna-2.0-2027"
+    "link": "/courses/neet-arjuna-2.0-2027",
+    "totalHours": 500,
+    "chapters": [
+      {
+        "id": "ch1-phy",
+        "title": "Physics Fundamentals",
+        "hours": 120,
+        "topics": ["Mechanics", "Thermodynamics", "Oscillations", "Waves"],
+        "previewVideoUrl": "https://youtu.be/sample"
+      },
+      {
+        "id": "ch1-chem",
+        "title": "Chemistry Essentials",
+        "hours": 140,
+        "topics": ["Atomic Structure", "Bonding", "Organic Chemistry", "Stoichiometry"],
+        "previewVideoUrl": "https://youtu.be/sample"
+      },
+      {
+        "id": "ch1-bio",
+        "title": "Biology Complete",
+        "hours": 150,
+        "topics": ["Cell Structure", "Genetics", "Evolution", "Human Anatomy"],
+        "previewVideoUrl": "https://youtu.be/sample"
+      },
+      {
+        "id": "ch1-practice",
+        "title": "Mock Tests & Practice",
+        "hours": 90,
+        "topics": ["Full-length tests", "Topic tests", "Chapter quizzes", "Time management"],
+        "previewVideoUrl": "https://youtu.be/sample"
+      }
+    ]
   },
   {
     "id": "neet-lakshya-2028",
@@ -52,7 +83,38 @@
     ],
     "description": "Two-year program covering complete NEET syllabus with advanced problem-solving techniques.",
     "cta": "ENROLL NOW",
-    "link": "/courses/neet-lakshya-2028"
+    "link": "/courses/neet-lakshya-2028",
+    "totalHours": 1000,
+    "chapters": [
+      {
+        "id": "ch2-phy1",
+        "title": "Physics - Year 1",
+        "hours": 200,
+        "topics": ["Classical Mechanics", "Thermodynamics", "Waves & Sound", "Electrostatics"],
+        "previewVideoUrl": "https://youtu.be/sample"
+      },
+      {
+        "id": "ch2-chem1",
+        "title": "Chemistry - Year 1",
+        "hours": 250,
+        "topics": ["Atomic Theory", "Bonding & Structure", "Kinetics", "Equilibrium"],
+        "previewVideoUrl": "https://youtu.be/sample"
+      },
+      {
+        "id": "ch2-bio1",
+        "title": "Biology - Year 1",
+        "hours": 250,
+        "topics": ["Cell Biology", "Genetics", "Ecology", "Physiology"],
+        "previewVideoUrl": "https://youtu.be/sample"
+      },
+      {
+        "id": "ch2-advanced",
+        "title": "Advanced Problem Solving",
+        "hours": 300,
+        "topics": ["Numerical problems", "Conceptual MCQs", "Competitive questions", "Speed building"],
+        "previewVideoUrl": "https://youtu.be/sample"
+      }
+    ]
   },
   {
     "id": "neet-vidyapeeth-11",
@@ -80,7 +142,38 @@
     ],
     "description": "Ideal for Class 11 students targeting NEET 2028 with comprehensive foundation building.",
     "cta": "EXPLORE NOW",
-    "link": "/courses/vidyapeeth-neet-11"
+    "link": "/courses/vidyapeeth-neet-11",
+    "totalHours": 400,
+    "chapters": [
+      {
+        "id": "ch3-foundation",
+        "title": "Foundation Concepts",
+        "hours": 100,
+        "topics": ["Basic Mathematics", "Units & Dimensions", "Vectors", "Motion"],
+        "previewVideoUrl": "https://youtu.be/sample"
+      },
+      {
+        "id": "ch3-intermediate",
+        "title": "Intermediate Topics",
+        "hours": 150,
+        "topics": ["Energy", "Waves", "Periodic Motion", "Electromagnetism"],
+        "previewVideoUrl": "https://youtu.be/sample"
+      },
+      {
+        "id": "ch3-chemistry",
+        "title": "Chemistry Basics",
+        "hours": 100,
+        "topics": ["Atomic structure", "Chemical bonding", "Reactions", "Solutions"],
+        "previewVideoUrl": "https://youtu.be/sample"
+      },
+      {
+        "id": "ch3-biology",
+        "title": "Biology Overview",
+        "hours": 50,
+        "topics": ["Cell structure", "Tissues", "Human anatomy", "Life processes"],
+        "previewVideoUrl": "https://youtu.be/sample"
+      }
+    ]
   },
   {
     "id": "cet-foundation",

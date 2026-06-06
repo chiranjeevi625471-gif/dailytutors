@@ -119,6 +119,26 @@ export type Download = {
   active: boolean;
 };
 
+export type Chapter = {
+  id: string;
+  title: string;
+  hours: number;
+  topics: string[];
+  previewVideoUrl?: string;
+};
+
+export type CategoryType = {
+  id: string;
+  name: string;
+  slug: string;
+  icon: string;
+  color: string;
+  accentColor: string;
+  description: string;
+  totalCourses: number;
+  active: boolean;
+};
+
 export type ExamCourse = {
   id: string;
   examSlug: string;
@@ -139,6 +159,8 @@ export type ExamCourse = {
   description: string;
   cta: string;
   link: string;
+  chapters?: Chapter[];
+  totalHours?: number;
 };
 
 export type EntityName = "banners" | "cards" | "posts" | "quizzes" | "courses" | "downloads" | "promobanners" | "exam-courses";

@@ -1,7 +1,15 @@
 "use client";
 import { useEffect, useState } from "react";
 import Link from "next/link";
-import { Star, Clock, Users } from "lucide-react";
+import { Star, Clock, Users, X, BookOpen } from "lucide-react";
+
+interface Chapter {
+  id: string;
+  title: string;
+  hours: number;
+  topics: string[];
+  previewVideoUrl?: string;
+}
 
 interface ExamCourse {
   id: string;
@@ -23,6 +31,8 @@ interface ExamCourse {
   description: string;
   cta: string;
   link: string;
+  chapters?: Chapter[];
+  totalHours?: number;
 }
 
 interface ExamCoursesProps {
@@ -32,6 +42,7 @@ interface ExamCoursesProps {
 export default function ExamCourses({ examSlug }: ExamCoursesProps) {
   const [courses, setCourses] = useState<ExamCourse[]>([]);
   const [loading, setLoading] = useState(true);
+  const [selectedCourse, setSelectedCourse] = useState<ExamCourse | null>(null);
 
   useEffect(() => {
     const loadCourses = async () => {
@@ -172,13 +183,121 @@ export default function ExamCourses({ examSlug }: ExamCoursesProps) {
               )}
             </div>
 
-            {/* CTA Button */}
-            <Link href={course.link} className="block w-full text-center px-4 py-2.5 bg-brand text-white font-semibold rounded-lg hover:bg-red-700 transition-colors">
-              {course.cta}
-            </Link>
+            {/* CTA Buttons */}
+            <div className="flex gap-2">
+              {/* Explore Button - shown if course has chapters */}
+              {course.chapters && course.chapters.length > 0 && (
+                <button 
+                  onClick={() => setSelectedCourse(course)}
+                  className="flex-1 px-4 py-2.5 bg-slate-100 text-slate-700 font-semibold rounded-lg hover:bg-slate-200 transition-colors flex items-center justify-center gap-2"
+                >
+                  <BookOpen className="h-4 w-4" />
+                  Explore
+                </button>
+              )}
+              
+              {/* Enroll Button */}
+              <Link href={course.link} className={`${course.chapters && course.chapters.length > 0 ? 'flex-1' : 'w-full'} block text-center px-4 py-2.5 bg-brand text-white font-semibold rounded-lg hover:bg-red-700 transition-colors`}>
+                {course.cta}
+              </Link>
+            </div>
           </div>
         </div>
       ))}
+
+      {/* Curriculum Modal */}
+      {selectedCourse && selectedCourse.chapters && (
+        <div className="fixed inset-0 bg-black/50 z-50 flex items-center justify-center p-4">
+          <div className="bg-white rounded-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto">
+            {/* Header */}
+            <div className="sticky top-0 bg-white border-b border-gray-200 p-6 flex items-start justify-between">
+              <div className="flex-1">
+                <h2 className="text-2xl font-bold mb-2">{selectedCourse.title}</h2>
+                <div className="flex items-center gap-4 text-sm text-gray-600">
+                  <span className="flex items-center gap-1">
+                    <BookOpen className="h-4 w-4" />
+                    {selectedCourse.chapters.length} Chapters
+                  </span>
+                  <span className="flex items-center gap-1">
+                    <Clock className="h-4 w-4" />
+                    {selectedCourse.totalHours || 0} Total Hours
+                  </span>
+                </div>
+              </div>
+              <button 
+                onClick={() => setSelectedCourse(null)}
+                className="p-2 hover:bg-gray-100 rounded-lg transition-colors"
+              >
+                <X className="h-6 w-6" />
+              </button>
+            </div>
+
+            {/* Chapters List */}
+            <div className="p-6 space-y-4">
+              {selectedCourse.chapters.map((chapter, index) => (
+                <div key={chapter.id} className="border border-gray-200 rounded-xl overflow-hidden hover:shadow-md transition-shadow">
+                  {/* Chapter Header */}
+                  <div className="bg-gradient-to-r from-slate-50 to-slate-100 p-4">
+                    <div className="flex items-start justify-between mb-2">
+                      <div className="flex-1">
+                        <div className="flex items-center gap-3">
+                          <span className="inline-flex items-center justify-center h-8 w-8 rounded-full bg-brand text-white font-bold text-sm">
+                            {index + 1}
+                          </span>
+                          <h3 className="font-bold text-lg">{chapter.title}</h3>
+                        </div>
+                      </div>
+                      <span className="flex items-center gap-1 text-sm font-semibold text-gray-700 bg-white px-3 py-1 rounded-full">
+                        <Clock className="h-4 w-4" />
+                        {chapter.hours} hrs
+                      </span>
+                    </div>
+                  </div>
+
+                  {/* Preview Video (if available) */}
+                  {chapter.previewVideoUrl && (
+                    <div className="px-4 pt-3">
+                      <a 
+                        href={chapter.previewVideoUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-sm text-brand hover:underline flex items-center gap-1"
+                      >
+                        ▶ Watch Preview
+                      </a>
+                    </div>
+                  )}
+
+                  {/* Topics */}
+                  <div className="px-4 pb-4">
+                    <p className="text-xs uppercase tracking-wide text-gray-600 font-semibold mb-2">Topics Covered</p>
+                    <div className="flex flex-wrap gap-2">
+                      {chapter.topics.map((topic, i) => (
+                        <span key={i} className="inline-block bg-slate-100 text-slate-700 px-3 py-1 rounded-full text-xs font-medium">
+                          {topic}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            {/* Footer */}
+            <div className="sticky bottom-0 bg-white border-t border-gray-200 p-6 flex gap-3">
+              <button 
+                onClick={() => setSelectedCourse(null)}
+                className="flex-1 px-4 py-2.5 bg-gray-100 text-gray-700 font-semibold rounded-lg hover:bg-gray-200 transition-colors"
+              >
+                Close
+              </button>
+              <Link href={selectedCourse.link} className="flex-1 px-4 py-2.5 bg-brand text-white font-semibold rounded-lg hover:bg-red-700 transition-colors text-center">
+                {selectedCourse.cta || "Enroll Now"}
+              </Link>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }

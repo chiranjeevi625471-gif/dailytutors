@@ -1,0 +1,48 @@
+import type { CategoryType } from "@/lib/types";
+
+export const courseCategories: CategoryType[] = [
+  {
+    id: "neet",
+    name: "NEET",
+    slug: "neet",
+    icon: "🧬",
+    color: "bg-rose-50",
+    accentColor: "from-rose-600 to-pink-600",
+    description: "Medical entrance exam preparation",
+    totalCourses: 3,
+    active: true,
+  },
+  {
+    id: "cet",
+    name: "CET",
+    slug: "cet",
+    icon: "⚙️",
+    color: "bg-blue-50",
+    accentColor: "from-blue-600 to-cyan-600",
+    description: "Engineering entrance exam preparation",
+    totalCourses: 1,
+    active: true,
+  },
+  {
+    id: "ca",
+    name: "Chartered Accountancy (CA)",
+    slug: "ca",
+    icon: "📊",
+    color: "bg-emerald-50",
+    accentColor: "from-emerald-600 to-green-600",
+    description: "CA Foundation & Intermediate courses",
+    totalCourses: 1,
+    active: true,
+  },
+  {
+    id: "school-boards",
+    name: "School Boards (8th-12th)",
+    slug: "school-boards",
+    icon: "📚",
+    color: "bg-purple-50",
+    accentColor: "from-purple-600 to-indigo-600",
+    description: "CBSE, ICSE, State board preparation",
+    totalCourses: 0,
+    active: true,
+  },
+];

@@ -3,7 +3,7 @@ import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import {
   LayoutDashboard, Image, Layers, Newspaper, Brain, GraduationCap, Download,
-  LogOut, ShieldCheck, ExternalLink, CreditCard, BarChart3, Settings, FileText
+  LogOut, ShieldCheck, ExternalLink, CreditCard, BarChart3, Settings, FileText, BookOpen
 } from "lucide-react";
 import Logo from "@/components/Logo";
 
@@ -11,6 +11,8 @@ const NAV = [
   { href: "/admin", label: "Dashboard", icon: LayoutDashboard, exact: true },
   { href: "/admin/articles", label: "Articles", icon: FileText },
   { href: "/admin/courses", label: "Courses", icon: GraduationCap },
+  { href: "/admin/exam-courses", label: "Exam Courses", icon: BookOpen },
+  { href: "/admin/course-categories", label: "Course Categories", icon: Layers },
   { href: "/admin/quizzes", label: "Quizzes", icon: Brain },
   { href: "/admin/downloads", label: "Downloads", icon: Download },
   { href: "/admin/payments", label: "Payments", icon: CreditCard },
