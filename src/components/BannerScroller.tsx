@@ -80,32 +80,32 @@ export default function BannerScroller({ cards }: { cards: BannerCard[] }) {
           {BANNERS.map(({ title, tag, href, Icon, bg }) => {
             if (!href) return null;
             return (
-            <Link
-              key={title}
-              href={href}
-              className="snap-start flex-none w-[260px] sm:w-[300px] md:w-[320px] group"
-            >
-              <div className={`relative h-40 sm:h-44 overflow-hidden rounded-2xl bg-gradient-to-br ${bg} shadow-card transition group-hover:-translate-y-1`}>
-                <div
-                  className="absolute inset-0 opacity-15 mix-blend-overlay"
-                  style={{
-                    backgroundImage: "radial-gradient(circle at 1px 1px, rgba(255,255,255,0.5) 1px, transparent 0)",
-                    backgroundSize: "20px 20px"
-                  }}
-                />
-                <div className="absolute -right-4 -bottom-4 h-32 w-32 rounded-full bg-white/10" />
-                <div className="absolute -right-10 -top-6 h-24 w-24 rounded-full bg-white/10" />
-                <div className="relative z-10 flex h-full flex-col justify-between p-5 text-white">
-                  <Icon className="h-8 w-8" />
-                  <div>
-                    <div className="text-[11px] font-bold uppercase tracking-widest text-white/85">{tag}</div>
-                    <div className="mt-1 text-lg sm:text-xl font-extrabold leading-tight">{title}</div>
+              <Link
+                key={title}
+                href={href}
+                className="snap-start flex-none w-[260px] sm:w-[300px] md:w-[320px] group"
+              >
+                <div className={`relative h-40 sm:h-44 overflow-hidden rounded-2xl bg-gradient-to-br ${bg} shadow-card transition group-hover:-translate-y-1`}>
+                  <div
+                    className="absolute inset-0 opacity-15 mix-blend-overlay"
+                    style={{
+                      backgroundImage: "radial-gradient(circle at 1px 1px, rgba(255,255,255,0.5) 1px, transparent 0)",
+                      backgroundSize: "20px 20px"
+                    }}
+                  />
+                  <div className="absolute -right-4 -bottom-4 h-32 w-32 rounded-full bg-white/10" />
+                  <div className="absolute -right-10 -top-6 h-24 w-24 rounded-full bg-white/10" />
+                  <div className="relative z-10 flex h-full flex-col justify-between p-5 text-white">
+                    <Icon className="h-8 w-8" />
+                    <div>
+                      <div className="text-[11px] font-bold uppercase tracking-widest text-white/85">{tag}</div>
+                      <div className="mt-1 text-lg sm:text-xl font-extrabold leading-tight">{title}</div>
+                    </div>
                   </div>
                 </div>
-              </div>
             </Link>
-          );
-          })
+            );
+          })}
         </div>
       </div>
     </section>
