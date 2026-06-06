@@ -133,6 +133,17 @@ export default function AdminExamCourses() {
         <p className="text-gray-600 mt-1">Manage courses displayed on individual exam pages. Organized by category.</p>
       </div>
 
+      {/* Important Note */}
+      <div className="rounded-lg border-l-4 border-blue-500 bg-blue-50 p-4 flex gap-4">
+        <div className="text-blue-600 text-xl">ℹ️</div>
+        <div>
+          <h3 className="font-semibold text-blue-900">Curriculum Chapters Required</h3>
+          <p className="text-sm text-blue-800 mt-1">
+            Students see an <strong>EXPLORE button</strong> on course cards to preview curriculum. Add chapters to each course so students can view course structure, topics, and hours before enrolling. Click "Add Curriculum" in the table below to add chapters.
+          </p>
+        </div>
+      </div>
+
       {/* Sections by Category */}
       {categories.map((category) => {
         const categoryCourses = getCoursesByCategory(category.slug);

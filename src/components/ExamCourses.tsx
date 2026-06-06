@@ -185,19 +185,17 @@ export default function ExamCourses({ examSlug }: ExamCoursesProps) {
 
             {/* CTA Buttons */}
             <div className="flex gap-2">
-              {/* Explore Button - shown if course has chapters */}
-              {course.chapters && course.chapters.length > 0 && (
-                <button 
-                  onClick={() => setSelectedCourse(course)}
-                  className="flex-1 px-4 py-2.5 bg-slate-100 text-slate-700 font-semibold rounded-lg hover:bg-slate-200 transition-colors flex items-center justify-center gap-2"
-                >
-                  <BookOpen className="h-4 w-4" />
-                  Explore
-                </button>
-              )}
+              {/* Explore Button - Always shown */}
+              <button 
+                onClick={() => setSelectedCourse(course)}
+                className="flex-1 px-4 py-2.5 bg-slate-200 hover:bg-slate-300 text-slate-800 font-semibold rounded-lg transition-colors flex items-center justify-center gap-2"
+              >
+                <BookOpen className="h-4 w-4" />
+                Explore
+              </button>
               
               {/* Enroll Button */}
-              <Link href={course.link} className={`${course.chapters && course.chapters.length > 0 ? 'flex-1' : 'w-full'} block text-center px-4 py-2.5 bg-brand text-white font-semibold rounded-lg hover:bg-red-700 transition-colors`}>
+              <Link href={course.link} className="flex-1 block text-center px-4 py-2.5 bg-brand hover:bg-red-700 text-white font-semibold rounded-lg transition-colors">
                 {course.cta}
               </Link>
             </div>

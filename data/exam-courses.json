@@ -200,7 +200,38 @@
     ],
     "description": "Complete CET preparation for Engineering entrance with focused curriculum.",
     "cta": "ENROLL NOW",
-    "link": "/courses/cet-foundation-2026"
+    "link": "/courses/cet-foundation-2026",
+    "totalHours": 300,
+    "chapters": [
+      {
+        "id": "cet-phy",
+        "title": "Physics for CET",
+        "hours": 80,
+        "topics": ["Mechanics", "Heat & Thermodynamics", "Light", "Modern Physics"],
+        "previewVideoUrl": "https://youtu.be/sample"
+      },
+      {
+        "id": "cet-chem",
+        "title": "Chemistry for CET",
+        "hours": 80,
+        "topics": ["Inorganic Chemistry", "Organic Chemistry", "Physical Chemistry", "Laboratory techniques"],
+        "previewVideoUrl": "https://youtu.be/sample"
+      },
+      {
+        "id": "cet-math",
+        "title": "Mathematics for CET",
+        "hours": 80,
+        "topics": ["Algebra", "Trigonometry", "Geometry", "Calculus"],
+        "previewVideoUrl": "https://youtu.be/sample"
+      },
+      {
+        "id": "cet-practice",
+        "title": "CET Practice & Tests",
+        "hours": 60,
+        "topics": ["Mock test series", "Previous year papers", "Speed building", "Accuracy drills"],
+        "previewVideoUrl": "https://youtu.be/sample"
+      }
+    ]
   },
   {
     "id": "ca-foundation",
@@ -227,6 +258,37 @@
     ],
     "description": "Complete CA Foundation program with expert instructors and comprehensive study material.",
     "cta": "ENROLL NOW",
-    "link": "/courses/ca-foundation"
+    "link": "/courses/ca-foundation",
+    "totalHours": 240,
+    "chapters": [
+      {
+        "id": "ca-accounting",
+        "title": "Fundamentals of Accounting",
+        "hours": 60,
+        "topics": ["Basic concepts", "Journal & ledger", "Trial balance", "Financial statements"],
+        "previewVideoUrl": "https://youtu.be/sample"
+      },
+      {
+        "id": "ca-business",
+        "title": "Business Law & Regulation",
+        "hours": 60,
+        "topics": ["Contract law", "Company act", "Competition law", "Regulatory framework"],
+        "previewVideoUrl": "https://youtu.be/sample"
+      },
+      {
+        "id": "ca-economics",
+        "title": "Economics & Finance",
+        "hours": 60,
+        "topics": ["Microeconomics", "Macroeconomics", "Financial management", "Investment analysis"],
+        "previewVideoUrl": "https://youtu.be/sample"
+      },
+      {
+        "id": "ca-practice",
+        "title": "CA Foundation Practice",
+        "hours": 60,
+        "topics": ["Case studies", "Mock exams", "Problem-solving", "Professional ethics"],
+        "previewVideoUrl": "https://youtu.be/sample"
+      }
+    ]
   }
 ]
