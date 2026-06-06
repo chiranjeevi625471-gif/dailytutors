@@ -2,7 +2,7 @@ import { NextResponse } from "next/server";
 import { db } from "@/lib/db";
 import type { EntityName } from "@/lib/types";
 
-const ENTITIES: EntityName[] = ["banners", "cards", "posts", "quizzes", "courses", "downloads", "promobanners"];
+const ENTITIES: EntityName[] = ["banners", "cards", "posts", "quizzes", "courses", "downloads", "promobanners", "exam-courses"];
 
 export const dynamic = "force-dynamic";
 

@@ -1,9 +1,9 @@
 import mongoose, { Schema, Model } from "mongoose";
-import type { HeroBanner, BannerCard, Post, Quiz, Course, Download, EntityName, PromoBanner } from "./types";
-import { seedBanners, seedCards, seedPosts, seedQuizzes, seedCourses, seedDownloads, seedPromo } from "./seed";
+import type { HeroBanner, BannerCard, Post, Quiz, Course, Download, EntityName, PromoBanner, ExamCourse } from "./types";
+import { seedBanners, seedCards, seedPosts, seedQuizzes, seedCourses, seedDownloads, seedPromo, seedExamCourses } from "./seed";
 import { connectDB } from "./mongodb";
 
-// Content entities (banners, cards, posts, quizzes, courses, downloads, promobanners)
+// Content entities (banners, cards, posts, quizzes, courses, downloads, promobanners, exam-courses)
 // are stored in MongoDB so edits made through the admin panel persist across
 // Vercel serverless instances and cold starts. Each entity lives in its own
 // `content_<name>` collection, kept separate from the app's transactional models.
@@ -16,6 +16,7 @@ const SEEDS: Record<EntityName, any[]> = {
   courses: seedCourses,
   downloads: seedDownloads,
   promobanners: seedPromo,
+  "exam-courses": seedExamCourses,
 };
 
 // Loose schema — these entities have varying shapes, so we store the whole
@@ -76,6 +77,7 @@ export const db = {
   courses:      { list: () => list<Course>("courses", seedCourses),           save: (r: Course[])      => save("courses", r) },
   downloads:    { list: () => list<Download>("downloads", seedDownloads),     save: (r: Download[])    => save("downloads", r) },
   promobanners: { list: () => list<PromoBanner>("promobanners", seedPromo),   save: (r: PromoBanner[]) => save("promobanners", r) },
+  "exam-courses": { list: () => list<ExamCourse>("exam-courses", seedExamCourses), save: (r: ExamCourse[]) => save("exam-courses", r) },
 };
 
 export function newId() {

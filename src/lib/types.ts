@@ -119,4 +119,26 @@ export type Download = {
   active: boolean;
 };
 
-export type EntityName = "banners" | "cards" | "posts" | "quizzes" | "courses" | "downloads" | "promobanners";
+export type ExamCourse = {
+  id: string;
+  examSlug: string;
+  active: boolean;
+  order: number;
+  title: string;
+  image: string;
+  badge: string;
+  badgeColor: string;
+  instructor: string;
+  instructorImage: string;
+  price: number;
+  originalPrice: number;
+  startDate: string;
+  endDate: string;
+  duration: string;
+  features: string[];
+  description: string;
+  cta: string;
+  link: string;
+};
+
+export type EntityName = "banners" | "cards" | "posts" | "quizzes" | "courses" | "downloads" | "promobanners" | "exam-courses";

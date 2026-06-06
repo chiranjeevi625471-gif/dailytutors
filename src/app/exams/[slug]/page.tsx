@@ -1,7 +1,8 @@
 import Link from "next/link";
 import { notFound, redirect } from "next/navigation";
-import { ArrowLeft, BellRing } from "lucide-react";
+import { ArrowLeft } from "lucide-react";
 import { EXAM_CATEGORIES, getExamCategory } from "@/lib/exams";
+import ExamCourses from "@/components/ExamCourses";
 
 export function generateStaticParams() {
   // Only categories with a stub page; ones with a custom href are linked directly.
@@ -30,15 +31,9 @@ export default function ExamPage({ params }: { params: { slug: string } }) {
         <p className="mt-4 text-lg text-gray-600">{exam.description}</p>
       </div>
 
-      <div className="mt-10 rounded-2xl border border-dashed border-gray-200 bg-gray-50 p-10 text-center">
-        <span className="inline-flex h-12 w-12 items-center justify-center rounded-full bg-brand-50 text-brand">
-          <BellRing className="h-6 w-6" />
-        </span>
-        <h2 className="mt-4 text-xl font-bold">Courses coming soon</h2>
-        <p className="mt-2 text-gray-600 max-w-md mx-auto">
-          We&apos;re putting together courses and resources for {exam.title}. Check back shortly.
-        </p>
-        <Link href="/courses" className="btn-primary mt-6 inline-flex">Browse all courses</Link>
+      <div className="mt-12">
+        <h2 className="text-2xl font-bold mb-8">Available Courses</h2>
+        <ExamCourses examSlug={params.slug} />
       </div>
     </div>
   );
