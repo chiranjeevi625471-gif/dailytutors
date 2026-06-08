@@ -10,7 +10,7 @@ type Download = {
   size: string;
   pages: number;
   date: string;
-  url: string;
+  url?: string;
 };
 
 const TYPE_COLORS: Record<string, string> = {
