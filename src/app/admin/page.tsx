@@ -118,28 +118,3 @@ export default function AdminDashboard() {
     </div>
   );
 }
-            <Link key={c.label} href={c.href} className="group rounded-xl border border-gray-100 bg-white p-5 transition hover:shadow-card">
-              <div className="flex items-center gap-3">
-                <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-brand-50 text-brand">
-                  <c.icon className="h-5 w-5" />
-                </div>
-                <div>
-                  <div className="text-xs uppercase tracking-wider text-gray-500">{c.label}</div>
-                  <div className="text-2xl font-extrabold">{c.value}</div>
-                  {c.sub && <div className="text-[11px] text-gray-400">{c.sub}</div>}
-                </div>
-              </div>
-              <div className="mt-3 flex items-center justify-end text-xs">
-                <span className="inline-flex items-center gap-1 font-semibold text-brand">
-                  Manage <ArrowRight className="h-3 w-3 transition group-hover:translate-x-0.5" />
-                </span>
-              </div>
-            </Link>
-          ) : (
-            <div key={i} className="h-28 animate-pulse rounded-xl border border-gray-100 bg-white" />
-          )
-        )}
-      </div>
-    </div>
-  );
-}
