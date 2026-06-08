@@ -138,7 +138,15 @@ export default function ExamCourses({ examSlug }: ExamCoursesProps) {
             <h3 className="font-bold text-lg leading-tight mb-1">{course.title}</h3>
             {course.instructor && (
               <p className="text-sm text-gray-600 mb-3 flex items-center gap-2">
-                <span className="inline-block w-5 h-5 rounded-full bg-gray-300" />
+                {course.instructorImage ? (
+                  <img
+                    src={course.instructorImage}
+                    alt={course.instructor}
+                    className="inline-block w-5 h-5 rounded-full object-cover"
+                  />
+                ) : (
+                  <span className="inline-block w-5 h-5 rounded-full bg-gray-300" />
+                )}
                 {course.instructor}
               </p>
             )}

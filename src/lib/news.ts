@@ -192,6 +192,22 @@ export async function fetchPIBNews(pageSize = 10): Promise<Article[]> {
 /**
  * Remove duplicate articles by title
  */
+// Matches any major Indic script (Devanagari, Bengali, Gurmukhi, Gujarati,
+// Oriya, Tamil, Telugu, Kannada, Malayalam). Used to drop non-English items
+// that slip through despite the language=en query params.
+const NON_ENGLISH_SCRIPT = /[ऀ-ൿ]/;
+
+/**
+ * Keep only English-language articles. Drops any whose title or description
+ * contains non-Latin (Indic) script.
+ */
+export function englishOnly(articles: Article[]): Article[] {
+  return articles.filter((a) => {
+    const text = `${a.title || ""} ${a.description || ""}`;
+    return !NON_ENGLISH_SCRIPT.test(text);
+  });
+}
+
 export function removeDuplicates(articles: Article[]): Article[] {
   const seenTitles = new Set<string>();
   return articles.filter((article) => {
@@ -208,14 +224,19 @@ export function removeDuplicates(articles: Article[]): Article[] {
  * Fetch all news from multiple sources
  */
 export async function fetchAllNews(): Promise<Article[]> {
-  const [hindu, indianExpress, pib] = await Promise.all([
+  // Each source catches its own errors and returns [] on failure (or when its
+  // API key is missing), so one provider being down never breaks the others.
+  const [hindu, indianExpress, pib, newsData, toi, inshorts] = await Promise.all([
     fetchTheHinduDailyAffairs(),
     fetchIndianExpressNews(),
     fetchPIBNews(),
+    fetchNewsDataNews(),
+    fetchTimesOfIndiaNews(),
+    fetchInshortsNews(),
   ]);
 
-  const allArticles = [...hindu, ...indianExpress, ...pib];
-  return removeDuplicates(allArticles);
+  const allArticles = [...hindu, ...indianExpress, ...pib, ...newsData, ...toi, ...inshorts];
+  return englishOnly(removeDuplicates(allArticles));
 }
 
 export async function fetchTopIndianNews(query: string = "India", pageSize = 20): Promise<Article[]> {
@@ -435,6 +456,7 @@ export async function fetchNewsDataNews(pageSize = 10): Promise<Article[]> {
     const searchParams = new URLSearchParams({
       q: "India OR UPSC OR 'current affairs' OR policy",
       country: "in",
+      language: "en",
       size: Math.min(pageSize, 50).toString(),
       apikey: apiKey,
     });

@@ -42,10 +42,10 @@ export const seedCourses: Course[] = [
 ];
 
 export const seedDownloads: Download[] = [
-  { id: "d1", active: true, title: "Monthly Current Affairs Magazine — April 2026", description: "Comprehensive coverage of all major news stories relevant to UPSC prelims and mains exams. Includes topic-wise analysis, linkages to GS papers, and editorial insights.", type: "Magazine", size: "8.4 MB", pages: 124, date: "2026-05-01" },
-  { id: "d2", active: true, title: "PIB Compilation — April 2026", description: "All major PIB press releases from April 2026, organized by ministry and topic for easy revision.", type: "Compilation", size: "3.1 MB", pages: 56, date: "2026-04-30" },
-  { id: "d3", active: true, title: "Polity Revision Notes — Constitutional Bodies", description: "Detailed revision notes on constitutional bodies, their composition, powers, and functions with important case laws.", type: "Notes", size: "2.2 MB", pages: 34, date: "2026-04-28" },
-  { id: "d4", active: true, title: "UPSC Prelims PYQ 2014–2025 (Topic-wise)", description: "Previous year questions from 2014 to 2025, organized topic-wise for targeted practice and pattern analysis.", type: "PYQ", size: "12.8 MB", pages: 380, date: "2026-04-15" }
+  { id: "d1", active: true, title: "Monthly Current Affairs Magazine — April 2026", description: "Comprehensive coverage of all major news stories relevant to UPSC prelims and mains exams. Includes topic-wise analysis, linkages to GS papers, and editorial insights.", type: "Magazine", size: "8.4 MB", pages: 124, date: "2026-05-01", url: "/pdfs/monthly-ca-magazine-april-2026.pdf" },
+  { id: "d2", active: true, title: "PIB Compilation — April 2026", description: "All major PIB press releases from April 2026, organized by ministry and topic for easy revision.", type: "Compilation", size: "3.1 MB", pages: 56, date: "2026-04-30", url: "/pdfs/pib-compilation-april-2026.pdf" },
+  { id: "d3", active: true, title: "Polity Revision Notes — Constitutional Bodies", description: "Detailed revision notes on constitutional bodies, their composition, powers, and functions with important case laws.", type: "Notes", size: "2.2 MB", pages: 34, date: "2026-04-28", url: "/pdfs/polity-notes-constitutional-bodies.pdf" },
+  { id: "d4", active: true, title: "UPSC Prelims PYQ 2014–2025 (Topic-wise)", description: "Previous year questions from 2014 to 2025, organized topic-wise for targeted practice and pattern analysis.", type: "PYQ", size: "12.8 MB", pages: 380, date: "2026-04-15", url: "/pdfs/upsc-prelims-pyq-2014-2025.pdf" }
 ];
 
 export const seedExamCourses: ExamCourse[] = [

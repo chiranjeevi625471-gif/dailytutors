@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { getClient } from "@/lib/groq";
+import { chatCompletion } from "@/lib/groq";
 import { fetchTopIndianNews } from "@/lib/news";
 
 export const runtime = "nodejs";
@@ -22,9 +22,7 @@ export async function GET() {
       .map((a, i) => `${i + 1}. ${a.title}\n${a.description || ""}`)
       .join("\n\n");
 
-    const client = getClient();
-    const response = await client.chat.completions.create({
-      model: "llama-3.3-70b-versatile",
+    const response = await chatCompletion({
       max_tokens: 2500,
       messages: [
         {

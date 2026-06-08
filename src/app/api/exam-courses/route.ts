@@ -1,23 +1,21 @@
-import { readFile } from "fs/promises";
-import { join } from "path";
 import { NextRequest, NextResponse } from "next/server";
+import { db } from "@/lib/db";
 
-export const dynamic = "force-static";
-export const revalidate = 3600; // Revalidate every hour
+// Read from MongoDB (the same source the admin panel writes to) so edits made
+// in the admin reflect on the live site immediately. Must be dynamic — a cached
+// or file-based response would serve stale data.
+export const dynamic = "force-dynamic";
 
 export async function GET(request: NextRequest) {
   try {
     const { searchParams } = new URL(request.url);
     const examSlug = searchParams.get("exam");
 
-    // Read exam courses from JSON file
-    const filePath = join(process.cwd(), "data", "exam-courses.json");
-    const fileContent = await readFile(filePath, "utf-8");
-    const allCourses = JSON.parse(fileContent);
+    const allCourses = await db["exam-courses"].list();
 
-    // Filter by exam and active status
+    // Only active courses, optionally filtered by exam category.
     const courses = allCourses.filter(
-      (c: any) => c.active && (!examSlug || c.examSlug === examSlug)
+      (c) => c.active && (!examSlug || c.examSlug === examSlug)
     );
 
     return NextResponse.json(courses);

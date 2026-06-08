@@ -320,6 +320,99 @@ export default function AdminExamCourses() {
               </div>
 
               <div>
+                <label className="block text-sm font-semibold mb-2">Instructor Photo</label>
+                <div className="flex items-center gap-3">
+                  {formData.instructorImage && (
+                    <img
+                      src={formData.instructorImage}
+                      alt="Instructor preview"
+                      className="h-16 w-16 rounded-full object-cover border border-gray-200"
+                    />
+                  )}
+                  <div className="flex-1">
+                    <input
+                      type="text"
+                      value={formData.instructorImage || ""}
+                      onChange={(e) => setFormData({ ...formData, instructorImage: e.target.value })}
+                      className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-brand"
+                      placeholder="Paste photo URL (https://…)"
+                    />
+                    <div className="mt-2 flex items-center gap-3">
+                      <input
+                        type="file"
+                        accept="image/*"
+                        aria-label="Upload instructor photo"
+                        onChange={(e) => {
+                          const file = e.target.files?.[0];
+                          if (!file) return;
+                          const reader = new FileReader();
+                          reader.onload = (ev) =>
+                            setFormData((prev) => ({ ...prev, instructorImage: ev.target?.result as string }));
+                          reader.readAsDataURL(file);
+                        }}
+                        className="block text-sm text-gray-500 file:mr-3 file:rounded-md file:border file:border-gray-200 file:bg-blue-50 file:px-3 file:py-2 file:text-sm file:font-medium file:text-blue-700 hover:file:bg-blue-100"
+                      />
+                      {formData.instructorImage && (
+                        <button
+                          type="button"
+                          onClick={() => setFormData({ ...formData, instructorImage: "" })}
+                          className="text-sm text-red-600 hover:text-red-700"
+                        >
+                          Remove
+                        </button>
+                      )}
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div>
+                <label className="block text-sm font-semibold mb-2">Course Banner / Image</label>
+                {formData.image && (
+                  <img
+                    src={formData.image}
+                    alt="Banner preview"
+                    className="mb-2 h-32 w-full rounded-lg object-cover border border-gray-200"
+                  />
+                )}
+                <input
+                  type="text"
+                  value={formData.image || ""}
+                  onChange={(e) => setFormData({ ...formData, image: e.target.value })}
+                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-brand"
+                  placeholder="Paste image URL (https://…)"
+                />
+                <div className="mt-2 flex items-center gap-3">
+                  <input
+                    type="file"
+                    accept="image/*"
+                    aria-label="Upload course banner image"
+                    onChange={(e) => {
+                      const file = e.target.files?.[0];
+                      if (!file) return;
+                      const reader = new FileReader();
+                      reader.onload = (ev) =>
+                        setFormData((prev) => ({ ...prev, image: ev.target?.result as string }));
+                      reader.readAsDataURL(file);
+                    }}
+                    className="block text-sm text-gray-500 file:mr-3 file:rounded-md file:border file:border-gray-200 file:bg-blue-50 file:px-3 file:py-2 file:text-sm file:font-medium file:text-blue-700 hover:file:bg-blue-100"
+                  />
+                  {formData.image && (
+                    <button
+                      type="button"
+                      onClick={() => setFormData({ ...formData, image: "" })}
+                      className="text-sm text-red-600 hover:text-red-700"
+                    >
+                      Remove
+                    </button>
+                  )}
+                </div>
+                <p className="mt-1 text-xs text-gray-500">
+                  Paste an image URL or upload a file. Shown as the course banner on the live site.
+                </p>
+              </div>
+
+              <div>
                 <label className="block text-sm font-semibold mb-2">Description *</label>
                 <textarea
                   value={formData.description || ""}

@@ -36,13 +36,13 @@ export default function AdminBanners() {
         { key: "active", label: "Active", render: (r) => r.active ? <span className="badge">Live</span> : <span className="rounded-full bg-gray-100 px-2.5 py-0.5 text-xs text-gray-600">Off</span> }
       ]}
       fields={[
-        { name: "eyebrow", label: "Eyebrow", required: true, placeholder: "Ace Your UPSC Prep!" },
+        { name: "image", label: "Banner Image", type: "file", accept: "image/*", full: true, hint: "The banner image — this is all you need. Text fields below are optional." },
+        { name: "href", label: "CTA link", required: false, placeholder: "/courses/... (where the banner links to)" },
         { name: "order", label: "Order", type: "number", required: true },
-        { name: "image", label: "Banner Image", type: "file", accept: "image/*", full: true, hint: "Upload a background image for the banner" },
-        { name: "title", label: "Title (large)", required: true, full: true, placeholder: "FOUNDATION 2027 BATCH" },
-        { name: "subtitle", label: "Subtitle", required: true, full: true, placeholder: "FOR PRELIMS, MAINS & OPTIONAL — LIVE + RECORDED" },
-        { name: "cta", label: "CTA text", required: true, placeholder: "TAP TO EXPLORE!" },
-        { name: "href", label: "CTA link", required: false, placeholder: "/courses/..." },
+        { name: "eyebrow", label: "Eyebrow (optional)", required: false, placeholder: "Ace Your UPSC Prep!" },
+        { name: "title", label: "Title (large, optional)", required: false, full: true, placeholder: "FOUNDATION 2027 BATCH" },
+        { name: "subtitle", label: "Subtitle (optional)", required: false, full: true, placeholder: "FOR PRELIMS, MAINS & OPTIONAL — LIVE + RECORDED" },
+        { name: "cta", label: "CTA text (optional)", required: false, placeholder: "TAP TO EXPLORE! (defaults to “Explore”)" },
         { name: "bg", label: "Background gradient (fallback)", type: "select", options: GRADIENTS, required: true, full: true, hint: "Used when no image is uploaded" },
         { name: "active", label: "Active", type: "checkbox", placeholder: "Show on site" }
       ]}

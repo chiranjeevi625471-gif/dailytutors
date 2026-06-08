@@ -3,19 +3,15 @@
   "devCommand": "npm run dev",
   "installCommand": "npm install",
   "framework": "nextjs",
-  "regions": ["iad1"],
+  "regions": ["bom1"],
   "crons": [
     {
       "path": "/api/cron/fetch-news",
-      "schedule": "0 6 * * *"
-    },
-    {
-      "path": "/api/cron/daily-affairs",
-      "schedule": "0 7 * * *"
+      "schedule": "0 1 * * *"
     },
     {
       "path": "/api/cron/daily-quiz",
-      "schedule": "0 8 * * *"
+      "schedule": "0 2 * * *"
     }
   ]
 }

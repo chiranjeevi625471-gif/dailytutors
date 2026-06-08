@@ -1,13 +1,17 @@
 import Link from "next/link";
-import { Facebook, Instagram, Twitter, Youtube, Send } from "lucide-react";
-import Logo from "@/components/Logo";
+import { Facebook, Instagram, Twitter, Youtube, Send, BookOpen } from "lucide-react";
 
 export default function Footer() {
   return (
     <footer className="mt-20 border-t border-gray-100 bg-gray-50">
       <div className="container-page py-12 grid gap-10 md:grid-cols-4">
         <div>
-          <Logo className="h-9 w-auto" />
+          <Link href="/" className="flex items-center gap-2">
+            <div className="flex h-9 w-9 items-center justify-center rounded-md bg-brand text-white">
+              <BookOpen className="h-5 w-5" />
+            </div>
+            <span className="text-lg font-extrabold">Daily<span className="text-brand">Tutors</span></span>
+          </Link>
           <p className="mt-3 text-sm text-gray-600">
             India&rsquo;s trusted destination for UPSC Civil Services preparation — current affairs, mains practice, prelims quizzes, and structured courses.
           </p>

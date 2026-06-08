@@ -51,22 +51,28 @@ export default function HeroCarousel({ slides }: { slides: HeroBanner[] }) {
             />
             <div className="container-page relative z-10 flex h-full items-center py-2 xs:py-3 sm:py-4">
               <div className="w-full max-w-xs xs:max-w-sm sm:max-w-xl md:max-w-2xl text-white">
-                <span className="inline-block rounded-full bg-white/95 px-2 py-0.5 text-xs xs:text-sm font-semibold text-red-700">
-                  {s.eyebrow}
-                </span>
-                <h1 className="mt-1.5 xs:mt-2 sm:mt-3 text-sm xs:text-lg sm:text-2xl md:text-3xl lg:text-4xl font-extrabold tracking-tight drop-shadow leading-snug">
-                  {s.title}
-                </h1>
-                <div className="mt-1 xs:mt-1.5 sm:mt-2 inline-block rounded-md border-2 border-white/80 px-1.5 py-0.5 xs:px-2 xs:py-0.5 sm:px-3 sm:py-1 text-[8px] xs:text-xs sm:text-sm font-bold tracking-wide">
-                  {s.subtitle}
-                </div>
-                <div className="mt-2 xs:mt-2.5 sm:mt-3">
-                  {s.href && (
-                  <Link href={s.href} className="inline-flex items-center rounded-md bg-white px-2 xs:px-3 sm:px-4 py-1 xs:py-1.5 sm:py-2 text-[8px] xs:text-xs sm:text-sm font-extrabold uppercase tracking-wider text-red-700 shadow-lg hover:bg-red-50 transition whitespace-nowrap">
-                    {s.cta}
-                  </Link>
-                  )}
-                </div>
+                {s.eyebrow && (
+                  <span className="inline-block rounded-full bg-white/95 px-2 py-0.5 text-xs xs:text-sm font-semibold text-red-700">
+                    {s.eyebrow}
+                  </span>
+                )}
+                {s.title && (
+                  <h1 className="mt-1.5 xs:mt-2 sm:mt-3 text-sm xs:text-lg sm:text-2xl md:text-3xl lg:text-4xl font-extrabold tracking-tight drop-shadow leading-snug">
+                    {s.title}
+                  </h1>
+                )}
+                {s.subtitle && (
+                  <div className="mt-1 xs:mt-1.5 sm:mt-2 inline-block rounded-md border-2 border-white/80 px-1.5 py-0.5 xs:px-2 xs:py-0.5 sm:px-3 sm:py-1 text-[8px] xs:text-xs sm:text-sm font-bold tracking-wide">
+                    {s.subtitle}
+                  </div>
+                )}
+                {s.href && (
+                  <div className="mt-2 xs:mt-2.5 sm:mt-3">
+                    <Link href={s.href} className="inline-flex items-center rounded-md bg-white px-2 xs:px-3 sm:px-4 py-1 xs:py-1.5 sm:py-2 text-[8px] xs:text-xs sm:text-sm font-extrabold uppercase tracking-wider text-red-700 shadow-lg hover:bg-red-50 transition whitespace-nowrap">
+                      {s.cta || "Explore"}
+                    </Link>
+                  </div>
+                )}
               </div>
             </div>
           </div>

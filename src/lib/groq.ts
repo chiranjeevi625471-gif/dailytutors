@@ -1,14 +1,66 @@
+import OpenAI from "openai";
 import Groq from "groq-sdk";
 import type { QuestionItem } from "./types";
 
-let _client: Groq | null = null;
+// Model names per provider. Override with OPENAI_MODEL / GROQ_MODEL in the env
+// without touching code.
+export const CHAT_MODEL = process.env.OPENAI_MODEL || "gpt-4o-mini";
+const GROQ_MODEL = process.env.GROQ_MODEL || "llama-3.3-70b-versatile";
 
+let _openai: OpenAI | null = null;
+let _groq: Groq | null = null;
+
+function openaiClient() {
+  if (!_openai) _openai = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
+  return _openai;
+}
+function groqClient() {
+  if (!_groq) _groq = new Groq({ apiKey: process.env.GROQ_API_KEY });
+  return _groq;
+}
+
+// Back-compat for existing imports. Prefer chatCompletion() below.
 export function getClient() {
-  if (!process.env.GROQ_API_KEY) {
-    throw new Error("GROQ_API_KEY is not set. Add it to your .env.local.");
+  if (process.env.OPENAI_API_KEY) return openaiClient();
+  if (process.env.GROQ_API_KEY) return groqClient();
+  throw new Error("No AI provider configured. Set OPENAI_API_KEY or GROQ_API_KEY.");
+}
+
+type ChatParams = {
+  messages: any[];
+  max_tokens?: number;
+  temperature?: number;
+  response_format?: any;
+};
+
+/**
+ * Run a chat completion with automatic provider fallback.
+ * Tries OpenAI first (e.g. when it has quota); on ANY failure
+ * (insufficient_quota, auth, rate limit, network) it transparently
+ * retries with Groq. Each provider gets its own model name.
+ */
+export async function chatCompletion(params: ChatParams): Promise<any> {
+  const attempts: Array<{ name: string; run: () => Promise<any> }> = [];
+  if (process.env.OPENAI_API_KEY) {
+    attempts.push({ name: "OpenAI", run: () => openaiClient().chat.completions.create({ ...params, model: CHAT_MODEL }) });
   }
-  if (!_client) _client = new Groq({ apiKey: process.env.GROQ_API_KEY });
-  return _client;
+  if (process.env.GROQ_API_KEY) {
+    attempts.push({ name: "Groq", run: () => groqClient().chat.completions.create({ ...params, model: GROQ_MODEL }) });
+  }
+  if (attempts.length === 0) {
+    throw new Error("No AI provider configured. Set OPENAI_API_KEY or GROQ_API_KEY.");
+  }
+
+  let lastErr: any;
+  for (const a of attempts) {
+    try {
+      return await a.run();
+    } catch (err: any) {
+      lastErr = err;
+      console.error(`⚠️ ${a.name} chat failed (${err?.status ?? ""} ${err?.code ?? err?.message ?? err}); trying next provider…`);
+    }
+  }
+  throw lastErr;
 }
 
 export const QUESTIONS_SCHEMA = {
@@ -117,11 +169,10 @@ Carefully read the text and create 2-3 essay-type questions that could be asked 
 Output JSON conforming to the schema.`;
 
 async function callGroqJSON(system: string, userPrompt: string, maxQuestions: number, isMains = false): Promise<QuestionItem[]> {
-  const client = getClient();
   const cappedHint = ` Generate up to ${maxQuestions} excellent questions; quality over quantity.`;
-  
+
   try {
-    console.log(`📝 Calling Groq API with model: llama-3.3-70b-versatile (${isMains ? "Mains" : "MCQ"})...`);
+    console.log(`📝 Generating questions (OpenAI→Groq fallback) (${isMains ? "Mains" : "MCQ"})...`);
     
     let jsonFormat: string;
     if (isMains) {
@@ -140,8 +191,7 @@ async function callGroqJSON(system: string, userPrompt: string, maxQuestions: nu
       .replace(/[\u2013\u2014]/g, '-') // Replace en/em dashes with regular dash
       .slice(0, 60000); // Limit to 60k chars to avoid token overflow
     
-    const resp = await client.chat.completions.create({
-      model: "llama-3.3-70b-versatile",
+    const resp = await chatCompletion({
       max_tokens: 4096,
       messages: [
         {
@@ -238,23 +288,23 @@ async function callGroqJSON(system: string, userPrompt: string, maxQuestions: nu
     }
   } catch (error) {
     // Handle rate limit with helpful message
-    if (error instanceof Error && error.message.includes("rate_limit_exceeded")) {
-      console.error("❌ Groq API rate limit exceeded!");
+    if ((error as any)?.status === 429 || (error instanceof Error && /rate.?limit/i.test(error.message))) {
+      console.error("❌ OpenAI API rate limit exceeded!");
       console.error("💡 Solutions:");
-      console.error("   1. Upgrade your Groq plan at https://console.groq.com/settings/billing");
-      console.error("   2. Wait ~30-40 minutes for daily token limit to reset");
+      console.error("   1. Check usage/limits at https://platform.openai.com/account/limits");
+      console.error("   2. Wait for the rate window to reset, or add billing credits");
       console.error("   3. Reduce maxQuestions or split requests into batches");
       return [];
     }
     
     // Handle JSON parsing errors
     if (error instanceof SyntaxError || (error instanceof Error && error.message.includes("JSON"))) {
-      console.error("❌ Groq API error:", error instanceof Error ? error.message : String(error));
+      console.error("❌ OpenAI API error:", error instanceof Error ? error.message : String(error));
       console.error("💡 This is a content sanitization issue. Retrying with cleaned input...");
       return [];
     }
     
-    console.error("❌ Groq API error:", error instanceof Error ? error.message : String(error));
+    console.error("❌ OpenAI API error:", error instanceof Error ? error.message : String(error));
     return [];
   }
 }

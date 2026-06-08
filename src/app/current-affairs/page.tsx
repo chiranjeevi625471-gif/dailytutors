@@ -11,10 +11,14 @@ export default async function CurrentAffairsPage() {
   try {
     await connectDB();
     // Only PUBLISHED articles are shown publicly (admin/SME approval gate).
+    // Fetch a few extra to absorb the English-only filtering below.
     const docs = await ArticleModel.find({ status: "published" })
       .sort({ publishedAt: -1, createdAt: -1 })
-      .limit(60)
+      .limit(90)
       .lean();
+
+    // Drop any non-English (Indic-script) leftovers so the page is English-only.
+    const nonEnglish = /[ऀ-ൿ]/;
 
     articles = docs.map((d: any) => ({
       id: String(d._id),
@@ -40,7 +44,10 @@ export default async function CurrentAffairsPage() {
         difficulty: m.difficulty || "Medium",
       })),
       publishedAt: d.publishedAt ? new Date(d.publishedAt).toISOString() : null,
-    }));
+    }))
+      // English only, and must have a summary so the card shows summarized content.
+      .filter((a) => a.summary.trim().length > 0 && !nonEnglish.test(`${a.title} ${a.summary}`))
+      .slice(0, 60);
   } catch (err) {
     console.error("Current affairs load error:", err);
   }

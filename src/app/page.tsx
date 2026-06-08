@@ -1,5 +1,5 @@
 import HeroCarousel from "@/components/HeroCarousel";
-import HeroBannerCards from "@/components/HeroBannerCards";
+import StatsBar from "@/components/StatsBar";
 import ExamCategoriesSection from "@/components/ExamCategoriesSection";
 import { db } from "@/lib/db";
 
@@ -17,7 +17,7 @@ export default async function HomePage() {
     <>
       <HeroCarousel slides={slides} />
 
-      <HeroBannerCards />
+      <StatsBar />
 
       <ExamCategoriesSection />
 
