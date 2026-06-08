@@ -22,7 +22,15 @@ const TYPE_COLORS: Record<string, string> = {
 
 export default function DownloadCard({ download }: { download: Download }) {
   // Generate default URL if missing (e.g., for old seeded data)
-  const url = download.url || `/pdfs/${download.id}-${download.title.toLowerCase().replace(/\s+/g, '-')}.pdf`;
+  // Replace spaces and special characters with single dash, then clean up multiple dashes
+  const sanitizedTitle = download.title
+    .toLowerCase()
+    .replace(/[^\w\s-]/g, '') // Remove special characters except dash and space
+    .replace(/\s+/g, '-') // Replace spaces with dash
+    .replace(/-+/g, '-') // Replace multiple dashes with single dash
+    .replace(/^-+|-+$/g, ''); // Remove leading/trailing dashes
+  
+  const url = download.url || `/pdfs/${download.id}-${sanitizedTitle}.pdf`;
   const isLocalPdf = url?.startsWith('/pdfs/');
 
   return (
