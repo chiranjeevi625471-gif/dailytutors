@@ -2,8 +2,8 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import {
-  FileText, GraduationCap, Brain, Download, CreditCard, IndianRupee,
-  Image as ImageIcon, Layers, Newspaper, ArrowRight, RefreshCw, BarChart3
+  FileText, GraduationCap, Brain, Download,
+  Image as ImageIcon, Layers, Newspaper, ArrowRight, RefreshCw
 } from "lucide-react";
 
 type Card = { label: string; value: string | number; sub?: string; href: string; icon: any };
@@ -16,8 +16,7 @@ export default function AdminDashboard() {
   async function load() {
     setLoading(true);
     try {
-      const [analyticsRes, ...entityRes] = await Promise.all([
-        fetch("/api/admin/analytics", { cache: "no-store" }).then((r) => (r.ok ? r.json() : null)).catch(() => null),
+      const entityRes = await Promise.all([
         fetch("/api/admin/banners", { cache: "no-store" }).then((r) => (r.ok ? r.json() : [])).catch(() => []),
         fetch("/api/admin/cards", { cache: "no-store" }).then((r) => (r.ok ? r.json() : [])).catch(() => []),
         fetch("/api/admin/promobanners", { cache: "no-store" }).then((r) => (r.ok ? r.json() : [])).catch(() => []),
@@ -25,14 +24,10 @@ export default function AdminDashboard() {
         fetch("/api/admin/downloads", { cache: "no-store" }).then((r) => (r.ok ? r.json() : [])).catch(() => []),
       ]);
 
-      const c = analyticsRes?.cards;
       setCards([
-        { label: "Total Revenue", value: c ? `₹${c.totalRevenue.toLocaleString("en-IN")}` : "—", href: "/admin/payments", icon: IndianRupee },
-        { label: "Articles", value: c ? `${c.publishedArticles}/${c.totalArticles}` : "—", sub: "published / total", href: "/admin/articles", icon: FileText },
-        { label: "Courses", value: c ? `${c.publishedCourses}/${c.totalCourses}` : "—", sub: "published / total", href: "/admin/courses", icon: GraduationCap },
-        { label: "Quizzes", value: c?.totalQuizzes ?? "—", href: "/admin/quizzes", icon: Brain },
-        { label: "Payments", value: c ? `${c.capturedPayments}/${c.totalPayments}` : "—", sub: "captured / total", href: "/admin/payments", icon: CreditCard },
-        { label: "Analytics", value: c ? `${c.successRate}%` : "—", sub: "payment success", href: "/admin/analytics", icon: BarChart3 },
+        { label: "Articles", value: "Manage", href: "/admin/articles", icon: FileText },
+        { label: "Courses", value: "Manage", href: "/admin/courses", icon: GraduationCap },
+        { label: "Quizzes", value: "Manage", href: "/admin/quizzes", icon: Brain },
       ]);
 
       const [banners, bcards, promo, posts, downloads] = entityRes.map((x) => (Array.isArray(x) ? x : []));
@@ -69,7 +64,7 @@ export default function AdminDashboard() {
       </div>
 
       <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-        {(cards || Array.from({ length: 6 })).map((c: any, i) =>
+        {(cards || Array.from({ length: 3 })).map((c: any, i) =>
           c ? (
             <Link key={c.label} href={c.href} className="group rounded-xl border border-gray-100 bg-white p-5 transition hover:shadow-card">
               <div className="flex items-center gap-3">
@@ -98,6 +93,31 @@ export default function AdminDashboard() {
       <div className="mt-4 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
         {(content || Array.from({ length: 5 })).map((c: any, i) =>
           c ? (
+            <Link key={c.label} href={c.href} className="group rounded-xl border border-gray-100 bg-white p-5 transition hover:shadow-card">
+              <div className="flex items-center gap-3">
+                <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-brand-50 text-brand">
+                  <c.icon className="h-5 w-5" />
+                </div>
+                <div>
+                  <div className="text-xs uppercase tracking-wider text-gray-500">{c.label}</div>
+                  <div className="text-2xl font-extrabold">{c.value}</div>
+                  {c.sub && <div className="text-[11px] text-gray-400">{c.sub}</div>}
+                </div>
+              </div>
+              <div className="mt-3 flex items-center justify-end text-xs">
+                <span className="inline-flex items-center gap-1 font-semibold text-brand">
+                  Manage <ArrowRight className="h-3 w-3 transition group-hover:translate-x-0.5" />
+                </span>
+              </div>
+            </Link>
+          ) : (
+            <div key={i} className="h-28 animate-pulse rounded-xl border border-gray-100 bg-white" />
+          )
+        )}
+      </div>
+    </div>
+  );
+}
             <Link key={c.label} href={c.href} className="group rounded-xl border border-gray-100 bg-white p-5 transition hover:shadow-card">
               <div className="flex items-center gap-3">
                 <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-brand-50 text-brand">
